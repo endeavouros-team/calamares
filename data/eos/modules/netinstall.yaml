@@ -23,6 +23,7 @@
       packages:
         - xf86-video-amdgpu
         - xf86-video-ati
+        - nvidia-open
     - name: Network
       description: "Network apps drivers and tools"
       selected: true
