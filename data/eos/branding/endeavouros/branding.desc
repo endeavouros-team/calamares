@@ -7,7 +7,7 @@ welcomeExpandingLogo: true
 # windowExpanding: normal
 windowExpanding: noexpand
 
-windowSize: 1200px,715px
+windowSize: 1215px,715px
 
 windowPlacement: center
 
@@ -18,26 +18,25 @@ navigation: widget
 strings:
     productName:         EndeavourOS
     shortProductName:    EndeavourOS
-    version:             ${release_name} ${version}
-    shortVersion:        ${version}
-    versionedName:       EndeavourOS ${release_name}
-    shortVersionedName:  ${release_name}
+    version:             Cassini_nova
+    shortVersion:        Cassini_nova
+    versionedName:       EndeavourOS
+    shortVersionedName:  EndeavourOS
     bootloaderEntryName: EndeavourOS
-
+    
 images:
     productLogo:         "endeavouros-icon.png"
     productIcon:         "endeavouros-icon.png"
-    productWelcome:      "worldmap.png"
     productBanner:       "release-name-logo.png"
-    #productWallpaper:    "wallpaper.png"
-
+    productWelcome:      "worldmap.png"
+    
 slideshowAPI: 2
 
 style:
    SidebarBackground:        "#31363b"
-   SidebarText:              "#ffffff"
-   SidebarTextCurrent:       "#7d7dfb"
-   SidebarBackgroundCurrent: "#31363b"
+   SidebarText:              "#f5f6f7"
+   SidebarTextCurrent:       "#0d0e22"
+   SidebarBackgroundCurrent: "#efefef"
 
 slideshow:               "show.qml"
 

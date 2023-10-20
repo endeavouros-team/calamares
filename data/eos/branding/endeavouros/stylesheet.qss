@@ -30,108 +30,56 @@ EndeavourOS Calamares Theme
 
 */
 
-/* # MAIN APPLICATION WINDOW # */
+/* ########## MAIN APPLICATION WINDOW ########## */
 
 #mainApp {
-	background-color:#2a2e32;
 }
+
 
 #sidebarMenuApp {
 	background-image: url(/etc/calamares/branding/endeavouros/side-bar.png);
-	background-color: #31363b;
-	padding-top: 0px;
+	font: 18px;
+	padding-top: 30px;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
 QWidget {
-	font: 12px;
-	color: #31363b;
+	font: 14px;
+	color: #000000;
+}
+
+QListWidget::item:alternate {
+	color: #353945;
 }
 
 QDialogButtonBox { 
 	dialogbuttonbox-buttons-have-icons: 0;
 }
 
-/* # BUTTONS GENERAL A/GENERAL B/SUBCATEGORY # */
-
-QPushButton {
-            background-color: #31363b;
-}
-
-QPushButton:pressed {
-}
-
-QPushButton:hover {
-}
-
 #debugButton {
-	background-color: #31363b;
-	font: 10px;
-	color: #ffffff;
-	height: 32px;
-    	padding: 5px;
-	border: none;
+	background-color: none;
+	font: 12px;
+	color: #edecf0;
+    	height: 32px;
+    	border: none;
 }
 
-#debugButton:pressed {
-	color: #7f3fbf;
-}
 
 #debugButton:hover {
-	color: #7f3fbf;
+	color: #ff7f7f;
 }
 
 #aboutButton {
-	background-color: #31363b;
-	font: 10px;
-	color: #ffffff;
-	height: 32px;
-    	padding: 0px;
-	border: none;
-}
-
-#aboutButton:pressed {
-	color: #7f3fbf;
+	background-color: none;
+	font: 12px;
+	color: #edecf0;
+    	height: 32px;
+    	border: none;
 }
 
 #aboutButton:hover {
-	color: #7f3fbf;
-}
-
-/*
-# VALUES FOR PACKAGECHOOSER MODULE UI (packagechooser.conf) #
-products = left side values for the Desktops (id:)
-productScreenshot = the Desktop screenschot (screenshot:)
-productName = title of the right part over the screenschot (name:)
-productDescription  = description text (description:)
-*/
-
-#products {
-	color: #ffffff;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-top: 5px;
-	font: 15px;
-}
-
-#productScreenshot {
-	padding-top: 1px;
-	padding-bottom: 1px;
-}
-
-/*set to same as main app background-color and 1px to hide it*/
-#productName {
-	padding-left: 40px;
-	font: 1px;
-	color: #2a2e32;
-}
-
-#productDescription {
-	padding-left: 40px;
-        padding-right: 40px;
-	font: 14px;
-	color: #ffffff;
+	color: #ff7f7f;
 }
 
 /* Partitioning module.
