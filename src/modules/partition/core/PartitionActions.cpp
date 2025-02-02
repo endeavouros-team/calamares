@@ -108,7 +108,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
         partType = isEfi ? PartitionTable::gpt : PartitionTable::msdos;
     }
     // last usable sector possibly allowing for secondary GPT using 66 sectors (256 entries)
-    const qint64 lastUsableSector = dev->totalLogical() - ( partType == PartitionTable::gpt ? 67 : 1 );
+    qint64 lastSectorForRoot = dev->totalLogical() - (partType == PartitionTable::gpt ? 67 : 1);
 
     // Looking up the defaultFsType (which should name a filesystem type)
     // will log an error and set the type to Unknown if there's something wrong.
@@ -154,7 +154,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     const quint64 sectorSize = quint64( dev->logicalSize() );
     if ( mayCreateSwap )
     {
-        quint64 availableSpaceB = quint64( lastUsableSector - firstFreeSector + 1 ) * sectorSize;
+        quint64 availableSpaceB = quint64( dev->totalLogical() - firstFreeSector ) * sectorSize;
         suggestedSwapSizeB = swapSuggestion( availableSpaceB, o.swap );
         // Space required by this installation is what the distro claims is needed
         // (via global configuration) plus the swap size plus a fudge factor of
@@ -165,7 +165,6 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
         shouldCreateSwap = availableSpaceB > requiredSpaceB;
     }
 
-    qint64 lastSectorForRoot = lastUsableSector;
     if ( shouldCreateSwap )
     {
         lastSectorForRoot -= suggestedSwapSizeB / sectorSize + 1;
@@ -184,7 +183,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
                                                             FileSystem::LinuxSwap,
                                                             QStringLiteral( "swap" ),
                                                             lastSectorForRoot + 1,
-                                                            lastUsableSector,
+                                                            dev->totalLogical() - 1,
                                                             KPM_PARTITION_FLAG( None ) );
         }
         else
@@ -195,7 +194,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
                                                                      FileSystem::LinuxSwap,
                                                                      QStringLiteral( "swap" ),
                                                                      lastSectorForRoot + 1,
-                                                                     lastUsableSector,
+                                                                     dev->totalLogical() - 1,
                                                                      o.luksFsType,
                                                                      o.luksPassphrase,
                                                                      KPM_PARTITION_FLAG( None ) );
@@ -254,7 +253,36 @@ doReplacePartition( PartitionCoreModule* core, Device* dev, Partition* partition
         core->deletePartition( dev, partition );
     }
 
-    core->layoutApply( dev, firstSector, lastSector, o.luksFsType, o.luksPassphrase );
+    qint64 newFirstSector = firstSector;
+    if ( o.newEfiPartition && PartUtils::isEfiSystem() )
+    {
+        qint64 uefisys_part_sizeB = PartUtils::efiFilesystemRecommendedSize();
+        qint64 efiSectorCount = Calamares::bytesToSectors( uefisys_part_sizeB, dev->logicalSize() );
+        Q_ASSERT( efiSectorCount > 0 );
+
+        // Since sectors count from 0, and this partition is created starting
+        // at firstFreeSector, we need efiSectorCount sectors, numbered
+        // firstFreeSector..firstFreeSector+efiSectorCount-1.
+        qint64 lastSector = newFirstSector + efiSectorCount - 1;
+        Partition* efiPartition = KPMHelpers::createNewPartition( dev->partitionTable(),
+                                                                  *dev,
+                                                                  PartitionRole( PartitionRole::Primary ),
+                                                                  FileSystem::Fat32,
+                                                                  QString(),
+                                                                  newFirstSector,
+                                                                  lastSector,
+                                                                  KPM_PARTITION_FLAG( None ) );
+        PartitionInfo::setFormat( efiPartition, true );
+        PartitionInfo::setMountPoint( efiPartition, gs->value( "efiSystemPartition" ).toString() );
+        if ( gs->contains( "efiSystemPartitionName" ) )
+        {
+            efiPartition->setLabel( gs->value( "efiSystemPartitionName" ).toString() );
+        }
+        core->createPartition( dev, efiPartition, KPM_PARTITION_FLAG_ESP );
+        newFirstSector = lastSector + 1;
+    }
+
+    core->layoutApply( dev, newFirstSector, lastSector, o.luksFsType, o.luksPassphrase );
 
     core->dumpQueue();
 }
