@@ -148,6 +148,7 @@
     - eos-packagelist
     - eos-quickstart
     - eos-rankmirrors
+    - nvidia-inst
     - reflector-simple
     - welcome
 - name: "Recommended applications selection"
