@@ -109,6 +109,12 @@ private slots:
 
     void retranslate();
 
+// Workaround for XFS
+public:
+    void add_xfs_to_fs_list_combo_box();
+    void remove_xfs_from_fs_list_combo_box();
+// End workaround
+
 private:
     bool calculateNextEnabled() const;
     void updateNextEnabled();

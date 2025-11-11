@@ -222,6 +222,43 @@ createCombo( const QSet< SwapChoice >& s, SwapChoice dflt )
     return box;
 }
 
+// Workaround fro XFS
+void ChoicePage::add_xfs_to_fs_list_combo_box()
+{
+    if (m_eraseFsTypesChoiceComboBox != nullptr) {
+        cDebug() << "m_eraseFsTypesChoiceComboBox is not null!";
+        int xfs_idx = m_eraseFsTypesChoiceComboBox->findText(QStringLiteral("xfs"));
+        if (xfs_idx == -1){
+            cDebug() << "Adding xfs to m_eraseFsTypesChoiceComboBox";
+            m_eraseFsTypesChoiceComboBox->addItem(QStringLiteral("xfs"));
+            return;
+        }
+        cDebug() << "m_eraseFsTypesChoiceComboBox already contains xfs";
+    }
+    else {
+        cDebug() << "m_eraseFsTypesChoiceComboBox is null!";
+    }
+
+}
+
+void ChoicePage::remove_xfs_from_fs_list_combo_box()
+{
+    if (m_eraseFsTypesChoiceComboBox != nullptr) {
+        cDebug() << "m_eraseFsTypesChoiceComboBox is not null!";
+        int xfs_idx = m_eraseFsTypesChoiceComboBox->findText(QStringLiteral("xfs"));
+        if (xfs_idx != -1){
+            cDebug() << "Removing xfs from m_eraseFsTypesChoiceComboBox";
+            m_eraseFsTypesChoiceComboBox->removeItem(xfs_idx);
+            return;
+        }
+        cDebug() << "m_eraseFsTypesChoiceComboBox does not contains xfs";
+    }
+    else {
+        cDebug() << "m_eraseFsTypesChoiceComboBox is null!";
+    }
+}
+// End workaround
+
 /**
  * @brief ChoicePage::setupChoices creates PrettyRadioButton objects for the action
  *      choices.
