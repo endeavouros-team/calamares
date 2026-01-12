@@ -10,6 +10,8 @@
 # 10-2022 remove unused code and support for dracut/mkinitcpio switch
 # 04-2025 use 'nvidia-inst' to install the Nvidia packages now - @manuel
 # 07-2025 adding logic to install nvidia-lts if needed - @killajoe/joekamprad
+# 11-2025 adding logic to install broadcom-wl if needed and extra check to decide if broadcom-wl or broadcom-wl-dkms is needed - @killajoe/joekamprad
+# 01-2026 changing to only use nvidia-open - @killajoe/joekamprad
 
 _c_c_s_msg() {            # use this to provide all user messages (info, warning, error, ...)
     local type="$1"
@@ -205,20 +207,23 @@ _clean_offline_packages(){
 
         ## Live iso specific
         arch-install-scripts
+		net-tools
         memtest86+
+		memtest86+-efi
         mkinitcpio
         mkinitcpio-archiso
         mkinitcpio-busybox
+		mkinitcpio-nfs-utils
         pv
         syslinux
 
         ## Live iso tools
         clonezilla
-	fsarchiver
+	    fsarchiver
         gpart
-	gparted
+	    gparted
+		gptfdisk
         grsync
-        hdparm
         partitionmanager
 
         # ENDEAVOUROS REPO
@@ -300,58 +305,37 @@ _manage_other_graphics_drivers() {
     esac
 }
 
-_remove_broadcom_wifi_driver_old() {
-    local pkgname=broadcom-wl-dkms
-    local wifi_pci
-    local wifi_driver
-
-    # _is_pkg_installed $pkgname && {
-        wifi_pci="$(lspci -k | grep -A4 " Network controller: ")"
-        if [ -n "$(lsusb | grep " Broadcom ")" ] || [ -n "$(echo "$wifi_pci" | grep " Broadcom ")" ] ; then
-            return
-        fi
-        wifi_driver="$(echo "$wifi_pci" | grep "Kernel driver in use")"
-        if [ -n "$(echo "$wifi_driver" | grep "in use: wl$")" ] ; then
-            return
-        fi
-        _remove_a_pkg $pkgname
-    # }
-}
-
-_remove_broadcom_wifi_driver() {
-    local pkgname=broadcom-wl-dkms
-    local file=/tmp/$pkgname.txt
-    if [ "$(cat $file 2>/dev/null)" = "no" ] ; then
-        _remove_a_pkg $pkgname
-    fi
-}
-
 _install_extra_drivers_to_target() {
-    # Install special drivers to target if needed.
-    # The drivers exist on the ISO and were copied to the target.
-
-    local dir=/opt/extra-drivers
+    local dir=/usr/share/packages
     local pkg
 
-    # Handle the r8168 package.
-    if false && [ -r /tmp/r8168_in_use ] ; then
-        # We must install r8168 now.
-        if _is_offline_mode ; then
-            # Install using the copied r8168 package.
-            pkg="$(/usr/bin/ls -1 $dir/r8168-*-x86_64.pkg.tar.zst)"
-            if [ -n "$pkg" ] ; then
-                _pkg_msg install "r8168 (offline)"
-                pacman -U --noconfirm $pkg
+    # Handle the broadcom-wl package.
+    if [ -r /tmp/broadcom-wl.txt ] && grep -q "^yes$" /tmp/broadcom-wl.txt; then
+        _pkg_msg info "Installing broadcom-wl package"
+
+        if _is_offline_mode; then
+            # Install using the copied broadcom-wl package.
+            pkg="$(/usr/bin/ls -1 $dir/broadcom-wl-*-x86_64.pkg.tar.zst 2>/dev/null | head -n1)"
+            if [ -n "$pkg" ]; then
+                _pkg_msg install "broadcom-wl (offline)"
+                pacman -U --noconfirm "$pkg"
             else
-                _c_c_s_msg error "no r8168 package in folder $dir!"
+                _c_c_s_msg error "No broadcom-wl package found in folder $dir!"
             fi
         else
-            # Install r8168 package from the mirrors.
-            _install_needed_packages r8168
-	    # Handle the r8168-lts package if LTS is installed.
-            [[ $(pacman -Q linux-lts  2</dev/null) ]] &&  _install_needed_packages r8168-lts
+            # Online install – choose correct package depending on kernels installed
+            if expac %n linux-lts >/dev/null ; then
+                # LTS kernel installed --> use DKMS version
+                _pkg_msg info "LTS kernel detected --> installing broadcom-wl-dkms"
+                _install_needed_packages broadcom-wl-dkms
+            else
+                # No LTS kernel → install regular broadcom-wl
+                _pkg_msg info "No LTS kernel --> installing broadcom-wl"
+                _install_needed_packages broadcom-wl
+            fi
         fi
     fi
+
 }
 
 _install_more_firmware() {
@@ -378,47 +362,48 @@ _remove_nvidia_drivers() {
 }
 
 _manage_nvidia_packages() {
-    local file=/tmp/nvidia-info.bash        # nvidia info from livesession
+    local file=/tmp/nvidia-info.bash   # nvidia info from livesession
 
-    if [ -r $file ] ; then
-        local nvidia_driver=""
-        source $file
-        case "$nvidia_driver" in
-            nvidia | nvidia-open)
-                if _is_online_mode ; then
-                    if _check_internet_connection ; then
-                        _install_needed_packages nvidia-inst
-                        /usr/bin/nvidia-inst --no-dkms --no-settings
-                        if [[ $(pacman -Q linux-lts 2>/dev/null) ]]; then
-                            _install_needed_packages nvidia-lts
-                        fi
-                    else
-                        _c_c_s_msg warning "$FUNCNAME: no internet connection!"
-                    fi
-                else
-                    # offline: install nvidia packages from /usr/share/packages/
-                    local dir=/usr/share/packages
-                    local pkgs=""
-                    case "$nvidia_driver" in
-                        nvidia) pkgs="$(/usr/bin/ls -1 $dir/nvidia*.pkg.tar.zst 2>/dev/null | grep -v nvidia-open)" ;;
-                        nvidia-open) pkgs="$(/usr/bin/ls -1 $dir/nvidia*.pkg.tar.zst 2>/dev/null | grep -v nvidia-[0-9])" ;;
-                    esac
-                    if [ "$pkgs" ] ; then
-                        pacman -U --noconfirm $pkgs
-                    else
-                        _c_c_s_msg warning "$FUNCNAME: no Nvidia packages in $dir !"
-                    fi
-                fi
-                ;;
-            nouveau | "" | *)
-                _remove_nvidia_drivers	# no Nvidia GPU or using nouveau
-                ;;
-        esac
-    else
-        _remove_nvidia_drivers	 # for both offline and online ??
+    if [ ! -r "$file" ]; then
+        _remove_nvidia_drivers
+        return 0
     fi
-    true
+
+    local nvidia_driver=""
+    source "$file"
+
+    case "$nvidia_driver" in
+        nvidia-open)
+            if _is_online_mode; then
+                if _check_internet_connection; then
+                    _install_needed_packages nvidia-inst
+                    /usr/bin/nvidia-inst --no-dkms --no-settings
+                else
+                    _c_c_s_msg warning "$FUNCNAME: no internet connection!"
+                fi
+            else
+                # offline: install ONLY nvidia-open packages
+                local dir=/usr/share/packages
+                local pkgs
+
+                pkgs="$(ls -1 "$dir"/nvidia-open*.pkg.tar.zst 2>/dev/null)"
+
+                if [ -n "$pkgs" ]; then
+                    pacman -U --noconfirm $pkgs
+                else
+                    _c_c_s_msg warning "$FUNCNAME: no nvidia-open packages in $dir!"
+                fi
+            fi
+            ;;
+        nouveau | "" | *)
+            # unsupported GPU or only supporting nouveau - do nothing - keep nouveau
+            _remove_nvidia_drivers
+            ;;
+    esac
+
+    return 0
 }
+
 
 
 _run_if_exists_or_complain() {
@@ -462,9 +447,6 @@ _clean_up(){
 
     # install or remove AMD and Intel graphics stuff if needed
     _manage_other_graphics_drivers
-
-    # remove broadcom-wl-dkms if it is not needed
-    _remove_broadcom_wifi_driver
 
     _install_extra_drivers_to_target
     _install_more_firmware

@@ -8,7 +8,6 @@
       description: "Default X11 system"
       selected: true
       packages:
-        - libwnck3
         - mesa-utils
         - xf86-input-libinput
         - xorg-xdpyinfo
@@ -28,6 +27,7 @@
       selected: true
       packages:
         - b43-fwcutter
+        - dialog
         - dnsmasq
         - dnsutils
         - ethtool
@@ -39,6 +39,8 @@
         - nss-mdns
         - openssh
         - usb_modeswitch
+        - whois
+        - wireless-regdb
         - wpa_supplicant
         - xl2tpd
     - name: "Package management"
@@ -59,7 +61,6 @@
         - bash-completion
         - bluez
         - bluez-utils
-        - ffmpegthumbnailer
         - gst-libav
         - gst-plugin-pipewire
         - gst-plugins-bad
@@ -163,7 +164,6 @@
     - inxi
     - meld
     - nano-syntax-highlighting
-    - pv
     - python-defusedxml
     - python-jinja
     - python-packaging

@@ -38,16 +38,20 @@ _CopyFileToTarget() {
 }
 
 _manage_broadcom_wifi_driver() {
-    local pkgname=broadcom-wl-dkms
+    local pkgname=broadcom-wl
     local targetfile=/tmp/$chroot_path/tmp/$pkgname.txt
-    local wifi_pci="$(lspci -k | sed -n '/ Network controller: /,/^[^ \t]/p' | sed '$d')"
 
-    if [ -n "$(echo "$wifi_pci" | grep -w Broadcom)" ] ; then
-        echo "yes" > $targetfile
-    elif [ -n "$(lsusb | grep -w Broadcom)" ] ; then
-        echo "yes" > $targetfile
-    else
-        echo "no" > $targetfile
+    # detecting broadcom hardware
+    if lsmod | grep -q "brcmfmac\|b43\|wl" \
+      || lspci -nn | grep -qi "14e4:43"; then
+
+        # check in addition if  broadcom-wl is installed on the live-system
+        if pacman -Q broadcom-wl &>/dev/null; then
+            echo "yes" > "$targetfile"
+        else
+            echo "Broadcom hardware found, but broadcom-wl not installed in live system" >&2
+        fi
+
     fi
 }
 
@@ -68,14 +72,17 @@ _copy_files(){
     # Communicate to chrooted system if
     # - nvidia card is detected
     # - livesession is running nvidia driver
+	if grep -qw "nvidia=1" /proc/cmdline; then
+    	local nvidia_file="$target/tmp/nvidia-info.bash"
+    	local driver
 
-    if grep -qw "nvidia=1" /proc/cmdline ; then
-        local nvidia_file=$target/tmp/nvidia-info.bash
-        local driver="$(/usr/bin/nvidia-inst --recommended-driver)"
-        case "$driver" in
-            nvidia | nvidia-open) echo "nvidia_driver=$driver" >> $nvidia_file ;;
-        esac
-    fi
+    	driver="$(/usr/bin/nvidia-inst --recommended-driver)"
+
+   	 	if [ "$driver" = "nvidia-open" ]; then
+        	echo "nvidia_driver=nvidia-open" >> "$nvidia_file"
+    	fi
+	fi
+
 
     # copy user_commands.bash to target
     _CopyFileToTarget /home/liveuser/user_commands.bash $target/tmp
