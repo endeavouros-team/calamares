@@ -13,6 +13,7 @@ i18n:
  name[pt_BR]: "Executando tarefas de limpeza pós-instalação"
  name[tr]: "Yükleme sonrası temizleme görevleri çalıştırılıyor"
  name[ko]: "설치 후 정리 작업 실행 중"
+ name[cs]: "probíhají úlohy čištění po dokončení instalace"
 
 ---
 
@@ -31,6 +32,8 @@ i18n:
  name[pt_BR]: "Preparar tarefas de limpeza pós-instalação"
  name[tr]: "Yükleme sonrası temizleme görevlerini hazırlama..."
  name[ko]: "설치 후 정리 작업 준비 중..."
+ name[cs]: "příprava úloh čištění po dokončení instalace ..."
+
 ---
 
 https://github.com/endeavouros-team/calamares/blob/calamares/data/eos/modules/netinstall.conf
@@ -48,6 +51,7 @@ label:
  sidebar[pt_BR]: "Pacotes"
  sidebar[tr]: "Paketler"
  sidebar[ko]: "꾸러미"
+ sidebar[cs]: "Balíčky"
  title: "Packages (overview of packages to install and a possibility to refine your selection)"
  title[de]: "Pakete (Übersicht der zu installierenden Pakete und eine Möglichkeit deine Auswahl zu verfeinern)"
  title[fi]: "Paketit (yleiskatsaus asennettavista paketeista ja mahdollisuus tarkentaa valintoja)"
@@ -61,6 +65,7 @@ label:
  title[pt_BR]: "Pacotes (visão geral dos pacotes a instalar e possibilidade de refinar a sua seleção)"
  title[tr]: "Paketler (yüklenecek paketlere genel bakış ve seçiminizi iyileştirme imkanı)"
  title[ko]: "꾸러미 (설치할 꾸러미를 살펴보고 선택을 할 수 있습니다)"
+ title[cs]: "Balíčky (přehled balíčků k instalaci s možností úpravy výběru)"
 
 ---
 
@@ -79,11 +84,14 @@ labels:
     step[pt_BR]: "Ambiente de Trabalho"
     step[tr]: "Masaüstü"
     step[ko]: "데스크탑"
+    step[cs]: "Desktop"
+
 items:
 
     - id: ""
       # packages: [] # This item installs no packages
       name: "No Desktop"
+      name[cs]: "Bez desktopu"
       description: "Please pick one of the Desktops from the list. If you don't want to install any Desktop, that's fine, your system will start up in text-only mode and you can install a desktop environment later. Next Slide will show an editable list of packages that will get installed after you click on next button."
       description[de]: "Bitte wähle einen der Desktops aus der Liste. Wenn Du keinen Desktop installieren möchtest, ist das kein Problem. Dein System wird im reinen Textmodus gestartet und Du kannst später eine Desktop-Umgebung installieren. Wenn Du auf die Schaltfläche Weiter klickst, erscheint auf der nächsten Folie eine editierbare Liste von Paketen, die installiert werden."
       description[fi]: "Valitse jokin työpöytä luettelosta. Jos et halua asentaa mitään työpöytää, se ei haittaa, järjestelmä käynnistyy tekstitilassa ja voit asentaa työpöytäympäristön myöhemmin. Seuraava dia näyttää muokattavan luettelon paketeista, jotka asennetaan, kun napsautat Seuraava-painiketta."
@@ -97,6 +105,7 @@ items:
       description[pt_BR]: "Por favor, escolha um dos ambientes da lista. Se você não quiser instalar nenhum dos ambientes, tudo bem, seu sistema será iniciado em modo de texto e você poderá instalar um ambiente de desktop depois. O próximo Slide mostrará uma lista editável de pacotes que serão instalados depois que você clicar no no botão de próximo."
       description[tr]: "Lütfen Masaüstü listesinden birini seçin. Masaüstünü yüklemek istemezseniz, sorun değil, sisteminiz metin-tabanlı önyüklenecek, böylece masaüstü ortamını daha sonra yükleyebilirsiniz. Sonraki Slayt, sonraki düğmesine tıkladıktan sonra yüklenecek paketlerin düzenlenebilir bir listesini gösterecektir."
       description[ko]: "목록에서 데스크탑 환경 중 하나를 선택 해 주세요. 데스크탑 환경을 설치 하지 않아도 괜찮습니다. 이 경우 시스템은 텍스트 모드로 시작되며 나중에 데스크탑 환경을 설치할 수도 있습니다. 다음 슬라이드에서는 "다음" 버튼을 누르면 설치될 수정 가능한 패키지 목록을 보여 줄 것입니다."
+      description[cs]: "Vyberte jeden z nabízených desktopů. Pokud nechcete nainstalovat žádný desktop, také to není problém, váš systém bude spuštěn v textovém režimu a desktop můžete doinstalovat později. V dalším kroku po kliknutí na tlačítko Další bude k dispozici editovatelný seznam instalovaných balíčků."
 
     - id: XFCE4-Desktop
       name: "Xfce4"
@@ -113,6 +122,7 @@ items:
       description[pt_BR]: "Xfce é um ambiente de trabalho leve para sistemas operacionais semelhantes a UNIX. Ele visa ser rápido e de baixo consumo de recursos do sistema, e mesmo assim se mantendo visualmente atraente e amigável para o usuário."
       description[tr]: "Xfce UNIX-benzeri işletim sistemleri için hafif bir masaüstü ortamıdır. Görsel olarak çekici ve kullanıcı dostu olmaya devam ederken, hızlı olmayı ve düşük sistem kaynaklarını kullanmayı amaçlamaktadır."
       description[ko]: "Xfce는 UNIX-like 운영체제를 위한 경량 데스크탑 환경입니다. 빠르고 시스템 자원을 적게 사용하면서도 보기 좋고 유저 친화적인 것을 목표로 합니다."
+      description[cs]: "Xfce je odlehčené desktopové prostředí pro unixové operační systémy. Má za cíl být rychlé a nenáročné na systémové zdroje při zachování atraktivního vzhledu a uživatelské přívětivosti."
       screenshot: "/etc/calamares/images/xfce4.jpg"
 
     - id: i3-Window-Manager
@@ -130,6 +140,7 @@ items:
       description[pt_BR]: "i3 é um gerenciador de janelas tiling projetado para X11, inspirado no wmii, e escrito em C. Ele suporta ladrilhos (tiling), empilhamento(stacking) e layouts em abas (tabbing), que trata de forma dinâmica. A configuração é realizada através de um arquivo de texto sem formatação e estender o i3 é possível usando o seu soquete de domínio Unix e JSON com interface base IPC de muitas linguagens de programação."
       description[tr]: "i3, X11 için tasarlanmış, wmii'den esinlenilmiş ve C ile yazılmış bir döşeme pencere yöneticisidir. Dinamik olarak işlediği döşeme, istifleme ve sekme düzenlerini destekler. Yapılandırma düz bir metin dosyası aracılığıyla yapılır ve i3'ün Unix etki alanı soketi ve IPC tabanlı JSON arayüzü kullanılarak birçok programlama dilinden genişletilmesi mümkündür."
       description[ko]: "i3는 wmii에서 영감을 받은 C로 쓰여진 X11을 위한 데스크탑 환경입니다. 동적으로 변경 가능한 타일링, 스태킹, 탭 레이아웃을 지원합니다. 설정은 텍스트 파일을 통해 이루어지며, Unix 도메인 소켓과 JSON 기반 RPC 인터페이스를 통해 여러 프로그래밍 언어를 이용해 확장이 가능합니다."
+      description[cs]: "i3 je dlaždicový správce oken pro X11, inspirovaný wmii a napsaný v C. Podporuje dynamické dlaždicové, plovoucí a záložkové uspořádání oken. Nastavení se provádí úpravou textového konfiguračního souboru a k rozšíření funkcionality i3 je možné použít unixové sokety a JSON IPC rozhraní použitelné z různých programovacích jazyků."
 
     - id: KDE-Desktop
       name: "Plasma KDE"
@@ -146,6 +157,7 @@ items:
       description[pt_BR]: "Use o Plasma para navegar pela Web; esteja em contacto com os seus colegas, amigos e família; faça a gestão dos seus ficheiros, desfrute da música e dos vídeos; seja criativo e produtivo no seu trabalho. Faça tudo isso num ambiente de trabalho bonito que se adapta às suas necessidades e com a segurança, protecção de privacidade e paz de espírito que o melhor ‘Software’ Livre tem para oferecer."
       description[tr]: "Plasma'yı internette gezinmek; iş arkadaşlarınız, dostlarınız ve ailenizle iletişimde kalmak; dosyalarınızı yönetmek, müzik ve videoların tadını çıkarmak; işte yaratıcı ve üretken olmak için kullanın. Tüm bunları ihtiyaçlarınıza uygun güzel bir çalışma ortamında ve en iyi Özgür Yazılımın sunduğu güvenlik, gizlilik koruması ve gönül rahatlığıyla yapın."
       description[ko]: "Plasma를 이용해 인터넷을 이용하고, 동료, 친구, 가족과 연락하고, 파일을 관리하고, 음악과 영상을 즐기고, 창의력을 발휘해 생산적으로 일 해 보세요. 이 모든 것을 당신이 필요한 것에 맞춰지는 아름다운 환경에서, 최고의 자유 소프트웨어가 제공하는 안전성, 개인정보 보호, 안정감을 느끼며 할 수 있습니다."
+      description[cs]: "Používejte Plasmu na brouzdání na netu; udržujte kontakt s kolegy, přáteli a rodinou; spravujte své soubory, užívejte si hudbu a videa; buďte kreativní a produktivní v práci. Všechno můžete dělat v nádherném prostředí, které se přizpůsobuje vašim potřebám, je bezpečné, chránící vaše soukromí a klidnou mysl tím, co může svobodný software s otevřeným kódem nabídnout."
 
     - id: GNOME-Desktop
       name: "GNOME"
@@ -162,6 +174,7 @@ items:
       description[pt_BR]: "Faça as coisas com facilidade, conforto e controle. Uma maneira fácil e elegante de usar seu computador, GNOME foi projetado para te ajudar a ter a melhor experiência computacional possível."
       description[tr]: "İşlerinizi kolay, konforlu ve kontrollü bir şekilde halledin. Bilgisayarınızı kullanmanın kolay ve zarif bir yolu olan GNOME, mümkün olan en iyi bilgisayar deneyimini yaşamanıza yardımcı olmak için tasarlanmıştır."
       description[ko]: "쉽고 편안하며 효율적으로 일하세요. 컴퓨터를 사용하는 쉽고 우아한 방법인 GNOME은 최고의 컴퓨팅 경험을 제공하기 위해 설계되었습니다."
+      description[cs]: "Zvládejte práci s lehkostí, komfortem a plnou kontrolou. Snadný a elegantní způsob používání počítače, GNOME je navržen tak, aby vám pomohl dosáhnout co nejlepšího zážitku z práce s počítačem."
 
     - id: Cinnamon-Desktop
       name: "Cinnamon"
@@ -178,11 +191,12 @@ items:
       description[pt_BR]: "Cinnamon é um ambiente de trabalho livre e de código aberto para o X Window System que deriva do GNOME 3, mas segue as convenções tradicionais de desktop."
       description[tr]: "Cinnamon, X Pencere Sistemi için GNOME 3'ten türetilmiş, ancak geleneksel masaüstü kurallarını izleyen ücretsiz ve açık kaynaklı bir masaüstü ortamıdır."
       description[ko]: "Cinnamon은 X 윈도우 시스템을 위한 자유 소프트웨어 데스크탑 환경으로 GNOME 3에서 파생되었지만 전통적인 데스크탑 환경을 선사합니다."
+      description[cs]: "Cinnamon je bezplatné a open-source desktopové prostředí pro systém X Window, které je odvozené z GNOME 3, ale dodržuje konvence a metafory tradičního desktopového prostředí."
       screenshot: "/etc/calamares/images/cinnamon.jpg"
 
     - id: MATE-Desktop
       name: "Mate"
-      description: "The MATE Desktop Environment is the continuation of GNOME 2. It provides an intuitive and attractive desktop environment using traditional metaphors for Linux and other Unix-like operating systems. MATE is under active development to add support for new technologies while preserving a traditional desktop experience.."
+      description: "The MATE Desktop Environment is the continuation of GNOME 2. It provides an intuitive and attractive desktop environment using traditional metaphors for Linux and other Unix-like operating systems. MATE is under active development to add support for new technologies while preserving a traditional desktop experience."
       description[de]: "Die MATE-Arbeitsumgebung ist die Fortführung von GNOME 2. Sie bietet für Linux und andere Unix-artige Betriebssysteme eine intuitive und attraktive Arbeitsumgebung, die sich der traditionell verwendeten Metaphern bedient."
       description[fi]: "MATE-työpöytäympäristö on jatkoa GNOME 2:lle. Se tarjoaa intuitiivisen ja houkuttelevan työpöytäympäristön, jossa käytetään Linuxin ja muiden Unixin kaltaisten käyttöjärjestelmien perinteisiä metaforia. MATEa kehitetään aktiivisesti, jotta se tukisi uusia tekniikoita ja säilyttäisi samalla perinteisen työpöytäkokemuksen."
       description[fr]: "MATE est un fork de GNOME 2. Il fournit un environnement de bureau attractif et intuitif en se basant sur les métaphores traditionnelles pour GNU/Linux et d'autres systèmes d'exploitation similaires à Unix."
@@ -195,6 +209,7 @@ items:
       description[pt_BR]: "O MATE Desktop Environment é a continuação do GNOME 2. Ele fornece um ambiente de trabalho intuitivo e atraente usando convenções tradicionais de Linux e outros sistemas operacionais do tipo Unix"
       description[tr]: "MATE masaüstü ortamı GNOME 2'nin devamı niteliğindedir. Linux ve diğer Unix tarzı işletim sistemlerinin geleneksel metaforlarını kullanarak sezgisel ve çekici bir ortam sağlar. MATE, geleneksel masaüstü deneyimini korurken yeni teknolojiler için destek eklemek üzere aktif olarak geliştirilmektedir."
       description[ko]: "MATE는 GNOME 2의 계승입니다. Linux와 다른 UNIX-like 운영체제에서 사용되는 것과 비슷한 전통적인 데스크탑 경험을 제공하면서 직관적이고 매력적입니다. MATE는 전통적인 데스크탑 경험을 유지하면서도 새로운 기술을 지원하기 위해 활발히 개발 중입니다."
+      description[cs]: "Desktopové protředí MATE je pokračováním GNOME 2. Nabízí intuitivní a atraktivní desktopové prostředí s využitím tradičních metafor pro Linux a další Unixové operační systémy. MATE je aktivně vyvíjen a přidává podporu pro nové technologie, ale zároveň zachovává tradiční desktopové prostředí."
 
     - id: Budgie-Desktop
       name: "Budgie"
@@ -211,6 +226,7 @@ items:
       description[pt_BR]: "Budgie Desktop é um ambiente moderno rico em funcionalidade. O design do Budgie enfatiza a simplicidade, o minimalismo e a elegância."
       description[tr]: "Budgie Desktop, işlevsellik açısından zengin modern bir ortamdır. Budgie'nin tasarımı sadelik, minimalizm ve zarafeti vurgular."
       description[ko]: "Budgie 데스크탑은 기능이 풍부하고 현대적인 데스크탑입니다. Budgie의 디자인은 간결함, 미니멀리즘, 우아함을 강조합니다."
+      description[cs]: "Budgie je funkcemi nabité moderní desktopové prostředí. Design Budgie klade důraz na jednoduchost, minimalismus a eleganci."
 
     - id: LXDE-Desktop
       name: "LXDE"
@@ -227,6 +243,7 @@ items:
       description[pt_BR]: "LXDE, que significa Lightweight X11 Desktop Environment (Ambiente de Trabalho Leve para X11), é um ambiente de trabalho que é leve e rápido. Ele foi projetado para ser fácil de usar e rápido, enquanto mantém o uso de recursos baixo. O LXDE usa menos memória RAM e menos CPU, ao mesmo tempo em que é um ambiente de trabalho rico em funcionalidade. Ao contrário de outros ambientes de trabalho firmemente integrados, o LXDE se esforça para ser modular, de modo que cada componente pode ser usado independentemente com poucas dependências."
       description[tr]: "Hafif X11 Masaüstü Ortamı anlamına gelen LXDE, hafif ve hızlı bir masaüstü ortamıdır. Kaynak kullanımını düşük tutarken kullanıcı dostu ve hafif olacak şekilde tasarlanmıştır. LXDE, zengin özelliklere sahip bir masaüstü ortamı olmasına karşın daha az RAM ve daha az CPU kullanır. Diğer sıkı entegre masaüstlerinin aksine LXDE modüler olmaya çalışır, böylece her bileşen birkaç bağımlılıkla bağımsız olarak kullanılabilir."
       description[ko]: "LXDE (가벼운 X11 데스크탑 환경을 뜻함)는 가볍고 빠른 데스크탑 환경입니다. 리소스 사용량을 최소화하면서도 유저 친화적이면서 간결하게 설계되었습니다. LXDE는 RAM과 CPU를 적게 사용하면서도 풍부한 기능을 제공합니다. 다른 데스크탑 환경과 달리 LXDE는 모듈 형식을 사용하여 각각의 구성요소들을 적은 의존성으로도 독립적으로 사용 할 수 있습니다."
+      description[cs]: "LXDE, plným názvem Lightweight X11 Desktop Environment, je odlehčené a rychlé desktopové prostředí. Je navržené tak, aby bylo uživatelsky přívětivé a zároveň mělo minimální spotřebu zdrojů. LXDE potřebuje minimum paměti a výkonu procesoru a přesto jde o funkcemi nabité desktopové prostředí. Na rozdíl od ostatních úzce integrovaných desktopů se LXDE snaží být modulární, takže každou z jeho komponent lze používat samostatně s minimem závislostí."
 
     - id: LXQT-Desktop
       name: "LXQT"
@@ -243,6 +260,7 @@ items:
       description[pt_BR]: "LXQt é um ambiente de trabalho leve em Qt. Ele não vai te atrapalhar. Ele não vai te atrasar ou diminuir a velocidade do seu sistema. Ele está focado em ser um ambiente clássico com aparência e look and feel modernos."
       description[tr]: "LXQt hafif bir Qt masaüstü ortamıdır. Yolunuza çıkmayacaktır. Sisteminizi kilitlemez veya yavaşlatmaz. Modern bir görünüm ve his ile klasik bir masaüstü olmaya odaklanmıştır."
       description[ko]: "LXQt는 가벼운 Qt 데스크탑 환경입니다. 당신을 방해하지 않고, 시스템을 느리게 하거나 멈추지 않습니다. 현대적인 느낌을 가지면서도 전통적인 데스크탑을 지향합니다."
+      description[cs]: "LXQt je odlehčené Qt desktopové prostředí. Nebude vám překážet. Nebude se zasekávat nebo zpomalovat váš systém. Jeho cílem je nabídnout klasické dektopové prostředí s moderním vzhledem a ovládáním."
 
 ---
 
@@ -262,6 +280,8 @@ labels:
     step[pt_BR]: "Bootloader"
     step[tr]: "Önyükleyici"
     step[ko]: "부트로더"
+    step[cs]: "Zavaděč systému"
+
 ---
 
 
@@ -280,6 +300,7 @@ i18n:
  name[pt_BR]: "Aplicar correções menores..."
  name[tr]: "Küçük düzeltmeleri uygula..."
  name[ko]: "작은 수정사항 적용 중..."
+ name[cs]: "Aplikovat drobné opravy..."
 
 ---
 
@@ -299,6 +320,7 @@ i18n:
  name[pt_BR]: "Iniciar pacman... Classificar espelhos... Copiar lista de espelhos do pacman e chaveiro do alvo..."
  name[tr]: "Pacman'i başlat ... Aynaları sırala ... Pacman ayna listesini ve anahtarlığı hedefe kopyala ..."
  name[ko]: "pacman 초기화 중... 미러 순위 매기는 중... pacman 미러 리스트와 키링을 설치 대상으로 복사하는 중..."
+ name[cs]: "inicializace nástroje pacman ... hodnocení zrcadel ... kopie seznamu zrcadel pro pacman a klíčenky do cíle ..."
 
 
 ---
@@ -319,6 +341,7 @@ i18n:
  name[pt_BR]: "Iniciar Pacman... Copiar lista de espelhos do pacman e chaveiro do alvo."
  name[tr]: "Pacman'i başlat... Pacman ayna listesini ve hedef anahtar zincirini kopyala..."
  name[ko]: "pacman 초기화 중... pacman 미러 리스트와 키링을 설치 대상으로 복사하는 중..."
+ name[cs]: "inicializace nástroje pacman... kopie seznamu zrcadel pro pacman a klíčenky do cíle..."
 
 
 ---
@@ -350,6 +373,7 @@ i18n:
  name[pt_BR]: "Copie logs e arquivos do host para o destino"
  name[tr]: "Günlükleri ve dosyaları ana bilgisayardan hedefe kopyalayın"
  name[ko]: "로그와 파일을 호스트에서 대상으로 복사"
+ name[cs]: "Zkopírovat protokoly a soubory z hostitele do cíle"
 
 
 
