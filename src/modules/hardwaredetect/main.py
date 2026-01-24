@@ -27,7 +27,7 @@ def pretty_status_message():
         return custom_status_message
 
 
-def run():
+def get_cpu_info():
     cpu_model = "unknown"
     cpu_vendor = "unknown"
     try:
@@ -38,9 +38,59 @@ def run():
                 if line.strip().startswith("model name"):
                     cpu_model = line.split(":")[1].strip()
     except KeyError:
-        libcalamares.utils.warning("Failed to get CPU drivers")
+        libcalamares.utils.warning("Failed to get CPU information")
 
-    libcalamares.globalstorage.insert("cpuModel", cpu_model)
-    libcalamares.globalstorage.insert("cpuVendor", cpu_vendor)
+    return cpu_vendor, cpu_model;
+
+
+def install_ucode(vendor):
+    package = None
+    if vendor == 'GenuineIntel':
+        package = 'intel_ucode'
+    elif vendor == 'AuthenticAMD':
+        package = 'amd_ucode'
+
+    if package:
+        try:
+            libcalamares.utils.target_env_process_output(["pacman", "-Sy", "--noconfirm", package], None)
+        except CalledProcessError:
+            libcalamares.utils.warning(f"Failed to install {package}")
+    else:
+        libcalamares.utils.warning(f'Vendor {vendor} has no know ucode package.  Skipping ucode install...')
+
+
+def remove_ucode(vendor):
+    packages = list()
+    if vendor != 'GenuineIntel':
+        packages.append('intel_ucode')
+    elif vendor != 'AuthenticAMD':
+        packages.append('amd_ucode')
+
+    if packages:
+        try:
+            libcalamares.utils.target_env_process_output(["pacman", "-Rcn", "--noconfirm"].append(packages), None)
+        except CalledProcessError:
+            libcalamares.utils.warning(f"Failed to remove {packages}")
+
+
+def run_command(command):
+    try:
+        libcalamares.utils.target_env_process_output(command, None)
+    except CalledProcessError:
+        libcalamares.utils.warning(f"Failed to run {command}")
+
+
+def run():
+    vendor, model = get_cpu_info()
+    hw_tool = '/usr/bin/eos-hwtool'
+
+    if libcalamares.globalstorage.contains("hasInternet"):
+        install_ucode(vendor)
+        run_command([hw_tool, '--iso', '--no32', '--install-recommended'])
+    else:
+        remove_ucode(vendor)
+        run_command([hw_tool, '--iso', '--install-recommended', '--packagedir=/usr/share/packages', '--nvidia-only'])
+        run_command([hw_tool, '--iso', '--purge'])
+        run_command([hw_tool, '--enable-services'])
 
     return None

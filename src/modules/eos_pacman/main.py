@@ -48,7 +48,7 @@ def is_package_file_modified(package_name, search_string, filename):
 
         pacman_output = list()
         try:
-            libcalamares.utils.host_env_process_output(f'pacman -Qkk {package_name}', pacman_output)
+            libcalamares.utils.host_env_process_output(['pacman', '-Qkk', package_name], pacman_output)
             for line in pacman_output:
                 if diff_re.match(line):
                     return True
@@ -58,20 +58,20 @@ def is_package_file_modified(package_name, search_string, filename):
     return False
 
 
-def generate_mirrorlist(relative_command, run_command):
-    if Path(mountpoint).joinpath(relative_command).exists():
+def generate_mirrorlist(command, run_command):
+    if Path(command).exists():
         try:
             libcalamares.utils.host_env_process_output(run_command, line_cb)
             return True
         except CalledProcessError:
-            libcalamares.utils.warning(f"/{relative_command} missing")
+            libcalamares.utils.warning(f"{command} missing")
 
     return False
 
 
 def update_mirrorlist_online(mountpoint):
-    relative_command = "usr/bin/rate-mirrors"
-    eos_relative_command = "usr/bin/eos-rankmirrors"
+    relative_command = "/usr/bin/rate-mirrors"
+    eos_relative_command = "/usr/bin/eos-rankmirrors"
     fallback_command = ["/usr/bin/create-ml"]
     arch_mirrorlist_filename = "/etc/pacman.d/mirrorlist"
     eos_mirrorlist_filename = "/etc/pacman.d/endeavouros-mirrorlist"
@@ -80,8 +80,11 @@ def update_mirrorlist_online(mountpoint):
     use_existing_mirrorlist = is_package_file_modified('pacman-mirrorlist', 'mirrorlist', arch_mirrorlist_filename)
 
     # Generate the Arch mirrorlist if needed
-    if not use_existing_mirrorlist:
-        if not generate_mirrorlist(relative_command, ['/'.join(relative_command), "--allow-root", "arch", "--max-delay=3600"]):
+    if use_existing_mirrorlist:
+        libcalamares.utils.debug('Using existing Arch mirrorlist from host')
+    else:
+        if not generate_mirrorlist(relative_command, [relative_command, "--allow-root", "--save=/etc/pacman.d/mirrorlist",
+                                                      "arch", "--max-delay=3600"]):
             # Use the fallback mirrorlist
             libcalamares.utils.warning("Generating fallback mirrorlist")
             libcalamares.utils.host_env_process_output(fallback_command, line_cb)
@@ -93,8 +96,10 @@ def update_mirrorlist_online(mountpoint):
     use_existing_mirrorlist = is_package_file_modified('endeavouros-mirrorlist', 'endeavouros', eos_mirrorlist_filename)
 
     # Generate the EOS mirrorlist if needed
-    if not use_existing_mirrorlist:
-        if not generate_mirrorlist(eos_relative_command, ['/'.join(eos_relative_command)]):
+    if use_existing_mirrorlist:
+        libcalamares.utils.debug('Using existing EOS mirrorlist from host')
+    else:
+        if not generate_mirrorlist(eos_relative_command, [eos_relative_command]):
             libcalamares.utils.warning(f"Failed to generate EOS mirrorlist")
 
     # Now copy the mirrorlist to the target
@@ -109,7 +114,9 @@ def update_mirrorlist_offline(mountpoint):
 
     use_existing_mirrorlist = is_package_file_modified('pacman-mirrorlist', 'mirrorlist', arch_mirrorlist_filename)
 
-    if not use_existing_mirrorlist:
+    if use_existing_mirrorlist:
+        libcalamares.utils.debug('Using existing Arch mirrorlist from host')
+    else:
         libcalamares.utils.host_env_process_output(command, line_cb)
 
     install_file(mountpoint, arch_mirrorlist_filename)
@@ -118,7 +125,10 @@ def update_mirrorlist_offline(mountpoint):
 
 def install_file(mountpoint, filename):
     try:
-        shutil.copy2(filename, mountpoint + filename)
+        target = mountpoint + filename
+        libcalamares.utils.debug(f'Installing {filename} to {target}')
+        Path(target).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(filename, target)
     except:
         libcalamares.utils.warning(f"Failed to install {filename} to target")
 
@@ -137,15 +147,15 @@ def run():
         return f"Missing root mountpoint, aborting"
 
     # If hasInternet is missing from global storage, it means the user selected an offline install
-    if "hasInternet" in libcalamares.globalstorage:
-        update_mirrorlist(root_mountpoint)
+    if libcalamares.globalstorage.contains("hasInternet"):
+        update_mirrorlist_online(root_mountpoint)
         try:
             libcalamares.utils.host_env_process_output(["pacman", "-Sy", "--noconfirm", "archlinux-keyring", "endeavouros-keyring"],
                                                        line_cb)
         except CalledProcessError:
             libcalamares.utils.warning(f"Failed to update keyring on host")
     else:
-        update_mirrorlist_offline(mountpoint)
+        update_mirrorlist_offline(root_mountpoint)
         try:
             libcalamares.utils.host_env_process_output(["pacman-key", "--init"], line_cb)
             libcalamares.utils.host_env_process_output(["pacman-key", "--populate", "archlinux", "endeavouros"], line_cb)

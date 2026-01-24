@@ -235,16 +235,9 @@ Main() {
 
     if [ "$INSTALL_TYPE" != "online" ]; then
         _clean_offline_packages
-        if [ $(/usr/bin/eos-hwtool --check-nvidia) = "nvidia-open" ]; then
-            /usr/bin/eos-hwtool --iso --install-recommended --packagedir=/usr/share/packages
-        fi
-        /usr/bin/eos-hwtool --purge --iso
-        /usr/bin/eos-hwtool --enable-services
         _clean_archiso
         chown "$NEW_USER":"$NEW_USER" "/home/$NEW_USER/.bashrc"
         _sed_stuff
-    else
-        /usr/bin/eos-hwtool --iso --no32 --install-recommended
     fi
 
     _clean_up

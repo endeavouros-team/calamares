@@ -98,6 +98,13 @@ def run():
     except PacmanError as pe:
         return "Failed to run pacstrap", format(pe)
 
+    # Initialize the keyring
+    try:
+        libcalamares.utils.target_env_process_output(["pacman-key", "--init"], None)
+        libcalamares.utils.target_env_process_output(["pacman-key", "--populate", "archlinux", "endeavouros"], None)
+    except CalledProcessError:
+        libcalamares.utils.warning(f"Failed to update keyring on target")
+
     # copy files post install
     if "postInstallFiles" in libcalamares.job.configuration:
         files_to_copy = libcalamares.job.configuration["postInstallFiles"]

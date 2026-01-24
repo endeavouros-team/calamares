@@ -72,9 +72,9 @@ def run():
     except KeyError:
         gs_name = None
 
-    # build the paramater list
+    # build the parameter list
     command = [script_path]
-    if online and "hasInternet" in libcalamares.globalstorage:
+    if online and libcalamares.globalstorage.contains("hasInternet"):
         if libcalamares.globalstorage.value("hasInternet"):
             command.append("--online")
 

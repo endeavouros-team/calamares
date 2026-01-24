@@ -124,14 +124,6 @@
       packages:
         - power-profiles-daemon
         - upower
-    - name: "CPU specific microcode update packages"
-      description: "Microcode update image for AMD and Intel CPUs"
-      hidden: false
-      selected: true
-      critical: false
-      packages:
-        - amd-ucode
-        - intel-ucode
 - name: "EndeavourOS applications"
   description: "EndeavourOS tools and applications"
   selected: true
