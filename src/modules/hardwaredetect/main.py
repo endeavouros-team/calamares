@@ -4,7 +4,7 @@ import subprocess
 
 import libcalamares
 from libcalamares.utils import gettext_path, gettext_languages
-
+from subprocess import CalledProcessError
 import gettext
 
 _translation = gettext.translation("calamares-python",
@@ -14,9 +14,8 @@ _translation = gettext.translation("calamares-python",
 _ = _translation.gettext
 _n = _translation.ngettext
 
-custom_status_message = None
+custom_status_message = "Detecting hardware and installing drivers"
 name = "Hardware detection"
-
 
 def pretty_name():
     return _(name)
@@ -25,6 +24,16 @@ def pretty_name():
 def pretty_status_message():
     if custom_status_message is not None:
         return custom_status_message
+
+
+def line_cb(line):
+    """
+    Writes every line to the debug log and displays it in calamares
+    :param line: The line of output text from the command
+    """
+    global custom_status_message
+    custom_status_message = line.strip()
+    libcalamares.utils.debug(line)
 
 
 def get_cpu_info():
@@ -46,13 +55,13 @@ def get_cpu_info():
 def install_ucode(vendor):
     package = None
     if vendor == 'GenuineIntel':
-        package = 'intel_ucode'
+        package = 'intel-ucode'
     elif vendor == 'AuthenticAMD':
-        package = 'amd_ucode'
+        package = 'amd-ucode'
 
     if package:
         try:
-            libcalamares.utils.target_env_process_output(["pacman", "-Sy", "--noconfirm", package], None)
+            libcalamares.utils.target_env_process_output(["pacman", "-Sy", "--noconfirm", package], line_cb)
         except CalledProcessError:
             libcalamares.utils.warning(f"Failed to install {package}")
     else:
@@ -62,20 +71,20 @@ def install_ucode(vendor):
 def remove_ucode(vendor):
     packages = list()
     if vendor != 'GenuineIntel':
-        packages.append('intel_ucode')
+        packages.append('intel-ucode')
     elif vendor != 'AuthenticAMD':
-        packages.append('amd_ucode')
+        packages.append('amd-ucode')
 
     if packages:
         try:
-            libcalamares.utils.target_env_process_output(["pacman", "-Rcn", "--noconfirm"].append(packages), None)
+            libcalamares.utils.target_env_process_output(["pacman", "-Rcn", "--noconfirm"] + packages, callback=line_cb)
         except CalledProcessError:
             libcalamares.utils.warning(f"Failed to remove {packages}")
 
 
 def run_command(command):
     try:
-        libcalamares.utils.target_env_process_output(command, None)
+        libcalamares.utils.target_env_process_output(command, line_cb)
     except CalledProcessError:
         libcalamares.utils.warning(f"Failed to run {command}")
 

@@ -108,7 +108,7 @@ def update_mirrorlist_online(mountpoint):
 
 
 def update_mirrorlist_offline(mountpoint):
-    command = ["/usr/bin/create-ml", "--offline"]
+    command = ["/usr/bin/create-ml", "--offline", "--save"]
     arch_mirrorlist_filename = "/etc/pacman.d/mirrorlist"
     eos_mirrorlist_filename = "/etc/pacman.d/endeavouros-mirrorlist"
 
