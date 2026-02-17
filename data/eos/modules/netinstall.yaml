@@ -180,7 +180,7 @@
   critical: true
   packages:
     - firewalld
-    - python-pyqt6
+    - firewall-applet
 - name: "LTS kernel in addition"
   description: "Adding Long Term Supported kernel in addition to main one"
   hidden: false
