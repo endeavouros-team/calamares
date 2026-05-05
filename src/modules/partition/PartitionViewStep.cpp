@@ -465,6 +465,18 @@ PartitionViewStep::onActivate()
             gs->insert( "curBootloader", m_bootloader );
 
             cDebug() << "The bootloader is " << m_bootloader;
+
+            // Workaround for XFS
+            if ( m_bootloader.toLower() == "systemd-boot" )
+            {
+                m_choicePage->add_xfs_to_fs_list_combo_box();
+            }
+            else
+            {
+                m_choicePage->remove_xfs_from_fs_list_combo_box();
+            }
+            // End workaround
+
             if ( m_bootloader.toLower() == "grub" )
             {
                 efiLocation = "/boot/efi";
