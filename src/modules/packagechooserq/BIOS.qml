@@ -36,7 +36,7 @@ Column {
         Text {
             height: 25
             anchors.centerIn: parent
-            text: qsTr("Please select a <strong>bootloader</strong> option, or leave the already selected default option, <strong>GRUB</strong>.")
+            text: qsTr("Please select a <strong>bootloader</strong> option for your install, or leave the already selected default option, <strong>GRUB</strong>.")
             font.pointSize: 11
             color: "#ffffff"
             wrapMode: Text.WordWrap
@@ -52,9 +52,9 @@ Column {
         border.color: "#646b75"
         Text {
             width: 600
-            height: 90
+            height: 104
             anchors.centerIn: parent
-            text: qsTr("<strong>Grub Bootloader</strong><br><br>A longstanding bootloader for Linux.<br>which provides the choice<br>to boot one of multiple operating systems installed.")
+            text: qsTr("<strong>Grub Bootloader</strong><br><br>The GRand Unified Bootloader is the reference implementation<br>of the Free Software Foundation's Multiboot Specification,<br>which provides a user the choice<br>to boot one of multiple operating systems installed on a computer.")
             font.pointSize: 10
             color: "#ffffff"
             anchors.verticalCenterOffset: 0

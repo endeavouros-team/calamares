@@ -32,7 +32,7 @@ Column {
         Text {
             height: 25
             anchors.centerIn: parent
-            text: qsTr("Please select a <strong>bootloader</strong> option, or leave the already selected default option, <strong>Systemd-boot</strong>.")
+            text: qsTr("Please select a <strong>bootloader</strong> option for your install, or leave the already selected default option, <strong>Systemd-boot</strong>.")
             font.pointSize: 11
             color: "#ffffff"
             wrapMode: Text.WordWrap

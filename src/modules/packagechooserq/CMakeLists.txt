@@ -1,8 +1,8 @@
 # === This file is part of Calamares - <https://calamares.io> ===
 #
-#    SPDX-FileCopyrightText: 2020 Adriaan de Groot <groot@kde.org>
-#    SPDX-FileCopyrightText: 2021 Anke Boersma <demm@kaosx.us>
-#    SPDX-License-Identifier: BSD-2-Clause
+#   SPDX-FileCopyrightText: 2020 Adriaan de Groot <groot@kde.org>
+#   SPDX-FileCopyrightText: 2021 Anke Boersma <demm@kaosx.us>
+#   SPDX-License-Identifier: BSD-2-Clause
 #
 if(NOT WITH_QML)
     calamares_skip_module( "packagechooserq (QML is not supported in this build)" )
@@ -16,12 +16,14 @@ set(_packagechooser ${CMAKE_CURRENT_SOURCE_DIR}/../packagechooser)
 
 ### OPTIONAL AppData XML support in PackageModel
 #
+#
 option(BUILD_APPDATA "Support appdata: items in PackageChooser (requires QtXml)" OFF)
 if(BUILD_APPDATA)
     find_package(${qtname} REQUIRED COMPONENTS Xml)
 endif()
 
 ### OPTIONAL AppStream support in PackageModel
+#
 #
 include(AppStreamHelper)
 
@@ -52,14 +54,3 @@ if(BUILD_APPDATA AND TARGET ${qtname}::Xml)
     target_link_libraries(${packagechooserq_TARGET} PRIVATE ${qtname}::Xml)
     target_sources(${packagechooserq_TARGET} PRIVATE ${_packagechooser}/ItemAppData.cpp)
 endif()
-
-# =============================================================================
-# Internationalisierung (I18N) für packagechooserq
-# =============================================================================
-calamares_add_translations(
-    packagechooserq
-    TS_FILES
-        lang/packagechooserq_de.ts
-    QM_DIR_VAR
-        MODULE_DATA_DESTINATION
-)
