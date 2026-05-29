@@ -54,19 +54,12 @@ if(BUILD_APPDATA AND TARGET ${qtname}::Xml)
 endif()
 
 # =============================================================================
-# Internationalization (I18N) via Qt6 Tools
+# Internationalisierung (I18N) für packagechooserq
 # =============================================================================
-find_package(Qt6 REQUIRED COMPONENTS LinguistTools)
-
-set(TS_FILES "lang/packagechooserq_de.ts")
-
-qt_add_translations(${packagechooserq_TARGET}
-    TS_FILES ${TS_FILES}
-    QM_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lang"
-)
-
-install(
-    DIRECTORY "${CMAKE_BINARY_DIR}/lang/"
-    DESTINATION "${MODULE_DATA_DESTINATION}/lang"
-    FILES_MATCHING PATTERN "*.qm"
+calamares_add_translations(
+    packagechooserq
+    TS_FILES
+        lang/packagechooserq_de.ts
+    QM_DIR_VAR
+        MODULE_DATA_DESTINATION
 )
