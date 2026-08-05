@@ -156,7 +156,7 @@
     - rsync
     - tldr
     - sed
-    - vi
+    - ex-vi-compat
     - wget
 - name: "Firefox and language package"
   description: "Add firefox and language pack if possible"
