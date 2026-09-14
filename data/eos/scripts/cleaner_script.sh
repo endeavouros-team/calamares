@@ -33,20 +33,19 @@ _CopyFileToTarget() {
 }
 
 _manage_broadcom_wifi_driver() {
-    local pkgname=broadcom-wl-dkms
-    local targetfile=/tmp/$chroot_path/tmp/$pkgname.txt
+    local broadcom_pkgname="broadcom-wl-dkms"
+    local targetfile="/tmp/$chroot_path/tmp/broadcom-wl.txt"
 
     # detecting broadcom hardware
-    if lsmod | grep -q "brcmfmac\|b43\|wl" \
+    if   lsmod | grep -q "brcmfmac\|b43\|wl" \
       || lspci -nn | grep -qi "14e4:43"; then
 
-        # check in addition if  broadcom-wl-dkms is installed on the live-system
-        if pacman -Q broadcom-wl-dkms &>/dev/null; then
-            echo "yes" > "$targetfile"
+        # check in addition if "$broadcom_pkgname" (broadcom-wl-dkms) is installed on the live-system
+        if pacman -Q "$broadcom_pkgname" &>/dev/null; then
+            echo "$broadcom_pkgname" > "$targetfile"
         else
-            echo "Broadcom hardware found, but broadcom-wl-dkms not installed in live system" >&2
+            echo "Broadcom hardware found, but $broadcom_pkgname not installed in live system" >&2
         fi
-
     fi
 }
 

@@ -17,7 +17,7 @@
 _c_c_s_msg() {            # use this to provide all user messages (info, warning, error, ...)
     local type="$1"
     local msg="$2"
-    echo "==> $type: $msg"
+    echo "==> ${0##*/}: $type: $msg"
 }
 
 _pkg_msg() {            # use this to provide all package management messages (install, uninstall)
@@ -127,22 +127,35 @@ _clean_offline_packages(){
 
 _install_extra_drivers_to_target() {
     local dir=/usr/share/packages
-    local pkg
+    local pkg pkg2 pkgname
+    local targetfile=/tmp/broadcom-wl.txt
 
     # Handle the broadcom-wl-dkms package. broadcom-wl is removed from archrepos
-    if [ -r /tmp/broadcom-wl.txt ] && grep -q "^yes$" /tmp/broadcom-wl.txt; then
-        _pkg_msg info "Installing broadcom-wl-dkms package"
+    if [ -r "$targetfile" ] ; then                 # && grep -q "^yes$" /tmp/broadcom-wl.txt; then
+        pkgname="$(cat "$targetfile")"             # driver name is inside the file
+        case "$pkgname" in
+            broadcom-wl-dkms) ;;
+            *)
+                local tmp="$pkgname"
+                pkgname=broadcom-wl-dkms
+                _c_c_s_msg warning "$targetfile contains '$tmp' as the broadcom wifi driver, changing it to '$pkgname'"
+                ;;
+        esac
+        _c_c_s_msg info "Installing packages $pkgname and dkms"
 
         if [ "$INSTALL_TYPE" != "online" ]; then
-            pkg="$(/usr/bin/ls -1 "$dir"/broadcom-wl-dkms-*-x86_64.pkg.tar.zst 2>/dev/null | head -n1)"
-            if [ -n "$pkg" ]; then
-                _pkg_msg install "broadcom-wl-dkms (offline)"
-                pacman -U --noconfirm "$pkg"
+            pkg="$(/usr/bin/ls -1 "$dir"/${pkgname}-*-x86_64.pkg.tar.zst 2>/dev/null | head -n1)"
+            pkg2="$(/usr/bin/ls -1 "$dir"/dkms-*-x86_64.pkg.tar.zst 2>/dev/null | head -n1)"
+            if [ "$pkg" ] && [ "$pkg2" ] ; then
+                _pkg_msg install "dkms (offline)"
+                _pkg_msg install "$pkgname (offline)"
+                pacman -U --noconfirm "$pkg2" "$pkg"
             else
-                _c_c_s_msg error "No broadcom-wl-dkms package found in folder $dir!"
+                [ "$pkg" ]  || _c_c_s_msg error "No '$pkgname' package found in folder $dir!"
+                [ "$pkg2" ] || _c_c_s_msg error "No 'dkms' package found in folder $dir!"
             fi
         else
-            _install_needed_packages broadcom-wl-dkms
+            _install_needed_packages "$pkgname"
         fi
     fi
 }
