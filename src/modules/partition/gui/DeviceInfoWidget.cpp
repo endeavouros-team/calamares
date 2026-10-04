@@ -73,7 +73,15 @@ DeviceInfoWidget::retranslateUi()
     switch ( m_tableType )
     {
     case PartitionTable::msdos:
+#if WITH_KPMcore > 0x240801
+    // Pick your warning: either deprecation warning, or unchecked enum-switch
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_DEPRECATED
+#endif
     case PartitionTable::msdos_sectorbased:
+#if WITH_KPMcore > 0x240801
+QT_WARNING_POP
+#endif
         typeString = "MBR";
         toolTipString += tr( "<br><br>This partition table type is only advisable on older "
                              "systems which start from a <strong>BIOS</strong> boot "

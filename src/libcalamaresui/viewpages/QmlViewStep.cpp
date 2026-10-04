@@ -24,9 +24,8 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QQuickItem>
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
 #include <QQuickWidget>
-#else
+#if QT_VERSION > QT_VERSION_CHECK( 6, 0, 0 )
 #include <QQuickWindow>
 #endif
 
@@ -74,14 +73,10 @@ QmlViewStep::QmlViewStep( QObject* parent )
 {
     Calamares::registerQmlModels();
 
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
     m_qmlWidget = new QQuickWidget;
     m_qmlWidget->setResizeMode( QQuickWidget::SizeRootObjectToView );
     m_qmlWidget->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
     m_qmlEngine = m_qmlWidget->engine();
-#else
-    m_qmlEngine = new QQmlEngine( this );
-#endif
 
     QVBoxLayout* layout = new QVBoxLayout( m_widget );
     layout->addWidget( m_spinner );
@@ -192,20 +187,7 @@ QmlViewStep::loadComplete()
         }
         else
         {
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
-            // setContent() is public API, but not documented publicly.
-            // It is marked \internal in the Qt sources, but does exactly
-            // what is needed: sets up visual parent by replacing the root
-            // item, and handling resizes.
             m_qmlWidget->setContent( QUrl( m_qmlFileName ), m_qmlComponent, m_qmlObject );
-#else
-            auto* quick = new QQuickWindow;
-            auto* root = quick->contentItem();
-            m_qmlObject->setParentItem( root );
-            m_qmlObject->bindableWidth().setBinding( [ = ]() { return root->width(); } );
-            m_qmlObject->bindableHeight().setBinding( [ = ]() { return root->height(); } );
-            m_qmlWidget = QWidget::createWindowContainer( quick, m_widget );
-#endif
             showQml();
         }
     }

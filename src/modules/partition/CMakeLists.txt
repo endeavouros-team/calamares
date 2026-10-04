@@ -60,6 +60,7 @@ if(KPMcore_FOUND)
             core/DeviceList.cpp
             core/DeviceModel.cpp
             core/KPMHelpers.cpp
+            core/DirFSRestrictLayout.cpp
             core/OsproberEntry.cpp
             core/PartitionActions.cpp
             core/PartitionCoreModule.cpp

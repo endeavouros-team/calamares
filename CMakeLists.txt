@@ -26,7 +26,7 @@
 #                       - PYBIND11 (use bundled pybind11, default ON, needs WITH_PYTHON)
 #                       - PYTHON (enable Python Job modules, default ON if Python is found)
 #                       - QML (enable QML UI View modules, default ON)
-#                       - QT6 (use Qt6 rather than Qt5, default to OFF)
+#                       - QT6 (use Qt6 rather than Qt5, default to ON)
 #                     The WITH_* options affect the ABI of Calamares: you must
 #                     build (C++) modules for Calamares with the same WITH_*
 #                     settings, or they may not load at all.
@@ -38,17 +38,20 @@
 #                       - TESTING (standard CMake option)
 #   DEBUG_<foo>     : special developer flags for debugging.
 #   PYTHONLIBS_VERSION : if set on the command-line, use a specific Python version
+#   BOOSTPYTHON_COMPONENT : if set on the command-line, use a specific Boost Python component
+#                          (e.g., python313 for Python 3.13, default is "python")
 #
 # Example usage:
 #
 #   cmake . -DSKIP_MODULES="partition luksbootkeycfg"
+#   cmake . -DWITH_PYBIND11=OFF -DBOOSTPYTHON_COMPONENT=python313
 #
 # To obtain the version number of calamares, run CMake in script mode, e.g.
 #   cmake -P CMakeLists.txt
 
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
-set(CALAMARES_VERSION 3.3.10)
+set(CALAMARES_VERSION 3.4.3)
 set(CALAMARES_RELEASE_MODE OFF) # Set to ON during a release
 
 if(CMAKE_SCRIPT_MODE_FILE)
@@ -86,12 +89,14 @@ option(INSTALL_CONFIG "Install configuration files" OFF)
 option(WITH_PYBIND11 "Use bundled pybind11 instead of Boost::Python" ON)
 option(WITH_PYTHON "Enable Python modules API." ON)
 option(WITH_QML "Enable QML UI options." ON)
-option(WITH_QT6 "Use Qt6 instead of Qt5" OFF)
+option(WITH_QT6 "Use Qt6 instead of Qt5" ON)
 #
 # Additional parts to build that do not affect ABI
 option(BUILD_SCHEMA_TESTING "Enable schema-validation-tests" ON)
 # Options for the calamares executable
 option(BUILD_CRASH_REPORTING "Enable crash reporting with KCrash." ON)
+
+option(DEBUG_SANITIZERS "Enable sanitizers and Debug build type" OFF)
 
 # Possible debugging flags are:
 #  - DEBUG_TIMEZONES draws latitude and longitude lines on the timezone
@@ -138,7 +143,7 @@ set(USE_services "" CACHE STRING "Select the services module to use")
 ### Calamares application info
 #
 set(CALAMARES_ORGANIZATION_NAME "Calamares")
-set(CALAMARES_ORGANIZATION_DOMAIN "github.com/calamares")
+set(CALAMARES_ORGANIZATION_DOMAIN "calamares.io")
 set(CALAMARES_APPLICATION_NAME "Calamares")
 set(CALAMARES_DESCRIPTION_SUMMARY "The distribution-independent installer framework")
 
@@ -163,44 +168,29 @@ set(CALAMARES_DESCRIPTION_SUMMARY "The distribution-independent installer framew
 # NOTE: update these lines by running `txstats.py`, or for full automation
 #       `txstats.py -e`. See also
 #
-# Total 80 languages
-set( _tx_complete de en es_AR fi_FI hr hu ja lt tr_TR uk zh_TW )
-set( _tx_good az az_AZ be bg ca cs_CZ es fr fur he hi is it_IT ko
-    pl pt_BR pt_PT ru si sq sv zh_CN )
-set( _tx_ok ar as ast bn ca@valencia da el en_GB eo es_MX et eu fa
-    gl id ka ml mr nb nl oc ro sk sl sr sr@latin tg th vi )
-set( _tx_incomplete bqi es_PR gu ie ja-Hira kk kn lo lv mk ne_NP
-    ro_RO ta_IN te ur uz zh zh_HK )
-# Total 80 languages
+# Total 82 languages
+set( _tx_complete ar az ca cs_CZ de en es es_AR fi_FI fr he hu id
+    ja kk ko lg nb pl pt_BR ru sv tg tr_TR uk zh_CN zh_TW )  # 27 languages
+set( _tx_good az_AZ bg fur hr is it_IT ka lt pt_PT sk sq uz )  # 12 languages
+set( _tx_ok as ast be bn ca@valencia da el en_GB eo es_MX et eu fa
+    gl hi ia ml mr nl oc ro si sl sr sr@latin th vi )  # 27 languages
+set( _tx_incomplete bs es_PR fr_CA gu ie ja-Hira kn lo lv mk ne_NP
+    ta_IN te ur zh zh_HK )  # 16 languages
+# Total 82 languages
 
 ### Required versions
 #
 # See DEPENDENCIES section below.
 
-# The default build is with Qt5, but that is increasingly not the
-# version installed-by-default on Linux systems. Upgrade the default
-# if Qt5 isn't available but Qt6 is. This also saves messing around
-# with special CMake flags for every script (e.g. ci/RELEASE.sh and
-# ci/abicheck.sh).
-if(NOT WITH_QT6)
-    find_package(Qt5Core QUIET)
-    if(NOT TARGET Qt5::Core)
-        find_package(Qt6Core QUIET)
-        if(TARGET Qt6::Core)
-            message(STATUS "Default Qt version (Qt5) not found, upgrading build to Qt6")
-            set(WITH_QT6 ON)
-        endif()
-    endif()
-endif()
 if(WITH_QT6)
     message(STATUS "Building Calamares with Qt6")
     set(qtname "Qt6")
     set(kfname "KF6")
     set(QT_VERSION 6.5.0)
-    set(ECM_VERSION 5.240)
-    set(KF_VERSION 5.240) # KDE Neon weirdness
-    # API that was deprecated before Qt 5.15 causes a compile error
-    add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x060400)
+    set(ECM_VERSION 6.5) # Coincidence that this version matches
+    set(KF_VERSION 6.5)
+    # API that was deprecated before Qt 6.5 causes a compile error
+    add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=0x060500)
     # Something to add to filenames for this specific Qt version
     set(QT_VERSION_SUFFIX "-qt6")
 else()
@@ -217,6 +207,10 @@ else()
 endif()
 
 set(BOOSTPYTHON_VERSION 1.72.0)
+if(NOT DEFINED BOOSTPYTHON_COMPONENT)
+    set(BOOSTPYTHON_COMPONENT "python")
+endif()
+
 if(DEFINED PYTHONLIBS_VERSION)
     set(PYTHONLIBS_EXTRA "EXACT")
 else()
@@ -239,6 +233,12 @@ list(APPEND CMAKE_AUTOMOC_MACRO_NAMES
         "K_EXPORT_PLASMA_DATAENGINE_WITH_JSON"
         "K_EXPORT_PLASMA_RUNNER"
 )
+if(POLICY CMP0167)
+    cmake_policy(SET CMP0167 NEW)
+endif()
+if(POLICY CMP0171)
+    cmake_policy(SET CMP0177 NEW)
+endif()
 
 # CMake Modules
 include(CMakePackageConfigHelpers)
@@ -266,9 +266,12 @@ set(CMAKE_C_FLAGS_MINSIZEREL "-Os -DNDEBUG")
 set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
 set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2 -g")
 
-set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined -Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
+set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}")
 
 # If no build type is set, pick a reasonable one
+if(DEBUG_SANITIZERS)
+    set(CMAKE_BUILD_TYPE DEBUG)
+endif()
 if(NOT CMAKE_BUILD_TYPE)
     if(CALAMARES_RELEASE_MODE)
         set(CMAKE_BUILD_TYPE "RelWithDebInfo")
@@ -334,6 +337,10 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9 OR CMAKE_CXX_COMPILER_VERSION VERSION_EQUAL 4.9)
         message(STATUS "Found GNU g++ ${CMAKE_CXX_COMPILER_VERSION}, enabling colorized error messages.")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdiagnostics-color=auto")
+    endif()
+    if(DEBUG_SANITIZERS)
+        message(STATUS "Setting up sanitizers")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=undefined -fsanitize=address -g -O1")
     endif()
 endif()
 
@@ -482,16 +489,34 @@ endif()
 
 if(WITH_PYTHON AND NOT WITH_PYBIND11)
     set(WITH_BOOST_PYTHON ON)
-    find_package(boost_python)
-    if(NOT TARGET Boost::python)
-        find_package(Boost ${BOOSTPYTHON_VERSION} COMPONENTS python)
+    if(NOT "${BOOSTPYTHON_COMPONENT}" STREQUAL "python")
+        message(STATUS "Using explicitly specified Boost Python component: ${BOOSTPYTHON_COMPONENT}")
+        find_package(Boost ${BOOSTPYTHON_VERSION} CONFIG COMPONENTS ${BOOSTPYTHON_COMPONENT})
         set_package_properties(Boost PROPERTIES
             PURPOSE "Boost.Python is used for Python job modules (because WITH_PYBIND11 is OFF)."
             TYPE REQUIRED
         )
+        if(TARGET Boost::${BOOSTPYTHON_COMPONENT})
+            add_library(Boost::python ALIAS Boost::${BOOSTPYTHON_COMPONENT})
+            set(Boost_FOUND ON)
+        endif()
     else()
-        message(STATUS "Found boost_python with target Boost::python")
-        set(Boost_FOUND ON)
+        find_package(boost_python)
+        if(NOT TARGET Boost::python)
+            message(STATUS "Using Boost Python component: ${BOOSTPYTHON_COMPONENT}")
+            find_package(Boost ${BOOSTPYTHON_VERSION} CONFIG COMPONENTS ${BOOSTPYTHON_COMPONENT})
+            set_package_properties(Boost PROPERTIES
+                PURPOSE "Boost.Python is used for Python job modules (because WITH_PYBIND11 is OFF)."
+                TYPE REQUIRED
+            )
+            set_package_properties(boost_python PROPERTIES
+                PURPOSE "Boost.Python is used for Python job modules (because WITH_PYBIND11 is OFF)."
+                TYPE REQUIRED
+            )
+        else()
+            message(STATUS "Found boost_python with target Boost::python")
+            set(Boost_FOUND ON)
+        endif()
     endif()
 endif()
 add_feature_info(python WITH_PYTHON "Enable Python-modules")
@@ -506,6 +531,14 @@ set(Calamares_WITH_PYBIND11 ${WITH_PYBIND11})
 set(Calamares_WITH_BOOST_PYTHON ${WITH_BOOST_PYTHON})
 set(Calamares_WITH_QML ${WITH_QML})
 set(Calamares_WITH_QT6 ${WITH_QT6})
+
+# Bail out if we are missing something important
+feature_summary(
+    WHAT REQUIRED_PACKAGES_NOT_FOUND
+    FATAL_ON_MISSING_REQUIRED_PACKAGES
+    DESCRIPTION "The following REQUIRED packages were not found:"
+    QUIET_ON_EMPTY
+)
 
 ### Transifex Translation status
 #
@@ -557,7 +590,7 @@ add_subdirectory(lang) # i18n tools
 # squashed into the example filesystem.
 #
 # To build the example distro (for use by the default, example,
-# unsquashfs module), build the target 'example-distro', eg.:
+# unsquashfs module), build the target *example-distro*, eg.:
 #
 #   make example-distro
 #
@@ -696,7 +729,7 @@ install(
 #
 #
 if(INSTALL_POLKIT)
-    install(FILES com.github.calamares.calamares.policy DESTINATION "${POLKITQT-1_POLICY_FILES_INSTALL_DIR}")
+    install(FILES io.calamares.calamares.policy DESTINATION "${POLKITQT-1_POLICY_FILES_INSTALL_DIR}")
 endif()
 
 if(INSTALL_COMPLETION)

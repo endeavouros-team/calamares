@@ -233,7 +233,7 @@ SetKeyboardLayoutJob::writeVConsoleData( const QString& vconsoleConfPath, const 
     }
     QTextStream stream( &file );
     bool found = false;
-    for ( const QString& existingLine : qAsConst( existingLines ) )
+    for ( const QString& existingLine : std::as_const( existingLines ) )
     {
         if ( existingLine.trimmed().startsWith( "KEYMAP=" ) )
         {

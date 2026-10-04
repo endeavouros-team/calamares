@@ -1,0 +1,94 @@
+<!-- SPDX-FileCopyrightText: no
+     SPDX-License-Identifier: CC0-1.0
+-->
+
+This is the changelog for Calamares. For each release, the major changes and
+contributors are listed. Note that Calamares does not have a full historical
+changelog -- this log starts with version 3.4.0. See CHANGES-3.3 for the
+3.3 series (2022-08 - 2025-07) and CHANGES-3.2 for the history of the 3.2
+series (2018-05 - 2022-08).
+
+
+# 3.4.3 (unreleased)
+
+This release contains contributions from (alphabetically by given name):
+- Alexander A. Klimov
+- Anke Boersma
+- Bhushan Shah
+- olivierpacpac
+
+## Core ##
+- The mechanism to embed QML in Calamares has changed to fix keyboard-input
+  issues under Wayland (thanks Anke)
+
+## Modules ##
+- *locale* now has timezone support for Etc/GMT zones (-11 to +13), which
+  can be selected from the drop-down boxes and which don't correspond to
+  any country of geographic location. (issue #2489)
+- *partition* supports the latest KPMcore release (thanks Bhushan)
+- *partition* no longer accidentally marks /boot as the EFI boot partition,
+  which could break with systemd-gpt-auto-generator (thanks Alexander)
+- *partition* has improved partition-needs-alignment behavior (thanks olivierpacpac)
+
+
+# 3.4.2 (2026-03-10)
+
+This release contains contributions from (alphabetically by given name):
+- 8Vinso8
+- Aaron Rainbolt
+- Adriaan de Groot
+- Adrian Bunk
+- Cyber Tibi
+- Evan James
+- gfdgd_xi
+- K900
+- Kirill Shakirov
+- Robin Haberkorn
+- SixK
+- Thomas Duckworth
+- TNE
+- V3n3RiX
+
+## Core ##
+- Some CMake and clang-formatting updates
+- Python docstrings now consistent across pybind11 and Boost bindings, and
+  indicate which functions are deprecated.
+
+## Modules ##
+- *displaymanager* supports the new (KDE) Plasma-login manager (thanks Thomas)
+- *displaymanager* for lightdm allows alternate greeter paths (e.g. for Debian)
+- *mount* recognizes NVMe and MMC as SSDs now (thanks 8Vinso8)
+- *partition* alignment of partitions now forces 4K (thanks Kirill)
+
+
+# 3.4.1 (2025-07-26)
+
+> This release was never tagged as a release, although a release date was assigned.
+
+This release contains contributions from (alphabetically by given name):
+ - Aaron Rainbolt
+ - Adriaan de Groot
+ - Erik Dubois
+ - Evan James
+ - Kel Modderman
+ - nebras
+ - Neixen911
+ - Peter Jung
+ - vincent PENVERN
+
+## Core ##
+ - Typo fixes in examples and documentation.
+ - Minor version updated to start 3.4 series.
+
+## Modules ##
+ - The *keyboard* (and *keyboardq*) modules now support setting the live
+   keyboard layout in a GNOME-Wayland session. (thanks vincent, #2435)
+ - The *bootloader* and *partition* modules now support hybrid bootloaders.
+   (thanks Aaron, #2422, #2445)
+ - A new *users* module setting has been added, to allow the configuration
+   of an autologin user-group. (thanks Neixen911, #2447)
+
+
+# 3.4.0 (2025-07-22)
+
+This was a stub-release to test and update the release process for Codeberg.

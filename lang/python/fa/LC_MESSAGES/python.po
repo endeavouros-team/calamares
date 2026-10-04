@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 22:44+0200\n"
+"POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
 "Last-Translator: Mahdy Mirzade <me@mahdym.ir>, 2021\n"
 "Language-Team: Persian (https://app.transifex.com/calamares/teams/20061/fa/)\n"
@@ -240,12 +240,12 @@ msgid_plural "Removing %(num)d packages."
 msgstr[0] "در حال برداشتن یک بسته."
 msgstr[1] "در حال برداشتن %(num)d بسته."
 
-#: src/modules/packages/main.py:769 src/modules/packages/main.py:781
-#: src/modules/packages/main.py:809
+#: src/modules/packages/main.py:775 src/modules/packages/main.py:787
+#: src/modules/packages/main.py:815
 msgid "Package Manager error"
 msgstr "خطای مدیر بسته"
 
-#: src/modules/packages/main.py:770
+#: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
@@ -253,7 +253,7 @@ msgstr ""
 "مدیر بسته نتوانست برای بروزرسانی ها آماده شود، دستور <pre>{!s}</pre> با خطای"
 " {!s} مواجه شد."
 
-#: src/modules/packages/main.py:782
+#: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
@@ -261,7 +261,7 @@ msgstr ""
 "مدیر بسته نتوانست سامانه را بروز کند. دستور <pre>{!s}</pre> با خطای {!s} "
 "مواجه شد."
 
-#: src/modules/packages/main.py:810
+#: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
@@ -353,63 +353,63 @@ msgstr ""
 msgid "Filling up filesystems."
 msgstr "در حال پر کردن سامانه‌پرونده‌ها."
 
-#: src/modules/unpackfs/main.py:254
+#: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
 msgstr "آرسینک با رمز خطای {} شکست خورد."
 
-#: src/modules/unpackfs/main.py:299
+#: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
 msgstr "در حال بسته‌گشایی تصویر {}/{}، پروندهٔ {}/{}"
 
-#: src/modules/unpackfs/main.py:314
+#: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
 msgstr "در حال شروع بسته‌گشایی {}"
 
-#: src/modules/unpackfs/main.py:323 src/modules/unpackfs/main.py:467
+#: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
 msgstr "شکست در بسته‌گشایی تصویر {}"
 
-#: src/modules/unpackfs/main.py:430
+#: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
 msgstr "هیچ نقطهٔ اتّصالی برای افراز ریشه وجود ندارد"
 
-#: src/modules/unpackfs/main.py:431
+#: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
 msgstr ""
 
-#: src/modules/unpackfs/main.py:434
+#: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
 msgstr "نقطهٔ اتّصال بد برای افراز ریشه"
 
-#: src/modules/unpackfs/main.py:435
+#: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
 msgstr ""
 
-#: src/modules/unpackfs/main.py:439 src/modules/unpackfs/main.py:455
-#: src/modules/unpackfs/main.py:459 src/modules/unpackfs/main.py:465
-#: src/modules/unpackfs/main.py:480
+#: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
+#: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
+#: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
 msgstr ""
 
-#: src/modules/unpackfs/main.py:440
+#: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
 msgstr ""
 
-#: src/modules/unpackfs/main.py:456
+#: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
 msgstr "کرنل کنونیتان از سامانه‌پروندهٔ {} ({}) پشتیبانی نمی‌کند"
 
-#: src/modules/unpackfs/main.py:460
+#: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
 msgstr "سامانهٔ پروندهٔ مبدأ {} وجود ندارد"
 
-#: src/modules/unpackfs/main.py:466
+#: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
 msgstr "شکست در یافتن unsquashfs. مطمئن شوید بسته squashfs-tools نصب است."
 
-#: src/modules/unpackfs/main.py:481
+#: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
 msgstr "مقصد {} در سامانهٔ هدف، یک شاخه نیست"
 

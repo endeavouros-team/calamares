@@ -19,6 +19,9 @@ find_package(${qtname} COMPONENTS Xml)
 if(TARGET ${qtname}::Xml)
     add_executable(txload txload.cpp)
     target_link_libraries(txload ${qtname}::Xml)
+    # Special-case, needs compatibility-header for XML-handling,
+    # but doesn't want all of libcalamares.
+    target_include_directories(txload PRIVATE ${CMAKE_SOURCE_DIR}/src/libcalamares)
 endif()
 
 install_calamares_gettext_translations(python

@@ -37,60 +37,6 @@ def detect_plymouth():
     return target_env_call(["sh", "-c", "which plymouth"]) == 0
 
 
-class cpuinfo(object):
-    """
-    Object describing the current CPU's characteristics. It may be
-    be considered a named tuple, there's no behavior here.
-
-    Fields in the object:
-        - is_intel (if it's definitely an Intel CPU)
-        - is_amd (if it's definitely an AMD CPU)
-        - number_of_cores
-    It is possible for both is_* fields to be False.
-    """
-    def __init__(self):
-        self.is_intel = False
-        self.is_amd = False
-        self.number_of_cores = 0
-
-        cpu = self._cpuinfo()
-        if 'vendor_id' in cpu['proc0']:
-            self.is_intel = cpu['proc0']['vendor_id'].lower() == "genuineintel"
-            self.is_amd = cpu['proc0']['vendor_id'].lower() == "authenticamd"
-        self.number_of_cores = len(cpu)
-
-    @staticmethod
-    def _cpuinfo():
-        """
-        Return the information in /proc/cpuinfo as a dictionary in the following
-        format:
-
-        cpu_info['proc0']={...}
-        cpu_info['proc1']={...}
-        """
-        cpu_info = OrderedDict()
-        procinfo = OrderedDict()
-
-        nprocs = 0
-
-        with open('/proc/cpuinfo') as cpuinfo_file:
-            for line in cpuinfo_file:
-                if not line.strip():
-                    # end of one processor
-                    cpu_info["proc{!s}".format(nprocs)] = procinfo
-                    nprocs += 1
-                    # Reset
-                    procinfo = OrderedDict()
-                else:
-                    if len(line.split(':')) == 2:
-                        splitted_line = line.split(':')[1].strip()
-                        procinfo[line.split(':')[0].strip()] = splitted_line
-                    else:
-                        procinfo[line.split(':')[0].strip()] = ''
-
-        return cpu_info
-
-
 def get_host_initcpio():
     """
     Reads the host system mkinitcpio.conf and returns all
@@ -242,9 +188,7 @@ def find_initcpio_features(partitions, root_mount_point):
     else:
         hooks.extend(["filesystems"])
 
-    if uses_btrfs:
-        modules.append("crc32c-intel" if cpuinfo().is_intel else "crc32c")
-    else:
+    if not uses_btrfs:
         hooks.append("fsck")
 
     # Modify according to the keys in the configuration

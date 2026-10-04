@@ -149,6 +149,19 @@ execute( Operation&& operation, const QString& failureMessage )
     return execute( operation, failureMessage );
 }
 
+/** @brief Is this an MSDOS partition table?
+ *
+ * Deals with KPMcore deprecations in the TableType enum.
+ */
+inline bool isMSDOSPartition(PartitionTable::TableType t)
+{
+#if WITH_KPMcore > 0x240801
+    return t == PartitionTable::TableType::msdos;
+#else
+    return t == PartitionTable::TableType::msdos || t == PartitionTable::TableType::msdos_sectorbased;
+#endif
+}
+
 }  // namespace KPMHelpers
 
 #endif /* KPMHELPERS_H */

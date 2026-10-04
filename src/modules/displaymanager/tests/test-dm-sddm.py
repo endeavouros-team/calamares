@@ -11,6 +11,9 @@ from src.modules.displaymanager import main
 default_desktop_environment = main.DesktopEnvironment("startplasma-x11", "kde-plasma.desktop")
 
 # Specific DM test
+import os
+os.makedirs("/tmp/etc", exist_ok=True)
+
 d = main.DMsddm("/tmp")
 d.set_autologin("d", True, default_desktop_environment)
 # .. and again (this time checks load/save)

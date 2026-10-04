@@ -96,7 +96,7 @@ PackagesTests::testAdd()
         QVERIFY( action.contains( "install" ) );
         auto op = action[ "install" ].toList();
         QCOMPARE( op.length(), packages.length() );
-        for ( const auto& s : qAsConst( packages ) )
+        for ( const auto& s : std::as_const( packages ) )
         {
             QVERIFY( op.contains( s ) );
         }
@@ -121,7 +121,7 @@ PackagesTests::testAdd()
         QVERIFY( gs.contains( topKey ) );
         auto actionList = gs.value( topKey ).toList();
         QCOMPARE( actionList.length(), 2 );  // One for each instance key!
-        for ( const auto& actionVariant : qAsConst( actionList ) )
+        for ( const auto& actionVariant : std::as_const( actionList ) )
         {
             auto action = actionVariant.toMap();
             QVERIFY( action.contains( "install" ) );
@@ -130,7 +130,7 @@ PackagesTests::testAdd()
             {
                 auto op = action[ "install" ].toList();
                 QCOMPARE( op.length(), packages.length() );  // changed from original length, though
-                for ( const auto& s : qAsConst( packages ) )
+                for ( const auto& s : std::as_const( packages ) )
                 {
                     QVERIFY( op.contains( s ) );
                 }
@@ -212,7 +212,7 @@ PackagesTests::testAddMixed()
         auto actionList = gs.value( topKey ).toList();
         QCOMPARE( actionList.length(), 2 );
 
-        for ( const auto& actionVariant : qAsConst( actionList ) )
+        for ( const auto& actionVariant : std::as_const( actionList ) )
         {
             auto action = actionVariant.toMap();
             QVERIFY( action.contains( "install" ) );

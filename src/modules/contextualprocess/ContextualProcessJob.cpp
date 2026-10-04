@@ -58,45 +58,18 @@ ContextualProcessBinding::run( const QString& value ) const
     return Calamares::JobResult::ok();
 }
 
-///@brief Implementation of fetch() for recursively looking up dotted selector parts.
-static bool
-fetch( QString& value, QStringList& selector, int index, const QVariant& v )
-{
-    if ( !v.canConvert< QVariantMap >() )
-    {
-        return false;
-    }
-    const QVariantMap map = v.toMap();
-    const QString& key = selector.at( index );
-    if ( index == selector.length() - 1 )
-    {
-        value = map.value( key ).toString();
-        return map.contains( key );
-    }
-    else
-    {
-        return fetch( value, selector, index + 1, map.value( key ) );
-    }
-}
-
 bool
 ContextualProcessBinding::fetch( Calamares::GlobalStorage* storage, QString& value ) const
 {
     value.clear();
-    if ( !storage )
+    bool ok = false;
+    const auto v = Calamares::lookup( storage, m_variable, ok );
+    if ( !ok )
     {
         return false;
     }
-    if ( m_variable.contains( '.' ) )
-    {
-        QStringList steps = m_variable.split( '.' );
-        return ::fetch( value, steps, 1, storage->value( steps.first() ) );
-    }
-    else
-    {
-        value = storage->value( m_variable ).toString();
-        return storage->contains( m_variable );
-    }
+    value = v.toString();
+    return true;
 }
 
 ContextualProcessJob::ContextualProcessJob( QObject* parent )

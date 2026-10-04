@@ -57,12 +57,14 @@ updateLabel( PartitionCoreModule* core, Device* device, Partition* partition, co
     }
 }
 
-EditExistingPartitionDialog::EditExistingPartitionDialog( Device* device,
+EditExistingPartitionDialog::EditExistingPartitionDialog( PartitionCoreModule* core,
+                                                          Device* device,
                                                           Partition* partition,
                                                           const QStringList& usedMountPoints,
                                                           QWidget* parentWidget )
     : QDialog( parentWidget )
     , m_ui( new Ui_EditExistingPartitionDialog )
+    , m_core( core )
     , m_device( device )
     , m_partition( partition )
     , m_partitionSizeController( new PartitionSizeController( this ) )
@@ -77,6 +79,11 @@ EditExistingPartitionDialog::EditExistingPartitionDialog( Device* device,
     m_partitionSizeController->setSpinBox( m_ui->sizeSpinBox );
 
     connect( m_ui->mountPointComboBox,
+             &QComboBox::currentTextChanged,
+             this,
+             &EditExistingPartitionDialog::checkMountPointSelection );
+
+    connect( m_ui->fileSystemComboBox,
              &QComboBox::currentTextChanged,
              this,
              &EditExistingPartitionDialog::checkMountPointSelection );
@@ -345,8 +352,10 @@ EditExistingPartitionDialog::updateMountPointPicker()
 void
 EditExistingPartitionDialog::checkMountPointSelection()
 {
-    if ( validateMountPoint( selectedMountPoint( m_ui->mountPointComboBox ),
+    if ( validateMountPoint( m_core,
+                             selectedMountPoint( m_ui->mountPointComboBox ),
                              m_usedMountPoints,
+                             m_ui->fileSystemComboBox->currentText(),
                              m_ui->mountPointExplanation,
                              m_ui->buttonBox->button( QDialogButtonBox::Ok ) ) )
     {

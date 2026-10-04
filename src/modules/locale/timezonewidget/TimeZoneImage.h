@@ -61,11 +61,19 @@ public:
      * zones that claim the point.
      */
     int index( QPoint p, int& count ) const;
+
     /** @brief Get image of the zone claiming @p p
      *
      * Can return a null image, if the point is unclaimed or invalid.
      */
     QImage find( QPoint p ) const;
+
+    /** @brief Get image with zone offset @p offset (in hours)
+     *
+     * Can return a null image, if the offset is unknown. Whole hours
+     * from -11 to +13 are known, though.
+     */
+    QImage findByOffset( double offset ) const;
 
     /// @brief The **expected** number of zones in the list.
     static constexpr const int zoneCount = 37;

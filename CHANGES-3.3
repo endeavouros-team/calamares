@@ -2,14 +2,123 @@
      SPDX-License-Identifier: CC0-1.0
 -->
 
-This is the changelog for Calamares. For each release, the major changes and
+This is the changelog for Calamares 3.3 series releases which spanned
+2022-08 until 2025-07. For each release, the major changes and
 contributors are listed. Note that Calamares does not have a historical
 changelog -- this log starts with version 3.3.0. See CHANGES-3.2 for
 the history of the 3.2 series (2018-05 - 2022-08).
 
-# 3.3.10 (unreleased)
+# 3.3.15 (unreleased)
+
+No 3.3.15 version was released. The changes originally landed for
+3.3.15 ended up in the 3.4.0 release from Codeberg. No further 3.3 series
+releases -- not even for bug-fixes -- are planned. Use the 3.4 series instead.
+
+
+# 3.3.14 (2024-02-20)
 
 This release contains contributions from (alphabetically by given name):
+ - Adriaan de Groot
+ - Evan James
+ - TNE
+ - vincent PENVERN
+
+## Core ##
+ - The Python bindings have been re-organized (source) and made more
+   consistent. At least one valid Python program would work with
+   the Boost::Python bindings, but not the pybind11 bindings. A
+   memory-corruption problem in the Boost::Python bindings was resolved.
+ - Steps in the UI now have a hook to undo any changes they have made
+   to the live system, if the user cancels the installation.
+
+## Modules ##
+ - *keyboard* module undoes changes to the keyboard layout if the
+   user cancels the installation (returning the system to whatever
+   layout was in use when Calamares started). (#2377, #2431)
+ - *locale* module undoes changes to the timezone. (#2377, #2431)
+ - *partition* module stores a global storage value in luksPassphrase,
+   for later modules that need to manipulate the encrypted partition.
+   (thanks vincent, #2424)
+ - *partition* module no longer clear (unmounts) a Ventoy device.
+   (thanks TNE, #2427)
+ - *partition* module has configurable exceptions for the clear-mounts
+   (unmount) job, which always includes Ventoy.
+
+
+# 3.3.13 (2024-12-31)
+
+This release contains contributions from (alphabetically by given name):
+ - Aaron Rainbolt
+ - Adriaan de Groot
+ - Anke Boersma
+ - Ching Hsü
+ - Jakob Petsovits
+ - Masato TOYOSHIMA
+ - Simon Quigley
+ - Vladyslav Prudius
+
+## Core ##
+ - Fewer compile warnings with most-recent Qt versions.
+ - Support systemd and consolekit block-suspend, not just KDE Plasma
+   block-suspend, during installation. (thanks Jakob, #2404)
+
+## Modules ##
+ - *dracut* module has more freedom to specify program options. (thanks Simon, #2401)
+ - *partition* module improved some user-visible messages. (thanks Masato, #2412)
+ - *partition* module re-scans available devices when selecting
+   "manual" partitioning mode, avoiding a crash. (thanks Masato, #2414)
+ - *partition* module can hide the LVM buttons during manual partitioning,
+   if the distro does not want to support LVM. (#2413)
+ - *partition* module can restrict what filesystems a user applies where,
+   e.g. ensuring EFI is a FAT32 partition. (thanks Aaron, #2400)
+ - *unpackfs* module supports skipping installation media if it
+   is not present, e.g. depending on how the live media is booted.
+   (thanks Simon, #2410)
+
+## Translations ##
+
+Calamares translations are usually done through Transifex, but
+some users provide translation updates via patches, instead.
+ - *uk* thanks Vladyslav Prudius
+ - *zh_CN* thanks Ching Hsü
+
+
+# 3.3.12 (2024-11-21)
+
+This release contains contributions from (alphabetically by given name):
+ - Adriaan de Groot
+
+## Core ##
+ - This release repairs the Calamares configuration file which is
+   used by external Calamares modules -- calamares-extensions in particular.
+
+## Modules ##
+ - *users* module always uses a 3-digit UMASK if one is specified.
+
+
+# 3.3.11 (2024-11-05)
+
+This release contains contributions from (alphabetically by given name):
+ - Adriaan de Groot
+ - Jakob Petsovits
+ - Simon Quigley
+
+## Core ##
+ - Nothing yet
+
+## Modules ##
+ - *unpackfs* now supports a `condition` configuration option for
+   conditional installation / unsquash. (thanks Simon)
+ - *unpackfsc* module imported from Calamares-extensions, and extended
+   with the same `condition` configuration.
+ - *partition* crash fixed when swap was using the wrong end-sector
+   in some GPT configurations. (thanks Jakob, #2367)
+
+
+# 3.3.10 (2024-10-21)
+
+This release contains contributions from (alphabetically by given name):
+ - Aaron Rainbolt
  - Adriaan de Groot
  - Evan James
  - Neal Gompa
@@ -21,9 +130,12 @@ This release contains contributions from (alphabetically by given name):
  - *keyboard* Repaired summary messages with strange formatting. (#2364)
  - *keyboard* Can update KDE Plasma configuration in Wayland. (thanks Neal, #2264)
  - *locale* Repaired summary messages with strange formatting. (#2364)
+ - *partition* Module fixed unwanted behavior with the encryption checkbox. (thanks Aaron, #2376)
  - *umount* Correctly unmounts the root filesystem of the target. (thanks Evan)
  - *users* Supports a new `home_permissions` setting to override the
-   distro's `useradd` configuration of the umask. (#2362)
+   distribution's `useradd` configuration of the umask. Supports octal and rwx-style
+   specifications of permissions. Other places that use permissions now also
+   support octal and rwx-style. (#2362)
  - *welcome* Follows system styling colors (e.g. Dark Mode).
 
 

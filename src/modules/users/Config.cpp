@@ -178,7 +178,7 @@ QStringList
 Config::groupsForThisUser() const
 {
     QStringList l;
-    l.reserve( defaultGroups().size() + 1 );
+    l.reserve( defaultGroups().size() + 2 );
 
     for ( const auto& g : defaultGroups() )
     {
@@ -187,6 +187,13 @@ Config::groupsForThisUser() const
     if ( doAutoLogin() && !autoLoginGroup().isEmpty() )
     {
         l << autoLoginGroup();
+    }
+    if ( !m_nopasswdGroup.isEmpty() && m_userPassword.isEmpty() )
+    {
+        // The user has no password, which is allowed by the
+        // configuration in this distro, and there is a special
+        // group for passwordless-login.
+        l << m_nopasswdGroup;
     }
 
     return l;
@@ -928,6 +935,30 @@ tidy( QStringList& l )
     l.removeDuplicates();
 }
 
+static QString
+unscrambleYAML( const QVariant& v )
+{
+    if ( Calamares::isIntegerVariantType( v ) )
+    {
+        // YAML takes a string like "0755" and makes it an integer **anyway**
+        const auto number = v.toLongLong();
+        if ( number < 0 )
+        {
+            return QString();
+        }
+        // Since YAML has parsed it as a decimal number,
+        // turn it back into the string representation of
+        // that decimal number, even though we intended it
+        // to be octal (e.g. "755" written down becomes
+        // seven-hundred-fifty-five, needs to be the string
+        // "755" again, even though we meant octal 755 which
+        // is four-hundred-ninety-three.
+        if ( number > 777 ) { return QString(); }
+        return QString::number( number );
+    }
+    return v.toString();
+}
+
 void
 Config::setConfigurationMap( const QVariantMap& configurationMap )
 {
@@ -951,17 +982,20 @@ Config::setConfigurationMap( const QVariantMap& configurationMap )
         const auto permissionKey = QStringLiteral( "home_permissions" );
         if ( userSettings.contains( permissionKey ) )
         {
-            const auto value = Calamares::getString( userSettings, permissionKey );
+            const auto value = unscrambleYAML( userSettings.value( permissionKey ) );
             m_homeDirPermissions = Calamares::parseFileMode( value );
             if ( m_homeDirPermissions < 0 )
             {
-                cWarning() << "Setting for" << permissionKey << '(' << value << userSettings[permissionKey] << ") is invalid.";
+                cWarning() << "Setting for" << permissionKey << '(' << value << userSettings[ permissionKey ]
+                           << ") is invalid.";
             }
         }
         else
         {
             m_homeDirPermissions = -1;
         }
+
+        m_nopasswdGroup = Calamares::getString( userSettings, "nopasswd_group" );
     }
 
     setAutoLoginGroup( either< QString, const QString& >(
@@ -992,6 +1026,7 @@ Config::setConfigurationMap( const QVariantMap& configurationMap )
 
     // Renaming of Autologin -> AutoLogin in 4ffa79d4cf also affected
     // configuration keys, which was not intended. Accept both.
+    m_displayAutoLogin = Calamares::getBool( configurationMap, "displayAutologin", false );
     m_doAutoLogin = either(
         Calamares::getBool, configurationMap, QStringLiteral( "doAutologin" ), QStringLiteral( "doAutoLogin" ), false );
 

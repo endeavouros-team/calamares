@@ -193,7 +193,7 @@ ZfsJob::exec()
     }
     QVariantList zfsInfoList = gs->value( "zfsInfo" ).toList();
 
-    for ( auto& partition : qAsConst( partitions ) )
+    for ( auto& partition : std::as_const( partitions ) )
     {
         QVariantMap pMap;
         if ( partition.canConvert< QVariantMap >() )
@@ -231,7 +231,7 @@ ZfsJob::exec()
         // Look in the zfs info list to see if this partition should be encrypted
         bool encrypt = false;
         QString passphrase;
-        for ( const QVariant& zfsInfo : qAsConst( zfsInfoList ) )
+        for ( const QVariant& zfsInfo : std::as_const( zfsInfoList ) )
         {
             if ( zfsInfo.canConvert< QVariantMap >() && zfsInfo.toMap().value( "encrypted" ).toBool()
                  && mountpoint == zfsInfo.toMap().value( "mountpoint" ) )
@@ -276,7 +276,7 @@ ZfsJob::exec()
         {
             collectMountpoints( partitions );
             QVariantList datasetList;
-            for ( const auto& dataset : qAsConst( m_datasets ) )
+            for ( const auto& dataset : std::as_const( m_datasets ) )
             {
                 QVariantMap datasetMap = dataset.toMap();
 

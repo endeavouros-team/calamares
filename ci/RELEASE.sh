@@ -87,12 +87,15 @@ esac
 #
 #
 BUILDDIR=$(mktemp -d ./cala-tmp-XXXXXX)
-KEY_ID="328D742D8807A435"
+# This is the signing key ID associated with the the maintainer Adriaan de Groot,
+# which is used to create all "verified" tags in the Calamares repo.
+KEY_ID="55734316C0AE465B"
 
 # Try to make gpg cache the signing key, so we can leave the process
 # to run and sign.
 rm -f CMakeLists.txt.gpg
 gpg -s -u $KEY_ID CMakeLists.txt
+test -f CMakeLists.txt.gpg || { echo "Could not sign (check GPG key validity)"; exit 1 ; }
 
 ### Get version number for this release
 #
@@ -144,8 +147,6 @@ fi
 
 ### Create signed tag
 #
-# This is the signing key ID associated with the GitHub account adriaandegroot,
-# which is used to create all "verified" tags in the Calamares repo.
 git tag -u "$KEY_ID" -m "Release v$V" "v$V" || { echo "Could not sign tag v$V." ; exit 1 ; }
 
 ### Create the tarball
@@ -182,7 +183,7 @@ cat <<EOF
 # Next steps for this release:
   git push origin v$V
   # Upload tarball $TAR_FILE and the signature $TAR_FILE.asc
-  # Announce via https://github.com/calamares/calamares/releases/new
+  # Announce on the website (and the releases page of the forge).
   # SHA256: $SHA256
 EOF
 

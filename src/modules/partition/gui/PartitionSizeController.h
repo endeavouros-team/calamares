@@ -45,6 +45,9 @@ public:
     qint64 firstSector() const;
     qint64 lastSector() const;
 
+    /** @brief When @p align is true, snap partition boundaries to 4K for LUKS2. */
+    void setAlignForLuks( bool align );
+
     bool isDirty() const;
 
 private:
@@ -62,6 +65,7 @@ private:
     void doAlignAndUpdatePartResizerWidget( qint64 fistSector, qint64 lastSector );
 
     bool m_dirty = false;
+    bool m_alignForLuks = false;
     qint64 m_currentSpinBoxValue = -1;
 
 private Q_SLOTS:

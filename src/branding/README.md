@@ -35,7 +35,7 @@ imagination and your QML experience. For straightforward presentations,
 see the documentation below. There are more examples in the [calamares-branding][1]
 repository.
 
-[1] https://github.com/calamares/calamares-branding
+[1] https://codeberg.org/Calamares/calamares-branding
 
 
 ## API Versions

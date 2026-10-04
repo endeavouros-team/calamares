@@ -9,7 +9,6 @@ zypper --non-interactive addrepo -f -G https://download.opensuse.org/repositorie
 zypper --non-interactive refresh
 zypper --non-interactive up
 zypper --non-interactive in git-core jq yq curl ninja
-# From deploycala.py
 zypper --non-interactive in bison flex git make cmake gcc-c++
 zypper --non-interactive in yaml-cpp-devel libpwquality-devel parted-devel python3-devel
 zypper --non-interactive in libicu-devel libatasmart-devel

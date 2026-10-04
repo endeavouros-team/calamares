@@ -132,14 +132,14 @@ class EditingOutputter(object):
             nextmark += 1
             if l.startswith(mark_text):
                 break
-        if nextmark > mark + 100 or nextmark > len(lines) - 4:
+        if nextmark > mark + 150 or nextmark > len(lines) - 4:
             # Try to catch runaway nextmarks: we know there should
             # be four set-lines, which are unlikely to be 3 lines each;
             # similarly the CMakeLists.txt is supposed to end with
             # some boilerplate.
             #
             # However, gersemi will reformat to one-language-per-line,
-            # so we can get really long sections, that's why we use 100 as a limit.
+            # so we can get really long sections, that's why we use 150 as a limit.
             raise TXError("Could not find end of TX settings in CMakeLists.txt")
         self.post_lines = lines[nextmark:]
 
@@ -175,13 +175,13 @@ def output_langs(all_langs, outputter, label, filterfunc):
     out = " ".join(["set( _tx_%s" % label, " ".join(sorted(these_langs)), ")"])
     width = 68
     prefix = ""
-
+    trailer = f"  # {len(these_langs)} languages" # Comment at the end of the CMake line
     while len(out) > width - len(prefix):
         chunk = out[:out[:width].rfind(" ")]
         outputter.print("%s%s" % (prefix, chunk))
         out = out[len(chunk)+1:]
         prefix = "    "
-    outputter.print("%s%s" % (prefix, out))
+    outputter.print(f"{prefix}{out}{trailer}")
 
 
 def get_tx_stats(languages, outputter, verbose):

@@ -1,7 +1,13 @@
 ### Documentation on why we are using this modified versions will follow here:
+luksPassphrase    |partition       |               |Obfuscated passphrase used on luks partition
 Python modules (it is implemented in C++ and injected into the Python
 environment by Calamares).
 
+The API functions for running commands set the environment
+LC_ALL and LANG to "C" for the called command.
+
+
+### Running Commands in Python (Deprecated Functions)
 
 1. **copy_kernel:** *unused* now a shellprocess: [shellprocess_ck.conf](https://github.com/endeavouros-team/EndeavourOS-calamares/blob/main/calamares/modules/shellprocess_ck.conf)
 Use of this kind of module is **not** recommended. Use *shellprocess*

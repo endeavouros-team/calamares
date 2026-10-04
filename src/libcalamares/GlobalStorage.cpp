@@ -190,4 +190,55 @@ GlobalStorage::loadYaml( const QString& filename )
     return false;
 }
 
+///@brief Implementation for recursively looking up dotted selector parts.
+static QVariant
+lookup( const QStringList& nestedKey, int index, const QVariant& v, bool& ok )
+{
+    if ( !v.canConvert< QVariantMap >() )
+    {
+        // Mismatch: we're still looking for keys, but v is not a submap
+        ok = false;
+        return {};
+    }
+    if ( index >= nestedKey.length() )
+    {
+        cError() << "Recursion error looking at index" << index << "of" << nestedKey;
+        ok = false;
+        return {};
+    }
+
+    const QVariantMap map = v.toMap();
+    const QString& key = nestedKey.at( index );
+    if ( index == nestedKey.length() - 1 )
+    {
+        ok = map.contains( key );
+        return ok ? map.value( key ) : QVariant();
+    }
+    else
+    {
+        return lookup( nestedKey, index + 1, map.value( key ), ok );
+    }
+}
+
+QVariant
+lookup( const GlobalStorage* storage, const QString& nestedKey, bool& ok )
+{
+    ok = false;
+    if ( !storage )
+    {
+        return {};
+    }
+
+    if ( nestedKey.contains( '.' ) )
+    {
+        QStringList steps = nestedKey.split( '.' );
+        return lookup( steps, 1, storage->value( steps.first() ), ok );
+    }
+    else
+    {
+        ok = storage->contains( nestedKey );
+        return ok ? storage->value( nestedKey ) : QVariant();
+    }
+}
+
 }  // namespace Calamares

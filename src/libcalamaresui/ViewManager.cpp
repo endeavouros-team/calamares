@@ -42,6 +42,13 @@
         emit name##Changed( m_##name ); \
     } while ( false )
 
+#define UPDATE_NEXT_BUTTON_PROPERTY( step, value ) \
+    do \
+    { \
+        m_nextEnabled = value; \
+        emit nextEnabledChanged( step, m_nextEnabled ); \
+    } while ( false )
+
 namespace Calamares
 {
 
@@ -112,8 +119,7 @@ ViewManager::addViewStep( ViewStep* step )
     // If this is the first inserted view step, update status of "Next" button
     if ( m_steps.count() == 1 )
     {
-        m_nextEnabled = step->isNextEnabled();
-        emit nextEnabledChanged( m_nextEnabled );
+        UPDATE_NEXT_BUTTON_PROPERTY( step, step->isNextEnabled() );
     }
 }
 
@@ -231,8 +237,7 @@ ViewManager::updateNextStatus( bool status )
     {
         if ( vs == m_steps.at( m_currentStep ) )
         {
-            m_nextEnabled = status;
-            emit nextEnabledChanged( m_nextEnabled );
+            UPDATE_NEXT_BUTTON_PROPERTY( vs, status );
         }
     }
 }
@@ -374,7 +379,7 @@ ViewManager::next()
         {
             // Reached the end in a weird state (e.g. no finished step after an exec)
             executing = false;
-            UPDATE_BUTTON_PROPERTY( nextEnabled, false );
+            UPDATE_NEXT_BUTTON_PROPERTY( NULL, false );
             UPDATE_BUTTON_PROPERTY( backEnabled, false );
         }
         updateCancelEnabled( !settings->disableCancel() && !( executing && settings->disableCancelDuringExec() ) );
@@ -387,7 +392,8 @@ ViewManager::next()
 
     if ( m_currentStep < m_steps.count() )
     {
-        UPDATE_BUTTON_PROPERTY( nextEnabled, !executing && m_steps.at( m_currentStep )->isNextEnabled() );
+        UPDATE_NEXT_BUTTON_PROPERTY( m_steps.at( m_currentStep ),
+                                     !executing && m_steps.at( m_currentStep )->isNextEnabled() );
         UPDATE_BUTTON_PROPERTY( backEnabled, !executing && m_steps.at( m_currentStep )->isBackEnabled() );
     }
 
@@ -477,7 +483,7 @@ ViewManager::back()
         return;
     }
 
-    UPDATE_BUTTON_PROPERTY( nextEnabled, m_steps.at( m_currentStep )->isNextEnabled() );
+    UPDATE_NEXT_BUTTON_PROPERTY( m_steps.at( m_currentStep ), m_steps.at( m_currentStep )->isNextEnabled() );
     UPDATE_BUTTON_PROPERTY( backEnabled,
                             ( m_currentStep == 0 && m_steps.first()->isAtBeginning() )
                                 ? false
@@ -489,17 +495,31 @@ ViewManager::back()
 void
 ViewManager::quit()
 {
-    if ( confirmCancelInstallation() )
+    const auto r = confirmCancelInstallation();
+    if ( r == Confirmation::Continue )
     {
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
-        QApplication::quit();
-#else
-        QApplication::exit( EXIT_SUCCESS );
-#endif
+        return;
     }
+
+    if ( r == Confirmation::CancelInstallation )
+    {
+        // Cancel view steps in reverse
+        for ( int i = m_currentStep; i >= 0; --i )
+        {
+            auto* step = m_steps.at( i );
+            cDebug() << "Cancelling view step" << step->moduleInstanceKey();
+            step->onCancel();
+        }
+    }
+
+#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
+    QApplication::quit();
+#else
+    QApplication::exit( EXIT_SUCCESS );
+#endif
 }
 
-bool
+ViewManager::Confirmation
 ViewManager::confirmCancelInstallation()
 {
     const auto* const settings = Calamares::Settings::instance();
@@ -507,17 +527,17 @@ ViewManager::confirmCancelInstallation()
     // When we're at the very end, then it's always OK to exit.
     if ( isAtVeryEnd( m_steps, m_currentStep ) )
     {
-        return true;
+        return Confirmation::EndOfInstallation;
     }
 
     // Not at the very end, cancel/quit might be disabled
     if ( settings->disableCancel() )
     {
-        return false;
+        return Confirmation::Continue;
     }
     if ( settings->disableCancelDuringExec() && stepIsExecute( m_steps, m_currentStep ) )
     {
-        return false;
+        return Confirmation::Continue;
     }
 
     // Otherwise, confirm cancel/quit.
@@ -530,7 +550,7 @@ ViewManager::confirmCancelInstallation()
     mb.setDefaultButton( QMessageBox::No );
     Calamares::fixButtonLabels( &mb );
     int response = mb.exec();
-    return response == QMessageBox::Yes;
+    return ( response == QMessageBox::Yes ) ? Confirmation::CancelInstallation : Confirmation::Continue;
 }
 
 void

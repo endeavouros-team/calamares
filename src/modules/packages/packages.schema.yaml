@@ -26,6 +26,7 @@ properties:
     update_db: { type: boolean, default: true }
     update_system: { type: boolean, default: false }
     skip_if_no_internet: { type: boolean, default: false }
+    ignore_update_db_error: { type: boolean, default: false }
 
     pacman:
         additionalProperties: false

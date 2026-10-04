@@ -17,7 +17,7 @@
       <location filename="../src/libcalamares/CalamaresAbout.cpp" line="34"/>
       <source>Copyright %1-%2 %3 &amp;lt;%4&amp;gt;&lt;br/&gt;</source>
       <extracomment>Copyright year-year Name &lt;email-address&gt;</extracomment>
-      <translation type="unfinished"/>
+      <translation>Autoriõigused %1-%2 %3 &amp;lt;%4&amp;gt;&lt;br/&gt;</translation>
     </message>
   </context>
   <context>
@@ -41,7 +41,7 @@
       <location filename="../src/modules/partition/jobs/AutoMountManagementJob.cpp" line="22"/>
       <source>Managing auto-mount settings…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Halda automaatse haakimise seadistusi…</translation>
     </message>
   </context>
   <context>
@@ -233,13 +233,13 @@
       <location filename="../src/libcalamares/ProcessJob.cpp" line="49"/>
       <source>Running command %1 in target system…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Käivitan sihtsüsteemis käsku %1…</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/ProcessJob.cpp" line="53"/>
       <source>Running command %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Käivitan käsku %1…</translation>
     </message>
   </context>
   <context>
@@ -318,7 +318,7 @@
       <location filename="../src/libcalamares/PythonJob.cpp" line="266"/>
       <source>Bad working directory path</source>
       <comment>@error</comment>
-      <translation>Halb töökausta tee</translation>
+      <translation>Vigane töökausta asukoht</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/PythonJob.cpp" line="267"/>
@@ -351,7 +351,7 @@
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="73"/>
       <source>Loading…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Laadin…</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="100"/>
@@ -363,7 +363,7 @@
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="286"/>
       <source>Loading failed.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Laadimine ei õnnestunud.</translation>
     </message>
   </context>
   <context>
@@ -387,9 +387,9 @@
       <location filename="../src/libcalamares/modulesystem/RequirementsChecker.cpp" line="125"/>
       <source>(%n second(s))</source>
       <comment>@status</comment>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>(%n sekund)</numerusform>
+        <numerusform>(%n sekundit)</numerusform>
       </translation>
     </message>
     <message>
@@ -439,13 +439,13 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="155"/>
       <source>Setup Failed</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Seadistamine ei õnnestunud</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="156"/>
       <source>Installation Failed</source>
       <comment>@title</comment>
-      <translation>Paigaldamine ebaõnnestus</translation>
+      <translation>Paigaldamine ei õnnestunud</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="159"/>
@@ -475,13 +475,13 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="336"/>
       <source>Continue with Setup?</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Kas jätkame seadistamisega?</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="337"/>
       <source>Continue with Installation?</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Kas jätkame paigaldamisega?</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="339"/>
@@ -499,25 +499,25 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="348"/>
       <source>&amp;Set Up Now</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>&amp;Seadista kohe</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="348"/>
       <source>&amp;Install Now</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>&amp;Paigalda kohe</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="355"/>
       <source>Go &amp;Back</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>Mine &amp;tagasi</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="402"/>
       <source>&amp;Set Up</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>&amp;Seadista</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="402"/>
@@ -529,25 +529,25 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="404"/>
       <source>Setup is complete. Close the setup program.</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Seadistamine on lõppenud. Võid seadistusrakenduse sulgeda.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="405"/>
       <source>The installation is complete. Close the installer.</source>
       <comment>@tooltip</comment>
-      <translation>Paigaldamine on lõpetatud. Sulge paigaldaja.</translation>
+      <translation>Paigaldamine on lõppenud. Võid paigaldusrakenduse sulgeda.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="407"/>
       <source>Cancel the setup process without changing the system.</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Katkesta seadistamine ilma süsteemi muutmata.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="408"/>
       <source>Cancel the installation process without changing the system.</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Katkesta paigaldamine ilma süsteemi muutmata.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="418"/>
@@ -577,13 +577,13 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="524"/>
       <source>Cancel Setup?</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Kas tühistame seadistamise?</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="524"/>
       <source>Cancel Installation?</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Kas tühistame paigaldamise?</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="525"/>
@@ -685,9 +685,9 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="138"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1039"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1098"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1151"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1100"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1153"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>Hetkel:</translation>
@@ -702,144 +702,144 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="897"/>
       <source>Reuse %1 as home partition for %2</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Taaskasuta %1 %2 kodupartitsioonina</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1041"/>
       <source>&lt;strong&gt;Select a partition to shrink, then drag the bottom bar to resize&lt;/strong&gt;</source>
       <translation>&lt;strong&gt;Vali vähendatav partitsioon, seejärel sikuta alumist riba suuruse muutmiseks&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1064"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1065"/>
       <source>%1 will be shrunk to %2MiB and a new %3MiB partition will be created for %4.</source>
       <comment>@info, %1 is partition name, %4 is product name</comment>
-      <translation type="unfinished"/>
+      <translation>%1 vähendatakse suuruseni %2MiB ja %4 jaoks luuakse uus %3MiB partitsioon.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1142"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1144"/>
       <source>&lt;strong&gt;Select a partition to install on&lt;/strong&gt;</source>
       <comment>@label</comment>
       <translation>&lt;strong&gt;Vali partitsioon, kuhu paigaldada&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1202"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1204"/>
       <source>An EFI system partition cannot be found anywhere on this system. Please go back and use manual partitioning to set up %1.</source>
       <comment>@info, %1 is product name</comment>
       <translation>EFI süsteemipartitsiooni ei leitud sellest süsteemist. Palun mine tagasi ja kasuta käsitsi partitsioonimist, et seadistada %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1211"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1213"/>
       <source>The EFI system partition at %1 will be used for starting %2.</source>
       <comment>@info, %1 is partition path, %2 is product name</comment>
       <translation>EFI süsteemipartitsioon asukohas %1 kasutatakse %2 käivitamiseks.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1220"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1222"/>
       <source>EFI system partition:</source>
       <comment>@label</comment>
       <translation>EFI süsteemipartitsioon:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1710"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1712"/>
       <source>This storage device does not seem to have an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Sellel mäluseadmel ei paista olevat operatsioonisüsteemi peal. Mida soovid teha?&lt;br/&gt;Sa saad oma valikud üle vaadata ja kinnitada enne kui mistahes muudatus saab mäluseadmele teostatud.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1715"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1742"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1762"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1784"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1717"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1744"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1764"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1786"/>
       <source>&lt;strong&gt;Erase disk&lt;/strong&gt;&lt;br/&gt;This will &lt;font color="red"&gt;delete&lt;/font&gt; all data currently present on the selected storage device.</source>
       <translation>&lt;strong&gt;Tühjenda ketas&lt;/strong&gt;&lt;br/&gt;See &lt;font color="red"&gt;kustutab&lt;/font&gt; kõik valitud mäluseadmel olevad andmed.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1719"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1738"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1758"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1780"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1721"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1740"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1760"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1782"/>
       <source>&lt;strong&gt;Install alongside&lt;/strong&gt;&lt;br/&gt;The installer will shrink a partition to make room for %1.</source>
       <translation>&lt;strong&gt;Paigalda kõrvale&lt;/strong&gt;&lt;br/&gt;Paigaldaja vähendab partitsiooni, et teha ruumi operatsioonisüsteemile %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1723"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1746"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1766"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1788"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1725"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1748"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1768"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1790"/>
       <source>&lt;strong&gt;Replace a partition&lt;/strong&gt;&lt;br/&gt;Replaces a partition with %1.</source>
       <translation>&lt;strong&gt;Asenda partitsioon&lt;/strong&gt;&lt;br/&gt;Asendab partitsiooni operatsioonisüsteemiga %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1732"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1734"/>
       <source>This storage device has %1 on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Sellel mäluseadmel on peal %1. Mida soovid teha?&lt;br/&gt;Sa saad oma valikud üle vaadata ja kinnitada enne kui mistahes muudatus saab mäluseadmele teostatud.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1753"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1755"/>
       <source>This storage device already has an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Sellel mäluseadmel on juba operatsioonisüsteem peal. Mida soovid teha?&lt;br/&gt;Sa saad oma valikud üle vaadata ja kinnitada enne kui mistahes muudatus saab mäluseadmele teostatud.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1775"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1777"/>
       <source>This storage device has multiple operating systems on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Sellel mäluseadmel on mitu operatsioonisüsteemi peal. Mida soovid teha?&lt;br/&gt;Sa saad oma valikud üle vaadata ja kinnitada enne kui mistahes muudatus saab mäluseadmele teostatud.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1421"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1423"/>
       <source>This storage device already has an operating system on it, but the partition table &lt;strong&gt;%1&lt;/strong&gt; is different from the needed &lt;strong&gt;%2&lt;/strong&gt;.&lt;br/&gt;</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1445"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1447"/>
       <source>This storage device has one of its partitions &lt;strong&gt;mounted&lt;/strong&gt;.</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1450"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1452"/>
       <source>This storage device is a part of an &lt;strong&gt;inactive RAID&lt;/strong&gt; device.</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1568"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1570"/>
       <source>No swap</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Saaleala pole</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1577"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1579"/>
       <source>Reuse swap</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Taaskasuta saaleala</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1580"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1582"/>
       <source>Swap (no Hibernate)</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1583"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1585"/>
       <source>Swap (with Hibernate)</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1586"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1588"/>
       <source>Swap to file</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1599"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1601"/>
       <source>&lt;strong&gt;Manual partitioning&lt;/strong&gt;&lt;br/&gt;You can create or resize partitions yourself.</source>
       <translation>&lt;strong&gt;Käsitsi partitsioneerimine&lt;/strong&gt;&lt;br/&gt;Sa võid ise partitsioone luua või nende suurust muuta. </translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1627"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1629"/>
       <source>Bootloader location:</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Käivituslaaduri asukoht:</translation>
     </message>
   </context>
   <context>
@@ -867,24 +867,24 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="327"/>
       <source>Successfully disabled volume group %1.</source>
-      <translation type="unfinished"/>
+      <translation>%1 kettagrupi kasutuselt eemaldamine õnnestus.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="366"/>
       <source>Clear mounts for partitioning operations on %1</source>
       <comment>@title</comment>
-      <translation>Tühjenda monteeringud partitsioneerimistegevustes %1 juures</translation>
+      <translation>Tühjenda haakepunktid partitsioneerimistegevustes %1 juures</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="372"/>
       <source>Clearing mounts for partitioning operations on %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Tühjendan haakepunktide partitsioneerimistegevustes %1 juures…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="391"/>
       <source>Cleared all mounts for %1</source>
-      <translation>Kõik monteeringud tühjendatud %1 jaoks</translation>
+      <translation>Kõik haakepunktid on tühjendatud %1 jaoks</translation>
     </message>
   </context>
   <context>
@@ -894,12 +894,12 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/jobs/ClearTempMountsJob.cpp" line="40"/>
       <source>Clearing all temporary mounts…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Tühjendan kõiki ajutisi haakepunkte…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearTempMountsJob.cpp" line="70"/>
       <source>Cleared all temporary mounts.</source>
-      <translation>Kõik ajutised monteeringud tühjendatud.</translation>
+      <translation>Kõik ajutised haakimised tühjendatud.</translation>
     </message>
   </context>
   <context>
@@ -921,7 +921,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/finished/Config.cpp" line="142"/>
       <source>Setup Failed</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Seadistamine ei õnnestunud</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="143"/>
@@ -957,7 +957,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/finished/Config.cpp" line="153"/>
       <source>The setup of %1 is complete.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>%1 seadistus on valmis.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="154"/>
@@ -966,31 +966,31 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <translation>%1 paigaldus on valmis.</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="506"/>
-      <source>Keyboard model has been set to %1&lt;br/&gt;.</source>
+      <location filename="../src/modules/keyboard/Config.cpp" line="583"/>
+      <source>Keyboard model has been set to %1.</source>
       <comment>@label, %1 is keyboard model, as in Apple Magic Keyboard</comment>
-      <translation type="unfinished"/>
+      <translation>Klahvistiku mudel on %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="513"/>
+      <location filename="../src/modules/keyboard/Config.cpp" line="591"/>
       <source>Keyboard layout has been set to %1/%2.</source>
       <comment>@label, %1 is layout, %2 is layout variant</comment>
-      <translation type="unfinished"/>
+      <translation>Klahvistiku paigutus on %1/%2.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="379"/>
-      <source>Set timezone to %1/%2</source>
+      <location filename="../src/modules/locale/Config.cpp" line="381"/>
+      <source>Set timezone to %1.</source>
       <comment>@action</comment>
-      <translation>Määra ajatsooniks %1/%2</translation>
+      <translation>Määra ajavööndiks %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="416"/>
+      <location filename="../src/modules/locale/Config.cpp" line="418"/>
       <source>The system language will be set to %1.</source>
       <comment>@info</comment>
       <translation>Süsteemikeeleks määratakse %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="423"/>
+      <location filename="../src/modules/locale/Config.cpp" line="425"/>
       <source>The numbers and dates locale will be set to %1.</source>
       <comment>@info</comment>
       <translation>Arvude ja kuupäevade lokaaliks seatakse %1.</translation>
@@ -1028,7 +1028,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="110"/>
       <source>Package Selection</source>
-      <translation type="unfinished"/>
+      <translation>Paketivalik</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="112"/>
@@ -1038,17 +1038,17 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="241"/>
       <source>Packages</source>
-      <translation type="unfinished"/>
+      <translation>Paketid</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="247"/>
       <source>Install option: &lt;strong&gt;%1&lt;/strong&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Paigaldusvalik: &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="247"/>
       <source>None</source>
-      <translation type="unfinished"/>
+      <translation>Puudub</translation>
     </message>
     <message>
       <location filename="../src/modules/summary/Config.cpp" line="35"/>
@@ -1059,7 +1059,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/summary/Config.cpp" line="39"/>
       <source>This is an overview of what will happen once you start the setup procedure.</source>
-      <translation type="unfinished"/>
+      <translation>See on ülevaade sellest mis juhtub, kui alustad seadistusprotseduuri.</translation>
     </message>
     <message>
       <location filename="../src/modules/summary/Config.cpp" line="44"/>
@@ -1067,74 +1067,74 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <translation>See on ülevaade sellest mis juhtub, kui alustad paigaldusprotseduuri.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="236"/>
+      <location filename="../src/modules/users/Config.cpp" line="237"/>
       <source>Your username is too long.</source>
       <translation>Sinu kasutajanimi on liiga pikk.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="242"/>
+      <location filename="../src/modules/users/Config.cpp" line="243"/>
       <source>Your username must start with a lowercase letter or underscore.</source>
-      <translation type="unfinished"/>
+      <translation>Sinu kasutajanimi peab algama väiketähe või alakriipsuga.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="246"/>
+      <location filename="../src/modules/users/Config.cpp" line="247"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
-      <translation type="unfinished"/>
+      <translation>Lubatud on vaid väiketähed, numbrid, alakriips ja sidekriips.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="252"/>
+      <location filename="../src/modules/users/Config.cpp" line="253"/>
       <source>'%1' is not allowed as username.</source>
-      <translation type="unfinished"/>
+      <translation>'%1' pole kasutajanimena lubatud.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="301"/>
+      <location filename="../src/modules/users/Config.cpp" line="302"/>
       <source>Your hostname is too short.</source>
       <translation>Sinu hostinimi on liiga lühike.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="305"/>
+      <location filename="../src/modules/users/Config.cpp" line="306"/>
       <source>Your hostname is too long.</source>
       <translation>Sinu hostinimi on liiga pikk.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="311"/>
+      <location filename="../src/modules/users/Config.cpp" line="312"/>
       <source>'%1' is not allowed as hostname.</source>
-      <translation type="unfinished"/>
+      <translation>'%1' pole hostinimena lubatud.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="316"/>
+      <location filename="../src/modules/users/Config.cpp" line="317"/>
       <source>Only letters, numbers, underscore and hyphen are allowed.</source>
-      <translation type="unfinished"/>
+      <translation>Lubatud on vaid tähed, numbrid, alakriips ja sidekriips.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="597"/>
+      <location filename="../src/modules/users/Config.cpp" line="598"/>
       <source>Your passwords do not match!</source>
-      <translation>Sinu paroolid ei ühti!</translation>
+      <translation>Sinu salasõnad ei ühti!</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="611"/>
+      <location filename="../src/modules/users/Config.cpp" line="612"/>
       <source>OK!</source>
-      <translation type="unfinished"/>
+      <translation>Sobib!</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="57"/>
       <source>This computer does not satisfy the minimum requirements for setting up %1.&lt;br/&gt;Setup cannot continue.</source>
-      <translation type="unfinished"/>
+      <translation>See arvuti ei taga %1 seadistamiseks vajalikke miinimumtingimusi.&lt;br/&gt;Seadistamine ei saa jätkuda.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="60"/>
       <source>This computer does not satisfy the minimum requirements for installing %1.&lt;br/&gt;Installation cannot continue.</source>
-      <translation type="unfinished"/>
+      <translation>See arvuti ei taga %1 paigaldamiseks vajalikke miinimumtingimusi.&lt;br/&gt;Paigaldamine ei saa jätkuda.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="66"/>
       <source>This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;Setup can continue, but some features might be disabled.</source>
-      <translation type="unfinished"/>
+      <translation>See arvuti ei taga mõnda %1 seadistamiseks soovitatud tingimust.&lt;br/&gt;Seadistaminemine võib jätkuda, ent mõni funktsionaalsus võib olla kasutuselt eemaldatud.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="70"/>
       <source>This computer does not satisfy some of the recommended requirements for installing %1.&lt;br/&gt;Installation can continue, but some features might be disabled.</source>
-      <translation>See arvuti ei rahulda mõnda %1 paigaldamiseks soovitatud tingimust.&lt;br/&gt;Paigaldamine võib jätkuda, ent mõned funktsioonid võivad olla keelatud.</translation>
+      <translation>See arvuti ei taga mõnda %1 paigaldamiseks soovitatud tingimust.&lt;br/&gt;Paigaldamine võib jätkuda, ent mõni funktsionaalsus võib olla kasutuselt eemaldatud.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="80"/>
@@ -1165,7 +1165,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
   <context>
     <name>ContextualProcessJob</name>
     <message>
-      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="115"/>
+      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="88"/>
       <source>Performing contextual processes' job…</source>
       <comment>@status</comment>
       <translation type="unfinished"/>
@@ -1176,7 +1176,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="18"/>
       <source>Create a Partition</source>
-      <translation>Loo sektsioon</translation>
+      <translation>Loo partitsioon</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="42"/>
@@ -1216,7 +1216,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="165"/>
       <source>&amp;Mount Point:</source>
-      <translation>&amp;Monteerimispunkt:</translation>
+      <translation>&amp;Haakepunkt:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="191"/>
@@ -1226,7 +1226,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="224"/>
       <source>Label for the filesystem</source>
-      <translation type="unfinished"/>
+      <translation>Failisüsteemi silt</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="234"/>
@@ -1261,13 +1261,13 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/gui/PartitionDialogHelpers.cpp" line="91"/>
       <source>Mountpoint already in use. Please select another one.</source>
       <comment>@info</comment>
-      <translation>Monteerimispunkt on juba kasutusel. Palun vali mõni teine.</translation>
+      <translation>Haakepunkt on juba kasutusel. Palun vali mõni teine.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionDialogHelpers.cpp" line="96"/>
       <source>Mountpoint must start with a &lt;tt&gt;/&lt;/tt&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Haakepunkti alguses peab olema &lt;tt&gt;/&lt;/tt&gt;.</translation>
     </message>
   </context>
   <context>
@@ -1357,13 +1357,13 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="58"/>
       <source>Creating new %1 partition table on %2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Loon uut %1 partitsioonitabelit %2 jaoks…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="49"/>
       <source>Creating new &lt;strong&gt;%1&lt;/strong&gt; partition table on &lt;strong&gt;%2&lt;/strong&gt; (%3)…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Loon uut &lt;strong&gt;%1&lt;/strong&gt; partitsioonitabelit &lt;strong&gt;%2&lt;/strong&gt; jaoks (%3)…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="86"/>
@@ -1381,32 +1381,32 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="39"/>
       <source>Create user &lt;strong&gt;%1&lt;/strong&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Loo kasutaja &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="45"/>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="137"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="143"/>
       <source>Creating user %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Loon kasutajat %1…</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="120"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="126"/>
       <source>Preserving home directory…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Säilitan kodukausta…</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="145"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="152"/>
       <source>Configuring user %1</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Seadistan kasutajat %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="153"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="160"/>
       <source>Setting file permissions…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Määran failiõigusi…</translation>
     </message>
   </context>
   <context>
@@ -1415,7 +1415,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/gui/CreateVolumeGroupDialog.cpp" line="28"/>
       <source>Create Volume Group</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Loo kettagrupp</translation>
     </message>
   </context>
   <context>
@@ -1425,18 +1425,18 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="44"/>
       <source>Creating new volume group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Loon uut kettagruppi nimega %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="38"/>
       <source>Creating new volume group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Loon uut kettagruppi nimega &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="51"/>
       <source>The installer failed to create a volume group named '%1'.</source>
-      <translation>Paigaldaja ei saanud luua kettagruppi "%1".</translation>
+      <translation>Paigaldaja ei saanud luua kettagruppi „%1“.</translation>
     </message>
   </context>
   <context>
@@ -1446,13 +1446,13 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="38"/>
       <source>Deactivating volume group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Keelan kettagrupi nimega %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="32"/>
       <source>Deactivating volume group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Keelan kettagrupi nimega &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="46"/>
@@ -1467,13 +1467,13 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="85"/>
       <source>Deleting partition %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Kustutan partitsiooni: %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="79"/>
       <source>Deleting partition &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Kustutan partitsiooni: &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="99"/>
@@ -1589,7 +1589,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="103"/>
       <source>&amp;Mount Point:</source>
-      <translation>&amp;Monteerimispunkt:</translation>
+      <translation>&amp;Haakepunkt:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="129"/>
@@ -1614,7 +1614,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="179"/>
       <source>Label for the filesystem</source>
-      <translation type="unfinished"/>
+      <translation>Failisüsteemi silt</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="189"/>
@@ -1682,12 +1682,41 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     </message>
   </context>
   <context>
+    <name>FSArchiverRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="47"/>
+      <source>Missing tools</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="48"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="55"/>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="69"/>
+      <source>Invalid fsarchiver configuration</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="56"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="70"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
     <name>FillGlobalStorageJob</name>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="179"/>
       <source>Set partition information</source>
       <comment>@title</comment>
-      <translation>Sea partitsiooni teave</translation>
+      <translation>Määra partitsiooni teave</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="208"/>
@@ -2282,7 +2311,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
   <context>
     <name>LocaleTests</name>
     <message>
-      <location filename="../src/libcalamares/locale/Tests.cpp" line="266"/>
+      <location filename="../src/libcalamares/locale/Tests.cpp" line="272"/>
       <source>Quit</source>
       <translation type="unfinished"/>
     </message>
@@ -2307,7 +2336,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/luksbootkeyfile/LuksBootKeyFileJob.cpp" line="254"/>
       <location filename="../src/modules/luksbootkeyfile/LuksBootKeyFileJob.cpp" line="262"/>
       <source>No partitions are defined.</source>
-      <translation type="unfinished"/>
+      <translation>Ühtegi partitsiooni pole kirjeldatud</translation>
     </message>
     <message>
       <location filename="../src/modules/luksbootkeyfile/LuksBootKeyFileJob.cpp" line="297"/>
@@ -2905,7 +2934,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
     <message>
       <location filename="../src/modules/packagechooser/PackageChooserPage.cpp" line="25"/>
       <source>Package Selection</source>
-      <translation type="unfinished"/>
+      <translation>Paketivalik</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooser/PackageChooserPage.cpp" line="26"/>
@@ -3126,7 +3155,7 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="205"/>
       <source>New Partition</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Uus partitsioon</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="307"/>
@@ -3144,13 +3173,13 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="311"/>
       <source>File System Label</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Failisüsteemi silt</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="313"/>
       <source>Mount Point</source>
       <comment>@title</comment>
-      <translation>Monteerimispunkt</translation>
+      <translation>Haakepunkt</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="315"/>
@@ -3247,174 +3276,179 @@ Paigaldaja sulgub ning kõik muutused kaovad.</translation>
       <translation>Partitsioonid</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="143"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="144"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="147"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="148"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk and install %1</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="151"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="152"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition with %1</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="156"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="157"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="178"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="179"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system on disk &lt;strong&gt;%2&lt;/strong&gt; (%3)</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="187"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="188"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk &lt;strong&gt;%2&lt;/strong&gt; (%3) and install %1</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="194"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="195"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition on disk &lt;strong&gt;%2&lt;/strong&gt; (%3) with %1</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="203"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="204"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning on disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="213"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="214"/>
       <source>Disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation>Ketas &lt;strong&gt;%1&lt;/strong&gt; (%2).</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="263"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="239"/>
+      <source>Create a swap file.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="268"/>
       <source>Unsafe partition actions are enabled.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="266"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="271"/>
       <source>Partitioning is configured to &lt;b&gt;always&lt;/b&gt; fail.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="269"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="274"/>
       <source>No partitions will be changed.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="309"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="314"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>Hetkel:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="327"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="332"/>
       <source>After:</source>
       <comment>@label</comment>
       <translation>Pärast:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="550"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="555"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;To configure an EFI system partition, go back and select or create a suitable filesystem.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="556"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="561"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;The EFI system partition does not meet recommendations. It is recommended to go back and select or create a suitable filesystem.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="564"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="569"/>
       <source>The filesystem must be mounted on &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="565"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="570"/>
       <source>The filesystem must have type FAT32.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="566"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="571"/>
       <source>The filesystem must have flag &lt;strong&gt;%1&lt;/strong&gt; set.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="574"/>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="576"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="579"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="581"/>
       <source>The filesystem must be at least %1 MiB in size.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="578"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="583"/>
       <source>The minimum recommended size for the filesystem is %1 MiB.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="580"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="585"/>
       <source>You can continue without setting up an EFI system partition but your system may fail to start.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="582"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="587"/>
       <source>You can continue with this EFI system partition configuration but your system may fail to start.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="594"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="599"/>
       <source>No EFI system partition configured</source>
       <translation>EFI süsteemipartitsiooni pole seadistatud</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="602"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="607"/>
       <source>EFI system partition configured incorrectly</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="622"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="627"/>
       <source>EFI system partition recommendation</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="641"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="646"/>
       <source>Option to use GPT on BIOS</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="642"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="647"/>
       <source>A GPT partition table is the best option for all systems. This installer supports such a setup for BIOS systems too.&lt;br/&gt;&lt;br/&gt;To configure a GPT partition table on BIOS, (if not done so already) go back and set the partition table to GPT, next create a 8 MB unformatted partition with the &lt;strong&gt;%2&lt;/strong&gt; flag enabled.&lt;br/&gt;&lt;br/&gt;An unformatted 8 MB partition is necessary to start %1 on a BIOS system with GPT.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="664"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="669"/>
       <source>Boot partition not encrypted</source>
       <translation>Käivituspartitsioon pole krüptitud</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="665"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="670"/>
       <source>A separate boot partition was set up together with an encrypted root partition, but the boot partition is not encrypted.&lt;br/&gt;&lt;br/&gt;There are security concerns with this kind of setup, because important system files are kept on an unencrypted partition.&lt;br/&gt;You may continue if you wish, but filesystem unlocking will happen later during system startup.&lt;br/&gt;To encrypt the boot partition, go back and recreate it, selecting &lt;strong&gt;Encrypt&lt;/strong&gt; in the partition creation window.</source>
       <translation>Eraldi käivituspartitsioon seadistati koos krüptitud juurpartitsiooniga, aga käivituspartitsioon ise ei ole krüptitud.&lt;br/&gt;&lt;br/&gt;Selle seadistusega kaasnevad turvaprobleemid, sest tähtsad süsteemifailid hoitakse krüptimata partitsioonil.&lt;br/&gt;Sa võid soovi korral jätkata, aga failisüsteemi lukust lahti tegemine toimub hiljem süsteemi käivitusel.&lt;br/&gt;Et krüpteerida käivituspartisiooni, mine tagasi ja taasloo see, valides &lt;strong&gt;Krüpteeri&lt;/strong&gt; partitsiooni loomise aknas.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="757"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="762"/>
       <source>has at least one disk device available.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="758"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="763"/>
       <source>There are no partitions to install on.</source>
       <translation type="unfinished"/>
     </message>
@@ -3566,25 +3600,25 @@ Väljund:
       <translation>%1 (%2)</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="31"/>
       <source>unknown</source>
       <comment>@partition info</comment>
       <translation>tundmatu</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
       <source>extended</source>
       <comment>@partition info</comment>
       <translation>laiendatud</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
       <source>unformatted</source>
       <comment>@partition info</comment>
       <translation>vormindamata</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="39"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
       <source>swap</source>
       <comment>@partition info</comment>
       <translation>swap</translation>
@@ -3652,18 +3686,18 @@ Väljund:
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="38"/>
       <source>Removing Volume Group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Eemaldan kettagrupi nimega %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="32"/>
       <source>Removing Volume Group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Eemaldan kettagrupi nimega &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="46"/>
       <source>The installer failed to remove a volume group named '%1'.</source>
-      <translation>Paigaldaja ei saanud eemaldada kettagruppi "%1".</translation>
+      <translation>Paigaldaja ei saanud eemaldada kettagruppi „%1“.</translation>
     </message>
   </context>
   <context>
@@ -3825,7 +3859,7 @@ Väljund:
     <message>
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="58"/>
       <source>The installer failed to resize a volume group named '%1'.</source>
-      <translation>Paigaldaja ei saanud muuta kettagrupi "%1" suurust.</translation>
+      <translation>Paigaldaja ei saanud muuta kettagrupi „%1“ suurust.</translation>
     </message>
   </context>
   <context>
@@ -4192,6 +4226,40 @@ Väljund:
     </message>
   </context>
   <context>
+    <name>TarballRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="45"/>
+      <source>Invalid tarball configuration</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="84"/>
+      <source>Tarball extract file %1</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
     <name>TrackingInstallJob</name>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="100"/>
@@ -4202,7 +4270,7 @@ Väljund:
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="106"/>
       <source>Sending installation feedback…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Saadan paigalduse tagasisidet…</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="124"/>
@@ -4250,13 +4318,13 @@ Väljund:
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="135"/>
       <source>Machine feedback</source>
-      <translation>Seadme tagasiside</translation>
+      <translation>Arvuti või seadme tagasiside</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="141"/>
       <source>Configuring machine feedback…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Seadistan arvuti või seadme tagasiside tagasisidet…</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="164"/>
@@ -4285,7 +4353,7 @@ Väljund:
     <message>
       <location filename="../src/modules/tracking/page_trackingstep.ui" line="76"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click here to send &lt;span style=" font-weight:600;"&gt;no information at all&lt;/span&gt; about your installation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Klõpsides siin &lt;span style=" font-weight:600;"&gt;ei saada sa üldse teavet&lt;/span&gt;oma paigalduse kohta.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/page_trackingstep.ui" line="275"/>
@@ -4328,16 +4396,58 @@ Väljund:
       <location filename="../src/modules/umount/UmountJob.cpp" line="39"/>
       <source>Unmounting file systems…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Haagin failisüsteemid lahti…</translation>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="123"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="135"/>
       <source>No target system available.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="131"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="143"/>
       <source>No rootMountPoint is set.</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
+    <name>UnpackFSCJob</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnpackFSCJob.cpp" line="61"/>
+      <source>Unpack filesystems</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
+    <name>UnsquashRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="45"/>
+      <source>Invalid unsquash configuration</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="98"/>
+      <source>Unsquash file %1</source>
       <translation type="unfinished"/>
     </message>
   </context>
@@ -4376,13 +4486,13 @@ Väljund:
       <location filename="../src/calamares/VariantModel.cpp" line="246"/>
       <source>Key</source>
       <comment>Column header for key/value</comment>
-      <translation type="unfinished"/>
+      <translation>Võti</translation>
     </message>
     <message>
       <location filename="../src/calamares/VariantModel.cpp" line="250"/>
       <source>Value</source>
       <comment>Column header for key/value</comment>
-      <translation type="unfinished"/>
+      <translation>Väärtus</translation>
     </message>
   </context>
   <context>
@@ -4390,7 +4500,7 @@ Väljund:
     <message>
       <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="18"/>
       <source>Create Volume Group</source>
-      <translation type="unfinished"/>
+      <translation>Loo kettagrupp</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/VolumeGroupBaseDialog.ui" line="24"/>
@@ -4971,7 +5081,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="129"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
-      <translation type="unfinished"/>
+      <translation>Lubatud on vaid tähed, numbrid, alakriips ja sidekriips.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="138"/>
@@ -5104,7 +5214,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="128"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
-      <translation type="unfinished"/>
+      <translation>Lubatud on vaid tähed, numbrid, alakriips ja sidekriips.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="137"/>

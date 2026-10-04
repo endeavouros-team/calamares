@@ -75,7 +75,14 @@ TimeZoneWidget::setCurrentLocation( const TimeZoneData* location )
     cDebug() << Logger::SubEntry << "pixel x" << pos.x() << "pixel y" << pos.y();
 #endif
 
-    currentZoneImage = timeZoneImages.find( pos );
+    if ( !location->isGeographic() )
+    {
+        currentZoneImage = timeZoneImages.findByOffset( location->longitude() );
+    }
+    else
+    {
+        currentZoneImage = timeZoneImages.find( pos );
+    }
 
     // Repaint widget
     repaint();

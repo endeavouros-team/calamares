@@ -65,7 +65,7 @@ PreserveFiles::exec()
     }
 
     int count = 0;
-    for ( const auto& it : qAsConst( m_items ) )
+    for ( const auto& it : std::as_const( m_items ) )
     {
         if ( !it )
         {

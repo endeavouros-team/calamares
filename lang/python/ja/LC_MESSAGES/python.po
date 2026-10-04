@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 22:44+0200\n"
+"POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/calamares/teams/20061/ja/)\n"
@@ -234,26 +234,26 @@ msgid "Removing one package."
 msgid_plural "Removing %(num)d packages."
 msgstr[0] " %(num)d パッケージを削除しています。"
 
-#: src/modules/packages/main.py:769 src/modules/packages/main.py:781
-#: src/modules/packages/main.py:809
+#: src/modules/packages/main.py:775 src/modules/packages/main.py:787
+#: src/modules/packages/main.py:815
 msgid "Package Manager error"
 msgstr "パッケージマネージャーのエラー"
 
-#: src/modules/packages/main.py:770
+#: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
 msgstr ""
 "パッケージマネージャーはアップデートを準備できませんでした。コマンド <pre>{!s}</pre> はエラーコード {!s} を返しました。"
 
-#: src/modules/packages/main.py:782
+#: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
 msgstr ""
 "パッケージマネージャーはシステムをアップデートできませんでした。 コマンド <pre>{!s}</pre> はエラーコード {!s} を返しました。"
 
-#: src/modules/packages/main.py:810
+#: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
@@ -341,63 +341,63 @@ msgstr "{_action!s} systemd ユニット <code>{_name!s}</code> を実行でき�
 msgid "Filling up filesystems."
 msgstr "ファイルシステムに書き込んでいます。"
 
-#: src/modules/unpackfs/main.py:254
+#: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
 msgstr "エラーコード {} によりrsyncを失敗。"
 
-#: src/modules/unpackfs/main.py:299
+#: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
 msgstr "イメージ {}/{}, ファイル {}/{} を解凍しています"
 
-#: src/modules/unpackfs/main.py:314
+#: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
 msgstr "{} の解凍を開始しています"
 
-#: src/modules/unpackfs/main.py:323 src/modules/unpackfs/main.py:467
+#: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
 msgstr "イメージ  \"{}\" の展開に失敗"
 
-#: src/modules/unpackfs/main.py:430
+#: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
 msgstr "ルートパーティションのためのマウントポイントがありません"
 
-#: src/modules/unpackfs/main.py:431
+#: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
 msgstr "globalstorage に \"rootMountPoint\" キーがありません。"
 
-#: src/modules/unpackfs/main.py:434
+#: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
 msgstr "ルートパーティションのためのマウントポイントが不正です"
 
-#: src/modules/unpackfs/main.py:435
+#: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
 msgstr "rootMountPoint が \"{}\" になっていて存在しません。"
 
-#: src/modules/unpackfs/main.py:439 src/modules/unpackfs/main.py:455
-#: src/modules/unpackfs/main.py:459 src/modules/unpackfs/main.py:465
-#: src/modules/unpackfs/main.py:480
+#: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
+#: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
+#: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
 msgstr "不適切な unpackfs の設定"
 
-#: src/modules/unpackfs/main.py:440
+#: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
 msgstr "設定情報がありません。"
 
-#: src/modules/unpackfs/main.py:456
+#: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
 msgstr "\"{}\" ({}) のファイルシステムは、現在のカーネルではサポートされていません"
 
-#: src/modules/unpackfs/main.py:460
+#: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
 msgstr "ソースファイルシステム  \"{}\" は存在しません"
 
-#: src/modules/unpackfs/main.py:466
+#: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
 msgstr "unsquashfs が見つかりませんでした。squashfs-tools パッケージがインストールされているか確認してください。"
 
-#: src/modules/unpackfs/main.py:481
+#: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
 msgstr "ターゲットシステムの宛先 \"{}\" はディレクトリではありません"
 

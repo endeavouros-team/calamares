@@ -592,7 +592,11 @@ canonicalFilesystemName( const QString& fsName, FileSystem::Type* fsType )
 
     QStringList fsLanguage { QLatin1String( "C" ) };  // Required language list to turn off localization
 
+#if WITH_KPMcore > 0x261100
+    if ( ( type = FileSystem::typeForUntranslatedName( fsName ) ) != FileSystem::Unknown )
+#else
     if ( ( type = FileSystem::typeForName( fsName, fsLanguage ) ) != FileSystem::Unknown )
+#endif
     {
         return fsName;
     }
@@ -619,7 +623,7 @@ canonicalFilesystemName( const QString& fsName, FileSystem::Type* fsType )
         *fsType = FileSystem::Unknown;
     }
 #ifdef DEBUG_FILESYSTEMS
-    // This bit is for distro's debugging their settings, and shows
+    // This bit is for distros who are debugging their settings, and shows
     // all the strings that KPMCore is matching against for FS type.
     {
         Logger::CDebug d;

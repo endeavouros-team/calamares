@@ -10,16 +10,16 @@
 # Miguel Mayol <mitcoes@gmail.com>, 2020
 # Pier Jose Gotta Perez <piegope@protonmail.com>, 2020
 # Casper, 2023
-# Swyter <Swyterzone@gmail.com>, 2023
+# Swyter <Swyterzone@gmail.com>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 22:44+0200\n"
+"POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
-"Last-Translator: Swyter <Swyterzone@gmail.com>, 2023\n"
+"Last-Translator: Swyter <Swyterzone@gmail.com>, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/calamares/teams/20061/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #: src/modules/bootloader/main.py:46
 msgid "Install bootloader."
-msgstr "Instalar gestor de arranque."
+msgstr "Instalando el gestor de arranque."
 
 #: src/modules/bootloader/main.py:671
 msgid "Failed to install grub, no partitions defined in global storage"
@@ -39,14 +39,14 @@ msgstr ""
 
 #: src/modules/bootloader/main.py:931
 msgid "Bootloader installation error"
-msgstr "Hubo un error al instalar el cargador de arranque"
+msgstr "Hubo un error al instalar el gestor de arranque"
 
 #: src/modules/bootloader/main.py:932
 msgid ""
 "The bootloader could not be installed. The installation command "
 "<pre>{!s}</pre> returned error code {!s}."
 msgstr ""
-"No se pudo instalar el cargador de arranque; la orden de instalación "
+"No se pudo instalar el gestor de arranque; la orden de instalación "
 "<pre>{!s}</pre> devolvió el código de error {!s}."
 
 #: src/modules/displaymanager/main.py:525
@@ -102,7 +102,7 @@ msgstr ""
 
 #: src/modules/dracut/main.py:29
 msgid "Creating initramfs with dracut."
-msgstr "Creando «initramfs» (archivos de arranque) con «dracut»."
+msgstr "Creando el «initramfs» (archivos de arranque) con «dracut»."
 
 #: src/modules/dracut/main.py:63
 msgid "Failed to run dracut"
@@ -174,7 +174,7 @@ msgstr "No se definen particiones para <pre>initcpiocfg</pre>."
 
 #: src/modules/initcpiocfg/main.py:272
 msgid "No root mount point for <pre>initcpiocfg</pre>."
-msgstr "Sin punto de montaje raíz para <pre>initcpiocfg</pre>."
+msgstr "No hay un punto de montaje raíz («root») para <pre>initcpiocfg</pre>."
 
 #: src/modules/initramfscfg/main.py:32
 msgid "Configuring initramfs."
@@ -256,12 +256,12 @@ msgstr[0] "Eliminando un paquete."
 msgstr[1] "Eliminando %(num)d paquetes."
 msgstr[2] "Eliminando %(num)d paquetes."
 
-#: src/modules/packages/main.py:769 src/modules/packages/main.py:781
-#: src/modules/packages/main.py:809
+#: src/modules/packages/main.py:775 src/modules/packages/main.py:787
+#: src/modules/packages/main.py:815
 msgid "Package Manager error"
 msgstr "Hubo un error del gestor de paquetes"
 
-#: src/modules/packages/main.py:770
+#: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
@@ -269,7 +269,7 @@ msgstr ""
 "El gestor de paquetes no pudo preparar las actualizaciones; la orden "
 "<pre>{!s}</pre> devolvió el código de error {!s}."
 
-#: src/modules/packages/main.py:782
+#: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
@@ -277,7 +277,7 @@ msgstr ""
 "El gestor de paquetes no pudo actualizar el sistema; la orden "
 "<pre>{!s}</pre> devolvió el código de error {!s}."
 
-#: src/modules/packages/main.py:810
+#: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
@@ -375,58 +375,58 @@ msgstr "No se puede {_action!s} unidad systemd<code> {_name!s}</code>."
 msgid "Filling up filesystems."
 msgstr "Rellenando los sistemas de archivos."
 
-#: src/modules/unpackfs/main.py:254
+#: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
 msgstr "Falló la sincronización mediante «rsync» con el código de error {}."
 
-#: src/modules/unpackfs/main.py:299
+#: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
 msgstr "Desempaquetando la imagen {}/{}, archivo {}/{}"
 
-#: src/modules/unpackfs/main.py:314
+#: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
 msgstr "Desempaquetando {}"
 
-#: src/modules/unpackfs/main.py:323 src/modules/unpackfs/main.py:467
+#: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
 msgstr "No se pudo desempaquetar la imagen «{}»"
 
-#: src/modules/unpackfs/main.py:430
+#: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
 msgstr "Parece que la partición raíz («root») no tiene un punto de montaje"
 
-#: src/modules/unpackfs/main.py:431
+#: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
 msgstr "El «globalstorage» no contiene una clave «rootMountPoint»."
 
-#: src/modules/unpackfs/main.py:434
+#: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
 msgstr "El punto de montaje de la partición raíz («root») no es correcto"
 
-#: src/modules/unpackfs/main.py:435
+#: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
 msgstr "«rootMountPoint» es «{}», que no existe."
 
-#: src/modules/unpackfs/main.py:439 src/modules/unpackfs/main.py:455
-#: src/modules/unpackfs/main.py:459 src/modules/unpackfs/main.py:465
-#: src/modules/unpackfs/main.py:480
+#: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
+#: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
+#: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
 msgstr "La configuración de «unpackfs» no es correcta"
 
-#: src/modules/unpackfs/main.py:440
+#: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
 msgstr "Parece que no hay información de configuración."
 
-#: src/modules/unpackfs/main.py:456
+#: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
 msgstr ""
 "El sistema de archivos de «{}» ({}) no es compatible con el kernel actual"
 
-#: src/modules/unpackfs/main.py:460
+#: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
 msgstr "El sistema de archivos fuente «{}» no existe"
 
-#: src/modules/unpackfs/main.py:466
+#: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
@@ -434,7 +434,7 @@ msgstr ""
 "Parece que «unsquashfs» no está disponible; asegúrate de tener instalado "
 "«squashfs-tools»."
 
-#: src/modules/unpackfs/main.py:481
+#: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
 msgstr "El destino «{}» en el sistema escogido no es una carpeta"
 

@@ -288,7 +288,7 @@ getCheckInternetUrls( const QVariantMap& configurationMap )
     if ( !checkInternetSetting.isEmpty() )
     {
         QVector< QUrl > urls;
-        for ( const auto& urlString : qAsConst( checkInternetSetting ) )
+        for ( const auto& urlString : std::as_const( checkInternetSetting ) )
         {
             QUrl url( urlString.trimmed() );
             if ( url.isValid() )

@@ -7,3 +7,4 @@ additionalProperties: false
 type: object
 properties:
     initramfsName: { type: string }
+    options: { type: array, items: { type: string } }

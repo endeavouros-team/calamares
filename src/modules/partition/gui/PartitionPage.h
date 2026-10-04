@@ -16,6 +16,7 @@
 #include <QScopedPointer>
 #include <QWidget>
 
+class Config;
 class PartitionCoreModule;
 class Ui_PartitionPage;
 
@@ -32,7 +33,7 @@ class PartitionPage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PartitionPage( PartitionCoreModule* core, QWidget* parent = nullptr );
+    explicit PartitionPage( PartitionCoreModule* core, const Config & config, QWidget* parent = nullptr );
     ~PartitionPage() override;
 
     void onRevertClicked();

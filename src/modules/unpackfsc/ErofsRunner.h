@@ -1,0 +1,38 @@
+/* === This file is part of Calamares - <https://calamares.io> ===
+ *
+ *   SPDX-FileCopyrightText: 2025 Kel Modderman <kelvmod@gmail.com>
+ *   SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ *   Calamares is Free Software: see the License-Identifier above.
+ *
+ */
+
+#ifndef UNPACKFSC_EROFSRUNNER_H
+#define UNPACKFSC_EROFSRUNNER_H
+
+#include "Runners.h"
+
+/** @brief Use erofs-utils for extracting a erofs filesystem
+ *
+ */
+class ErofsRunner : public Runner
+{
+    Q_OBJECT
+public:
+    using Runner::Runner;
+
+    Calamares::JobResult run() override;
+
+protected Q_SLOTS:
+    void erofsProgress( QString line );
+
+private:
+    int m_inodes = 0;  // Total in the FS
+
+    // Progress reporting
+    static constexpr const int updateUIEveryNLines = 107;
+    int m_linesProcessed = 0;
+    int m_linesSinceLastUIUpdate = 0;
+};
+
+#endif

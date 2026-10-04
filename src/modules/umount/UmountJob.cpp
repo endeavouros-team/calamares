@@ -63,7 +63,7 @@ unmountTargetMounts( const QString& rootMountPoint )
     std::sort( targetMounts.begin(), targetMounts.end(), MtabInfo::mountPointOrder );
 
     cDebug() << "Read" << targetMounts.count() << "entries from" << targetMountPath;
-    for ( const auto& m : qAsConst( targetMounts ) )
+    for ( const auto& m : std::as_const( targetMounts ) )
     {
         // Returns the program's exit code, so 0 is success and non-0
         // (truthy) is a failure.

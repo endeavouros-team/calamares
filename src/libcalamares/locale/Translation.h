@@ -105,7 +105,15 @@ public:
     QLocale::Language language() const { return m_locale.language(); }
 
     /// @brief Convenience accessor to the country part (if any) of the locale
-    QLocale::Country country() const { return m_locale.country(); }
+    QLocale::Country country() const
+    {
+#if QT_VERSION < QT_VERSION_CHECK( 6, 6, 0 )
+
+        return m_locale.country();
+#else
+        return m_locale.territory();
+#endif
+    }
 
     /** @brief Get a Qt locale for the given @p localeName
      *

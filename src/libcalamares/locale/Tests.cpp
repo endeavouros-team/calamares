@@ -107,7 +107,11 @@ LocaleTests::testLanguageScripts()
 
         QVERIFY( locale.language() == QLocale::Greek ? locale.script() == QLocale::GreekScript : true );
         QVERIFY( locale.language() == QLocale::Korean ? locale.script() == QLocale::KoreanScript : true );
+#if QT_VERSION < QT_VERSION_CHECK( 6, 6, 0 )
         QVERIFY( locale.language() == QLocale::Lithuanian ? locale.country() == QLocale::Lithuania : true );
+#else
+        QVERIFY( locale.language() == QLocale::Lithuanian ? locale.territory() == QLocale::Lithuania : true );
+#endif
         QVERIFY( locale.language() != QLocale::C );
     }
 }

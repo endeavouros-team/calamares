@@ -45,15 +45,20 @@ PackageChooserTests::testAppData()
     // Path from the build-dir and from the running-the-test varies,
     // for in-source build, for build/, and for tests-in-build/,
     // so look in multiple places.
-    QString appdataName( "io.calamares.calamares.appdata.xml" );
-    for ( const auto& prefix : QStringList { "", "../", "../../../", "../../../../" } )
+    //
+    // CMake adds SOURCE_DIRECTORY as a compile-time definition.
+    const QString appdataBaseName( "io.calamares.calamares.appdata.xml" );
+    QString appdataName;
+    for ( const auto& prefix : QStringList { SOURCE_DIRECTORY, "", "../", "../../../", "../../../../" } )
     {
-        if ( QFile::exists( prefix + appdataName ) )
+        const auto candidate = prefix + appdataBaseName;
+        if ( QFile::exists( candidate ) )
         {
-            appdataName = prefix + appdataName;
+            appdataName = candidate;
             break;
         }
     }
+    QVERIFY( !appdataName.isEmpty() );
     QVERIFY( QFile::exists( appdataName ) );
 
     QVariantMap m;

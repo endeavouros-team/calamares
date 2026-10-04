@@ -4,10 +4,7 @@
  *   SPDX-FileCopyrightText: 2017-2018 Adriaan de Groot <groot@kde.org>
  *   SPDX-License-Identifier: GPL-3.0-or-later
  *
- *
  *   Calamares is Free Software: see the License-Identifier above.
- *
- *
  *
  */
 
@@ -35,19 +32,15 @@ class QFileInfo;
 // with picky compilers like Clang 8. Since we use Clang for the
 // find-all-the-warnings case, switch those warnings off for
 // the we-can't-change-them system headers.
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
-#pragma clang diagnostic ignored "-Wshadow"
-#pragma clang diagnostic ignored "-Wfloat-equal"
-#pragma clang diagnostic ignored "-Wsuggest-destructor-override"
-#endif
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_CLANG( "-Wzero-as-null-pointer-constant" )
+QT_WARNING_DISABLE_CLANG( "-Wshadow" )
+QT_WARNING_DISABLE_CLANG( "-Wfloat-equal" )
+QT_WARNING_DISABLE_CLANG( "-Wsuggest-destructor-override" )
 
 #include <yaml-cpp/yaml.h>
 
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
+QT_WARNING_POP
 
 /// @brief Appends all the elements of @p node to the string list @p v
 DLLEXPORT void operator>>( const ::YAML::Node& node, QStringList& v );

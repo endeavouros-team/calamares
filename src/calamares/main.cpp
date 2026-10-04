@@ -120,7 +120,7 @@ main( int argc, char* argv[] )
                           QString(),
                           QString(),
                           "https://calamares.io",
-                          "https://github.com/calamares/calamares/issues" );
+                          "https://codeberg.org/Calamares/calamares/issues" );
     KAboutData::setApplicationData( aboutData );
     a.setApplicationDisplayName( QString() );  // To avoid putting an extra "Calamares/" into the log-file
 

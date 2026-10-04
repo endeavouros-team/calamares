@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 22:44+0200\n"
+"POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
 "Last-Translator: Demiray Muhterem <mdemiray@msn.com>, 2024\n"
 "Language-Team: Turkish (Turkey) (https://app.transifex.com/calamares/teams/20061/tr_TR/)\n"
@@ -241,12 +241,12 @@ msgid_plural "Removing %(num)d packages."
 msgstr[0] "1 paket kaldırılıyor."
 msgstr[1] "%(num)d paket kaldırılıyor."
 
-#: src/modules/packages/main.py:769 src/modules/packages/main.py:781
-#: src/modules/packages/main.py:809
+#: src/modules/packages/main.py:775 src/modules/packages/main.py:787
+#: src/modules/packages/main.py:815
 msgid "Package Manager error"
 msgstr "Paket Yöneticisi hatası"
 
-#: src/modules/packages/main.py:770
+#: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
@@ -254,7 +254,7 @@ msgstr ""
 "Paket yöneticisi güncellemeleri hazırlayamadı. <pre>{!s}</pre> komutu {!s} "
 "hata kodunu döndürdü."
 
-#: src/modules/packages/main.py:782
+#: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
@@ -262,7 +262,7 @@ msgstr ""
 "Paket yöneticisi sistemi güncelleyemedi. <pre>{!s}</pre> komutu {!s} hata "
 "kodunu döndürdü."
 
-#: src/modules/packages/main.py:810
+#: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
@@ -353,64 +353,64 @@ msgstr "{_action!s} sistem birimi <code>{_name!s}</code> yapılamıyor."
 msgid "Filling up filesystems."
 msgstr "Dosya sistemi genişletiliyor."
 
-#: src/modules/unpackfs/main.py:254
+#: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
 msgstr "rsync {} hata koduyla başarısız oldu."
 
-#: src/modules/unpackfs/main.py:299
+#: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
 msgstr "Açılan kurulum medyası {}/{}, dışa aktarılan dosya sayısı {}/{}"
 
-#: src/modules/unpackfs/main.py:314
+#: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
 msgstr "{} paketi açılıyor"
 
-#: src/modules/unpackfs/main.py:323 src/modules/unpackfs/main.py:467
+#: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
 msgstr "\"{}\" kurulum medyası aktarılamadı"
 
-#: src/modules/unpackfs/main.py:430
+#: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
 msgstr "kök bölüm için bağlama noktası yok"
 
-#: src/modules/unpackfs/main.py:431
+#: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
 msgstr "globalstorage bir \"rootMountPoint\" anahtarı içermiyor."
 
-#: src/modules/unpackfs/main.py:434
+#: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
 msgstr "Kök bölüm için hatalı bağlama noktası"
 
-#: src/modules/unpackfs/main.py:435
+#: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
 msgstr "rootMountPoint, var olmayan \"{}\"."
 
-#: src/modules/unpackfs/main.py:439 src/modules/unpackfs/main.py:455
-#: src/modules/unpackfs/main.py:459 src/modules/unpackfs/main.py:465
-#: src/modules/unpackfs/main.py:480
+#: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
+#: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
+#: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
 msgstr "Hatalı unpackfs yapılandırması"
 
-#: src/modules/unpackfs/main.py:440
+#: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
 msgstr "Yapılandırma bilgisi yok."
 
-#: src/modules/unpackfs/main.py:456
+#: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
 msgstr "\"{}\" ({}) dosya sistemi, şu anki çekirdeğiniz tarafından desteklenmiyor"
 
-#: src/modules/unpackfs/main.py:460
+#: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
 msgstr "\"{}\" kaynak dosya sistemi yok"
 
-#: src/modules/unpackfs/main.py:466
+#: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
 msgstr ""
 "Unsquashfs bulunamadı, squashfs-tools paketinin kurulu olduğundan emin olun."
 
-#: src/modules/unpackfs/main.py:481
+#: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
 msgstr "Hedef sistemdeki \"{}\" hedefi bir dizin değil"
 

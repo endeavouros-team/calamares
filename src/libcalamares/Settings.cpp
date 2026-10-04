@@ -96,6 +96,8 @@ InstanceDescription::fromSettings( const QVariantMap& m )
         {
             r.m_configFileName = c;
         }
+
+        r.m_autoProceed = m.value( "autoProceed" ).toBool();
     }
     return r;
 }
@@ -275,7 +277,7 @@ bool
 Settings::isModuleEnabled( const QString& module ) const
 {
     // Iterate over the list of modules searching for a match
-    for ( const auto& moduleInstance : qAsConst( m_moduleInstances ) )
+    for ( const auto& moduleInstance : std::as_const( m_moduleInstances ) )
     {
         if ( moduleInstance.key().module() == module )
         {
@@ -354,6 +356,19 @@ Settings::InstanceDescriptionList
 Settings::moduleInstances() const
 {
     return m_moduleInstances;
+}
+
+InstanceDescription
+Settings::moduleInstance( const Calamares::ModuleSystem::InstanceKey& key ) const
+{
+    for ( const auto& instance : m_moduleInstances )
+    {
+        if ( instance.isValid() && instance.key() == key )
+        {
+            return instance;
+        }
+    }
+    return InstanceDescription {};
 }
 
 Settings::ModuleSequence

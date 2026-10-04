@@ -196,12 +196,7 @@ Item {
                 Text {
                     id: notesText
 
-                    property real padding: 16;
-
-                    x: padding
-                    y: padding
-                    width: parent.width - 2 * padding
-
+                    anchors.margins: 16
 
                     font.pixelSize: 16
                     wrapMode: Text.WordWrap

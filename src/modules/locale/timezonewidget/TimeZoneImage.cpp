@@ -19,8 +19,7 @@ static const char* zoneNames[]
     = { "0.0",  "1.0",  "2.0",  "3.0",  "3.5",  "4.0",  "4.5",  "5.0",   "5.5",  "5.75",  "6.0",  "6.5",  "7.0",
         "8.0",  "9.0",  "9.5",  "10.0", "10.5", "11.0", "12.0", "12.75", "13.0", "-1.0",  "-2.0", "-3.0", "-3.5",
         "-4.0", "-4.5", "-5.0", "-5.5", "-6.0", "-7.0", "-8.0", "-9.0",  "-9.5", "-10.0", "-11.0" };
-static_assert( TimeZoneImageList::zoneCount == ( sizeof( zoneNames ) / sizeof( zoneNames[ 0 ] ) ),
-               "Incorrect number of zones" );
+static_assert( TimeZoneImageList::zoneCount == std::size( zoneNames ), "Incorrect number of zones" );
 
 #define ZONE_NAME QStringLiteral( "zone" )
 
@@ -197,4 +196,19 @@ TimeZoneImageList::find( QPoint p ) const
         return QImage();
     }
     return at( i );
+}
+
+QImage
+TimeZoneImageList::findByOffset( double d ) const
+{
+    const QString desiredZone = QString::number( d, 'f', 1 );
+
+    for ( int i = 0; i < size(); ++i )
+    {
+        if ( zoneNames[ i ] == desiredZone )
+        {
+            return at( i );
+        }
+    }
+    return QImage();
 }
