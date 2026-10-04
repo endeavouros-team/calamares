@@ -44,7 +44,7 @@ using ProcessResult = Calamares::ProcessResult;
  *
  * Processes are always run with LC_ALL and LANG set to "C".
  */
-class Runner : public QObject
+class DLLEXPORT Runner : public QObject
 {
     Q_OBJECT
 

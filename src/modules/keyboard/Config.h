@@ -44,6 +44,9 @@ public:
     /// @brief When leaving the page, write to GS
     void finalize();
 
+    /// @brief Restore the system to whatever layout was in use when detectCurrentKeyboardLayout() was called
+    void cancel();
+
     static AdditionalLayoutInfo getAdditionalLayoutInfo( const QString& layout );
 
     /* A model is a physical configuration of a keyboard, e.g. 105-key PC
@@ -94,9 +97,6 @@ private:
      */
     void somethingChanged();
     void apply();
-    void applyLocale1();
-    void applyXkb();
-    void applyKWin();
 
     void getCurrentKeyboardLayoutXkb( QString& currentLayout, QString& currentVariant, QString& currentModel );
     void getCurrentKeyboardLayoutLocale1( QString& currentLayout, QString& currentVariant, QString& currentModel );
@@ -106,10 +106,8 @@ private:
     KeyboardVariantsModel* m_keyboardVariantsModel;
     KeyboardGroupsSwitchersModel* m_KeyboardGroupSwitcherModel;
 
-    QString m_selectedLayout;
-    QString m_selectedModel;
-    QString m_selectedVariant;
-    QString m_selectedGroup;
+    BasicLayoutInfo m_current;
+    BasicLayoutInfo m_original;
 
     // Layout (and corresponding info) added if current one doesn't support ASCII (e.g. Russian or Japanese)
     AdditionalLayoutInfo m_additionalLayoutInfo;
@@ -123,6 +121,7 @@ private:
     bool m_configureEtcDefaultKeyboard = true;
     bool m_configureLocale1 = false;
     bool m_configureKWin = false;
+    bool m_configureGnome = false;
     bool m_guessLayout = false;
 
     // The state determines whether we guess settings or preserve them:

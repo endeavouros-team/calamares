@@ -56,25 +56,6 @@ public:
      */
     explicit GlobalStorage( QObject* parent = nullptr );
 
-    /** @brief Insert a key and value into the store
-     *
-     * The @p value is added to the store with key @p key. If @p key
-     * already exists in the store, its existing value is overwritten.
-     * The changed() signal is emitted regardless.
-     */
-    void insert( const QString& key, const QVariant& value );
-    /** @brief Removes a key and its value
-     *
-     * The @p key is removed from the store. If the @p key does not
-     * exist, nothing happens. changed() is emitted regardless.
-     *
-     * @return the number of keys remaining
-     */
-    int remove( const QString& key );
-
-    /// @brief Clears all keys in this GS object
-    void clear();
-
     /** @brief dump keys and values to the debug log
      *
      * All the keys and their values are written to the debug log.
@@ -151,6 +132,25 @@ public Q_SLOTS:
      */
     QVariant value( const QString& key ) const;
 
+    /** @brief Insert a key and value into the store
+     *
+     * The @p value is added to the store with key @p key. If @p key
+     * already exists in the store, its existing value is overwritten.
+     * The changed() signal is emitted regardless.
+     */
+    void insert( const QString& key, const QVariant& value );
+    /** @brief Removes a key and its value
+     *
+     * The @p key is removed from the store. If the @p key does not
+     * exist, nothing happens. changed() is emitted regardless.
+     *
+     * @return the number of keys remaining
+     */
+    int remove( const QString& key );
+
+    /// @brief Clears all keys in this GS object
+    void clear();
+
 signals:
     /** @brief Emitted any time the store changes
      *
@@ -166,6 +166,26 @@ private:
     QVariantMap m;
     mutable QMutex m_mutex;
 };
+
+
+/** @brief Gets a value from the store
+ *
+ * When @p nestedKey contains no '.' characters, equivalent
+ * to `gs->value(nestedKey)`. Otherwise recursively looks up
+ * the '.'-separated parts of @p nestedKey in successive sub-maps
+ * of the store, returning the value in the innermost one.
+ *
+ * Example: `lookup(gs, "branding.name")` finds the value of the
+ * 'name' key in the 'branding' submap of the store.
+ *
+ * Sets @p ok to @c true if a value was found. Returns the value
+ * as a variant. If no value is found (e.g. the key is missing
+ * or some prefix submap is missing) sets @p ok to @c false
+ * and returns an invalid QVariant.
+ *
+ * @see GlobalStorage::value
+ */
+DLLEXPORT QVariant lookup( const GlobalStorage* gs, const QString& nestedKey, bool& ok );
 
 }  // namespace Calamares
 

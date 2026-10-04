@@ -4,16 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Efstathios Iosifidis <iefstathios@gmail.com>, 2022
+# Efstathios Iosifidis <eiosifidis@gmail.com>, 2022
+# Dimitris Spentzos <jimspentzos2000@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 22:44+0200\n"
+"POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
-"Last-Translator: Efstathios Iosifidis <iefstathios@gmail.com>, 2022\n"
+"Last-Translator: Dimitris Spentzos <jimspentzos2000@gmail.com>, 2026\n"
 "Language-Team: Greek (https://app.transifex.com/calamares/teams/20061/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,93 +24,101 @@ msgstr ""
 
 #: src/modules/bootloader/main.py:46
 msgid "Install bootloader."
-msgstr ""
+msgstr "Εγκατάσταση φορτωτή εκκίνησης."
 
 #: src/modules/bootloader/main.py:671
 msgid "Failed to install grub, no partitions defined in global storage"
 msgstr ""
+"Αποτυχία εγκατάστασης του grub, δεν ορίστηκαν διαμερίσματα στον καθολικό "
+"χώρο αποθήκευσης"
 
 #: src/modules/bootloader/main.py:931
 msgid "Bootloader installation error"
-msgstr ""
+msgstr "Σφάλμα εγκατάστασης φορτωτή εκκίνησης"
 
 #: src/modules/bootloader/main.py:932
 msgid ""
 "The bootloader could not be installed. The installation command "
 "<pre>{!s}</pre> returned error code {!s}."
 msgstr ""
+"Δεν ήταν δυνατή η εγκατάσταση του φορτωτή εκκίνησης. Η εντολή εγκατάστασης "
+"<pre>{!s}</pre> επέστρεψε τον κωδικό σφάλματος {!s}."
 
 #: src/modules/displaymanager/main.py:525
 msgid "Cannot write LXDM configuration file"
-msgstr ""
+msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου διαμόρφωσης LXDM"
 
 #: src/modules/displaymanager/main.py:526
 msgid "LXDM config file {!s} does not exist"
-msgstr ""
+msgstr "Το αρχείο διαμόρφωσης LXDM {!s} δεν υπάρχει"
 
 #: src/modules/displaymanager/main.py:614
 msgid "Cannot write LightDM configuration file"
-msgstr ""
+msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου διαμόρφωσης LightDM"
 
 #: src/modules/displaymanager/main.py:615
 msgid "LightDM config file {!s} does not exist"
-msgstr ""
+msgstr "Το αρχείο διαμόρφωσης LightDM {!s} δεν υπάρχει"
 
 #: src/modules/displaymanager/main.py:700
 msgid "Cannot configure LightDM"
-msgstr "Αδυναμία ρύθμισης LightDM"
+msgstr "Δεν είναι δυνατή η διαμόρφωση του LightDM"
 
 #: src/modules/displaymanager/main.py:701
 msgid "No LightDM greeter installed."
-msgstr ""
+msgstr "Δεν έχει εγκατασταθεί η διεπαφή εισόδου του LightDM."
 
 #: src/modules/displaymanager/main.py:732
 msgid "Cannot write SLIM configuration file"
-msgstr ""
+msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου διαμόρφωσης SLIM"
 
 #: src/modules/displaymanager/main.py:733
 msgid "SLIM config file {!s} does not exist"
-msgstr ""
+msgstr "Το αρχείο διαμόρφωσης SLIM {!s} δεν υπάρχει"
 
 #: src/modules/displaymanager/main.py:956
 msgid "No display managers selected for the displaymanager module."
-msgstr ""
+msgstr "Δεν έχουν επιλεγεί διαχειριστές οθόνης για το άρθρωμα displaymanager."
 
 #: src/modules/displaymanager/main.py:957
 msgid ""
 "The displaymanagers list is empty or undefined in both globalstorage and "
 "displaymanager.conf."
 msgstr ""
+"Η λίστα displaymanagers είναι κενή ή απροσδιόριστη τόσο στο globalstorage "
+"όσο και στο displaymanager.conf."
 
 #: src/modules/displaymanager/main.py:1044
 msgid "Display manager configuration was incomplete"
-msgstr ""
+msgstr "Η διαμόρφωση του διαχειριστή οθόνης δεν ολοκληρώθηκε"
 
 #: src/modules/dracut/main.py:29
 msgid "Creating initramfs with dracut."
-msgstr ""
+msgstr "Δημιουργία του initramfs με το dracut."
 
 #: src/modules/dracut/main.py:63
 msgid "Failed to run dracut"
-msgstr ""
+msgstr "Αποτυχία εκτέλεσης του dracut"
 
 #: src/modules/dracut/main.py:64
 #, python-brace-format
 msgid "Dracut failed to run on the target with return code: {return_code}"
 msgstr ""
+"Το Dracut απέτυχε να εκτελεστεί στον προορισμό με κωδικό επιστροφής: "
+"{return_code}"
 
 #: src/modules/dummypython/main.py:35
 msgid "Dummy python job."
-msgstr ""
+msgstr "Εικονική εργασία Python."
 
 #: src/modules/dummypython/main.py:37 src/modules/dummypython/main.py:104
 #: src/modules/dummypython/main.py:105
 msgid "Dummy python step {}"
-msgstr ""
+msgstr "Εικονικό βήμα Python {}"
 
 #: src/modules/fstab/main.py:29
 msgid "Writing fstab."
-msgstr "Εγγραγή fstab."
+msgstr "Εγγραφή του fstab."
 
 #: src/modules/fstab/main.py:382 src/modules/fstab/main.py:388
 #: src/modules/fstab/main.py:416 src/modules/initcpiocfg/main.py:267
@@ -119,146 +128,154 @@ msgstr "Εγγραγή fstab."
 #: src/modules/openrcdmcryptcfg/main.py:72
 #: src/modules/openrcdmcryptcfg/main.py:76 src/modules/rawfs/main.py:165
 msgid "Configuration Error"
-msgstr ""
+msgstr "Σφάλμα διαμόρφωσης"
 
 #: src/modules/fstab/main.py:383 src/modules/initramfscfg/main.py:86
 #: src/modules/mount/main.py:345 src/modules/openrcdmcryptcfg/main.py:73
 #: src/modules/rawfs/main.py:166
 msgid "No partitions are defined for <pre>{!s}</pre> to use."
-msgstr ""
+msgstr "Δεν έχουν οριστεί διαμερίσματα για χρήση από το <pre>{!s}</pre>."
 
 #: src/modules/fstab/main.py:389 src/modules/initramfscfg/main.py:90
 #: src/modules/localecfg/main.py:141 src/modules/networkcfg/main.py:107
 #: src/modules/openrcdmcryptcfg/main.py:77
 msgid "No root mount point is given for <pre>{!s}</pre> to use."
 msgstr ""
+"Δεν έχει δοθεί σημείο προσάρτησης ρίζας για χρήση από το <pre>{!s}</pre>."
 
 #: src/modules/fstab/main.py:417
 msgid "No <pre>{!s}</pre> configuration is given for <pre>{!s}</pre> to use."
 msgstr ""
+"Δεν έχει δοθεί διαμόρφωση <pre>{!s}</pre> για χρήση από το <pre>{!s}</pre>."
 
 #: src/modules/grubcfg/main.py:30
 msgid "Configure GRUB."
-msgstr "Ρύθμιση GRUB."
+msgstr "Διαμόρφωση του GRUB."
 
 #: src/modules/hwclock/main.py:26
 msgid "Setting hardware clock."
-msgstr ""
+msgstr "Ρύθμιση ρολογιού υλικού."
 
 #: src/modules/initcpiocfg/main.py:27
 msgid "Configuring mkinitcpio."
-msgstr ""
+msgstr "Διαμόρφωση του mkinitcpio."
 
 #: src/modules/initcpiocfg/main.py:268
 msgid "No partitions are defined for <pre>initcpiocfg</pre>."
-msgstr ""
+msgstr "Δεν έχουν οριστεί διαμερίσματα για το <pre>initcpiocfg</pre>."
 
 #: src/modules/initcpiocfg/main.py:272
 msgid "No root mount point for <pre>initcpiocfg</pre>."
-msgstr ""
+msgstr "Δεν υπάρχει σημείο προσάρτησης ρίζας για το <pre>initcpiocfg</pre>."
 
 #: src/modules/initramfscfg/main.py:32
 msgid "Configuring initramfs."
-msgstr ""
+msgstr "Διαμόρφωση initramfs."
 
 #: src/modules/localecfg/main.py:31
 msgid "Configuring locales."
-msgstr ""
+msgstr "Διαμόρφωση τοπικών ρυθμίσεων."
 
 #: src/modules/mkinitfs/main.py:27
 msgid "Creating initramfs with mkinitfs."
-msgstr ""
+msgstr "Δημιουργία του initramfs με το mkinitfs."
 
 #: src/modules/mkinitfs/main.py:49
 msgid "Failed to run mkinitfs on the target"
-msgstr ""
+msgstr "Αποτυχία εκτέλεσης του mkinitfs στον προορισμό"
 
 #: src/modules/mkinitfs/main.py:50
 msgid "The exit code was {}"
-msgstr ""
+msgstr "Ο κωδικός εξόδου ήταν {}"
 
 #: src/modules/mount/main.py:43
 msgid "Mounting partitions."
-msgstr "Προσάρτηση κατατμήσεων."
+msgstr "Προσάρτηση διαμερισμάτων."
 
 #: src/modules/mount/main.py:171 src/modules/mount/main.py:207
 msgid "Internal error mounting zfs datasets"
-msgstr ""
+msgstr "Εσωτερικό σφάλμα κατά την προσάρτηση συνόλων δεδομένων zfs"
 
 #: src/modules/mount/main.py:183
 msgid "Failed to import zpool"
-msgstr ""
+msgstr "Αποτυχία εισαγωγής του zpool"
 
 #: src/modules/mount/main.py:199
 msgid "Failed to unlock zpool"
-msgstr ""
+msgstr "Αποτυχία ξεκλειδώματος του zpool"
 
 #: src/modules/mount/main.py:216 src/modules/mount/main.py:221
 msgid "Failed to set zfs mountpoint"
-msgstr ""
+msgstr "Αποτυχία ορισμού του σημείου προσάρτησης zfs"
 
 #: src/modules/mount/main.py:386
 msgid "zfs mounting error"
-msgstr ""
+msgstr "σφάλμα προσάρτησης ZFS"
 
 #: src/modules/networkcfg/main.py:30
 msgid "Saving network configuration."
-msgstr ""
+msgstr "Αποθήκευση διαμόρφωσης δικτύου."
 
 #: src/modules/openrcdmcryptcfg/main.py:26
 msgid "Configuring OpenRC dmcrypt service."
-msgstr ""
+msgstr "Διαμόρφωση υπηρεσίας dmcrypt OpenRC."
 
 #: src/modules/packages/main.py:54 src/modules/packages/main.py:65
 #: src/modules/packages/main.py:75
 msgid "Install packages."
-msgstr "εγκατάσταση πακέτων."
+msgstr "Εγκατάσταση πακέτων."
 
 #: src/modules/packages/main.py:63
 #, python-format
 msgid "Processing packages (%(count)d / %(total)d)"
-msgstr ""
+msgstr "Επεξεργασία πακέτων (%(count)d/%(total)d)"
 
 #: src/modules/packages/main.py:68
 #, python-format
 msgid "Installing one package."
 msgid_plural "Installing %(num)d packages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Εγκατάσταση ενός πακέτου."
+msgstr[1] "Εγκατάσταση %(num)d πακέτων."
 
 #: src/modules/packages/main.py:71
 #, python-format
 msgid "Removing one package."
 msgid_plural "Removing %(num)d packages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αφαίρεση ενός πακέτου."
+msgstr[1] "Αφαίρεση %(num)d πακέτων."
 
-#: src/modules/packages/main.py:769 src/modules/packages/main.py:781
-#: src/modules/packages/main.py:809
+#: src/modules/packages/main.py:775 src/modules/packages/main.py:787
+#: src/modules/packages/main.py:815
 msgid "Package Manager error"
-msgstr "Σφάλμα διαχειριστή πακέτων"
+msgstr "Σφάλμα διαχείρισης πακέτων"
 
-#: src/modules/packages/main.py:770
+#: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
 msgstr ""
+"Ο διαχειριστής πακέτων δεν μπόρεσε να προετοιμάσει τις ενημερώσεις. Η εντολή"
+" <pre>{!s}</pre> επέστρεψε τον κωδικό σφάλματος {!s}."
 
-#: src/modules/packages/main.py:782
+#: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
 msgstr ""
+"Ο διαχειριστής πακέτων δεν μπόρεσε να ενημερώσει το σύστημα. Η εντολή "
+"<pre>{!s}</pre> επέστρεψε τον κωδικό σφάλματος {!s}."
 
-#: src/modules/packages/main.py:810
+#: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
 msgstr ""
+"Ο διαχειριστής πακέτων δεν μπόρεσε να κάνει αλλαγές στο εγκατεστημένο "
+"σύστημα. Η εντολή <pre>{!s}</pre> επέστρεψε τον κωδικό σφάλματος {!s}."
 
 #: src/modules/plymouthcfg/main.py:27
 msgid "Configure Plymouth theme"
-msgstr ""
+msgstr "Διαμόρφωση θέματος Plymouth"
 
 #: src/modules/rawfs/main.py:26
 msgid "Installing data."
@@ -266,133 +283,153 @@ msgstr "Εγκατάσταση δεδομένων."
 
 #: src/modules/services-openrc/main.py:29
 msgid "Configure OpenRC services"
-msgstr ""
+msgstr "Διαμόρφωση υπηρεσιών OpenRC"
 
 #: src/modules/services-openrc/main.py:57
 msgid "Cannot add service {name!s} to run-level {level!s}."
 msgstr ""
+"Δεν είναι δυνατή η προσθήκη της υπηρεσίας {name!s} στο επίπεδο εκτέλεσης "
+"{level!s}."
 
 #: src/modules/services-openrc/main.py:59
 msgid "Cannot remove service {name!s} from run-level {level!s}."
 msgstr ""
+"Δεν είναι δυνατή η αφαίρεση της υπηρεσίας {name!s} από το επίπεδο εκτέλεσης "
+"{level!s}."
 
 #: src/modules/services-openrc/main.py:61
 msgid ""
 "Unknown service-action <code>{arg!s}</code> for service {name!s} in run-"
 "level {level!s}."
 msgstr ""
+"Άγνωστη ενέργεια <code>{arg!s}</code> για την υπηρεσία {name!s} στο επίπεδο "
+"εκτέλεσης {level!s}."
 
 #: src/modules/services-openrc/main.py:93
 msgid "Cannot modify service"
-msgstr ""
+msgstr "Δεν είναι δυνατή η τροποποίηση της υπηρεσίας"
 
 #: src/modules/services-openrc/main.py:94
 msgid ""
 "<code>rc-update {arg!s}</code> call in chroot returned error code {num!s}."
 msgstr ""
+"Η κλήση <code>rc-update {arg!s}</code> στο chroot επέστρεψε τον κωδικό "
+"σφάλματος {num!s}."
 
 #: src/modules/services-openrc/main.py:101
 msgid "Target runlevel does not exist"
-msgstr ""
+msgstr "Το επίπεδο εκτέλεσης προορισμού δεν υπάρχει"
 
 #: src/modules/services-openrc/main.py:102
 msgid ""
 "The path for runlevel {level!s} is <code>{path!s}</code>, which does not "
 "exist."
 msgstr ""
+"Η διαδρομή για το επίπεδο εκτέλεσης {level!s} είναι <code>{path!s}</code>, "
+"το οποίο δεν υπάρχει."
 
 #: src/modules/services-openrc/main.py:110
 msgid "Target service does not exist"
-msgstr ""
+msgstr "Η υπηρεσία προορισμού δεν υπάρχει"
 
 #: src/modules/services-openrc/main.py:111
 msgid ""
 "The path for service {name!s} is <code>{path!s}</code>, which does not "
 "exist."
 msgstr ""
+"Η διαδρομή για την υπηρεσία {name!s} είναι <code>{path!s}</code>, το οποίο "
+"δεν υπάρχει."
 
 #: src/modules/services-systemd/main.py:26
 msgid "Configure systemd units"
-msgstr ""
+msgstr "Διαμόρφωση μονάδων systemd"
 
 #: src/modules/services-systemd/main.py:64
 msgid "Cannot modify unit"
-msgstr ""
+msgstr "Δεν είναι δυνατή η τροποποίηση της μονάδας"
 
 #: src/modules/services-systemd/main.py:65
 msgid ""
 "<code>systemctl {_action!s}</code> call in chroot returned error code "
 "{_exit_code!s}."
 msgstr ""
+"Η κλήση <code>systemctl {_action!s}</code> στο chroot επέστρεψε τον κωδικό "
+"σφάλματος {_exit_code!s}."
 
 #: src/modules/services-systemd/main.py:66
 msgid "Cannot {_action!s} systemd unit <code>{_name!s}</code>."
 msgstr ""
+"Δεν είναι δυνατή η εκτέλεση της ενέργειας {_action!s} στη μονάδα systemd "
+"<code>{_name!s}</code>."
 
 #: src/modules/unpackfs/main.py:34
 msgid "Filling up filesystems."
-msgstr ""
+msgstr "Συμπλήρωση συστημάτων αρχείων."
 
-#: src/modules/unpackfs/main.py:254
+#: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
-msgstr ""
+msgstr "Το rsync απέτυχε με κωδικό σφάλματος {}."
 
-#: src/modules/unpackfs/main.py:299
+#: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
-msgstr ""
+msgstr "Ξεπακετάρισμα ειδώλου {}/{}, αρχείο {}/{}"
 
-#: src/modules/unpackfs/main.py:314
+#: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
-msgstr ""
+msgstr "Έναρξη ξεπακεταρίσματος του {}"
 
-#: src/modules/unpackfs/main.py:323 src/modules/unpackfs/main.py:467
+#: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
-msgstr ""
+msgstr "Αποτυχία ξεπακεταρίσματος του ειδώλου «{}»"
 
-#: src/modules/unpackfs/main.py:430
+#: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
-msgstr ""
+msgstr "Δεν υπάρχει σημείο προσάρτησης για το διαμέρισμα ρίζας"
 
-#: src/modules/unpackfs/main.py:431
+#: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
-msgstr ""
+msgstr "Το globalstorage δεν περιέχει κλειδί «rootMountPoint»."
 
-#: src/modules/unpackfs/main.py:434
+#: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
-msgstr ""
+msgstr "Εσφαλμένο σημείο προσάρτησης για το διαμέρισμα ρίζας"
 
-#: src/modules/unpackfs/main.py:435
+#: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
-msgstr ""
+msgstr "Το rootMountPoint είναι «{}», το οποίο δεν υπάρχει."
 
-#: src/modules/unpackfs/main.py:439 src/modules/unpackfs/main.py:455
-#: src/modules/unpackfs/main.py:459 src/modules/unpackfs/main.py:465
-#: src/modules/unpackfs/main.py:480
+#: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
+#: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
+#: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
-msgstr ""
+msgstr "Εσφαλμένη διαμόρφωση unpackfs"
 
-#: src/modules/unpackfs/main.py:440
+#: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
-msgstr ""
+msgstr "Δεν υπάρχουν πληροφορίες διαμόρφωσης."
 
-#: src/modules/unpackfs/main.py:456
+#: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
 msgstr ""
+"Το σύστημα αρχείων για το «{}» ({}) δεν υποστηρίζεται από τον τρέχοντα "
+"πυρήνα σας"
 
-#: src/modules/unpackfs/main.py:460
+#: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
-msgstr ""
+msgstr "Το σύστημα αρχείων προέλευσης «{}» δεν υπάρχει"
 
-#: src/modules/unpackfs/main.py:466
+#: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
 msgstr ""
+"Η εύρεση του unsquashfs απέτυχε, βεβαιωθείτε ότι έχετε εγκαταστήσει το "
+"πακέτο squashfs-tools."
 
-#: src/modules/unpackfs/main.py:481
+#: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
-msgstr ""
+msgstr "Ο προορισμός «{}» στο σύστημα προορισμού δεν είναι κατάλογος"
 
 #: src/modules/zfshostid/main.py:27
 msgid "Copying zfs generated hostid."
-msgstr ""
+msgstr "Αντιγραφή hostid που δημιουργήθηκε από το zfs."

@@ -387,9 +387,9 @@
       <location filename="../src/libcalamares/modulesystem/RequirementsChecker.cpp" line="125"/>
       <source>(%n second(s))</source>
       <comment>@status</comment>
-      <translation>
-        <numerusform>(%n second(s))</numerusform>
-        <numerusform>(%n ছেকেণ্ড)</numerusform>
+      <translation type="unfinished">
+        <numerusform/>
+        <numerusform/>
       </translation>
     </message>
     <message>
@@ -686,9 +686,9 @@ The installer will quit and all changes will be lost.</source>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="138"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1039"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1098"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1151"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1100"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1153"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>বর্তমান:</translation>
@@ -706,138 +706,138 @@ The installer will quit and all changes will be lost.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1041"/>
       <source>&lt;strong&gt;Select a partition to shrink, then drag the bottom bar to resize&lt;/strong&gt;</source>
       <translation>&lt;strong&gt;আয়তন সলনি কৰিবলৈ বিভাজন বাচনি কৰক, তাৰ পিছত তলৰ "বাৰ্" ডালৰ সহায়ত আয়তন চেত্ কৰক&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1064"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1065"/>
       <source>%1 will be shrunk to %2MiB and a new %3MiB partition will be created for %4.</source>
       <comment>@info, %1 is partition name, %4 is product name</comment>
       <translation>%1 বিভজনক সৰু কৰি %2MiB কৰা হ'ব আৰু %4ৰ বাবে %3MiBৰ নতুন বিভজন বনোৱা হ'ব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1142"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1144"/>
       <source>&lt;strong&gt;Select a partition to install on&lt;/strong&gt;</source>
       <comment>@label</comment>
       <translation>&lt;strong&gt;ইনস্তল​ কৰিবলৈ এখন বিভাজন চয়ন কৰক&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1202"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1204"/>
       <source>An EFI system partition cannot be found anywhere on this system. Please go back and use manual partitioning to set up %1.</source>
       <comment>@info, %1 is product name</comment>
       <translation>এই চিছটেমত এখনো EFI চিছটেম বিভাজন কতো পোৱা নগ'ল। অনুগ্ৰহ কৰি উভতি যাওক আৰু মেনুৱেল বিভাজন প্ৰক্ৰিয়া দ্বাৰা %1 চেত্ আপ কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1211"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1213"/>
       <source>The EFI system partition at %1 will be used for starting %2.</source>
       <comment>@info, %1 is partition path, %2 is product name</comment>
       <translation>%1ত থকা EFI চিছটেম বিভাজনটো %2ক আৰম্ভ কৰাৰ বাবে ব্যৱহাৰ কৰা হ'ব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1220"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1222"/>
       <source>EFI system partition:</source>
       <comment>@label</comment>
       <translation>EFI চিছটেম বিভাজন:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1710"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1712"/>
       <source>This storage device does not seem to have an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>এইটো ষ্টোৰেজ ডিভাইচত কোনো অপাৰেটিং চিছটেম নাই যেন লাগে। আপুনি কি কৰিব বিচাৰে?&lt;br/&gt;আপুনি ষ্টোৰেজ ডিভাইচটোত কিবা সলনি কৰাৰ আগতে পুনৰীক্ষণ আৰু চয়ন নিশ্চিত কৰিব পাৰিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1715"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1742"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1762"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1784"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1717"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1744"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1764"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1786"/>
       <source>&lt;strong&gt;Erase disk&lt;/strong&gt;&lt;br/&gt;This will &lt;font color="red"&gt;delete&lt;/font&gt; all data currently present on the selected storage device.</source>
       <translation>&lt;strong&gt;ডিস্কত থকা গোটেই ডাটা আতৰাওক।&lt;/strong&gt;&lt;br/&gt; ইয়াৰ দ্ৱাৰা ষ্টোৰেজ ডিভাইছত বৰ্তমান থকা সকলো ডাটা &lt;font color="red"&gt;বিলোপ&lt;/font&gt; কৰা হ'ব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1719"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1738"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1758"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1780"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1721"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1740"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1760"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1782"/>
       <source>&lt;strong&gt;Install alongside&lt;/strong&gt;&lt;br/&gt;The installer will shrink a partition to make room for %1.</source>
       <translation>&lt;strong&gt;সমান্তৰালভাৱে ইনস্তল কৰক&lt;/strong&gt;&lt;br/&gt; ইনস্তলাৰটোৱে %1ক ইনস্তল​ কৰাৰ বাবে এখন বিভাজন সৰু কৰি দিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1723"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1746"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1766"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1788"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1725"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1748"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1768"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1790"/>
       <source>&lt;strong&gt;Replace a partition&lt;/strong&gt;&lt;br/&gt;Replaces a partition with %1.</source>
       <translation>&lt;strong&gt;বিভাজন সলনি কৰক&lt;/strong&gt; &lt;br/&gt;এখন বিভাজনক % ৰ্ সৈতে সলনি কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1732"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1734"/>
       <source>This storage device has %1 on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>এইটো ষ্টোৰেজ ডিভাইচত %1 আছে। &lt;br/&gt; আপুনি কি কৰিব বিচাৰে? ষ্টোৰেজ ডিভাইচটোত যিকোনো সলনি কৰাৰ আগত আপুনি পুনৰীক্ষণ আৰু সলনি কৰিব পাৰিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1753"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1755"/>
       <source>This storage device already has an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>এইটো ষ্টোৰেজ ডিভাইচত ইতিমধ্যে এটা অপাৰেটিং চিছটেম আছে। আপুনি কি কৰিব বিচাৰে? &lt;br/&gt;ষ্টোৰেজ ডিভাইচটোত যিকোনো সলনি কৰাৰ আগত আপুনি পুনৰীক্ষণ আৰু সলনি কৰিব পাৰিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1775"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1777"/>
       <source>This storage device has multiple operating systems on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>এইটো ষ্টোৰেজ ডিভাইচত একাধিক এটা অপাৰেটিং চিছটেম আছে। আপুনি কি কৰিব বিচাৰে? 1ষ্টোৰেজ ডিভাইচটোত যিকোনো সলনি কৰাৰ আগত আপুনি পুনৰীক্ষণ আৰু সলনি কৰিব পাৰিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1421"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1423"/>
       <source>This storage device already has an operating system on it, but the partition table &lt;strong&gt;%1&lt;/strong&gt; is different from the needed &lt;strong&gt;%2&lt;/strong&gt;.&lt;br/&gt;</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1445"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1447"/>
       <source>This storage device has one of its partitions &lt;strong&gt;mounted&lt;/strong&gt;.</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1450"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1452"/>
       <source>This storage device is a part of an &lt;strong&gt;inactive RAID&lt;/strong&gt; device.</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1568"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1570"/>
       <source>No swap</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1577"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1579"/>
       <source>Reuse swap</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1580"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1582"/>
       <source>Swap (no Hibernate)</source>
       <comment>@label</comment>
       <translation>স্ৱেপ (হাইবাৰনেট নোহোৱাকৈ)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1583"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1585"/>
       <source>Swap (with Hibernate)</source>
       <comment>@label</comment>
       <translation>স্ৱোআপ (হাইবাৰনেটৰ সৈতে)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1586"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1588"/>
       <source>Swap to file</source>
       <comment>@label</comment>
       <translation>ফাইললৈ স্ৱোআপ কৰক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1599"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1601"/>
       <source>&lt;strong&gt;Manual partitioning&lt;/strong&gt;&lt;br/&gt;You can create or resize partitions yourself.</source>
       <translation>&lt;strong&gt;মেনুৱেল  বিভাজন&lt;/strong&gt;&lt;br/&gt;আপুনি নিজে বিভাজন বনাব বা বিভজনৰ আয়তন সলনি কৰিব পাৰে।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1627"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1629"/>
       <source>Bootloader location:</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
@@ -967,31 +967,31 @@ The installer will quit and all changes will be lost.</source>
       <translation>%1ৰ ইনস্তলচেন সম্পুৰ্ণ হ'ল।</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="506"/>
-      <source>Keyboard model has been set to %1&lt;br/&gt;.</source>
+      <location filename="../src/modules/keyboard/Config.cpp" line="583"/>
+      <source>Keyboard model has been set to %1.</source>
       <comment>@label, %1 is keyboard model, as in Apple Magic Keyboard</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="513"/>
+      <location filename="../src/modules/keyboard/Config.cpp" line="591"/>
       <source>Keyboard layout has been set to %1/%2.</source>
       <comment>@label, %1 is layout, %2 is layout variant</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="379"/>
-      <source>Set timezone to %1/%2</source>
+      <location filename="../src/modules/locale/Config.cpp" line="381"/>
+      <source>Set timezone to %1.</source>
       <comment>@action</comment>
-      <translation>%1/%2 টাইমজ'ন চেত্ কৰক</translation>
+      <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="416"/>
+      <location filename="../src/modules/locale/Config.cpp" line="418"/>
       <source>The system language will be set to %1.</source>
       <comment>@info</comment>
       <translation>চিছটেমৰ ভাষা %1লৈ সলনি কৰা হ'ব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="423"/>
+      <location filename="../src/modules/locale/Config.cpp" line="425"/>
       <source>The numbers and dates locale will be set to %1.</source>
       <comment>@info</comment>
       <translation>সংখ্যা আৰু তাৰিখ স্থানীয় %1লৈ সলনি কৰা হ'ব।</translation>
@@ -1068,52 +1068,52 @@ The installer will quit and all changes will be lost.</source>
       <translation>ইনস্তল প্ৰক্ৰিয়া হ'লে কি হ'ব এয়া এটা অৱলোকন।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="236"/>
+      <location filename="../src/modules/users/Config.cpp" line="237"/>
       <source>Your username is too long.</source>
       <translation>আপোনাৰ ইউজাৰ নাম বহুত দীঘল।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="242"/>
+      <location filename="../src/modules/users/Config.cpp" line="243"/>
       <source>Your username must start with a lowercase letter or underscore.</source>
       <translation>আপোনাৰ ব্যৱহাৰকাৰী নাম lowercase বৰ্ণ বা underscoreৰে আৰম্ভ হ'ব লাগিব।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="246"/>
+      <location filename="../src/modules/users/Config.cpp" line="247"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
       <translation>কেৱল lowercase বৰ্ণ, সংখ্যা, underscore আৰু hyphenৰ হে মাত্ৰ অনুমতি আছে।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="252"/>
+      <location filename="../src/modules/users/Config.cpp" line="253"/>
       <source>'%1' is not allowed as username.</source>
       <translation>'%1'ক ব্যৱহাৰকাৰীৰ নাম হিচাপে ব্যৱহাৰ কৰা অবধ্য |</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="301"/>
+      <location filename="../src/modules/users/Config.cpp" line="302"/>
       <source>Your hostname is too short.</source>
       <translation>আপোনাৰ হ'স্ট্ নাম বহুত ছুটি।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="305"/>
+      <location filename="../src/modules/users/Config.cpp" line="306"/>
       <source>Your hostname is too long.</source>
       <translation>আপোনাৰ হ'স্ট্ নাম বহুত দীঘল।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="311"/>
+      <location filename="../src/modules/users/Config.cpp" line="312"/>
       <source>'%1' is not allowed as hostname.</source>
       <translation>'%1'ক আয়োজকৰ নাম হিচাপে ব্যৱহাৰ কৰা অবধ্য |</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="316"/>
+      <location filename="../src/modules/users/Config.cpp" line="317"/>
       <source>Only letters, numbers, underscore and hyphen are allowed.</source>
       <translation>কেৱল বৰ্ণ, সংখ্যা, underscore আৰু hyphenৰ হে মাত্ৰ অনুমতি আছে।</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="597"/>
+      <location filename="../src/modules/users/Config.cpp" line="598"/>
       <source>Your passwords do not match!</source>
       <translation>আপোনাৰ পাছৱৰ্ডকেইটাৰ মিল নাই!</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="611"/>
+      <location filename="../src/modules/users/Config.cpp" line="612"/>
       <source>OK!</source>
       <translation type="unfinished"/>
     </message>
@@ -1166,7 +1166,7 @@ The installer will quit and all changes will be lost.</source>
   <context>
     <name>ContextualProcessJob</name>
     <message>
-      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="115"/>
+      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="88"/>
       <source>Performing contextual processes' job…</source>
       <comment>@status</comment>
       <translation type="unfinished"/>
@@ -1386,25 +1386,25 @@ The installer will quit and all changes will be lost.</source>
     </message>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="45"/>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="137"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="143"/>
       <source>Creating user %1…</source>
       <comment>@status</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="120"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="126"/>
       <source>Preserving home directory…</source>
       <comment>@status</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="145"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="152"/>
       <source>Configuring user %1</source>
       <comment>@status</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="153"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="160"/>
       <source>Setting file permissions…</source>
       <comment>@status</comment>
       <translation type="unfinished"/>
@@ -1680,6 +1680,35 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/libcalamaresui/widgets/ErrorDialog.ui" line="56"/>
       <source>Would you like to paste the install log to the web?</source>
       <translation>আপুনি ৱেবত ইণ্স্টল ল'গ পেস্ট কৰিব বিচাৰে নেকি?</translation>
+    </message>
+  </context>
+  <context>
+    <name>FSArchiverRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="47"/>
+      <source>Missing tools</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="48"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="55"/>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="69"/>
+      <source>Invalid fsarchiver configuration</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="56"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="70"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation type="unfinished"/>
     </message>
   </context>
   <context>
@@ -2283,7 +2312,7 @@ The installer will quit and all changes will be lost.</source>
   <context>
     <name>LocaleTests</name>
     <message>
-      <location filename="../src/libcalamares/locale/Tests.cpp" line="266"/>
+      <location filename="../src/libcalamares/locale/Tests.cpp" line="272"/>
       <source>Quit</source>
       <translation type="unfinished"/>
     </message>
@@ -3252,174 +3281,179 @@ The installer will quit and all changes will be lost.</source>
       <translation>বিভাজনসমুহ</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="143"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="144"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="147"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="148"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk and install %1</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="151"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="152"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition with %1</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="156"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="157"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning</source>
       <comment>@label</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="178"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="179"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system on disk &lt;strong&gt;%2&lt;/strong&gt; (%3)</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="187"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="188"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk &lt;strong&gt;%2&lt;/strong&gt; (%3) and install %1</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="194"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="195"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition on disk &lt;strong&gt;%2&lt;/strong&gt; (%3) with %1</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="203"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="204"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning on disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="213"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="214"/>
       <source>Disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation>ডিস্ক্ &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="263"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="239"/>
+      <source>Create a swap file.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="268"/>
       <source>Unsafe partition actions are enabled.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="266"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="271"/>
       <source>Partitioning is configured to &lt;b&gt;always&lt;/b&gt; fail.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="269"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="274"/>
       <source>No partitions will be changed.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="309"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="314"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>বর্তমান:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="327"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="332"/>
       <source>After:</source>
       <comment>@label</comment>
       <translation>পিছত:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="550"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="555"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;To configure an EFI system partition, go back and select or create a suitable filesystem.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="556"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="561"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;The EFI system partition does not meet recommendations. It is recommended to go back and select or create a suitable filesystem.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="564"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="569"/>
       <source>The filesystem must be mounted on &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="565"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="570"/>
       <source>The filesystem must have type FAT32.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="566"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="571"/>
       <source>The filesystem must have flag &lt;strong&gt;%1&lt;/strong&gt; set.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="574"/>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="576"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="579"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="581"/>
       <source>The filesystem must be at least %1 MiB in size.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="578"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="583"/>
       <source>The minimum recommended size for the filesystem is %1 MiB.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="580"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="585"/>
       <source>You can continue without setting up an EFI system partition but your system may fail to start.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="582"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="587"/>
       <source>You can continue with this EFI system partition configuration but your system may fail to start.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="594"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="599"/>
       <source>No EFI system partition configured</source>
       <translation>কোনো EFI চিছটেম বিভাজন কনফিগাৰ কৰা হোৱা নাই</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="602"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="607"/>
       <source>EFI system partition configured incorrectly</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="622"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="627"/>
       <source>EFI system partition recommendation</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="641"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="646"/>
       <source>Option to use GPT on BIOS</source>
       <translation>GPTৰ BIOSত ব্যৱহাৰৰ বাবে বিকল্প</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="642"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="647"/>
       <source>A GPT partition table is the best option for all systems. This installer supports such a setup for BIOS systems too.&lt;br/&gt;&lt;br/&gt;To configure a GPT partition table on BIOS, (if not done so already) go back and set the partition table to GPT, next create a 8 MB unformatted partition with the &lt;strong&gt;%2&lt;/strong&gt; flag enabled.&lt;br/&gt;&lt;br/&gt;An unformatted 8 MB partition is necessary to start %1 on a BIOS system with GPT.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="664"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="669"/>
       <source>Boot partition not encrypted</source>
       <translation>বুত্ বিভাজন এনক্ৰিপ্ত্ নহয়</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="665"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="670"/>
       <source>A separate boot partition was set up together with an encrypted root partition, but the boot partition is not encrypted.&lt;br/&gt;&lt;br/&gt;There are security concerns with this kind of setup, because important system files are kept on an unencrypted partition.&lt;br/&gt;You may continue if you wish, but filesystem unlocking will happen later during system startup.&lt;br/&gt;To encrypt the boot partition, go back and recreate it, selecting &lt;strong&gt;Encrypt&lt;/strong&gt; in the partition creation window.</source>
       <translation>এনক্ৰিপ্তেড ৰুট বিভাজনৰ সৈতে এটা বেলেগ বুট বিভাজন চেত্ আপ কৰা হৈছিল, কিন্তু বুট বিভাজন এনক্ৰিপ্তেড কৰা হোৱা নাই। &lt;br/&gt;&lt;br/&gt;এইধৰণৰ চেত্ আপ সুৰক্ষিত নহয় কাৰণ গুৰুত্ব্পুৰ্ণ চিছটেম ফাইল আন্এনক্ৰিপ্তেড বিভাজনত ৰখা হয়। &lt;br/&gt;আপুনি বিচাৰিলে চলাই থাকিব পাৰে কিন্তু পিছ্ত চিছটেম আৰম্ভৰ সময়ত ফাইল চিছটেম খোলা যাব। &lt;br/&gt;বুট বিভাজন এনক্ৰিপ্ত্ কৰিবলৈ উভতি যাওক আৰু বিভাজন বনোৱা windowত &lt;strong&gt;Encrypt&lt;/strong&gt; বাচনি কৰি আকৌ বনাওক।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="757"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="762"/>
       <source>has at least one disk device available.</source>
       <translation>অতি কমেও এখন ডিস্ক্ উপলব্ধ আছে।</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="758"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="763"/>
       <source>There are no partitions to install on.</source>
       <translation>ইনস্তল কৰিবলৈ কোনো বিভাজন নাই।</translation>
     </message>
@@ -3571,25 +3605,25 @@ Output:
       <translation>%1 (%2)</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="31"/>
       <source>unknown</source>
       <comment>@partition info</comment>
       <translation>অজ্ঞাত</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
       <source>extended</source>
       <comment>@partition info</comment>
       <translation>প্ৰসাৰিত</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
       <source>unformatted</source>
       <comment>@partition info</comment>
       <translation>ফৰ্মেট কৰা হোৱা নাই</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="39"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
       <source>swap</source>
       <comment>@partition info</comment>
       <translation>স্ৱেপ</translation>
@@ -4198,6 +4232,40 @@ Output:
     </message>
   </context>
   <context>
+    <name>TarballRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="45"/>
+      <source>Invalid tarball configuration</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="84"/>
+      <source>Tarball extract file %1</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
     <name>TrackingInstallJob</name>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="100"/>
@@ -4337,13 +4405,55 @@ Output:
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="123"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="135"/>
       <source>No target system available.</source>
       <translation type="unfinished"/>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="131"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="143"/>
       <source>No rootMountPoint is set.</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
+    <name>UnpackFSCJob</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnpackFSCJob.cpp" line="61"/>
+      <source>Unpack filesystems</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
+    <name>UnsquashRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="45"/>
+      <source>Invalid unsquash configuration</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="98"/>
+      <source>Unsquash file %1</source>
       <translation type="unfinished"/>
     </message>
   </context>

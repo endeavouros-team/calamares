@@ -379,9 +379,9 @@
       <source>Waiting for %n module(s)…</source>
       <comment>@status</comment>
       <translation>
-        <numerusform>En attente de %n module(s)…</numerusform>
-        <numerusform>En attente de %n module(s)…</numerusform>
-        <numerusform>En attente de %n module(s)…</numerusform>
+        <numerusform>En attente de %n module ...</numerusform>
+        <numerusform>En attente de %n modules ...</numerusform>
+        <numerusform>En attente de %n modules ...</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -389,9 +389,9 @@
       <source>(%n second(s))</source>
       <comment>@status</comment>
       <translation>
-        <numerusform>(%n seconde(s))</numerusform>
-        <numerusform>(%n seconde(s))</numerusform>
-        <numerusform>(%n seconde(s))</numerusform>
+        <numerusform>(%n seconde)</numerusform>
+        <numerusform>(plusieurs secondes)</numerusform>
+        <numerusform>(%n secondes)</numerusform>
       </translation>
     </message>
     <message>
@@ -658,13 +658,13 @@ L'installateur se fermera et les changements seront perdus.</translation>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="41"/>
       <source>Set filesystem label &lt;strong&gt;%1&lt;/strong&gt; to partition &lt;strong&gt;%2&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Mettre le nom du système de fichier &lt;strong&gt;%1&lt;/strong&gt; à la partition &lt;strong&gt;%2&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="50"/>
       <source>Setting filesystem label &lt;strong&gt;%1&lt;/strong&gt; to partition &lt;strong&gt;%2&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Mettre le nom du système de fichier &lt;strong&gt;%1&lt;/strong&gt; à la partition &lt;strong&gt;%2&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="72"/>
@@ -692,9 +692,9 @@ L'installateur se fermera et les changements seront perdus.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="138"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1039"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1098"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1151"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1100"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1153"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>Actuel :</translation>
@@ -712,138 +712,138 @@ L'installateur se fermera et les changements seront perdus.</translation>
       <translation>Réutiliser %1 comme partition home pour %2</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1041"/>
       <source>&lt;strong&gt;Select a partition to shrink, then drag the bottom bar to resize&lt;/strong&gt;</source>
       <translation>&lt;strong&gt;Sélectionner une partition à réduire, puis faites glisser la barre du bas pour redimensionner&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1064"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1065"/>
       <source>%1 will be shrunk to %2MiB and a new %3MiB partition will be created for %4.</source>
       <comment>@info, %1 is partition name, %4 is product name</comment>
       <translation>%1 va être réduit à %2 Mio et une nouvelle partition de %3 Mio va être créée pour %4.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1142"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1144"/>
       <source>&lt;strong&gt;Select a partition to install on&lt;/strong&gt;</source>
       <comment>@label</comment>
       <translation>&lt;strong&gt;Sélectionner une partition pour l'installation&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1202"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1204"/>
       <source>An EFI system partition cannot be found anywhere on this system. Please go back and use manual partitioning to set up %1.</source>
       <comment>@info, %1 is product name</comment>
       <translation>Une partition système EFI n'a pas pu être trouvée sur ce système. Veuillez retourner à l'étape précédente et sélectionner le partitionnement manuel pour configurer %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1211"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1213"/>
       <source>The EFI system partition at %1 will be used for starting %2.</source>
       <comment>@info, %1 is partition path, %2 is product name</comment>
       <translation>La partition système EFI sur %1 va être utilisée pour démarrer %2.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1220"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1222"/>
       <source>EFI system partition:</source>
       <comment>@label</comment>
       <translation>Partition système EFI :</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1710"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1712"/>
       <source>This storage device does not seem to have an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Ce périphérique de stockage ne semble pas contenir de système d'exploitation. Que souhaitez-vous faire ?&lt;br/&gt;Vous pourrez relire et confirmer vos choix avant que les modifications soient effectuées sur le périphérique de stockage.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1715"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1742"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1762"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1784"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1717"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1744"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1764"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1786"/>
       <source>&lt;strong&gt;Erase disk&lt;/strong&gt;&lt;br/&gt;This will &lt;font color="red"&gt;delete&lt;/font&gt; all data currently present on the selected storage device.</source>
       <translation>&lt;strong&gt;Effacer le disque&lt;/strong&gt;&lt;br/&gt;Ceci va &lt;font color="red"&gt;effacer&lt;/font&gt; toutes les données actuellement présentes sur le périphérique de stockage sélectionné.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1719"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1738"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1758"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1780"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1721"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1740"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1760"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1782"/>
       <source>&lt;strong&gt;Install alongside&lt;/strong&gt;&lt;br/&gt;The installer will shrink a partition to make room for %1.</source>
       <translation>&lt;strong&gt;Installer à côté&lt;/strong&gt;&lt;br/&gt;L'installateur va réduire une partition pour faire de la place pour %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1723"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1746"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1766"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1788"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1725"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1748"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1768"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1790"/>
       <source>&lt;strong&gt;Replace a partition&lt;/strong&gt;&lt;br/&gt;Replaces a partition with %1.</source>
       <translation>&lt;strong&gt;Remplacer une partition&lt;/strong&gt;&lt;br&gt;Remplace une partition par %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1732"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1734"/>
       <source>This storage device has %1 on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Ce périphérique de stockage contient %1. Que souhaitez-vous faire ?&lt;br/&gt;Vous pourrez relire et confirmer vos choix avant que les modifications soient effectuées sur le périphérique de stockage.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1753"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1755"/>
       <source>This storage device already has an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Ce périphérique de stockage contient déjà un système d'exploitation. Que souhaitez-vous faire ?&lt;br/&gt;Vous pourrez relire et confirmer vos choix avant que les modifications soient effectuées sur le périphérique de stockage.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1775"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1777"/>
       <source>This storage device has multiple operating systems on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Ce périphérique de stockage contient déjà plusieurs systèmes d'exploitation. Que souhaitez-vous faire ?&lt;br/&gt;Vous pourrez relire et confirmer vos choix avant que les modifications soient effectuées sur le périphérique de stockage.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1421"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1423"/>
       <source>This storage device already has an operating system on it, but the partition table &lt;strong&gt;%1&lt;/strong&gt; is different from the needed &lt;strong&gt;%2&lt;/strong&gt;.&lt;br/&gt;</source>
       <translation>Le périphérique de stockage contient déjà un système d'exploitation, mais la table de partition &lt;strong&gt;%1&lt;/strong&gt; est différente de celle nécessaire &lt;strong&gt;%2&lt;/strong&gt;.&lt;br/&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1445"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1447"/>
       <source>This storage device has one of its partitions &lt;strong&gt;mounted&lt;/strong&gt;.</source>
       <comment>@info</comment>
       <translation>Une des partitions de ce périphérique de stockage est &lt;strong&gt;montée&lt;/strong&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1450"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1452"/>
       <source>This storage device is a part of an &lt;strong&gt;inactive RAID&lt;/strong&gt; device.</source>
       <comment>@info</comment>
       <translation>Ce périphérique de stockage fait partie d'une grappe &lt;strong&gt;RAID inactive&lt;/strong&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1568"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1570"/>
       <source>No swap</source>
       <comment>@label</comment>
       <translation>Aucun Swap</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1577"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1579"/>
       <source>Reuse swap</source>
       <comment>@label</comment>
       <translation>Réutiliser le Swap</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1580"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1582"/>
       <source>Swap (no Hibernate)</source>
       <comment>@label</comment>
       <translation>Swap (sans hibernation)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1583"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1585"/>
       <source>Swap (with Hibernate)</source>
       <comment>@label</comment>
       <translation>Swap (avec hibernation)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1586"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1588"/>
       <source>Swap to file</source>
       <comment>@label</comment>
       <translation>Swap dans un fichier</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1599"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1601"/>
       <source>&lt;strong&gt;Manual partitioning&lt;/strong&gt;&lt;br/&gt;You can create or resize partitions yourself.</source>
       <translation>&lt;strong&gt;Partitionnement manuel&lt;/strong&gt;&lt;br/&gt;Vous pouvez créer ou redimensionner vous-même des partitions.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1627"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1629"/>
       <source>Bootloader location:</source>
       <comment>@label</comment>
       <translation>Emplacement du chargeur de démarrage :</translation>
@@ -973,31 +973,31 @@ L'installateur se fermera et les changements seront perdus.</translation>
       <translation>L'installation de %1 est terminée.</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="506"/>
-      <source>Keyboard model has been set to %1&lt;br/&gt;.</source>
+      <location filename="../src/modules/keyboard/Config.cpp" line="583"/>
+      <source>Keyboard model has been set to %1.</source>
       <comment>@label, %1 is keyboard model, as in Apple Magic Keyboard</comment>
-      <translation>Le modèle de clavier a été défini sur %1&lt;br/&gt;.</translation>
+      <translation>Le modèle de clavier a été défini sur %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="513"/>
+      <location filename="../src/modules/keyboard/Config.cpp" line="591"/>
       <source>Keyboard layout has been set to %1/%2.</source>
       <comment>@label, %1 is layout, %2 is layout variant</comment>
       <translation>La disposition du clavier a été définie sur %1/%2.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="379"/>
-      <source>Set timezone to %1/%2</source>
+      <location filename="../src/modules/locale/Config.cpp" line="381"/>
+      <source>Set timezone to %1.</source>
       <comment>@action</comment>
-      <translation>Configurer le fuseau-horaire à %1/%2</translation>
+      <translation>Définition du fuseau horaire sur %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="416"/>
+      <location filename="../src/modules/locale/Config.cpp" line="418"/>
       <source>The system language will be set to %1.</source>
       <comment>@info</comment>
       <translation>La langue du système sera réglée sur %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="423"/>
+      <location filename="../src/modules/locale/Config.cpp" line="425"/>
       <source>The numbers and dates locale will be set to %1.</source>
       <comment>@info</comment>
       <translation>Les nombres et les dates seront réglés sur %1.</translation>
@@ -1074,52 +1074,52 @@ L'installateur se fermera et les changements seront perdus.</translation>
       <translation>Ceci est un aperçu de ce qui va arriver lorsque vous commencerez l'installation.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="236"/>
+      <location filename="../src/modules/users/Config.cpp" line="237"/>
       <source>Your username is too long.</source>
       <translation>Votre nom d'utilisateur est trop long.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="242"/>
+      <location filename="../src/modules/users/Config.cpp" line="243"/>
       <source>Your username must start with a lowercase letter or underscore.</source>
       <translation>Votre nom d'utilisateur doit commencer avec une lettre minuscule ou un underscore.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="246"/>
+      <location filename="../src/modules/users/Config.cpp" line="247"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
       <translation>Seuls les minuscules, nombres, underscores et tirets sont autorisés.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="252"/>
+      <location filename="../src/modules/users/Config.cpp" line="253"/>
       <source>'%1' is not allowed as username.</source>
       <translation>'%1' n'est pas autorisé comme nom d'utilisateur.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="301"/>
+      <location filename="../src/modules/users/Config.cpp" line="302"/>
       <source>Your hostname is too short.</source>
       <translation>Le nom d'hôte est trop petit.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="305"/>
+      <location filename="../src/modules/users/Config.cpp" line="306"/>
       <source>Your hostname is too long.</source>
       <translation>Le nom d'hôte est trop long.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="311"/>
+      <location filename="../src/modules/users/Config.cpp" line="312"/>
       <source>'%1' is not allowed as hostname.</source>
       <translation>'%1' n'est pas autorisé comme nom d'hôte.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="316"/>
+      <location filename="../src/modules/users/Config.cpp" line="317"/>
       <source>Only letters, numbers, underscore and hyphen are allowed.</source>
       <translation>Seuls les lettres, nombres, underscores et tirets sont autorisés.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="597"/>
+      <location filename="../src/modules/users/Config.cpp" line="598"/>
       <source>Your passwords do not match!</source>
       <translation>Vos mots de passe ne correspondent pas !</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="611"/>
+      <location filename="../src/modules/users/Config.cpp" line="612"/>
       <source>OK!</source>
       <translation>OK!</translation>
     </message>
@@ -1172,7 +1172,7 @@ L'installateur se fermera et les changements seront perdus.</translation>
   <context>
     <name>ContextualProcessJob</name>
     <message>
-      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="115"/>
+      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="88"/>
       <source>Performing contextual processes' job…</source>
       <comment>@status</comment>
       <translation>Lancement des processus contextuels…</translation>
@@ -1392,25 +1392,25 @@ L'installateur se fermera et les changements seront perdus.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="45"/>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="137"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="143"/>
       <source>Creating user %1…</source>
       <comment>@status</comment>
       <translation>Création de l'utilisateur %1...</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="120"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="126"/>
       <source>Preserving home directory…</source>
       <comment>@status</comment>
       <translation>Conserver le dossier home...</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="145"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="152"/>
       <source>Configuring user %1</source>
       <comment>@status</comment>
       <translation>Configuration de l'utilisateur %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="153"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="160"/>
       <source>Setting file permissions…</source>
       <comment>@status</comment>
       <translation>Définition des autorisations de fichiers...</translation>
@@ -1686,6 +1686,35 @@ L'installateur se fermera et les changements seront perdus.</translation>
       <location filename="../src/libcalamaresui/widgets/ErrorDialog.ui" line="56"/>
       <source>Would you like to paste the install log to the web?</source>
       <translation>Voulez-vous copier le journal d'installation sur le Web ?</translation>
+    </message>
+  </context>
+  <context>
+    <name>FSArchiverRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="47"/>
+      <source>Missing tools</source>
+      <translation>Outils manquants</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="48"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>L’outil &lt;i&gt;%1&lt;/i&gt; n’est pas installé sur le système.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="55"/>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="69"/>
+      <source>Invalid fsarchiver configuration</source>
+      <translation>Configuration de fsarchiver invalide</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="56"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>L'archive source &lt;i&gt;%1&lt;/i&gt; n'existe pas.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="70"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>Aucune destination n’a pu être trouvée pour &lt;i&gt;%1&lt;/i&gt;.</translation>
     </message>
   </context>
   <context>
@@ -2289,7 +2318,7 @@ L'installateur se fermera et les changements seront perdus.</translation>
   <context>
     <name>LocaleTests</name>
     <message>
-      <location filename="../src/libcalamares/locale/Tests.cpp" line="266"/>
+      <location filename="../src/libcalamares/locale/Tests.cpp" line="272"/>
       <source>Quit</source>
       <translation>Quiter</translation>
     </message>
@@ -3267,174 +3296,179 @@ L'installateur se fermera et les changements seront perdus.</translation>
       <translation>Partitions</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="143"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="144"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system</source>
       <comment>@label</comment>
       <translation>Installer %1 &lt;strong&gt;à côté&lt;/strong&gt;d'un autre système d'exploitation</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="147"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="148"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk and install %1</source>
       <comment>@label</comment>
       <translation>&lt;strong&gt;Effacer&lt;/strong&gt; le disque et installer %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="151"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="152"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition with %1</source>
       <comment>@label</comment>
       <translation>&lt;strong&gt;Remplacer&lt;/strong&gt; une partition avec %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="156"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="157"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning</source>
       <comment>@label</comment>
       <translation>Partitionnement &lt;strong&gt;manuel&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="178"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="179"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system on disk &lt;strong&gt;%2&lt;/strong&gt; (%3)</source>
       <comment>@info</comment>
       <translation>Installer %1 &lt;strong&gt;à côté&lt;/strong&gt; d'un autre système d'exploitation sur le disque &lt;strong&gt;%2&lt;/strong&gt; (%3)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="187"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="188"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk &lt;strong&gt;%2&lt;/strong&gt; (%3) and install %1</source>
       <comment>@info</comment>
       <translation>&lt;strong&gt;Effacer&lt;/strong&gt; le disque &lt;strong&gt;%2&lt;/strong&gt; (%3) et installer %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="194"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="195"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition on disk &lt;strong&gt;%2&lt;/strong&gt; (%3) with %1</source>
       <comment>@info</comment>
       <translation>&lt;strong&gt;Remplacer&lt;/strong&gt; une partition sur le disque &lt;strong&gt;%2&lt;/strong&gt; (%3) avec %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="203"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="204"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning on disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation>Partitionnement &lt;strong&gt;manuel&lt;/strong&gt; sur le disque &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="213"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="214"/>
       <source>Disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation>Disque &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="263"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="239"/>
+      <source>Create a swap file.</source>
+      <translation>Créer un fichier d'échange.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="268"/>
       <source>Unsafe partition actions are enabled.</source>
       <translation>Les actions de partition non sécurisées sont activées.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="266"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="271"/>
       <source>Partitioning is configured to &lt;b&gt;always&lt;/b&gt; fail.</source>
       <translation>Le partitionnement est configuré pour &lt;b&gt;toujours&lt;/b&gt; échouer.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="269"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="274"/>
       <source>No partitions will be changed.</source>
       <translation>Aucune partition ne sera modifiée.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="309"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="314"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>Actuel :</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="327"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="332"/>
       <source>After:</source>
       <comment>@label</comment>
       <translation>Après :</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="550"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="555"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;To configure an EFI system partition, go back and select or create a suitable filesystem.</source>
       <translation>Une partition système EFI est nécessaire pour démarrer %1.&lt;br/&gt;&lt;br/&gt;Pour configurer une partition système EFI, revenir en arrière et sélectionner ou créer un système de fichiers approprié.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="556"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="561"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;The EFI system partition does not meet recommendations. It is recommended to go back and select or create a suitable filesystem.</source>
       <translation>Une partition système EFI est nécessaire pour démarrer %1. &lt;br/&gt;&lt;br/&gt;La partition système EFI ne répond pas aux recommandations. Il est recommandé de revenir en arrière et de sélectionner ou de créer un système de fichiers approprié.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="564"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="569"/>
       <source>The filesystem must be mounted on &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <translation>Le système de fichiers doit être monté sur &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="565"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="570"/>
       <source>The filesystem must have type FAT32.</source>
       <translation>Le système de fichiers doit avoir le type FAT32.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="566"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="571"/>
       <source>The filesystem must have flag &lt;strong&gt;%1&lt;/strong&gt; set.</source>
       <translation>Le système de fichiers doit avoir l'indicateur &lt;strong&gt;%1&lt;/strong&gt; défini.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="574"/>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="576"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="579"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="581"/>
       <source>The filesystem must be at least %1 MiB in size.</source>
       <translation>Le système de fichiers doit avoir une taille d'au moins %1 Mio.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="578"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="583"/>
       <source>The minimum recommended size for the filesystem is %1 MiB.</source>
       <translation>La taille minimale recommandée pour le système de fichiers est %1 Mio.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="580"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="585"/>
       <source>You can continue without setting up an EFI system partition but your system may fail to start.</source>
       <translation>Vous pouvez continuer sans configurer de partition système EFI, mais votre système risque de ne pas démarrer.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="582"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="587"/>
       <source>You can continue with this EFI system partition configuration but your system may fail to start.</source>
       <translation>Vous pouvez continuer avec cette configuration de partition système EFI, mais votre système risque de ne pas démarrer.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="594"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="599"/>
       <source>No EFI system partition configured</source>
       <translation>Aucune partition système EFI configurée</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="602"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="607"/>
       <source>EFI system partition configured incorrectly</source>
       <translation>Partition système EFI mal configurée</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="622"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="627"/>
       <source>EFI system partition recommendation</source>
       <translation>Recommandation de partition du système EFI</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="641"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="646"/>
       <source>Option to use GPT on BIOS</source>
       <translation>Option pour utiliser GPT sur le BIOS</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="642"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="647"/>
       <source>A GPT partition table is the best option for all systems. This installer supports such a setup for BIOS systems too.&lt;br/&gt;&lt;br/&gt;To configure a GPT partition table on BIOS, (if not done so already) go back and set the partition table to GPT, next create a 8 MB unformatted partition with the &lt;strong&gt;%2&lt;/strong&gt; flag enabled.&lt;br/&gt;&lt;br/&gt;An unformatted 8 MB partition is necessary to start %1 on a BIOS system with GPT.</source>
       <translation>Une table de partition GPT est la meilleure option pour tous les systèmes. Ce programme d'installation prend également en charge une telle configuration pour les systèmes BIOS. &lt;br/&gt;&lt;br/&gt;Pour configurer une table de partition GPT sur le BIOS, (si ce n'est déjà fait), revenir en arrière et définir la table de partition sur GPT, puis créer une partition non formatée de 8 Mo avec l'indicateur &lt;strong&gt;%2&lt;/strong&gt; activé.&lt;br/&gt;&lt;br/&gt;Une partition non formatée de 8 Mo est nécessaire pour démarrer %1 sur un système BIOS avec GPT.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="664"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="669"/>
       <source>Boot partition not encrypted</source>
       <translation>Partition d'amorçage non chiffrée.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="665"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="670"/>
       <source>A separate boot partition was set up together with an encrypted root partition, but the boot partition is not encrypted.&lt;br/&gt;&lt;br/&gt;There are security concerns with this kind of setup, because important system files are kept on an unencrypted partition.&lt;br/&gt;You may continue if you wish, but filesystem unlocking will happen later during system startup.&lt;br/&gt;To encrypt the boot partition, go back and recreate it, selecting &lt;strong&gt;Encrypt&lt;/strong&gt; in the partition creation window.</source>
       <translation>Une partition d'amorçage distincte a été configurée avec une partition racine chiffrée, mais la partition d'amorçage n'est pas chiffrée. &lt;br/&gt; &lt;br/&gt; Il y a des problèmes de sécurité avec ce type d'installation, car des fichiers système importants sont conservés sur une partition non chiffrée &lt;br/&gt; Vous pouvez continuer si vous le souhaitez, mais le déverrouillage du système de fichiers se produira plus tard au démarrage du système. &lt;br/&gt; Pour chiffrer la partition d'amorçage, revenez en arrière et recréez-la, en sélectionnant &lt;strong&gt; Chiffrer &lt;/ strong&gt; dans la partition Fenêtre de création.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="757"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="762"/>
       <source>has at least one disk device available.</source>
       <translation>a au moins un disque disponible.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="758"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="763"/>
       <source>There are no partitions to install on.</source>
       <translation>Il n'y a pas de partition pour l'installation</translation>
     </message>
@@ -3587,25 +3621,25 @@ Sortie
       <translation>%1 (%2)</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="31"/>
       <source>unknown</source>
       <comment>@partition info</comment>
       <translation>inconnu</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
       <source>extended</source>
       <comment>@partition info</comment>
       <translation>étendu</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
       <source>unformatted</source>
       <comment>@partition info</comment>
       <translation>non formaté</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="39"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
       <source>swap</source>
       <comment>@partition info</comment>
       <translation>swap</translation>
@@ -3993,19 +4027,19 @@ Sortie
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="80"/>
       <source>Set flags on partition &lt;strong&gt;%1&lt;/strong&gt; to &lt;strong&gt;%2&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Définir drapeaux sur partition &lt;strong&gt;%1&lt;/strong&gt; comme &lt;strong&gt;%2&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="88"/>
       <source>Set flags on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition to &lt;strong&gt;%3&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Définir les indicateurs sur la partition &lt;strong&gt;%2&lt;/strong&gt; de %1 MiB à &lt;strong&gt;%3&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="94"/>
       <source>Set flags on new partition to &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Définir les indicateurs sur la nouvelle partition à &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="105"/>
@@ -4216,6 +4250,40 @@ Sortie
     </message>
   </context>
   <context>
+    <name>TarballRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="45"/>
+      <source>Invalid tarball configuration</source>
+      <translation>Configuration Tarball invalide</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>L'archive source &lt;i&gt;%1&lt;/i&gt; n'existe pas.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation>Outils manquants</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>L’outil &lt;i&gt;%1&lt;/i&gt; n’est pas installé sur le système.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>Aucune destination n’a pu être trouvée pour &lt;i&gt;%1&lt;/i&gt;.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="84"/>
+      <source>Tarball extract file %1</source>
+      <translation>Extraire le fichier %1 de l'archive tarball</translation>
+    </message>
+  </context>
+  <context>
     <name>TrackingInstallJob</name>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="100"/>
@@ -4355,14 +4423,56 @@ Sortie
       <translation>Démontage des systèmes de fichiers…</translation>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="123"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="135"/>
       <source>No target system available.</source>
       <translation>Aucun système cible disponible.</translation>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="131"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="143"/>
       <source>No rootMountPoint is set.</source>
       <translation>Aucun point de montage racine n'est défini.</translation>
+    </message>
+  </context>
+  <context>
+    <name>UnpackFSCJob</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnpackFSCJob.cpp" line="61"/>
+      <source>Unpack filesystems</source>
+      <translation>Décompresser les systèmes de fichiers</translation>
+    </message>
+  </context>
+  <context>
+    <name>UnsquashRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="45"/>
+      <source>Invalid unsquash configuration</source>
+      <translation>Configuration Unsquash invalide</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>L'archive source &lt;i&gt;%1&lt;/i&gt; n'existe pas.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation>Outils manquants</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>L’outil &lt;i&gt;%1&lt;/i&gt; n’est pas installé sur le système.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>Aucune destination n’a pu être trouvée pour &lt;i&gt;%1&lt;/i&gt;.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="98"/>
+      <source>Unsquash file %1</source>
+      <translation>Fichier Unsquash %1</translation>
     </message>
   </context>
   <context>
@@ -4964,7 +5074,31 @@ ls -l /home
  * AMD CPU systems
 
 The vertical scrollbar is adjustable, current width set to 10.</source>
-      <translation type="unfinished"/>
+      <translation>### %1
+Ceci est un exemple de fichier QML, montrant des options rn Markdown avec du contenu Flickable.
+
+QML avec RichText peut utiliser des balises HTML, avec Markdown il utilise la syntaxe simple Markdown, le contenu Flickable est utile pour les écrans tactiles.
+
+**Ceci est du texte en gras**
+
+*Ceci est du texte en italique*
+
+_Ceci est du texte souligné_
+
+&gt;citation
+
+~~Ceci est barré~~
+
+Exemple de code :
+```
+ls -l /home
+```
+
+**Listes :**
+* Systèmes CPU Intel
+* Systèmes CPU AMD
+
+La barre de défilement verticale est réglable, la largeur actuelle est réglée sur 10.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/release_notes.qml" line="80"/>

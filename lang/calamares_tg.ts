@@ -11,13 +11,13 @@
     <message>
       <location filename="../src/libcalamares/CalamaresAbout.cpp" line="20"/>
       <source>Thanks to &lt;a href="https://calamares.io/team/"&gt;the Calamares team&lt;/a&gt; and the &lt;a href="https://app.transifex.com/calamares/calamares/"&gt;Calamares translators team&lt;/a&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>Ташаккури зиёд ба &lt;a href="https://calamares.io/team/"&gt;дастаи «Calamares»&lt;/a&gt; ва &lt;a href="https://app.transifex.com/calamares/calamares/"&gt;дастаи тарҷумонони «Calamares»&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/CalamaresAbout.cpp" line="34"/>
       <source>Copyright %1-%2 %3 &amp;lt;%4&amp;gt;&lt;br/&gt;</source>
       <extracomment>Copyright year-year Name &lt;email-address&gt;</extracomment>
-      <translation type="unfinished"/>
+      <translation>Ҳуқуқи муаллифи %1-%2 %3 &amp;lt;%4&amp;gt;&lt;br/&gt;</translation>
     </message>
   </context>
   <context>
@@ -26,13 +26,13 @@
       <location filename="../src/modules/users/ActiveDirectoryJob.cpp" line="39"/>
       <source>Enroll system in Active Directory</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Пайваст кардани низом ба феҳристи фаъол</translation>
     </message>
     <message>
       <location filename="../src/modules/users/ActiveDirectoryJob.cpp" line="45"/>
       <source>Enrolling system in Active Directory…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Низом ба феҳристи фаъол пайваст шуда истодааст…</translation>
     </message>
   </context>
   <context>
@@ -41,7 +41,7 @@
       <location filename="../src/modules/partition/jobs/AutoMountManagementJob.cpp" line="22"/>
       <source>Managing auto-mount settings…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Идора кардани танзимоти васлсозии худкор…</translation>
     </message>
   </context>
   <context>
@@ -138,12 +138,12 @@
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="102"/>
       <source>Crashes Calamares, so that Dr. Konqi can look at it.</source>
-      <translation type="unfinished"/>
+      <translation>Дар низоми «Calamares» ҳолати вайрониро месозад, то ки абзори «Dr. Konqi» тавонад онро аз ташхиси техникӣ гузаронад.</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="115"/>
       <source>Reloads the stylesheet from the branding directory.</source>
-      <translation type="unfinished"/>
+      <translation>Варақаҳои услубҳоро аз феҳристи тамғаҳои молӣ аз нав бор мекунад.</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="118"/>
@@ -153,7 +153,7 @@
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="128"/>
       <source>Displays the tree of widget names in the log (for stylesheet debugging).</source>
-      <translation type="unfinished"/>
+      <translation>Дарахти номҳои виҷетҳоро дар сабти рӯйдодҳо нишон медиҳад (барои ислоҳи нуқсонҳо дар варақаҳои услубҳо).</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="131"/>
@@ -163,18 +163,18 @@
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="141"/>
       <source>Uploads the session log to the configured pastebin.</source>
-      <translation type="unfinished"/>
+      <translation>Сабти рӯйдодҳои ҷаласаро ба «pastebin»-и танзимшуда бор мекунад.</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.ui" line="144"/>
       <source>Send Session Log</source>
-      <translation type="unfinished"/>
+      <translation>Фиристодани сабти рӯйдодҳои ҷаласа</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.cpp" line="166"/>
       <source>Debug Information</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Иттилооти ислоҳи нуқсонҳо</translation>
     </message>
   </context>
   <context>
@@ -183,19 +183,19 @@
       <location filename="../src/libcalamaresui/viewpages/ExecutionViewStep.cpp" line="77"/>
       <source>%p%</source>
       <comment>Progress percentage indicator: %p is where the number 0..100 is placed</comment>
-      <translation type="unfinished"/>
+      <translation>%p%</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/viewpages/ExecutionViewStep.cpp" line="117"/>
       <source>Set Up</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардан</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/viewpages/ExecutionViewStep.cpp" line="117"/>
       <source>Install</source>
       <comment>@label</comment>
-      <translation>Насбкунӣ</translation>
+      <translation>Насб</translation>
     </message>
   </context>
   <context>
@@ -233,13 +233,13 @@
       <location filename="../src/libcalamares/ProcessJob.cpp" line="49"/>
       <source>Running command %1 in target system…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли иҷрои фармони «%1» дар низоми интихобшуда…</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/ProcessJob.cpp" line="53"/>
       <source>Running command %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли иҷрои фармони «%1»…</translation>
     </message>
   </context>
   <context>
@@ -257,7 +257,7 @@
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="235"/>
       <source>Working directory %1 for python job %2 is not readable.</source>
-      <translation>Феҳристи кории %1 барои вазифаи "python"-и %2 хонда намешавад.</translation>
+      <translation>Феҳристи кории %1 барои вазифаи «python»-и %2 хонда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="243"/>
@@ -272,38 +272,38 @@
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="244"/>
       <source>Main script file %1 for python job %2 is not readable.</source>
-      <translation>Файли нақши асосии %1 барои вазифаи "python"-и %2 хонда намешавад.</translation>
+      <translation>Файли нақши асосии %1 барои вазифаи «python»-и %2 хонда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="305"/>
       <source>Bad internal script</source>
-      <translation type="unfinished"/>
+      <translation>Нақши дохилӣ нодуруст аст</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="306"/>
       <source>Internal script for python job %1 raised an exception.</source>
-      <translation type="unfinished"/>
+      <translation>Нақши дохилӣ барои вазифаи «Python»-и %1 истисноро ба вуҷуд овард.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="320"/>
       <source>Main script file %1 for python job %2 could not be loaded because it raised an  exception.</source>
-      <translation type="unfinished"/>
+      <translation>Файли нақши асосии «%1» барои вазифаи «Python»-и %2 бор карда нашуд, зеро ки он истисноро ба вуҷуд овард.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="346"/>
       <source>Main script file %1 for python job %2 raised an exception.</source>
-      <translation type="unfinished"/>
+      <translation>Файли нақши асосии «%1» барои вазифаи «Python»-и %2 истисноро ба вуҷуд овард.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="363"/>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="371"/>
       <source>Main script file %1 for python job %2 returned invalid results.</source>
-      <translation type="unfinished"/>
+      <translation>Файли нақши асосии «%1» барои вазифаи «Python»-и %2 натиҷаи нодурустро бароварда нишон дод.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/python/PythonJob.cpp" line="379"/>
       <source>Main script file %1 for python job %2 does not contain a run() function.</source>
-      <translation type="unfinished"/>
+      <translation>Файли нақши асосии «%1» барои вазифаи «Python»-и %2 вазифаи «run()»-ро дар бар намегирад.</translation>
     </message>
   </context>
   <context>
@@ -312,7 +312,7 @@
       <location filename="../src/libcalamares/PythonJob.cpp" line="238"/>
       <source>Running %1 operation…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Амалиёти «%1» иҷро шуда истодааст…</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/PythonJob.cpp" line="266"/>
@@ -324,7 +324,7 @@
       <location filename="../src/libcalamares/PythonJob.cpp" line="267"/>
       <source>Working directory %1 for python job %2 is not readable.</source>
       <comment>@error</comment>
-      <translation>Феҳристи кории %1 барои вазифаи "python"-и %2 хонда намешавад.</translation>
+      <translation>Феҳристи кории %1 барои вазифаи «python»-и %2 хонда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/PythonJob.cpp" line="275"/>
@@ -336,13 +336,13 @@
       <location filename="../src/libcalamares/PythonJob.cpp" line="276"/>
       <source>Main script file %1 for python job %2 is not readable.</source>
       <comment>@error</comment>
-      <translation>Файли нақши асосии %1 барои вазифаи "python"-и %2 хонда намешавад.</translation>
+      <translation>Файли нақши асосии %1 барои вазифаи «python»-и %2 хонда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/PythonJob.cpp" line="348"/>
       <source>Boost.Python error in job "%1"</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>Хатои «Boost.Python» дар вазифаи «%1»</translation>
     </message>
   </context>
   <context>
@@ -351,19 +351,19 @@
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="73"/>
       <source>Loading…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Бор шуда истодааст…</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="100"/>
       <source>QML step &lt;i&gt;%1&lt;/i&gt;.</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Қадами «QML» &lt;i&gt;%1&lt;/i&gt;.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/viewpages/QmlViewStep.cpp" line="286"/>
       <source>Loading failed.</source>
       <comment>@info</comment>
-      <translation>Боршавӣ қатъ шуд.</translation>
+      <translation>Боркунӣ қатъ шуд.</translation>
     </message>
   </context>
   <context>
@@ -372,15 +372,15 @@
       <location filename="../src/libcalamares/modulesystem/RequirementsChecker.cpp" line="100"/>
       <source>Requirements checking for module '%1' is complete.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Санҷиши талабот барои модули «%1» ба анҷом расид.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/libcalamares/modulesystem/RequirementsChecker.cpp" line="124"/>
       <source>Waiting for %n module(s)…</source>
       <comment>@status</comment>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Дар ҳоли интизори %n модул…</numerusform>
+        <numerusform>Дар ҳоли интизори %n модул…</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -413,7 +413,11 @@
 %1
 
 Link copied to clipboard</source>
-      <translation type="unfinished"/>
+      <translation>Сабти рӯйдодҳои насб ба файли зерин ворид карда шуд
+
+%1
+
+Пайванд ба  ҳофизаи муваққатӣ нусха бардошта шуд</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/utils/Paste.cpp" line="183"/>
@@ -439,13 +443,13 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="155"/>
       <source>Setup Failed</source>
       <comment>@title</comment>
-      <translation>Танзимкунӣ қатъ шуд</translation>
+      <translation>Раванди танзим қатъ шуд</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="156"/>
       <source>Installation Failed</source>
       <comment>@title</comment>
-      <translation>Насбкунӣ қатъ шуд</translation>
+      <translation>Раванди насб қатъ шуд</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="159"/>
@@ -457,13 +461,13 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="188"/>
       <source>Calamares Initialization Failed</source>
       <comment>@title</comment>
-      <translation>Омодашавии Calamares қатъ шуд</translation>
+      <translation>Омодашавии «Calamares» қатъ шуд</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="189"/>
       <source>%1 can not be installed. Calamares was unable to load all of the configured modules. This is a problem with the way Calamares is being used by the distribution.</source>
       <comment>@info</comment>
-      <translation>%1 насб карда намешавад. Calamares ҳамаи модулҳои танзимкардашударо бор карда натавонист. Ин мушкилие мебошад, ки бо ҳамин роҳ Calamares дар дистрибутиви ҷорӣ кор мекунад.</translation>
+      <translation>«%1» насб карда намешавад. «Calamares» ҳамаи модулҳои танзимкардашударо бор карда натавонист. Ин мушкилие мебошад, ки бо ҳамин роҳ «Calamares» дар нашри ҷорӣ кор мекунад.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="196"/>
@@ -475,49 +479,49 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="336"/>
       <source>Continue with Setup?</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Танзими низомро идома медиҳед?</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="337"/>
       <source>Continue with Installation?</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Насби низомро идома медиҳед?</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="339"/>
       <source>The %1 setup program is about to make changes to your disk in order to set up %2.&lt;br/&gt;&lt;strong&gt;You will not be able to undo these changes.&lt;/strong&gt;</source>
       <comment>%1 is short product name, %2 is short product name with version</comment>
-      <translation>Барномаи танзимкунии %1 барои танзим кардани %2 ба диски компютери шумо тағйиротро ворид мекунад.&lt;br/&gt;&lt;strong&gt;Шумо ин тағйиротро ботил карда наметавонед.&lt;/strong&gt;</translation>
+      <translation>Барномаи насби «%1» барои танзим кардани «%2» ба диски компютери шумо тағйиротро ворид мекунад.&lt;br/&gt;&lt;strong&gt;Шумо ин тағйиротро бекор карда наметавонед.&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="343"/>
       <source>The %1 installer is about to make changes to your disk in order to install %2.&lt;br/&gt;&lt;strong&gt;You will not be able to undo these changes.&lt;/strong&gt;</source>
       <comment>%1 is short product name, %2 is short product name with version</comment>
-      <translation>Насбкунандаи %1 барои насб кардани %2 ба диски компютери шумо тағйиротро ворид мекунад.&lt;br/&gt;&lt;strong&gt;Шумо ин тағйиротро ботил карда наметавонед.&lt;/strong&gt;</translation>
+      <translation>Насбкунандаи «%1» барои насб кардани «%2» ба диски компютери шумо тағйиротро ворид мекунад.&lt;br/&gt;&lt;strong&gt;Шумо ин тағйиротро бекор карда наметавонед.&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="348"/>
       <source>&amp;Set Up Now</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>&amp;Ҳозир танзим карда шавад</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="348"/>
       <source>&amp;Install Now</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>&amp;Ҳозир насб карда шавад</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="355"/>
       <source>Go &amp;Back</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>&amp;Бозгашт</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="402"/>
       <source>&amp;Set Up</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>&amp;Танзим кардан</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="402"/>
@@ -529,25 +533,25 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="404"/>
       <source>Setup is complete. Close the setup program.</source>
       <comment>@tooltip</comment>
-      <translation>Танзим ба анҷом расид. Барномаи танзимкуниро пӯшед.</translation>
+      <translation>Танзим ба анҷом расид. Барномаи танзими низомро пӯшед.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="405"/>
       <source>The installation is complete. Close the installer.</source>
       <comment>@tooltip</comment>
-      <translation>Насб ба анҷом расид. Барномаи насбкуниро пӯшед.</translation>
+      <translation>Насб ба анҷом расид. Барномаи насби низомро пӯшед.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="407"/>
       <source>Cancel the setup process without changing the system.</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Бекор кардани раванди танзими низом бе ворид кардани тағйирот ба низом.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="408"/>
       <source>Cancel the installation process without changing the system.</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Бекор кардани раванди насби низом бе ворид кардани тағйирот ба низом.</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="418"/>
@@ -577,13 +581,13 @@ Link copied to clipboard</source>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="524"/>
       <source>Cancel Setup?</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Танзими низомро бекор мекунед?</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="524"/>
       <source>Cancel Installation?</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Насби низомро бекор мекунед?</translation>
     </message>
     <message>
       <location filename="../src/libcalamaresui/ViewManager.cpp" line="525"/>
@@ -612,19 +616,19 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/libcalamares/PythonHelper.cpp" line="327"/>
       <source>Unparseable Python error</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>Хатои ҳалнашавандаи «Python»</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/PythonHelper.cpp" line="371"/>
       <source>Unparseable Python traceback</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>Гузориши пайдарпайи хатоҳои ҳалнашавандаи «Python»</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/PythonHelper.cpp" line="378"/>
       <source>Unfetchable Python error</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>Хатои дастнорас дар «Python»</translation>
     </message>
   </context>
   <context>
@@ -646,26 +650,26 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="34"/>
       <source>Set filesystem label on %1</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Танзими тамға барои низоми файлӣ дар «%1»</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="41"/>
       <source>Set filesystem label &lt;strong&gt;%1&lt;/strong&gt; to partition &lt;strong&gt;%2&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Танзими тамғаи низоми файлии &lt;strong&gt;%1&lt;/strong&gt; ба қисми диски &lt;strong&gt;%2&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="50"/>
       <source>Setting filesystem label &lt;strong&gt;%1&lt;/strong&gt; to partition &lt;strong&gt;%2&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли танзими тамғаи низоми файлии &lt;strong&gt;%1&lt;/strong&gt; ба қисми диски &lt;strong&gt;%2&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="72"/>
       <location filename="../src/modules/partition/jobs/ChangeFilesystemLabelJob.cpp" line="84"/>
       <source>The installer failed to update partition table on disk '%1'.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Насбкунанда қисми дискро дар «%1» навсозӣ карда натавонист.</translation>
     </message>
   </context>
   <context>
@@ -686,9 +690,9 @@ The installer will quit and all changes will be lost.</source>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="138"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1039"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1098"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1151"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1100"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1153"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>Танзимоти ҷорӣ:</translation>
@@ -697,150 +701,150 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="139"/>
       <source>After:</source>
       <comment>@label</comment>
-      <translation>Баъд аз тағйир:</translation>
+      <translation>Пас аз тағйирот:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="897"/>
       <source>Reuse %1 as home partition for %2</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Аз нав истифода кардани «%1» ҳамчун диски асосӣ барои «%2».</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1041"/>
       <source>&lt;strong&gt;Select a partition to shrink, then drag the bottom bar to resize&lt;/strong&gt;</source>
       <translation>&lt;strong&gt;Қисми дискеро, ки мехоҳед хурдтар кунед, интихоб намоед, пас лавҳаи поёнро барои ивази андоза кашед&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1064"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1065"/>
       <source>%1 will be shrunk to %2MiB and a new %3MiB partition will be created for %4.</source>
       <comment>@info, %1 is partition name, %4 is product name</comment>
-      <translation>%1 то андозаи %2MiB хурдтар мешавад ва қисми диски нав бо андозаи %3MiB барои %4 эҷод карда мешавад.</translation>
+      <translation>«%1» то андозаи %2MiB хурдтар мешавад ва қисми диски нав бо андозаи %3MiB барои «%4» эҷод карда мешавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1142"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1144"/>
       <source>&lt;strong&gt;Select a partition to install on&lt;/strong&gt;</source>
       <comment>@label</comment>
-      <translation>&lt;strong&gt;Қисми дискеро барои насб интихоб намоед&lt;/strong&gt;</translation>
+      <translation>&lt;strong&gt;Қисми дискеро барои насби низом интихоб намоед&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1202"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1204"/>
       <source>An EFI system partition cannot be found anywhere on this system. Please go back and use manual partitioning to set up %1.</source>
       <comment>@info, %1 is product name</comment>
-      <translation>Қисми диски низомии EFI дар дохили низоми ҷорӣ ёфт нашуд. Лутфан, ба қафо гузаред ва барои танзим кардани %1 аз имкони қисмбандии диск ба таври дастӣ истифода баред.</translation>
+      <translation>Қисми диски низомии «EFI» дар саросари низоми ҷорӣ ёфт нашуд. Лутфан, ба қафо гузаред ва барои танзим кардани «%1» аз имкони қисмбандии диск ба таври дастӣ истифода баред.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1211"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1213"/>
       <source>The EFI system partition at %1 will be used for starting %2.</source>
       <comment>@info, %1 is partition path, %2 is product name</comment>
-      <translation>Қисми диски низомии EFI дар %1 барои оғоз кардани %2 истифода бурда мешавад.</translation>
+      <translation>Қисми диски низомии «EFI» дар «%1» барои оғоз кардани «%2» истифода мешавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1220"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1222"/>
       <source>EFI system partition:</source>
       <comment>@label</comment>
-      <translation>Қисми диски низомии:</translation>
+      <translation>Қисми диски низомии «EFI»:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1710"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1712"/>
       <source>This storage device does not seem to have an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Чунин менамояд, ки ин захирагоҳ низоми амалкунандаро дар бар намегирад. Шумо чӣ кор кардан мехоҳед?&lt;br/&gt;Шумо метавонед пеш аз татбиқ кардани тағйирот ба дастгоҳи захирагоҳ интихоби худро аз назар гузаронед ва тасдиқ кунед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1715"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1742"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1762"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1784"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1717"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1744"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1764"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1786"/>
       <source>&lt;strong&gt;Erase disk&lt;/strong&gt;&lt;br/&gt;This will &lt;font color="red"&gt;delete&lt;/font&gt; all data currently present on the selected storage device.</source>
       <translation>&lt;strong&gt;Пок кардани диск&lt;/strong&gt;&lt;br/&gt;Ин амал ҳамаи иттилооти ҷориро дар дастгоҳи захирагоҳи интихобшуда &lt;font color="red"&gt;нест мекунад&lt;/font&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1719"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1738"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1758"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1780"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1721"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1740"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1760"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1782"/>
       <source>&lt;strong&gt;Install alongside&lt;/strong&gt;&lt;br/&gt;The installer will shrink a partition to make room for %1.</source>
       <translation>&lt;strong&gt;Насбкунии паҳлуӣ&lt;/strong&gt;&lt;br/&gt;Насбкунанда барои %1 фазоро омода карда, қисми дискеро хурдтар мекунад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1723"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1746"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1766"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1788"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1725"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1748"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1768"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1790"/>
       <source>&lt;strong&gt;Replace a partition&lt;/strong&gt;&lt;br/&gt;Replaces a partition with %1.</source>
       <translation>&lt;strong&gt;Ивазкунии қисми диск&lt;/strong&gt;&lt;br/&gt;Қисми дисекро бо %1 иваз мекунад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1732"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1734"/>
       <source>This storage device has %1 on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Ин захирагоҳ %1-ро дар бар мегирад. Шумо чӣ кор кардан мехоҳед?&lt;br/&gt;Шумо метавонед пеш аз татбиқ кардани тағйирот ба дастгоҳи захирагоҳ интихоби худро аз назар гузаронед ва тасдиқ кунед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1753"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1755"/>
       <source>This storage device already has an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Ин захирагоҳ аллакай низоми амалкунандаро дар бар мегирад. Шумо чӣ кор кардан мехоҳед?&lt;br/&gt;Шумо метавонед пеш аз татбиқ кардани тағйирот ба дастгоҳи захирагоҳ интихоби худро аз назар гузаронед ва тасдиқ кунед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1775"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1777"/>
       <source>This storage device has multiple operating systems on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Ин захирагоҳ якчанд низоми амалкунандаро дар бар мегирад. Шумо чӣ кор кардан мехоҳед?&lt;br/&gt;Шумо метавонед пеш аз татбиқ кардани тағйирот ба дастгоҳи захирагоҳ интихоби худро аз назар гузаронед ва тасдиқ кунед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1421"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1423"/>
       <source>This storage device already has an operating system on it, but the partition table &lt;strong&gt;%1&lt;/strong&gt; is different from the needed &lt;strong&gt;%2&lt;/strong&gt;.&lt;br/&gt;</source>
       <translation>Ин дастгоҳи захирагоҳ аллакай дорои низоми амалкунанда мебошад, аммо ҷадвали қисми диски &lt;strong&gt;%1&lt;/strong&gt; аз диски лозимии &lt;strong&gt;%2&lt;/strong&gt; фарқ мекунад.&lt;br/&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1445"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1447"/>
       <source>This storage device has one of its partitions &lt;strong&gt;mounted&lt;/strong&gt;.</source>
       <comment>@info</comment>
       <translation>Яке аз қисмҳои диски ин дастгоҳи захирагоҳ &lt;strong&gt;васлшуда&lt;/strong&gt; мебошад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1450"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1452"/>
       <source>This storage device is a part of an &lt;strong&gt;inactive RAID&lt;/strong&gt; device.</source>
       <comment>@info</comment>
-      <translation>Ин дастгоҳи захирагоҳ қисми дасгоҳи &lt;strong&gt;RAID-и ғайрифаъол&lt;/strong&gt; мебошад.</translation>
+      <translation>Ин дастгоҳи захирагоҳ як қисми дасгоҳи &lt;strong&gt;«RAID»-и ғайрифаъол&lt;/strong&gt; мебошад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1568"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1570"/>
       <source>No swap</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Бе фазои мубодила</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1577"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1579"/>
       <source>Reuse swap</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Аз нав истифода кардани фазои мубодила</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1580"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1582"/>
       <source>Swap (no Hibernate)</source>
       <comment>@label</comment>
-      <translation>Мубодила (бе реҷаи Нигаҳдорӣ)</translation>
+      <translation>Фазои мубодила (бе реҷаи «Нигаҳдорӣ»)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1583"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1585"/>
       <source>Swap (with Hibernate)</source>
       <comment>@label</comment>
-      <translation>Мубодила (бо реҷаи Нигаҳдорӣ)</translation>
+      <translation>Фазои мубодила (бо реҷаи «Нигаҳдорӣ»)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1586"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1588"/>
       <source>Swap to file</source>
       <comment>@label</comment>
-      <translation>Мубодила ба файл</translation>
+      <translation>Фазои мубодила дар файл</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1599"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1601"/>
       <source>&lt;strong&gt;Manual partitioning&lt;/strong&gt;&lt;br/&gt;You can create or resize partitions yourself.</source>
       <translation>&lt;strong&gt;Қисмбандии диск ба таври дастӣ&lt;/strong&gt;&lt;br/&gt;Шумо худатон метавонед қисмҳои дискро эҷод кунед ё андозаи онҳоро иваз намоед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1627"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1629"/>
       <source>Bootloader location:</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Ҷойгиршавии боркунандаи роҳандозӣ:</translation>
     </message>
   </context>
   <context>
@@ -848,39 +852,39 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="267"/>
       <source>Successfully unmounted %1.</source>
-      <translation type="unfinished"/>
+      <translation>Нуқтаи васли «%1» бо муваффақият ҷудо карда шуд.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="274"/>
       <source>Successfully disabled swap %1.</source>
-      <translation type="unfinished"/>
+      <translation>Фазои мубодилаи «%1» бо муваффақият ғайрифаъол карда шуд.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="300"/>
       <source>Successfully cleared swap %1.</source>
-      <translation type="unfinished"/>
+      <translation>Фазои мубодилаи «%1» бо муваффақият пок карда шуд.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="314"/>
       <source>Successfully closed mapper device %1.</source>
-      <translation type="unfinished"/>
+      <translation>Дастгоҳи харитасози «%1» бо муваффақият маҳкам карда шуд.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="327"/>
       <source>Successfully disabled volume group %1.</source>
-      <translation type="unfinished"/>
+      <translation> Гурӯҳи ҳаҷми «%1» бо муваффақият ғайрифаъол карда шуд.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="366"/>
       <source>Clear mounts for partitioning operations on %1</source>
       <comment>@title</comment>
-      <translation>Пок кардани васлҳо барои амалиётҳои қисмбандӣ дар %1</translation>
+      <translation>Пок кардани нуқтаҳои васл барои амалиётҳои қисмбандӣ дар «%1»</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="372"/>
       <source>Clearing mounts for partitioning operations on %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани нуқтаҳои васл барои амалиётҳои қисмбандӣ дар «%1»…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearMountsJob.cpp" line="391"/>
@@ -895,7 +899,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/ClearTempMountsJob.cpp" line="40"/>
       <source>Clearing all temporary mounts…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли поксозии ҳамаи васлҳои муваққатӣ…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ClearTempMountsJob.cpp" line="70"/>
@@ -913,7 +917,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/libcalamares/utils/CommandList.cpp" line="236"/>
       <source>The commands use variables that are not defined. Missing variables are: %1.</source>
-      <translation type="unfinished"/>
+      <translation>Фармонҳо аз тағйирёбандаҳое истифода мебаранд, ки муайян нашудаанд. Тағйирёбандаҳое, ки вуҷуд надоранд: %1.</translation>
     </message>
   </context>
   <context>
@@ -922,79 +926,79 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/Config.cpp" line="142"/>
       <source>Setup Failed</source>
       <comment>@title</comment>
-      <translation>Танзимкунӣ қатъ шуд</translation>
+      <translation>Раванди танзим қатъ шуд</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="143"/>
       <source>Installation Failed</source>
       <comment>@title</comment>
-      <translation>Насбкунӣ қатъ шуд</translation>
+      <translation>Раванди насб қатъ шуд</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="145"/>
       <source>The setup of %1 did not complete successfully.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Раванди танзими «%1» бо муваффақият ба анҷом нарасид.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="146"/>
       <source>The installation of %1 did not complete successfully.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Раванди насби «%1» бо муваффақият ба анҷом нарасид.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="150"/>
       <source>Setup Complete</source>
       <comment>@title</comment>
-      <translation>Анҷоми танзимкунӣ</translation>
+      <translation>Раванди танзим ба анҷом расид</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="151"/>
       <source>Installation Complete</source>
       <comment>@title</comment>
-      <translation>Насбкунӣ ба анҷом расид</translation>
+      <translation>Раванди насб ба анҷом расид</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="153"/>
       <source>The setup of %1 is complete.</source>
       <comment>@info</comment>
-      <translation>Танзимкунии %1 ба анҷом расид.</translation>
+      <translation>Раванди танзими «%1» ба анҷом расид.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/Config.cpp" line="154"/>
       <source>The installation of %1 is complete.</source>
       <comment>@info</comment>
-      <translation>Насбкунии %1 ба анҷом расид.</translation>
+      <translation>Раванди насби «%1» ба анҷом расид.</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="506"/>
-      <source>Keyboard model has been set to %1&lt;br/&gt;.</source>
+      <location filename="../src/modules/keyboard/Config.cpp" line="583"/>
+      <source>Keyboard model has been set to %1.</source>
       <comment>@label, %1 is keyboard model, as in Apple Magic Keyboard</comment>
-      <translation type="unfinished"/>
+      <translation>Намунаи клавиатура ба «%1» танзим карда шуд.</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="513"/>
+      <location filename="../src/modules/keyboard/Config.cpp" line="591"/>
       <source>Keyboard layout has been set to %1/%2.</source>
       <comment>@label, %1 is layout, %2 is layout variant</comment>
-      <translation type="unfinished"/>
+      <translation>Тарҳбандии клавиатура ба «%1/%2» танзим карда шуд.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="379"/>
-      <source>Set timezone to %1/%2</source>
+      <location filename="../src/modules/locale/Config.cpp" line="381"/>
+      <source>Set timezone to %1.</source>
       <comment>@action</comment>
-      <translation>Минтақаи вақт ба %1/%2 танзим карда мешавад</translation>
+      <translation>Минтақаи вақт ба %1 танзим карда мешавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="416"/>
+      <location filename="../src/modules/locale/Config.cpp" line="418"/>
       <source>The system language will be set to %1.</source>
       <comment>@info</comment>
-      <translation>Забони низом ба %1 танзим карда мешавад.</translation>
+      <translation>Забони низом ба забони «%1» танзим карда мешавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="423"/>
+      <location filename="../src/modules/locale/Config.cpp" line="425"/>
       <source>The numbers and dates locale will be set to %1.</source>
       <comment>@info</comment>
-      <translation>Низоми рақамҳо ва санаҳо ба %1 танзим карда мешавад.</translation>
+      <translation>Низоми рақамҳо ва санаҳо ба «%1» танзим карда мешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="53"/>
@@ -1009,7 +1013,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="57"/>
       <source>Network Installation. (Disabled: Internal error)</source>
-      <translation type="unfinished"/>
+      <translation>Насб бо дастгирии шабакаи интернетӣ. (Ғайрифаъол: Хатои дохилӣ)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="59"/>
@@ -1019,7 +1023,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="61"/>
       <source>Network Installation. (Disabled: No package list)</source>
-      <translation type="unfinished"/>
+      <translation>Насб бо дастгирии шабакаи интернетӣ. (Ғайрифаъол: Рӯйхати бастаҳо холӣ аст)</translation>
     </message>
     <message>
       <location filename="../src/modules/netinstall/Config.cpp" line="76"/>
@@ -1044,7 +1048,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="247"/>
       <source>Install option: &lt;strong&gt;%1&lt;/strong&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Имкони насби низом: &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooser/Config.cpp" line="247"/>
@@ -1068,79 +1072,79 @@ The installer will quit and all changes will be lost.</source>
       <translation>Дар ин ҷамъбаст шумо мебинед, ки чӣ мешавад пас аз он ки шумо раванди насбкуниро оғоз мекунед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="236"/>
+      <location filename="../src/modules/users/Config.cpp" line="237"/>
       <source>Your username is too long.</source>
       <translation>Номи корбари шумо хеле дароз аст.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="242"/>
+      <location filename="../src/modules/users/Config.cpp" line="243"/>
       <source>Your username must start with a lowercase letter or underscore.</source>
       <translation>Номи корбари шумо бояд бо ҳарфи хурд ё зерхат сар шавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="246"/>
+      <location filename="../src/modules/users/Config.cpp" line="247"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
       <translation>Шумо метавонед танҳо ҳарфҳои хурд, рақамҳо, зерхат ва нимтиреро истифода баред.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="252"/>
+      <location filename="../src/modules/users/Config.cpp" line="253"/>
       <source>'%1' is not allowed as username.</source>
       <translation>'%1' ҳамчун номи корбар истифода намешавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="301"/>
+      <location filename="../src/modules/users/Config.cpp" line="302"/>
       <source>Your hostname is too short.</source>
       <translation>Номи мизбони шумо хеле кӯтоҳ аст.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="305"/>
+      <location filename="../src/modules/users/Config.cpp" line="306"/>
       <source>Your hostname is too long.</source>
       <translation>Номи мизбони шумо хеле дароз аст.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="311"/>
+      <location filename="../src/modules/users/Config.cpp" line="312"/>
       <source>'%1' is not allowed as hostname.</source>
       <translation>'%1' ҳамчун номи мизбон истифода намешавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="316"/>
+      <location filename="../src/modules/users/Config.cpp" line="317"/>
       <source>Only letters, numbers, underscore and hyphen are allowed.</source>
       <translation>Шумо метавонед танҳо ҳарфҳо, рақамҳо, зерхат ва нимтиреро истифода баред.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="597"/>
+      <location filename="../src/modules/users/Config.cpp" line="598"/>
       <source>Your passwords do not match!</source>
       <translation>Ниҳонвожаҳои шумо мувофиқат намекунанд!</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="611"/>
+      <location filename="../src/modules/users/Config.cpp" line="612"/>
       <source>OK!</source>
       <translation>ХУБ!</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="57"/>
       <source>This computer does not satisfy the minimum requirements for setting up %1.&lt;br/&gt;Setup cannot continue.</source>
-      <translation type="unfinished"/>
+      <translation>Ин компютер ба талаботи ҳадди ақал барои танзим кардани низоми «%1» ҷавобгӯ намебошад.&lt;br/&gt;Танзимот идома дода намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="60"/>
       <source>This computer does not satisfy the minimum requirements for installing %1.&lt;br/&gt;Installation cannot continue.</source>
-      <translation type="unfinished"/>
+      <translation>Ин компютер ба талаботи ҳадди ақал барои насб кардани низоми «%1» ҷавобгӯ намебошад.&lt;br/&gt;Насб идома дода намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="66"/>
       <source>This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;Setup can continue, but some features might be disabled.</source>
-      <translation>Ин компютер ба баъзеи талаботи тавсияшуда барои танзимкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;Танзимот идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.</translation>
+      <translation>Ин компютер ба баъзеи талаботи тавсияшуда барои танзимкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;Танзимот идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="70"/>
       <source>This computer does not satisfy some of the recommended requirements for installing %1.&lt;br/&gt;Installation can continue, but some features might be disabled.</source>
-      <translation>Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;Насбкунӣ идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.</translation>
+      <translation>Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;Насбкунӣ идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="80"/>
       <source>This program will ask you some questions and set up %2 on your computer.</source>
-      <translation>Ин барнома аз Шумо якчанд савол мепурсад ва %2-ро дар компютери шумо танзим мекунад.</translation>
+      <translation>Ин барнома аз шумо якчанд савол мепурсад ва «%2»-ро дар компютери шумо танзим мекунад.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/Config.cpp" line="264"/>
@@ -1166,10 +1170,10 @@ The installer will quit and all changes will be lost.</source>
   <context>
     <name>ContextualProcessJob</name>
     <message>
-      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="115"/>
+      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="88"/>
       <source>Performing contextual processes' job…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли иҷрои вазифаи равандҳои мазмундор…</translation>
     </message>
   </context>
   <context>
@@ -1197,7 +1201,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="71"/>
       <source>Primar&amp;y</source>
-      <translation type="unfinished"/>
+      <translation>Асо&amp;сӣ</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="81"/>
@@ -1227,12 +1231,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="224"/>
       <source>Label for the filesystem</source>
-      <translation type="unfinished"/>
+      <translation>Барчасп барои низоми файлӣ</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.ui" line="234"/>
       <source>FS Label:</source>
-      <translation type="unfinished"/>
+      <translation>Тамғаи «FS»:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/CreatePartitionDialog.cpp" line="67"/>
@@ -1262,13 +1266,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/PartitionDialogHelpers.cpp" line="91"/>
       <source>Mountpoint already in use. Please select another one.</source>
       <comment>@info</comment>
-      <translation>Нуқтаи васл аллакай дар истифода аст. Лутфан, нуқтаи васли дигареро интихоб намоед.</translation>
+      <translation>Нуқтаи васл аллакай дар ҳоли истифода аст. Лутфан, нуқтаи васли дигареро интихоб намоед.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionDialogHelpers.cpp" line="96"/>
       <source>Mountpoint must start with a &lt;tt&gt;/&lt;/tt&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Нуқтаи васл бояд бо аломати &lt;tt&gt;/&lt;/tt&gt; оғоз карда шавад.</translation>
     </message>
   </context>
   <context>
@@ -1277,50 +1281,50 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="181"/>
       <source>Create new %1MiB partition on %3 (%2) with entries %4</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Эҷод кардани қисми диски нав бо андозаи %1MiB дар «%3» (%2) бо унсурҳои «%4»</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="189"/>
       <source>Create new %1MiB partition on %3 (%2)</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Эҷод кардани қисми диски нав бо андозаи %1MiB дар «%3» (%2)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="196"/>
       <source>Create new %2MiB partition on %4 (%3) with file system %1</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Эҷод кардани қисми диски нав бо андозаи %2MiB дар «%4» (%3) бо низоми файлии «%1»</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="212"/>
       <source>Create new &lt;strong&gt;%1MiB&lt;/strong&gt; partition on &lt;strong&gt;%3&lt;/strong&gt; (%2) with entries &lt;em&gt;%4&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Эҷод кардани қисми диски нав бо андозаи &lt;strong&gt;%1MiB&lt;/strong&gt; дар &lt;strong&gt;%3&lt;/strong&gt; (%2) бо унсурҳои &lt;em&gt;%4&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="222"/>
       <source>Create new &lt;strong&gt;%1MiB&lt;/strong&gt; partition on &lt;strong&gt;%3&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Эҷод кардани қисми диски нав бо андозаи &lt;strong&gt;%1MiB&lt;/strong&gt; дар &lt;strong&gt;%3&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="229"/>
       <source>Create new &lt;strong&gt;%2MiB&lt;/strong&gt; partition on &lt;strong&gt;%4&lt;/strong&gt; (%3) with file system &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Эҷод кардани қисми диски нав бо андозаи &lt;strong&gt;%2MiB&lt;/strong&gt; дар &lt;strong&gt;%4&lt;/strong&gt; (%3) бо низоми файлии &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="254"/>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="257"/>
       <source>Creating new %1 partition on %2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани қисми диски нави «%1» дар «%2»…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionJob.cpp" line="274"/>
       <source>The installer failed to create partition on disk '%1'.</source>
       <comment>@info</comment>
-      <translation>Насбкунанда қисми дискро дар '%1' эҷод карда натавонист.</translation>
+      <translation>Насбкунанда қисми дискро дар «%1» эҷод карда натавонист.</translation>
     </message>
   </context>
   <context>
@@ -1358,13 +1362,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="58"/>
       <source>Creating new %1 partition table on %2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани ҷадвали қисми диски нави «%1» дар «%2»…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="49"/>
       <source>Creating new &lt;strong&gt;%1&lt;/strong&gt; partition table on &lt;strong&gt;%2&lt;/strong&gt; (%3)…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани ҷадвали қисми диски нави &lt;strong&gt;%1&lt;/strong&gt; дар &lt;strong&gt;%2&lt;/strong&gt; (%3)…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreatePartitionTableJob.cpp" line="86"/>
@@ -1382,32 +1386,32 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="39"/>
       <source>Create user &lt;strong&gt;%1&lt;/strong&gt;</source>
-      <translation type="unfinished"/>
+      <translation>Эҷод кардани корбари &lt;strong&gt;«%1»&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="45"/>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="137"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="143"/>
       <source>Creating user %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷоди корбари «%1»…</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="120"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="126"/>
       <source>Preserving home directory…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли нигоҳдории феҳристи хонагӣ…</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="145"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="152"/>
       <source>Configuring user %1</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли танзими корбари «%1»</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="153"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="160"/>
       <source>Setting file permissions…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли танзими иҷозатҳои файл…</translation>
     </message>
   </context>
   <context>
@@ -1426,13 +1430,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="44"/>
       <source>Creating new volume group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани гурӯҳи ҳаҷм бо номи «%1»…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="38"/>
       <source>Creating new volume group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани гурӯҳи ҳаҷм бо номи &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/CreateVolumeGroupJob.cpp" line="51"/>
@@ -1447,13 +1451,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="38"/>
       <source>Deactivating volume group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли ғайрифаъолсозии гурӯҳи ҳаҷм бо номи «%1»…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="32"/>
       <source>Deactivating volume group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли ғайрифаъолсозии гурӯҳи ҳаҷм бо номи &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeactivateVolumeGroupJob.cpp" line="46"/>
@@ -1468,13 +1472,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="85"/>
       <source>Deleting partition %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли нест кардани қисми диски «%1»…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="79"/>
       <source>Deleting partition &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли нест кардани қисми диски &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/DeletePartitionJob.cpp" line="99"/>
@@ -1536,19 +1540,19 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/dracutlukscfg/DracutLuksCfgJob.cpp" line="117"/>
       <source>Writing LUKS configuration for Dracut to %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Танзимоти «LUKS» барои «Dracut» ба «%1» сабт шуда истодааст…</translation>
     </message>
     <message>
       <location filename="../src/modules/dracutlukscfg/DracutLuksCfgJob.cpp" line="121"/>
       <source>Skipping writing LUKS configuration for Dracut: "/" partition is not encrypted</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Сабти танзимоти «LUKS» барои «Dracut» иҷро карда намешавад: қисми диски «/» рамзгузорӣ нашудааст</translation>
     </message>
     <message>
       <location filename="../src/modules/dracutlukscfg/DracutLuksCfgJob.cpp" line="138"/>
       <source>Failed to open %1</source>
       <comment>@error</comment>
-      <translation>%1 кушода нашуд</translation>
+      <translation>«%1» кушода нашуд</translation>
     </message>
   </context>
   <context>
@@ -1557,7 +1561,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/dummycpp/DummyCppJob.cpp" line="35"/>
       <source>Performing dummy C++ job…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли иҷро кардани вазифаи сохтагии C++…</translation>
     </message>
   </context>
   <context>
@@ -1570,7 +1574,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="54"/>
       <source>Con&amp;tent:</source>
-      <translation type="unfinished"/>
+      <translation>&amp;Муҳтаво:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="64"/>
@@ -1615,22 +1619,22 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="179"/>
       <source>Label for the filesystem</source>
-      <translation type="unfinished"/>
+      <translation>Барчасп барои низоми файлӣ</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.ui" line="189"/>
       <source>FS Label:</source>
-      <translation type="unfinished"/>
+      <translation>Тамғаи «FS»:</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.cpp" line="280"/>
       <source>Passphrase for existing partition</source>
-      <translation type="unfinished"/>
+      <translation>Гузарвожа барои қисми диски мавҷудбуда</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EditExistingPartitionDialog.cpp" line="281"/>
       <source>Partition %1 could not be decrypted with the given passphrase.&lt;br/&gt;&lt;br/&gt;Edit the partition again and give the correct passphrase or delete and create a new encrypted partition.</source>
-      <translation type="unfinished"/>
+      <translation>Қисми диски «%1» бо гузарвожаи воридшуда рамзкушоӣ карда намешавад.&lt;br/&gt;&lt;br/&gt;Қисми дискро аз нав таҳрир кунед ва гузарвожаи дурустро ворид намоед ё онро нест карда, қисми диски рамзгузоришудаи наверо эҷод намоед.</translation>
     </message>
   </context>
   <context>
@@ -1643,7 +1647,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/partition/gui/EncryptWidget.ui" line="43"/>
       <source>Your system does not seem to support encryption well enough to encrypt the entire system. You may enable encryption, but performance may suffer.</source>
-      <translation type="unfinished"/>
+      <translation>Чунин ба назар мерасад, ки низоми шумо рамзгузории пурраи низомро ба таври кофӣ дастгирӣ намекунад. Шумо метавонед имконияти рамзгузориро фаъол созед, аммо эҳтимол аст, ки самаранокии низом метавонад суст гардад.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/EncryptWidget.ui" line="59"/>
@@ -1666,7 +1670,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/EncryptWidget.cpp" line="171"/>
       <source>Password must be a minimum of %1 characters.</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожа бояд дар ҳадди ақал аз %1 аломат иборат бошад.</translation>
     </message>
   </context>
   <context>
@@ -1683,6 +1687,35 @@ The installer will quit and all changes will be lost.</source>
     </message>
   </context>
   <context>
+    <name>FSArchiverRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="47"/>
+      <source>Missing tools</source>
+      <translation>Абзорҳое, ки вуҷуд надоранд</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="48"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>Абзори &lt;i&gt;%1&lt;/i&gt; дар низом насб нашудааст.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="55"/>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="69"/>
+      <source>Invalid fsarchiver configuration</source>
+      <translation>Танзимоти «fsarchiver» нодуруст аст</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="56"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>Бойгонии манбаи &lt;i&gt;%1&lt;/i&gt; вуҷуд надорад.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="70"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>Ягон ҷойи таъинот барои &lt;i&gt;%1&lt;/i&gt; ёфт нашуд.</translation>
+    </message>
+  </context>
+  <context>
     <name>FillGlobalStorageJob</name>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="179"/>
@@ -1694,61 +1727,61 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="208"/>
       <source>Install %1 on &lt;strong&gt;new&lt;/strong&gt; %2 system partition with features &lt;em&gt;%3&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Насб кардани низоми «%1» дар қисми диски низоми &lt;strong&gt;нави&lt;/strong&gt; «%2» бо хусусиятҳои &lt;em&gt;%3&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="217"/>
       <source>Install %1 on &lt;strong&gt;new&lt;/strong&gt; %2 system partition</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Насб кардани низоми «%1» дар қисми диски &lt;strong&gt;нави&lt;/strong&gt; «%2»</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="226"/>
       <source>Set up &lt;strong&gt;new&lt;/strong&gt; %2 partition with mount point &lt;strong&gt;%1&lt;/strong&gt; and features &lt;em&gt;%3&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани қисми диски &lt;strong&gt;нави&lt;/strong&gt;%2 бо нуқтаи васли &lt;strong&gt;%1&lt;/strong&gt; ва хусусиятҳои &lt;em&gt;%3&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="235"/>
       <source>Set up &lt;strong&gt;new&lt;/strong&gt; %2 partition with mount point &lt;strong&gt;%1&lt;/strong&gt;%3</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани қисми диски &lt;strong&gt;нави&lt;/strong&gt;%2 бо нуқтаи васли &lt;strong&gt;%1&lt;/strong&gt; %3</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="250"/>
       <source>Install %2 on %3 system partition &lt;strong&gt;%1&lt;/strong&gt; with features &lt;em&gt;%4&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Насб кардани низоми «%2» дар қисми диски низоми «%3» &lt;strong&gt;%1&lt;/strong&gt; бо хусусиятҳои &lt;em&gt;%4&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="260"/>
       <source>Install %2 on %3 system partition &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Насб кардани низоми «%2» дар қисми диски низоми «%3» &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="270"/>
       <source>Set up %3 partition &lt;strong&gt;%1&lt;/strong&gt; with mount point &lt;strong&gt;%2&lt;/strong&gt; and features &lt;em&gt;%4&lt;/em&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани қисми диски %3 &lt;strong&gt;%1&lt;/strong&gt; бо нуқтаи васли &lt;strong&gt;%2&lt;/strong&gt; ва хусусиятҳои &lt;em&gt;%4&lt;/em&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="280"/>
       <source>Set up %3 partition &lt;strong&gt;%1&lt;/strong&gt; with mount point &lt;strong&gt;%2&lt;/strong&gt;%4…</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани қисми диски %3 &lt;strong&gt;%1&lt;/strong&gt; бо нуқтаи васли &lt;strong&gt;%2&lt;/strong&gt;%4…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="296"/>
       <source>Install boot loader on &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Боркунандаи роҳандозӣ дар &lt;strong&gt;%1&lt;/strong&gt; насб карда мешавад…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FillGlobalStorageJob.cpp" line="305"/>
       <source>Setting up mount points…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли танзими нуқтаҳои васл…</translation>
     </message>
   </context>
   <context>
@@ -1762,37 +1795,37 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="75"/>
       <source>&lt;h1&gt;All done.&lt;/h1&gt;&lt;br/&gt;%1 has been set up on your computer.&lt;br/&gt;You may now start using your new system.</source>
       <comment>@info</comment>
-      <translation>&lt;h1&gt;Ҳамааш тайёр.&lt;/h1&gt;&lt;br/&gt;%1 дар компютери шумо танзим карда шуд.&lt;br/&gt;Акнун шумо метавонед истифодаи низоми навро оғоз намоед.</translation>
+      <translation>&lt;h1&gt;Ҳамааш тайёр аст.&lt;/h1&gt;&lt;br/&gt;«%1» дар компютери шумо танзим карда шуд.&lt;br/&gt;Акнун шумо метавонед низоми навро оғоз карда, истифода баред.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="80"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When this box is checked, your system will restart immediately when you click on &lt;span style="font-style:italic;"&gt;Done&lt;/span&gt; or close the setup program.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <comment>@tooltip</comment>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Агар ин имконро интихоб кунед, низоми шумо пас аз зер кардани тугмаи &lt;span style="font-style:italic;"&gt;Анҷоми кор&lt;/span&gt; ё пӯшидани барномаи танзимкунӣ дарҳол аз нав оғоз карда мешавад.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Агар шумо ин имконро интихоб кунед, низоми шумо пас аз зер кардани тугмаи &lt;span style="font-style:italic;"&gt;Анҷоми кор&lt;/span&gt; ё пӯшидани барномаи танзими низом дарҳол аз нав оғоз карда мешавад.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="89"/>
       <source>&lt;h1&gt;All done.&lt;/h1&gt;&lt;br/&gt;%1 has been installed on your computer.&lt;br/&gt;You may now restart into your new system, or continue using the %2 Live environment.</source>
       <comment>@info</comment>
-      <translation>&lt;h1&gt;Ҳамааш тайёр.&lt;/h1&gt;&lt;br/&gt;%1 дар компютери шумо насб карда шуд.&lt;br/&gt;Акнун шумо метавонед компютерро аз нав оғоз карда, ба низоми нав ворид шавед ё истифодаи муҳити зиндаи %2-ро идома диҳед.</translation>
+      <translation>&lt;h1&gt;Ҳамааш тайёр аст.&lt;/h1&gt;&lt;br/&gt;«%1» дар компютери шумо насб карда шуд.&lt;br/&gt;Акнун шумо метавонед компютерро аз нав оғоз карда, ба низоми нав ворид шавед ё истифодаи муҳити зиндаи «%2»-ро идома диҳед.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="95"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When this box is checked, your system will restart immediately when you click on &lt;span style="font-style:italic;"&gt;Done&lt;/span&gt; or close the installer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <comment>@tooltip</comment>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Агар ин имконро интихоб кунед, низоми шумо пас аз зер кардани тугмаи &lt;span style="font-style:italic;"&gt;Анҷоми кор&lt;/span&gt; ё пӯшидани насбкунанда дарҳол аз нав оғоз карда мешавад.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Агар шумо ин имконро интихоб кунед, низоми шумо пас аз зер кардани тугмаи &lt;span style="font-style:italic;"&gt;Анҷоми кор&lt;/span&gt; ё пӯшидани насбкунанда дарҳол аз нав оғоз карда мешавад.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="109"/>
       <source>&lt;h1&gt;Setup Failed&lt;/h1&gt;&lt;br/&gt;%1 has not been set up on your computer.&lt;br/&gt;The error message was: %2.</source>
       <comment>@info, %1 is product name with version</comment>
-      <translation>&lt;h1&gt;Танзимкунӣ қатъ шуд&lt;/h1&gt;&lt;br/&gt;%1 дар компютери шумо танзим карда нашуд.&lt;br/&gt;Паёми хато: %2.</translation>
+      <translation>&lt;h1&gt;Танзими низом қатъ шуд&lt;/h1&gt;&lt;br/&gt;«%1» дар компютери шумо танзим карда нашуд.&lt;br/&gt;Хато паёми зеринро нишон медиҳад: %2.</translation>
     </message>
     <message>
       <location filename="../src/modules/finished/FinishedPage.cpp" line="118"/>
       <source>&lt;h1&gt;Installation Failed&lt;/h1&gt;&lt;br/&gt;%1 has not been installed on your computer.&lt;br/&gt;The error message was: %2.</source>
       <comment>@info, %1 is product name with version</comment>
-      <translation>&lt;h1&gt;Насбкунӣ қатъ шуд&lt;/h1&gt;&lt;br/&gt;%1 дар компютери шумо насб карда нашуд.&lt;br/&gt;Паёми хато: %2.</translation>
+      <translation>&lt;h1&gt;Насби низом қатъ шуд&lt;/h1&gt;&lt;br/&gt;«%1» дар компютери шумо насб карда нашуд.&lt;br/&gt;Хато паёми зеринро нишон медиҳад: %2.</translation>
     </message>
   </context>
   <context>
@@ -1801,7 +1834,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finishedq/FinishedQmlViewStep.cpp" line="35"/>
       <source>Finish</source>
       <comment>@label</comment>
-      <translation>Анҷом</translation>
+      <translation>Анҷом додан</translation>
     </message>
   </context>
   <context>
@@ -1810,7 +1843,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/finished/FinishedViewStep.cpp" line="46"/>
       <source>Finish</source>
       <comment>@label</comment>
-      <translation>Анҷом</translation>
+      <translation>Анҷом додан</translation>
     </message>
   </context>
   <context>
@@ -1819,13 +1852,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="39"/>
       <source>Format partition %1 (file system: %2, size: %3 MiB) on %4</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Шаклсозии қисми диски «%1» (низоми файлӣ: %2, андоза: %3 МиБ) дар %4</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="49"/>
       <source>Format &lt;strong&gt;%3MiB&lt;/strong&gt; partition &lt;strong&gt;%1&lt;/strong&gt; with file system &lt;strong&gt;%2&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Шаклсозии қисми диски &lt;strong&gt;%3 МиБ&lt;/strong&gt; &lt;strong&gt;%1&lt;/strong&gt; бо низоми файлии &lt;strong&gt;%2&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="62"/>
@@ -1837,7 +1870,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="64"/>
       <source>Formatting partition %1 with file system %2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Шаклсозии қисми диски «%1» бо низоми файлии %2.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/FormatPartitionJob.cpp" line="73"/>
@@ -1850,12 +1883,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="160"/>
       <source>Please ensure the system has at least %1 GiB available drive space.</source>
-      <translation type="unfinished"/>
+      <translation>Лутфан, мутмаин шавед, ки дар низом ақаллан %1 ГиБ фазои диск дастрас аст.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="162"/>
       <source>Available drive space is all of the hard disks and SSDs connected to the system.</source>
-      <translation type="unfinished"/>
+      <translation>Фазои диски дастрас аз ҳамаи дискҳои ҷисмонӣ ва дискҳои SSD, ки ба низом пайваст шудаанд, иборат аст.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="165"/>
@@ -1925,53 +1958,53 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="227"/>
       <source>is always false</source>
-      <translation type="unfinished"/>
+      <translation>Ҳамеша «false» мебошад</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="228"/>
       <source>The computer says no.</source>
-      <translation type="unfinished"/>
+      <translation>Компютер рад мекунад.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="236"/>
       <source>is always false (slowly)</source>
-      <translation type="unfinished"/>
+      <translation>Ҳамеша «false» мебошад (суст)</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="237"/>
       <source>The computer says no (slowly).</source>
-      <translation type="unfinished"/>
+      <translation>Компютер рад мекунад (суст).</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="244"/>
       <source>is always true</source>
-      <translation type="unfinished"/>
+      <translation>Ҳамеша «true» мебошад</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="245"/>
       <source>The computer says yes.</source>
-      <translation type="unfinished"/>
+      <translation>Компютер қабул мекунад.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="253"/>
       <source>is always true (slowly)</source>
-      <translation type="unfinished"/>
+      <translation>Ҳамеша «true» мебошад (суст)</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="254"/>
       <source>The computer says yes (slowly).</source>
-      <translation type="unfinished"/>
+      <translation>Компютер қабул мекунад (суст).</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="262"/>
       <source>is checked three times.</source>
-      <translation type="unfinished"/>
+      <translation>се маротиба аз санҷиш гузаронида шуд.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/checker/GeneralRequirements.cpp" line="265"/>
       <source>The snark has not been checked three times.</source>
       <comment>The (some mythological beast) has not been checked three times.</comment>
-      <translation type="unfinished"/>
+      <translation>Санҷиши дохилӣ се маротиба гузаронида нашуд.</translation>
     </message>
   </context>
   <context>
@@ -1980,7 +2013,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/hostinfo/HostInfoJob.cpp" line="39"/>
       <source>Collecting information about your machine…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли ҷамъоварии маълумот дар бораи компютери шумо…</translation>
     </message>
   </context>
   <context>
@@ -2015,7 +2048,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/initcpio/InitcpioJob.cpp" line="31"/>
       <source>Creating initramfs with mkinitcpio…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани «initramfs» ҳамроҳи «mkinitcpio»…</translation>
     </message>
   </context>
   <context>
@@ -2024,7 +2057,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/initramfs/InitramfsJob.cpp" line="27"/>
       <source>Creating initramfs…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани «initramfs»…</translation>
     </message>
   </context>
   <context>
@@ -2033,13 +2066,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/interactiveterminal/InteractiveTerminalPage.cpp" line="51"/>
       <source>Konsole not installed.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>Барномаи «Konsole» насб нашудааст.</translation>
     </message>
     <message>
       <location filename="../src/modules/interactiveterminal/InteractiveTerminalPage.cpp" line="52"/>
       <source>Please install KDE Konsole and try again!</source>
       <comment>@info</comment>
-      <translation>Лутфан, KDE Konsole-ро насб намуда, аз нав кӯшиш кунед!</translation>
+      <translation>Лутфан, «KDE Konsole»-ро насб карда, аз нав кӯшиш намоед!</translation>
     </message>
     <message>
       <location filename="../src/modules/interactiveterminal/InteractiveTerminalPage.cpp" line="127"/>
@@ -2081,13 +2114,13 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/locale/LCLocaleDialog.cpp" line="23"/>
       <source>System Locale Setting</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Танзими маҳаллисозии низом</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/LCLocaleDialog.cpp" line="30"/>
       <source>The system locale setting affects the language and character set for some command line user interface elements.&lt;br/&gt;The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation>Танзими маҳаллигардонии низом ба забон ва маҷмӯаи аломатҳо барои баъзеи унсурҳои интерфейси корбарӣ дар сатри фармондиҳӣ таъсир мерасонад.&lt;br/&gt;Танзимоти ҷорӣ: &lt;strong&gt;%1&lt;/strong&gt;.</translation>
+      <translation>Танзими маҳаллисозии низом ба забон ва маҷмуи аломатҳо барои баъзеи унсурҳои интерфейси корбарӣ дар сатри фармондиҳӣ таъсир мерасонад.&lt;br/&gt;Танзимоти ҷорӣ: &lt;strong&gt;«%1»&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/LCLocaleDialog.cpp" line="55"/>
@@ -2112,17 +2145,17 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/luksopenswaphookcfg/LOSHJob.cpp" line="87"/>
       <source>No target system available.</source>
-      <translation type="unfinished"/>
+      <translation>Ягон низоми интихобшуда дастрас нест.</translation>
     </message>
     <message>
       <location filename="../src/modules/luksopenswaphookcfg/LOSHJob.cpp" line="95"/>
       <source>No rootMountPoint is set.</source>
-      <translation type="unfinished"/>
+      <translation>Ягон нуқтаи васли асосии «rootMountPoint» муайян нашудааст.</translation>
     </message>
     <message>
       <location filename="../src/modules/luksopenswaphookcfg/LOSHJob.cpp" line="100"/>
       <source>No configFilePath is set.</source>
-      <translation type="unfinished"/>
+      <translation>Ягон «configFilePath» муайян нашудааст.</translation>
     </message>
   </context>
   <context>
@@ -2136,31 +2169,31 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/license/LicensePage.cpp" line="142"/>
       <source>I accept the terms and conditions above.</source>
       <comment>@info</comment>
-      <translation>Ман шарту шароитҳои дар боло зикршударо қабул мекунам.</translation>
+      <translation>Ман шартҳо ва шароитҳои дар боло зикршударо қабул мекунам.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="144"/>
       <source>Please review the End User License Agreements (EULAs).</source>
       <comment>@info</comment>
-      <translation>Лутфан, Созишномаҳои иҷозатномавии корбари ниҳоиро (EULA-ҳо) мутолиа намоед.</translation>
+      <translation>Лутфан, Созишномаҳои иҷозатномавии корбари ниҳоиро (Созишнрмаҳои «EULA») мутолиа намоед.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="149"/>
       <source>This setup procedure will install proprietary software that is subject to licensing terms.</source>
       <comment>@info</comment>
-      <translation>Раванди танзимкунӣ нармафзори патентдореро, ки дорои шартҳои иҷозатномавӣ мебошад, насб мекунад.</translation>
+      <translation>Ин раванди танзими низом нармафзори патентдореро, ки дорои шартҳои иҷозатномавӣ мебошад, насб мекунад.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="154"/>
       <source>If you do not agree with the terms, the setup procedure cannot continue.</source>
       <comment>@info</comment>
-      <translation>Агар шумо шартҳоро қабул накунед, раванди насбкунӣ бояд идома дода нашавад.</translation>
+      <translation>Агар шумо шартҳоро қабул накунед, раванди насби низом бояд идома дода нашавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="159"/>
       <source>This setup procedure can install proprietary software that is subject to licensing terms in order to provide additional features and enhance the user experience.</source>
       <comment>@info</comment>
-      <translation>Раванди танзимкунӣ метавонад нармафзори патентдореро насб кунад, ки дорои шартҳои иҷозатномавӣ барои таъмини хусусиятҳои иловагӣ ва беҳтар кардани таҷрибаи корбарӣ мебошад.</translation>
+      <translation>Ин раванди танзими низом метавонад нармафзори патентдореро насб кунад, ки дорои шартҳои иҷозатномавӣ барои таъмини хусусиятҳои иловагӣ ва беҳтар кардани таҷрибаи корбарӣ мебошад.</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicensePage.cpp" line="165"/>
@@ -2184,45 +2217,45 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="88"/>
       <source>URL: %1</source>
       <comment>@label</comment>
-      <translation>Нишонии URL: %1</translation>
+      <translation>Нишонии «URL»: %1</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="109"/>
       <source>&lt;strong&gt;%1 driver&lt;/strong&gt;&lt;br/&gt;by %2</source>
       <comment>@label, %1 is product name, %2 is product vendor</comment>
       <extracomment>%1 is an untranslatable product name, example: Creative Audigy driver</extracomment>
-      <translation>&lt;strong&gt;Драйвери %1&lt;/strong&gt;&lt;br/&gt;аз ҷониби %2</translation>
+      <translation>&lt;strong&gt;Драйвери «%1»&lt;/strong&gt;&lt;br/&gt;аз ҷониби «%2»</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="117"/>
       <source>&lt;strong&gt;%1 graphics driver&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;by %2&lt;/font&gt;</source>
       <comment>@label, %1 is product name, %2 is product vendor</comment>
       <extracomment>%1 is usually a vendor name, example: Nvidia graphics driver</extracomment>
-      <translation>&lt;strong&gt;Драйвери графикии %1&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби %2&lt;/font&gt;</translation>
+      <translation>&lt;strong&gt;Драйвери графикии «%1»&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби «%2»&lt;/font&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="124"/>
       <source>&lt;strong&gt;%1 browser plugin&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;by %2&lt;/font&gt;</source>
       <comment>@label, %1 is product name, %2 is product vendor</comment>
-      <translation>&lt;strong&gt;Васлкунаки браузери %1&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби %2&lt;/font&gt;</translation>
+      <translation>&lt;strong&gt;Плагини браузери «%1»&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби «%2»&lt;/font&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="131"/>
       <source>&lt;strong&gt;%1 codec&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;by %2&lt;/font&gt;</source>
       <comment>@label, %1 is product name, %2 is product vendor</comment>
-      <translation>&lt;strong&gt;Кодеки %1&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби %2&lt;/font&gt;</translation>
+      <translation>&lt;strong&gt;Кодеки «%1»&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби «%2»&lt;/font&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="138"/>
       <source>&lt;strong&gt;%1 package&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;by %2&lt;/font&gt;</source>
       <comment>@label, %1 is product name, %2 is product vendor</comment>
-      <translation>&lt;strong&gt;Бастаи %1&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби %2&lt;/font&gt;</translation>
+      <translation>&lt;strong&gt;Бастаи «%1»&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби «%2»&lt;/font&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="145"/>
       <source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;by %2&lt;/font&gt;</source>
       <comment>@label, %1 is product name, %2 is product vendor</comment>
-      <translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби %2&lt;/font&gt;</translation>
+      <translation>&lt;strong&gt;«%1»&lt;/strong&gt;&lt;br/&gt;&lt;font color="Grey"&gt;аз ҷониби «%2»&lt;/font&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="169"/>
@@ -2234,7 +2267,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="192"/>
       <source>Hide the license text</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Пинҳон кардани матни иҷозатнома</translation>
     </message>
     <message>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="193"/>
@@ -2246,7 +2279,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/license/LicenseWidget.cpp" line="197"/>
       <source>Open the license agreement in browser</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Кушодани созишномаи иҷозатномавӣ дар браузер</translation>
     </message>
   </context>
   <context>
@@ -2268,7 +2301,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/locale/LocalePage.cpp" line="133"/>
       <source>&amp;Change…</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>&amp;Тағйир додан…</translation>
     </message>
   </context>
   <context>
@@ -2283,9 +2316,9 @@ The installer will quit and all changes will be lost.</source>
   <context>
     <name>LocaleTests</name>
     <message>
-      <location filename="../src/libcalamares/locale/Tests.cpp" line="266"/>
+      <location filename="../src/libcalamares/locale/Tests.cpp" line="272"/>
       <source>Quit</source>
-      <translation type="unfinished"/>
+      <translation>Баромадан</translation>
     </message>
   </context>
   <context>
@@ -2355,12 +2388,12 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/machineid/Workers.cpp" line="64"/>
       <source>Path &lt;pre&gt;%1&lt;/pre&gt; must be an absolute path.</source>
-      <translation>Масири &lt;pre&gt;%1&lt;/pre&gt; бояд масири мутлақ бошад.</translation>
+      <translation>Масири &lt;pre&gt;«%1»&lt;/pre&gt; бояд масири мутлақ бошад.</translation>
     </message>
     <message>
       <location filename="../src/modules/machineid/Workers.cpp" line="93"/>
       <source>Could not create new random file &lt;pre&gt;%1&lt;/pre&gt;.</source>
-      <translation>Файл тасодуфии нави &lt;pre&gt;%1&lt;/pre&gt; эҷод карда нашуд.</translation>
+      <translation>Файл нави &lt;pre&gt;«%1»&lt;/pre&gt; тасодуфан эҷод карда нашуд.</translation>
     </message>
   </context>
   <context>
@@ -2377,7 +2410,7 @@ The installer will quit and all changes will be lost.</source>
             and timezone settings for you. You can fine-tune the suggested settings below. Search the map by dragging
             to move and using the +/- buttons to zoom in/out or use mouse scrolling for zooming.</source>
       <comment>@info</comment>
-      <translation>Лутфан, ҷойгиршавии пазируфтаи худро аз рӯи харита интихоб намоед, то ки насбкунанда тавонад танзимоти
+      <translation>Лутфан, ҷойгиршавии пазируфтаи худро аз рӯйи харита интихоб намоед, то ки насбкунанда тавонад танзимоти
 маҳаллисозӣ ва минтақаи вақти шуморо пешниҳод намояд. Шумо метавонед танзимоти пешниҳодшударо дар зер дақиқ кунед. Барои ҷустуҷӯи макон дар харита
 тугмаҳои +/- ё тугмаи чархии мушро барои калон ва хурд кардани харита истифода баред ё харитаро кашида, ҳаракат кунед.</translation>
     </message>
@@ -2396,7 +2429,7 @@ The installer will quit and all changes will be lost.</source>
             and timezone settings for you. You can fine-tune the suggested settings below. Search the map by dragging
             to move and using the +/- buttons to zoom in/out or use mouse scrolling for zooming.</source>
       <comment>@label</comment>
-      <translation>Лутфан, ҷойгиршавии пазируфтаи худро аз рӯи харита интихоб намоед, то ки насбкунанда тавонад танзимоти
+      <translation>Лутфан, ҷойгиршавии пазируфтаи худро аз рӯйи харита интихоб намоед, то ки насбкунанда тавонад танзимоти
 маҳаллисозӣ ва минтақаи вақти шуморо пешниҳод намояд. Шумо метавонед танзимоти пешниҳодшударо дар зер дақиқ кунед. Барои ҷустуҷӯи макон дар харита
 тугмаҳои +/- ё тугмаи чархии мушро барои калон ва хурд кардани харита истифода баред ё харитаро кашида, ҳаракат кунед.</translation>
     </message>
@@ -2556,7 +2589,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline.qml" line="47"/>
       <source>Select your preferred region, or use the default settings</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Минтақаи муқаррари худро интихоб намоед ё минтақаи пешфарзро истифода баред</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline.qml" line="103"/>
@@ -2570,7 +2603,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline.qml" line="120"/>
       <source>Select your preferred zone within your region</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Минтақаи вақт ва минтақаи муқаррари худро интихоб намоед</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline.qml" line="193"/>
@@ -2582,7 +2615,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline.qml" line="240"/>
       <source>You can fine-tune language and locale settings below</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Шумо метавонед танзимоти забон ва маҳаллисозии низомро дар зер дуруст кунед</translation>
     </message>
   </context>
   <context>
@@ -2591,7 +2624,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="47"/>
       <source>Select your preferred region, or use the default settings</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Минтақаи муқаррари худро интихоб намоед ё минтақаи пешфарзро истифода баред</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="103"/>
@@ -2605,7 +2638,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="120"/>
       <source>Select your preferred zone within your region</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Минтақаи вақт ва минтақаи муқаррари худро интихоб намоед</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="193"/>
@@ -2617,7 +2650,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/localeq/Offline-qt6.qml" line="240"/>
       <source>You can fine-tune language and locale settings below</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Шумо метавонед танзимоти забон ва маҳаллисозии низомро дар зер дуруст кунед</translation>
     </message>
   </context>
   <context>
@@ -2685,9 +2718,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="219"/>
       <source>The password contains fewer than %n digits</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа кам аз %n рақам иборат аст</numerusform>
+        <numerusform>Ниҳонвожа кам аз %n рақам иборат аст</numerusform>
       </translation>
     </message>
     <message>
@@ -2698,9 +2731,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="226"/>
       <source>The password contains fewer than %n uppercase letters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа кам аз %n ҳарфи калон иборат аст</numerusform>
+        <numerusform>Ниҳонвожа кам аз %n ҳарфи калон иборат аст</numerusform>
       </translation>
     </message>
     <message>
@@ -2711,9 +2744,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="233"/>
       <source>The password contains fewer than %n lowercase letters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа кам аз %n ҳарфи хурд иборат аст</numerusform>
+        <numerusform>Ниҳонвожа кам аз %n ҳарфи хурд иборат аст</numerusform>
       </translation>
     </message>
     <message>
@@ -2724,9 +2757,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="240"/>
       <source>The password contains fewer than %n non-alphanumeric characters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа кам аз %n аломати ғайри алифбоӣ-ададӣ иборат аст</numerusform>
+        <numerusform>Ниҳонвожа кам аз %n аломати ғайри алифбоӣ-ададӣ иборат аст</numerusform>
       </translation>
     </message>
     <message>
@@ -2737,9 +2770,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="247"/>
       <source>The password is shorter than %n characters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа аз %n аломат кутоҳтар аст</numerusform>
+        <numerusform>Ниҳонвожа аз %n аломат кутоҳтар аст</numerusform>
       </translation>
     </message>
     <message>
@@ -2750,14 +2783,14 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="252"/>
       <source>The password is a rotated version of the previous one</source>
-      <translation type="unfinished"/>
+      <translation>Ин ниҳонвожа дар ҷойгардонии аломатҳои ниҳонвожаи пешина асос меёбад</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="256"/>
       <source>The password contains fewer than %n character classes</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа кам аз %n гурӯҳи аломатҳо иборат аст</numerusform>
+        <numerusform>Ниҳонвожа кам аз %n гурӯҳи аломатҳо иборат аст</numerusform>
       </translation>
     </message>
     <message>
@@ -2768,9 +2801,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="263"/>
       <source>The password contains more than %n same characters consecutively</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа дорои зиёда аз %1 аломати ягонаи пай дар пай мебошад</numerusform>
+        <numerusform>Ниҳонвожа дорои зиёда аз %1 аломати ягонаи пай дар пай мебошад</numerusform>
       </translation>
     </message>
     <message>
@@ -2781,9 +2814,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="270"/>
       <source>The password contains more than %n characters of the same class consecutively</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа дорои зиёда аз %1 аломати гурӯҳи ягонаи пай дар пай мебошад</numerusform>
+        <numerusform>Ниҳонвожа дорои зиёда аз %1 аломати гурӯҳи ягонаи пай дар пай мебошад</numerusform>
       </translation>
     </message>
     <message>
@@ -2794,9 +2827,9 @@ The installer will quit and all changes will be lost.</source>
     <message numerus="yes">
       <location filename="../src/modules/users/CheckPWQuality.cpp" line="281"/>
       <source>The password contains monotonic sequence longer than %n characters</source>
-      <translation type="unfinished">
-        <numerusform/>
-        <numerusform/>
+      <translation>
+        <numerusform>Ниҳонвожа пайдарпаии ҳаммонандро аз %1 аломат дарозтар дар бар мегирад</numerusform>
+        <numerusform>Ниҳонвожа пайдарпаии ҳаммонандро аз %1 аломат дарозтар дар бар мегирад</numerusform>
       </translation>
     </message>
     <message>
@@ -2936,7 +2969,7 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/keyboard/KeyboardPage.ui" line="74"/>
       <source>Keyboard model:</source>
-      <translation type="unfinished"/>
+      <translation>Намунаи клавиатура:</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/KeyboardPage.ui" line="146"/>
@@ -2947,7 +2980,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/keyboard/KeyboardPage.ui" line="153"/>
       <source>Switch Keyboard:</source>
       <extracomment>shortcut for switching between keyboard layouts</extracomment>
-      <translation type="unfinished"/>
+      <translation>Иваз кардани клавиатура:</translation>
     </message>
   </context>
   <context>
@@ -3044,27 +3077,27 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="627"/>
       <source>Use Active Directory</source>
-      <translation type="unfinished"/>
+      <translation>Истифода кардани феҳристи фаъол</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="638"/>
       <source>Domain:</source>
-      <translation type="unfinished"/>
+      <translation>Домен:</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="652"/>
       <source>Domain Administrator:</source>
-      <translation type="unfinished"/>
+      <translation>Маъмури домен:</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="662"/>
       <source>Password:</source>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожа</translation>
     </message>
     <message>
       <location filename="../src/modules/users/page_usersetup.ui" line="680"/>
       <source>IP Address (optional):</source>
-      <translation type="unfinished"/>
+      <translation>Нишонии «IP» (интихобӣ):</translation>
     </message>
   </context>
   <context>
@@ -3090,19 +3123,19 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="191"/>
       <source>EFI system</source>
       <comment>@label</comment>
-      <translation>Низоми EFI</translation>
+      <translation>Низоми «EFI»</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="195"/>
       <source>Swap</source>
       <comment>@label</comment>
-      <translation>Мубодила</translation>
+      <translation>Фазои мубодила</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="199"/>
       <source>New partition for %1</source>
       <comment>@label</comment>
-      <translation>Қисми диски нав барои %1</translation>
+      <translation>Қисми диски нав барои «%1»</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="203"/>
@@ -3131,7 +3164,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="205"/>
       <source>New Partition</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Қисми диски нав</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="307"/>
@@ -3149,7 +3182,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="311"/>
       <source>File System Label</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Барчаспи низоми файлӣ</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/core/PartitionModel.cpp" line="313"/>
@@ -3243,7 +3276,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="56"/>
       <source>Gathering system information…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Маълумот дар бораи низоми шумо ҷамъ шуда истодааст…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/PartitionViewStep.cpp" line="107"/>
@@ -3252,174 +3285,179 @@ The installer will quit and all changes will be lost.</source>
       <translation>Қисмҳои диск</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="143"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="144"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Насб кардани низоми «%1» &lt;strong&gt;ҳамроҳи&lt;/strong&gt; низоми амалкунандаи дигар</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="147"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="148"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk and install %1</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;Пок кардани&lt;/strong&gt; диск ва насб кардани низоми «%1».</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="151"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="152"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition with %1</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;Иваз кардани&lt;/strong&gt; қисми диск бо «%1»</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="156"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="157"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Эҷод кардани қисмҳои диск &lt;strong&gt;ба таври дастӣ&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="178"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="179"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system on disk &lt;strong&gt;%2&lt;/strong&gt; (%3)</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Насб кардани низоми «%1» &lt;strong&gt;ҳамроҳи&lt;/strong&gt; низоми амалкунандаи дигар дар диски &lt;strong&gt;%2&lt;/strong&gt; (%3)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="187"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="188"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk &lt;strong&gt;%2&lt;/strong&gt; (%3) and install %1</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;Пок кардани&lt;/strong&gt; диски &lt;strong&gt;%2&lt;/strong&gt; (%3) ва насб кардани «%1»</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="194"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="195"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition on disk &lt;strong&gt;%2&lt;/strong&gt; (%3) with %1</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;Иваз кардани&lt;/strong&gt; қисми диск дар диски &lt;strong&gt;%2&lt;/strong&gt; (%3) бо «%1»</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="203"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="204"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning on disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;strong&gt;Ба таври дастӣ&lt;/strong&gt; эҷод кардани қисмҳои диск дар диски &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="213"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="214"/>
       <source>Disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation>Диски &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="263"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="239"/>
+      <source>Create a swap file.</source>
+      <translation>Эҷод кардани файли фазои мубодила.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="268"/>
       <source>Unsafe partition actions are enabled.</source>
-      <translation type="unfinished"/>
+      <translation>Амалҳои беэътимод барои қисми диск фаъол шуданд.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="266"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="271"/>
       <source>Partitioning is configured to &lt;b&gt;always&lt;/b&gt; fail.</source>
-      <translation type="unfinished"/>
+      <translation>Қисмбандӣ ба &lt;b&gt;ҳамеша&lt;/b&gt; вайроншуда танзим карда шудааст.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="269"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="274"/>
       <source>No partitions will be changed.</source>
-      <translation type="unfinished"/>
+      <translation>Ягон қисми диск тағйир дода намешавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="309"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="314"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>Танзимоти ҷорӣ:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="327"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="332"/>
       <source>After:</source>
       <comment>@label</comment>
-      <translation>Баъд аз тағйир:</translation>
+      <translation>Пас аз тағйирот:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="550"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="555"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;To configure an EFI system partition, go back and select or create a suitable filesystem.</source>
-      <translation type="unfinished"/>
+      <translation>Барои оғоз кардани «%1» қисми диски низоми «EFI» лозим аст.&lt;br/&gt;&lt;br/&gt;Барои танзим кардани қисми диски низоми «EFI», ба қафо гузаред ва низоми файлии мувофиқро интихоб кунед ё эҷод намоед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="556"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="561"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;The EFI system partition does not meet recommendations. It is recommended to go back and select or create a suitable filesystem.</source>
-      <translation type="unfinished"/>
+      <translation>Барои оғоз кардани «%1» қисми диски низоми «EFI» лозим аст.&lt;br/&gt;&lt;br/&gt;Қисми диски низоми «EFI» ба талаботи тавсияшуда мувофиқат намекунад. Ба шумо тавсия дода мешавад, ки ба қафо гузаред ва низоми файлии мувофиқро интихоб кунед ё эҷод намоед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="564"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="569"/>
       <source>The filesystem must be mounted on &lt;strong&gt;%1&lt;/strong&gt;.</source>
-      <translation type="unfinished"/>
+      <translation>Низоми файлӣ бояд дар &lt;strong&gt;%1&lt;/strong&gt; васл карда шавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="565"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="570"/>
       <source>The filesystem must have type FAT32.</source>
-      <translation type="unfinished"/>
+      <translation>Низоми файлӣ бояд навъи «FAT32» дошта бошад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="566"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="571"/>
       <source>The filesystem must have flag &lt;strong&gt;%1&lt;/strong&gt; set.</source>
-      <translation type="unfinished"/>
+      <translation>Низоми файлӣ бояд бо байрақчаи &lt;strong&gt;%1&lt;/strong&gt; танзим карда шавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="574"/>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="576"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="579"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="581"/>
       <source>The filesystem must be at least %1 MiB in size.</source>
-      <translation type="unfinished"/>
+      <translation>Андозаи низоми файлӣ дар ҳадди ақал бояд %1 МиБ бошад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="578"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="583"/>
       <source>The minimum recommended size for the filesystem is %1 MiB.</source>
-      <translation type="unfinished"/>
+      <translation>Андозаи тавсияшудаи ҳадди ақал барои низоми файлӣ %1 МиБ мебошад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="580"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="585"/>
       <source>You can continue without setting up an EFI system partition but your system may fail to start.</source>
-      <translation type="unfinished"/>
+      <translation>Шумо метавонед қисми диски низоми «EFI»-и танзим накарда, раванди насбро идома диҳед, аммо низоми шумо метавонад оғоз карда нашавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="582"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="587"/>
       <source>You can continue with this EFI system partition configuration but your system may fail to start.</source>
-      <translation type="unfinished"/>
+      <translation>Шумо метавонед қисми диски низоми «EFI»-и танзим карда, раванди насбро идома диҳед, аммо низоми шумо метавонад оғоз карда нашавад.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="594"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="599"/>
       <source>No EFI system partition configured</source>
       <translation>Ягон қисми диски низомии EFI танзим нашуд</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="602"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="607"/>
       <source>EFI system partition configured incorrectly</source>
-      <translation type="unfinished"/>
+      <translation>Қисми диск дар низоми «EFI» ба таври нодуруст танзим карда нашуд</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="622"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="627"/>
       <source>EFI system partition recommendation</source>
-      <translation type="unfinished"/>
+      <translation>Тавсия барои қисми диски низоми «EFI»</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="641"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="646"/>
       <source>Option to use GPT on BIOS</source>
       <translation>Имкони истифодаи GPT дар BIOS</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="642"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="647"/>
       <source>A GPT partition table is the best option for all systems. This installer supports such a setup for BIOS systems too.&lt;br/&gt;&lt;br/&gt;To configure a GPT partition table on BIOS, (if not done so already) go back and set the partition table to GPT, next create a 8 MB unformatted partition with the &lt;strong&gt;%2&lt;/strong&gt; flag enabled.&lt;br/&gt;&lt;br/&gt;An unformatted 8 MB partition is necessary to start %1 on a BIOS system with GPT.</source>
-      <translation type="unfinished"/>
+      <translation>Ҷадвали қисми диски «GPT» барои ҳамаи низомҳо интихоби беҳтарин мебошад. Насбкунандаи ҷорӣ, инчунин, барои низомҳои «BIOS» танзими монандро дастгирӣ менамояд.&lt;br/&gt;&lt;br/&gt;Барои танзим кардани ҷадвали қисми диски «GPT» дар «BIOS», (агар то ҳол танзим накарда бошед) як қадам ба қафо гузаред ва ҷадвали қисми дискро ба «GPT» танзим кунед, пас қисми диски шаклбандинашударо бо ҳаҷми 8 МБ бо нишони фаъолшудаи &lt;strong&gt;%2&lt;/strong&gt; эҷод намоед.&lt;br/&gt;&lt;br/&gt;Қисми диски шаклбандинашуда бо ҳаҷми 8 МБ барои оғоз кардани «%1» дар низоми «BIOS» бо «GPT» лозим аст.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="664"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="669"/>
       <source>Boot partition not encrypted</source>
       <translation>Қисми диски роҳандозӣ рамзгузорӣ нашудааст</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="665"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="670"/>
       <source>A separate boot partition was set up together with an encrypted root partition, but the boot partition is not encrypted.&lt;br/&gt;&lt;br/&gt;There are security concerns with this kind of setup, because important system files are kept on an unencrypted partition.&lt;br/&gt;You may continue if you wish, but filesystem unlocking will happen later during system startup.&lt;br/&gt;To encrypt the boot partition, go back and recreate it, selecting &lt;strong&gt;Encrypt&lt;/strong&gt; in the partition creation window.</source>
       <translation>Қисми диски роҳандозии алоҳида дар як ҷой бо қисми диски реша (root)-и рамзгузоришуда танзим карда шуд, аммо қисми диски роҳандозӣ рамзгузорӣ нашудааст.&lt;br/&gt;&lt;br/&gt;Барои ҳамин навъи танзимкунӣ масъалаи амниятӣ аҳамият дорад, зеро ки файлҳои низомии муҳим дар қисми диски рамзгузоринашуда нигоҳ дошта мешаванд.&lt;br/&gt;Агар шумо хоҳед, метавонед идома диҳед, аммо қулфкушоии низоми файлӣ дертар ҳангоми оғози кори низом иҷро карда мешавад.&lt;br/&gt;Барои рамзгзорӣ кардани қисми диски роҳандозӣ ба қафо гузаред ва бо интихоби тугмаи &lt;strong&gt;Рамзгузорӣ&lt;/strong&gt; дар равзанаи эҷодкунии қисми диск онро аз нав эҷод намоед.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="757"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="762"/>
       <source>has at least one disk device available.</source>
       <translation>ақаллан як дастгоҳи диск дастрас аст.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="758"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="763"/>
       <source>There are no partitions to install on.</source>
       <translation>Ягон қисми диск барои насб вуҷуд надорад.</translation>
     </message>
@@ -3430,7 +3468,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/plasmalnf/PlasmaLnfJob.cpp" line="33"/>
       <source>Applying Plasma Look-and-Feel…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли татбиқи намуди зоҳирии «Plasma»…</translation>
     </message>
     <message>
       <location filename="../src/modules/plasmalnf/PlasmaLnfJob.cpp" line="57"/>
@@ -3466,13 +3504,13 @@ The installer will quit and all changes will be lost.</source>
     <message>
       <location filename="../src/libcalamares/JobQueue.cpp" line="138"/>
       <source>Calamares</source>
-      <translation type="unfinished"/>
+      <translation>Calamares</translation>
     </message>
     <message>
       <location filename="../src/libcalamares/JobQueue.cpp" line="138"/>
       <source>Installation in progress</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Низом насб шуда истодааст</translation>
     </message>
   </context>
   <context>
@@ -3481,7 +3519,7 @@ The installer will quit and all changes will be lost.</source>
       <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="56"/>
       <source>Saving files for later…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Нигоҳдории файлҳо барои истифодаи минбаъда…</translation>
     </message>
     <message>
       <location filename="../src/modules/preservefiles/PreserveFiles.cpp" line="64"/>
@@ -3571,28 +3609,28 @@ Output:
       <translation>%1 (%2)</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="31"/>
       <source>unknown</source>
       <comment>@partition info</comment>
       <translation>номаълум</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
       <source>extended</source>
       <comment>@partition info</comment>
       <translation>афзуда</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
       <source>unformatted</source>
       <comment>@partition info</comment>
-      <translation>шаклбандинашуда</translation>
+      <translation>бешакл</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="39"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
       <source>swap</source>
       <comment>@partition info</comment>
-      <translation>мубодила</translation>
+      <translation>фазои мубодила</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/keyboardwidget/keyboardglobal.cpp" line="145"/>
@@ -3629,7 +3667,7 @@ Output:
       <location filename="../src/modules/partition/gui/PartitionLabelsView.cpp" line="39"/>
       <source>Unpartitioned space or unknown partition table</source>
       <comment>@info</comment>
-      <translation>Фазои диск бо қисми диски ҷудонашуда ё ҷадвали қисми диски номаълум</translation>
+      <translation>Фазои қисми диски бешакл ё ҷадвали қисми диски номаълум</translation>
     </message>
   </context>
   <context>
@@ -3638,7 +3676,7 @@ Output:
       <location filename="../src/modules/welcomeq/Recommended.qml" line="40"/>
       <source>&lt;p&gt;This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;
         Setup can continue, but some features might be disabled.&lt;/p&gt;</source>
-      <translation>&lt;p&gt;Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;
+      <translation>&lt;p&gt;Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;
         Танзимот идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.&lt;/p&gt;</translation>
     </message>
   </context>
@@ -3648,7 +3686,7 @@ Output:
       <location filename="../src/modules/removeuser/RemoveUserJob.cpp" line="32"/>
       <source>Removing live user from the target system…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Тоза кардани корбари фаъол аз низоми интихобшуда…</translation>
     </message>
   </context>
   <context>
@@ -3658,13 +3696,13 @@ Output:
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="38"/>
       <source>Removing Volume Group named %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли тоза кардани гурӯҳи ҳаҷм бо номи %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="32"/>
       <source>Removing Volume Group named &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли тоза кардани гурӯҳи ҳаҷм бо номи &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/RemoveVolumeGroupJob.cpp" line="46"/>
@@ -3678,14 +3716,14 @@ Output:
       <location filename="../src/modules/welcomeq/Requirements.qml" line="37"/>
       <source>&lt;p&gt;This computer does not satisfy the minimum requirements for installing %1.&lt;br/&gt;
         Installation cannot continue.&lt;/p&gt;</source>
-      <translation>&lt;p&gt;Ин компютер ба талаботи камтарин барои насбкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;
+      <translation>&lt;p&gt;Ин компютер ба талаботи камтарин барои насбкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;
         Насбкунӣ идома дода намешавад.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/Requirements.qml" line="39"/>
       <source>&lt;p&gt;This computer does not satisfy some of the recommended requirements for setting up %1.&lt;br/&gt;
         Setup can continue, but some features might be disabled.&lt;/p&gt;</source>
-      <translation>&lt;p&gt;Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии %1 ҷавобгӯ намебошад.&lt;br/&gt;
+      <translation>&lt;p&gt;Ин компютер ба баъзеи талаботи тавсияшуда барои насбкунии «%1» ҷавобгӯ намебошад.&lt;br/&gt;
         Танзимот идома дода мешавад, аммо баъзеи хусусиятҳо ғайрифаъол карда мешаванд.&lt;/p&gt;</translation>
     </message>
   </context>
@@ -3695,7 +3733,7 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="43"/>
       <source>Performing file system resize…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли иваз кардани андозаи низоми файлӣ…</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="162"/>
@@ -3713,31 +3751,31 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="170"/>
       <source>KPMCore not available</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>«KPMCore» дастнорас аст</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="171"/>
       <source>Calamares cannot start KPMCore for the file system resize job.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>«Calamares» барои вазифаи иваз кардани андозаи низоми файлӣ «KPMCore»-ро оғоз карда наметавонад.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="180"/>
       <source>Resize failed.</source>
       <comment>@error</comment>
-      <translation type="unfinished"/>
+      <translation>Андоза иваз карда нашуд.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="182"/>
       <source>The filesystem %1 could not be found in this system, and cannot be resized.</source>
       <comment>@info</comment>
-      <translation>Низоми файлии %1 дар ин низом ёфт нашуд ва андозаи он иваз карда намешавад.</translation>
+      <translation>Низоми файлии «%1» дар ин низом ёфт нашуд ва андозаи он иваз карда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="184"/>
       <source>The device %1 could not be found in this system, and cannot be resized.</source>
       <comment>@info</comment>
-      <translation>Дастгоҳи %1 дар ин низом ёфт нашуд ва андозаи он иваз карда намешавад.</translation>
+      <translation>Дастгоҳи «%1» дар ин низом ёфт нашуд ва андозаи он иваз карда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="193"/>
@@ -3753,7 +3791,7 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="206"/>
       <source>The filesystem %1 cannot be resized.</source>
       <comment>@error</comment>
-      <translation>Андозаи низоми файлии %1 иваз карда намешавад.</translation>
+      <translation>Андозаи низоми файлии «%1» иваз карда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="195"/>
@@ -3766,13 +3804,13 @@ Output:
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="216"/>
       <source>The file system %1 must be resized, but cannot.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Андозаи низоми файлии %1 бояд иваз карда шавад, аммо иваз карда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/fsresizer/ResizeFSJob.cpp" line="217"/>
       <source>The device %1 must be resized, but cannot</source>
       <comment>@info</comment>
-      <translation>Андозаи дастгоҳи %1 бояд иваз карда шавад, аммо иваз карда намешавад.</translation>
+      <translation>Андозаи дастгоҳи «%1» бояд иваз карда шавад, аммо он иваз карда намешавад</translation>
     </message>
   </context>
   <context>
@@ -3781,19 +3819,19 @@ Output:
       <location filename="../src/modules/partition/jobs/ResizePartitionJob.cpp" line="39"/>
       <source>Resize partition %1</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Иваз кардани андозаи қисми диски %1</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizePartitionJob.cpp" line="45"/>
       <source>Resize &lt;strong&gt;%2MiB&lt;/strong&gt; partition &lt;strong&gt;%1&lt;/strong&gt; to &lt;strong&gt;%3MiB&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Иваз кардани андозаи қисми диски &lt;strong&gt;1%&lt;/strong&gt; аз &lt;strong&gt;%2 МиБ&lt;/strong&gt; ба &lt;strong&gt;%3 МиБ&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizePartitionJob.cpp" line="54"/>
       <source>Resizing %2MiB partition %1 to %3MiB…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли иваз кардани андозаи қисми диски %1 аз %2 МиБ ба %3 МиБ…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizePartitionJob.cpp" line="70"/>
@@ -3816,19 +3854,19 @@ Output:
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="28"/>
       <source>Resize volume group named %1 from %2 to %3</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Иваз кардани андозаи гурӯҳи ҳаҷм бо номи %1 аз %2 ба %3</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="37"/>
       <source>Resize volume group named &lt;strong&gt;%1&lt;/strong&gt; from &lt;strong&gt;%2&lt;/strong&gt; to &lt;strong&gt;%3&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Иваз кардани андозаи гурӯҳи ҳаҷм бо номи &lt;strong&gt;%1&lt;/strong&gt; аз &lt;strong&gt;%2&lt;/strong&gt; ба &lt;strong&gt;%3&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="47"/>
       <source>Resizing volume group named %1 from %2 to %3…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли иваз кардани андозаи гурӯҳи ҳаҷм бо номи %1 аз %2 ба %3…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/ResizeVolumeGroupJob.cpp" line="58"/>
@@ -3841,7 +3879,7 @@ Output:
     <message>
       <location filename="../src/modules/welcome/checker/ResultsListWidget.cpp" line="47"/>
       <source>Checking requirements again in a few seconds ...</source>
-      <translation type="unfinished"/>
+      <translation>Талабот пас аз якчанд сония аз нав тафтиш карда мешавад...</translation>
     </message>
   </context>
   <context>
@@ -3850,13 +3888,13 @@ Output:
       <location filename="../src/modules/partition/gui/ScanningDialog.cpp" line="69"/>
       <source>Scanning storage devices…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Озмоиши дастгоҳҳои захирагоҳ…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ScanningDialog.cpp" line="69"/>
       <source>Partitioning…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли қисмбандӣ…</translation>
     </message>
   </context>
   <context>
@@ -3875,7 +3913,7 @@ Output:
       <location filename="../src/modules/users/SetHostNameJob.cpp" line="48"/>
       <source>Setting hostname %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли танзими номи мизбони %1…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/SetHostNameJob.cpp" line="121"/>
@@ -3896,7 +3934,7 @@ Output:
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="66"/>
       <source>Setting keyboard model to %1, layout as %2-%3…</source>
       <comment>@status, %1 model, %2 layout, %3 variant</comment>
-      <translation type="unfinished"/>
+      <translation>Намунаи клавиатура ба «%1» ва тарҳбандӣ ба «%2-%3» танзим шуда истодааст…</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="371"/>
@@ -3908,13 +3946,13 @@ Output:
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="372"/>
       <source>Failed to write to %1</source>
       <comment>@error, %1 is virtual console configuration path</comment>
-      <translation>Ба %1 сабт нашуд</translation>
+      <translation>Ба «%1» сабт нашуд</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="399"/>
       <source>Failed to write keyboard configuration for X11.</source>
       <comment>@error</comment>
-      <translation>Танзимоти клавиатура барои X11 сабт нашуд.</translation>
+      <translation>Танзимоти клавиатура барои «X11» сабт нашуд.</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboard/SetKeyboardLayoutJob.cpp" line="400"/>
@@ -3941,91 +3979,91 @@ Output:
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="44"/>
       <source>Set flags on partition %1</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани байрақчаҳо дар қисми диски «%1»</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="50"/>
       <source>Set flags on %1MiB %2 partition</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани байрақчаҳо дар қисми диски «%2» %1MiB</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="54"/>
       <source>Set flags on new partition</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани байрақчаҳо дар қисми диски нав</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="65"/>
       <source>Clear flags on partition &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Пок кардани байрақчаҳо дар қисми диски &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="71"/>
       <source>Clear flags on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Пок кардани байрақчаҳо дар қисми диски &lt;strong&gt;%2&lt;/strong&gt; %1MiB</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="75"/>
       <source>Clear flags on new partition</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Пок кардани байрақчаҳо дар қисми диски нав</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="80"/>
       <source>Set flags on partition &lt;strong&gt;%1&lt;/strong&gt; to &lt;strong&gt;%2&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани байрақчаҳо дар қисми диски &lt;strong&gt;%1&lt;/strong&gt; ҳамчун &lt;strong&gt;%2&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="88"/>
       <source>Set flags on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition to &lt;strong&gt;%3&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани байрақчаҳо дар қисми диски %1 МиБ &lt;strong&gt;%2&lt;/strong&gt; ҳамчун &lt;strong&gt;%3&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="94"/>
       <source>Set flags on new partition to &lt;strong&gt;%1&lt;/strong&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>Танзим кардани байрақчаҳо дар қисми диски нав ҳамчун &lt;strong&gt;%1&lt;/strong&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="105"/>
       <source>Clearing flags on partition &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Поксозии байрақчаҳо дар қисми диски &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="112"/>
       <source>Clearing flags on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Поксозии байрақчаҳо дар қисми диски %1 МиБ &lt;strong&gt;%2&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="117"/>
       <source>Clearing flags on new partition…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Байрақчаҳо дар қисми диски нав тоза шуда истодаанд…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="122"/>
       <source>Setting flags &lt;strong&gt;%2&lt;/strong&gt; on partition &lt;strong&gt;%1&lt;/strong&gt;…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Танзимкунии байрақчаҳои &lt;strong&gt;%2&lt;/strong&gt; дар қисми диски &lt;strong&gt;%1&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="130"/>
       <source>Setting flags &lt;strong&gt;%3&lt;/strong&gt; on %1MiB &lt;strong&gt;%2&lt;/strong&gt; partition…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Танзимкунии байрақчаҳои &lt;strong&gt;%3&lt;/strong&gt; дар қисми диски %1 МиБ &lt;strong&gt;%2&lt;/strong&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="136"/>
       <source>Setting flags &lt;strong&gt;%1&lt;/strong&gt; on new partition…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Танзимкунии байрақчаҳои &lt;strong&gt;%1&lt;/strong&gt; дар қисми диски нав…</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/jobs/SetPartitionFlagsJob.cpp" line="149"/>
@@ -4044,7 +4082,7 @@ Output:
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="44"/>
       <source>Setting password for user %1…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожа барои корбари «%1» танзим шуда истодааст…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/SetPasswordJob.cpp" line="80"/>
@@ -4079,13 +4117,13 @@ Output:
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="32"/>
       <source>Setting timezone to %1/%2…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Минтақаи вақт ба %1/%2 танзим шуда истодааст…</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="60"/>
       <source>Cannot access selected timezone path.</source>
       <comment>@error</comment>
-      <translation>Масири минтақаи вақти интихобшуда дастнорас аст</translation>
+      <translation>Масири минтақаи вақти интихобшуда дастнорас аст.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="61"/>
@@ -4098,7 +4136,7 @@ Output:
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="80"/>
       <source>Cannot set timezone.</source>
       <comment>@error</comment>
-      <translation>Минтақаи вақт танзим карда намешавад</translation>
+      <translation>Минтақаи вақт танзим карда намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/locale/SetTimezoneJob.cpp" line="71"/>
@@ -4119,18 +4157,18 @@ Output:
       <location filename="../src/modules/users/MiscJobs.cpp" line="181"/>
       <source>Preparing groups…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Гурӯҳҳо омода шуда истодаанд…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/MiscJobs.cpp" line="193"/>
       <location filename="../src/modules/users/MiscJobs.cpp" line="198"/>
       <source>Could not create groups in target system</source>
-      <translation type="unfinished"/>
+      <translation>Гурӯҳҳо дар низоми интихобшуда эҷод карда нашуданд</translation>
     </message>
     <message>
       <location filename="../src/modules/users/MiscJobs.cpp" line="199"/>
       <source>These groups are missing in the target system: %1</source>
-      <translation type="unfinished"/>
+      <translation>Гурӯҳҳои зерин дар низоми интихобшуда вуҷуд надоранд: %1</translation>
     </message>
   </context>
   <context>
@@ -4139,7 +4177,7 @@ Output:
       <location filename="../src/modules/users/MiscJobs.cpp" line="34"/>
       <source>Configuring &lt;pre&gt;sudo&lt;/pre&gt; users…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли танзими корбарони &lt;pre&gt;sudo&lt;/pre&gt;…</translation>
     </message>
     <message>
       <location filename="../src/modules/users/MiscJobs.cpp" line="70"/>
@@ -4158,7 +4196,7 @@ Output:
       <location filename="../src/modules/shellprocess/ShellProcessJob.cpp" line="38"/>
       <source>Running shell processes…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли иҷрокунии равандҳои восит…</translation>
     </message>
   </context>
   <context>
@@ -4200,6 +4238,40 @@ Output:
     </message>
   </context>
   <context>
+    <name>TarballRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="45"/>
+      <source>Invalid tarball configuration</source>
+      <translation>Танзимоти «tarball» нодуруст аст</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>Бойгонии манбаи &lt;i&gt;%1&lt;/i&gt; вуҷуд надорад.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation>Абзорҳое, ки вуҷуд надоранд</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>Абзори &lt;i&gt;%1&lt;/i&gt; дар низом насб нашудааст.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>Ягон ҷойи таъинот барои &lt;i&gt;%1&lt;/i&gt; ёфт нашуд.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="84"/>
+      <source>Tarball extract file %1</source>
+      <translation>Баровардани файл аз бойгонии «%1»</translation>
+    </message>
+  </context>
+  <context>
     <name>TrackingInstallJob</name>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="100"/>
@@ -4210,7 +4282,7 @@ Output:
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="106"/>
       <source>Sending installation feedback…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли ирсоли алоқаи бозгашти насби низом…</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="124"/>
@@ -4234,7 +4306,7 @@ Output:
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="198"/>
       <source>Configuring KDE user feedback…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли танзими алоқаи бозгашти корбари «KDE»…</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="220"/>
@@ -4264,7 +4336,7 @@ Output:
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="141"/>
       <source>Configuring machine feedback…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли танзими алоқаи бозгашти компютерӣ…</translation>
     </message>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="164"/>
@@ -4327,7 +4399,7 @@ Output:
       <location filename="../src/modules/tracking/TrackingViewStep.cpp" line="49"/>
       <source>Feedback</source>
       <comment>@title</comment>
-      <translation>Изҳори назар ва алоқаи бозгашт</translation>
+      <translation>Изҳори назар</translation>
     </message>
   </context>
   <context>
@@ -4336,17 +4408,59 @@ Output:
       <location filename="../src/modules/umount/UmountJob.cpp" line="39"/>
       <source>Unmounting file systems…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Низомҳои файлӣ ҷудо шуда истодаанд…</translation>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="123"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="135"/>
       <source>No target system available.</source>
-      <translation type="unfinished"/>
+      <translation>Ягон низоми интихобшуда дастрас нест.</translation>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="131"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="143"/>
       <source>No rootMountPoint is set.</source>
-      <translation type="unfinished"/>
+      <translation>Ягон нуқтаи васли асосии «rootMountPoint» муайян нашудааст.</translation>
+    </message>
+  </context>
+  <context>
+    <name>UnpackFSCJob</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnpackFSCJob.cpp" line="61"/>
+      <source>Unpack filesystems</source>
+      <translation>Баровардани низомҳои файлӣ</translation>
+    </message>
+  </context>
+  <context>
+    <name>UnsquashRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="45"/>
+      <source>Invalid unsquash configuration</source>
+      <translation>Танзимоти «unsquash» нодуруст аст</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>Бойгонии манбаи &lt;i&gt;%1&lt;/i&gt; вуҷуд надорад.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation>Абзорҳое, ки вуҷуд надоранд</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>Абзори &lt;i&gt;%1&lt;/i&gt; дар низом насб нашудааст.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>Ягон ҷойи таъинот барои &lt;i&gt;%1&lt;/i&gt; ёфт нашуд.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="98"/>
+      <source>Unsquash file %1</source>
+      <translation>Амали «unsquash» барои файли «%1»</translation>
     </message>
   </context>
   <context>
@@ -4498,19 +4612,19 @@ Output:
       <location filename="../src/calamares/DebugWindow.cpp" line="237"/>
       <source>About %1 Setup</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Дар бораи танзими «%1»</translation>
     </message>
     <message>
       <location filename="../src/calamares/DebugWindow.cpp" line="238"/>
       <source>About %1 Installer</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Дар бораи насбкунандаи «%1»</translation>
     </message>
     <message>
       <location filename="../src/modules/welcome/WelcomePage.cpp" line="213"/>
       <source>%1 Support</source>
       <comment>@action</comment>
-      <translation type="unfinished"/>
+      <translation>Дастгирии «%1»</translation>
     </message>
   </context>
   <context>
@@ -4537,12 +4651,12 @@ Output:
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="102"/>
       <source>Creating ZFS pools and datasets…</source>
       <comment>@status</comment>
-      <translation type="unfinished"/>
+      <translation>Дар ҳоли эҷод кардани ҳавзаҳои нигоҳдории «ZFS» ва маҷмуъҳои маълумот…</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="162"/>
       <source>Failed to create zpool on </source>
-      <translation type="unfinished"/>
+      <translation>Ҳавзаи нигоҳдории «zpool» эҷод карда нашуд дар</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="180"/>
@@ -4552,28 +4666,28 @@ Output:
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="181"/>
       <source>No partitions are available for ZFS.</source>
-      <translation type="unfinished"/>
+      <translation>Ягон қисми диск барои «ZFS» дастрас нест.</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="192"/>
       <source>Internal data missing</source>
-      <translation type="unfinished"/>
+      <translation>Маълумоти дохилӣ вуҷуд надорад</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="192"/>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="264"/>
       <source>Failed to create zpool</source>
-      <translation type="unfinished"/>
+      <translation>Ҳавзаи нигоҳдории «zpool» эҷод карда нашуд</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="336"/>
       <source>Failed to create dataset</source>
-      <translation type="unfinished"/>
+      <translation>Маҷмуи маълумот эҷод карда нашуд</translation>
     </message>
     <message>
       <location filename="../src/modules/zfs/ZfsJob.cpp" line="337"/>
       <source>The output was: </source>
-      <translation type="unfinished"/>
+      <translation>Натиҷаи барориш:</translation>
     </message>
   </context>
   <context>
@@ -4586,7 +4700,7 @@ Output:
     <message>
       <location filename="../src/calamares/calamares-sidebar.qml" line="115"/>
       <source>Debug</source>
-      <translation type="unfinished"/>
+      <translation>Ислоҳи нуқсонҳо</translation>
     </message>
     <message>
       <location filename="../src/calamares/CalamaresWindow.cpp" line="157"/>
@@ -4598,13 +4712,13 @@ Output:
       <location filename="../src/calamares/CalamaresWindow.cpp" line="159"/>
       <source>Show information about Calamares</source>
       <comment>@tooltip</comment>
-      <translation type="unfinished"/>
+      <translation>Намоиши маълумот дар бораи «Calamares»</translation>
     </message>
     <message>
       <location filename="../src/calamares/CalamaresWindow.cpp" line="173"/>
       <source>Debug</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>Ислоҳи нуқсонҳо</translation>
     </message>
     <message>
       <location filename="../src/calamares/CalamaresWindow.cpp" line="175"/>
@@ -4619,29 +4733,31 @@ Output:
     <message>
       <location filename="../src/modules/finishedq/finishedq.qml" line="36"/>
       <source>Installation Completed</source>
-      <translation type="unfinished"/>
+      <translation>Раванди насб ба анҷом расид</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq.qml" line="43"/>
       <source>%1 has been installed on your computer.&lt;br/&gt;
             You may now restart into your new system, or continue using the Live environment.</source>
-      <translation type="unfinished"/>
+      <translation>«%1» дар компютери шумо насб карда шуд.&lt;br/&gt;
+  Акнун шумо метавонед компютерро аз нав оғоз карда, ба низоми нав ворид шавед ё истифодаи муҳити зиндаро идома диҳед.</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq.qml" line="65"/>
       <source>Close Installer</source>
-      <translation type="unfinished"/>
+      <translation>Пӯшидани насбкунанда</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq.qml" line="71"/>
       <source>Restart System</source>
-      <translation type="unfinished"/>
+      <translation>Аз нав оғоз кардани низом</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq.qml" line="89"/>
       <source>&lt;p&gt;A full log of the install is available as installation.log in the home directory of the Live user.&lt;br/&gt;
             This log is copied to /var/log/installation.log of the target system.&lt;/p&gt;</source>
-      <translation type="unfinished"/>
+      <translation>&lt;p&gt;Дафтари пурра бо сабти рӯйдодҳои насб дар феҳристи асосии корбари низоми «Live» ҳамчун файли installation.log дастрас аст.&lt;br/&gt;
+            Ин дафтари сабти рӯйдодҳо дар низоми интихобшуда ба файли /var/log/installation.log нусха бардошта шуд.&lt;/p&gt;</translation>
     </message>
   </context>
   <context>
@@ -4650,33 +4766,35 @@ Output:
       <location filename="../src/modules/finishedq/finishedq-qt6.qml" line="35"/>
       <source>Installation Completed</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Раванди насб ба анҷом расид</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq-qt6.qml" line="42"/>
       <source>%1 has been installed on your computer.&lt;br/&gt;
             You may now restart into your new system, or continue using the Live environment.</source>
       <comment>@info, %1 is the product name</comment>
-      <translation type="unfinished"/>
+      <translation>«%1» дар компютери шумо насб карда шуд.&lt;br/&gt;
+  Акнун шумо метавонед компютерро аз нав оғоз карда, ба низоми нав ворид шавед ё истифодаи муҳити зиндаро идома диҳед.</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq-qt6.qml" line="65"/>
       <source>Close Installer</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>Пӯшидани насбкунанда</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq-qt6.qml" line="71"/>
       <source>Restart System</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>Аз нав оғоз кардани низом</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq-qt6.qml" line="89"/>
       <source>&lt;p&gt;A full log of the install is available as installation.log in the home directory of the Live user.&lt;br/&gt;
             This log is copied to /var/log/installation.log of the target system.&lt;/p&gt;</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;p&gt;Дафтари пурра бо сабти рӯйдодҳои насб дар феҳристи асосии корбари низоми «Live» ҳамчун файли installation.log дастрас аст.&lt;br/&gt;
+            Ин дафтари сабти рӯйдодҳо дар низоми интихобшуда ба файли /var/log/installation.log нусха бардошта шуд.&lt;/p&gt;</translation>
     </message>
   </context>
   <context>
@@ -4685,26 +4803,27 @@ Output:
       <location filename="../src/modules/finishedq/finishedq@mobile.qml" line="36"/>
       <source>Installation Completed</source>
       <comment>@title</comment>
-      <translation type="unfinished"/>
+      <translation>Раванди насб ба анҷом расид</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq@mobile.qml" line="43"/>
       <source>%1 has been installed on your computer.&lt;br/&gt;
             You may now restart your device.</source>
       <comment>@info, %1 is the product name</comment>
-      <translation type="unfinished"/>
+      <translation>Низоми «%1» дар компютери шумо насб карда шуд.&lt;br/&gt;
+            Акнун шумо метавонед дастгоҳи худро аз нав оғоз кунед.</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq@mobile.qml" line="66"/>
       <source>Close</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>Пӯшидан</translation>
     </message>
     <message>
       <location filename="../src/modules/finishedq/finishedq@mobile.qml" line="72"/>
       <source>Restart</source>
       <comment>@button</comment>
-      <translation type="unfinished"/>
+      <translation>Аз нав оғоз кардан</translation>
     </message>
   </context>
   <context>
@@ -4713,31 +4832,31 @@ Output:
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="61"/>
       <source>Select a layout to activate keyboard preview</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Барои фаъол кардани пешнамоиши клавиатура, тарҳбандиеро интихоб намоед</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="144"/>
       <source>&lt;b&gt;Keyboard model:&amp;nbsp;&amp;nbsp;&lt;/b&gt;</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;b&gt;Намунаи клавиатура:&amp;nbsp;&amp;nbsp;&lt;/b&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="185"/>
       <source>Layout</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Тарҳбандӣ</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="258"/>
       <source>Variant</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Имконот</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq.qml" line="311"/>
       <source>Type here to test your keyboard…</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Барои санҷидани кори клавиатураи худ ҳарфҳоро дар ин сатр ворид намоед…</translation>
     </message>
   </context>
   <context>
@@ -4746,31 +4865,31 @@ Output:
       <location filename="../src/modules/keyboardq/keyboardq-qt6.qml" line="61"/>
       <source>Select a layout to activate keyboard preview</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Барои фаъол кардани пешнамоиши клавиатура, тарҳбандиеро интихоб намоед</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq-qt6.qml" line="144"/>
       <source>&lt;b&gt;Keyboard model:&amp;nbsp;&amp;nbsp;&lt;/b&gt;</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;b&gt;Намунаи клавиатура:&amp;nbsp;&amp;nbsp;&lt;/b&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq-qt6.qml" line="185"/>
       <source>Layout</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Тарҳбандӣ</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq-qt6.qml" line="258"/>
       <source>Variant</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Имконот</translation>
     </message>
     <message>
       <location filename="../src/modules/keyboardq/keyboardq-qt6.qml" line="311"/>
       <source>Type here to test your keyboard…</source>
       <comment>@label</comment>
-      <translation type="unfinished"/>
+      <translation>Барои санҷидани кори клавиатураи худ ҳарфҳоро дар ин сатр ворид намоед…</translation>
     </message>
   </context>
   <context>
@@ -4787,14 +4906,16 @@ Output:
       <source>&lt;h3&gt;Languages&lt;/h3&gt; &lt;/br&gt;
                             The system locale setting affects the language and character set for some command line user interface elements. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;Забонҳо&lt;/h3&gt; &lt;/br&gt;
+                            Танзими маҳаллисозии низом ба забон ва маҷмуи аломатҳо барои баъзеи унсурҳои интерфейси корбарӣ дар сатри фармондиҳӣ таъсир мерасонад. Танзимоти ҷорӣ: &lt;strong&gt;«%1»&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/localeq.qml" line="213"/>
       <source>&lt;h3&gt;Locales&lt;/h3&gt; &lt;/br&gt;
                                 The system locale setting affects the numbers and dates format. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;Маҳаллисозӣ&lt;/h3&gt; &lt;/br&gt;
+                                Танзими маҳаллисозии низом ба рақамҳо ва қолибҳои вақт таъсир мерасонад. Танзимоти ҷорӣ: &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
   </context>
   <context>
@@ -4811,14 +4932,16 @@ Output:
       <source>&lt;h3&gt;Languages&lt;/h3&gt; &lt;/br&gt;
                             The system locale setting affects the language and character set for some command line user interface elements. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;Забонҳо&lt;/h3&gt; &lt;/br&gt;
+                            Танзими маҳаллисозии низом ба забон ва маҷмуи аломатҳо барои баъзеи унсурҳои интерфейси корбарӣ дар сатри фармондиҳӣ таъсир мерасонад. Танзимоти ҷорӣ: &lt;strong&gt;«%1»&lt;/strong&gt;.</translation>
     </message>
     <message>
       <location filename="../src/modules/localeq/localeq-qt6.qml" line="213"/>
       <source>&lt;h3&gt;Locales&lt;/h3&gt; &lt;/br&gt;
                                 The system locale setting affects the numbers and dates format. The current setting is &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <comment>@info</comment>
-      <translation type="unfinished"/>
+      <translation>&lt;h3&gt;Маҳаллисозӣ&lt;/h3&gt; &lt;/br&gt;
+                                Танзими маҳаллисозии низом ба рақамҳо ва қолибҳои вақт таъсир мерасонад. Танзимоти ҷорӣ: &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
   </context>
   <context>
@@ -4837,37 +4960,38 @@ Output:
       <location filename="../src/modules/packagechooserq/packagechooserq.qml" line="45"/>
       <source>LibreOffice is a powerful and free office suite, used by millions of people around the world. It includes several applications that make it the most versatile Free and Open Source office suite on the market.&lt;br/&gt;
                     Default option.</source>
-      <translation type="unfinished"/>
+      <translation>Барномаи «LibreOffice» - маҷмуи барномаҳои идоракунии пурқувват ва ройгон мебошад, ки аз ҷониби миллионҳо одамон дар саросари ҷаҳон истифода мешавад. Ин маҷмуъ дорои якчанд барнома мебошад, ки онро дар бозори ҷаҳонӣ ҳамчун маҷмуи барномаҳои идоракунии ҳаматарафа дар асоси манбаи кушод ва ройгон машҳур мекунад.&lt;br/&gt;
+                    Имкони пешфарз.</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq.qml" line="59"/>
       <source>LibreOffice</source>
-      <translation type="unfinished"/>
+      <translation>Барномаи «LibreOffice»</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq.qml" line="108"/>
       <source>If you don't want to install an office suite, just select No Office Suite. You can always add one (or more) later on your installed system as the need arrives.</source>
-      <translation type="unfinished"/>
+      <translation>Агар шумо нахоҳед, ки маҷмуи идоракуниро насб кунед, он гоҳ имконро «Бе маҷмуи идоракунӣ» интихоб намоед. Шумо ҳамеша метавонед ҳамин барномаро (ё ҳар гуна барномаҳои дигар) дар низоми насбшудаи худ аз рӯйи зарурат дертар илова намоед.</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq.qml" line="121"/>
       <source>No Office Suite</source>
-      <translation type="unfinished"/>
+      <translation>Ба ғайр аз «Office Suite»</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq.qml" line="172"/>
       <source>Create a minimal Desktop install, remove all extra applications and decide later on what you would like to add to your system. Examples of what won't be on such an install, there will be no Office Suite, no media players, no image viewer or print support.  It will be just a desktop, file browser, package manager, text editor and simple web-browser.</source>
-      <translation type="unfinished"/>
+      <translation>Низоми амалкунандаро бо мизи кории ҳадди ақал ҷод кунед, ҳамаи барномаҳои зиёдатиро аз низом тоза намоед ва дертар масъалаҳои насбкунии барномаҳои заруриро дар низоми худ ҳал намоед. Масалан, дар низоми амалкунанда бо мизи кории ҳадди ақал барномаҳо ба монанди маҷмуи идоракунӣ, плеерҳои расонавӣ, тамошобини тасвирӣ ё дастгирии чопӣ насб карда намешаванд. Дар ин ҳолат низом танҳо мизи корӣ, браузери файлӣ, мудири бастаҳо, муҳаррири матнӣ ва браузери стандартиро дар бар мегирад.</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq.qml" line="185"/>
       <source>Minimal Install</source>
-      <translation type="unfinished"/>
+      <translation>Насби ҳадди ақал</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq.qml" line="233"/>
       <source>Please select an option for your install, or use the default: LibreOffice included.</source>
-      <translation type="unfinished"/>
+      <translation>Лутфан, барои насби низоми худ имконеро интихоб намоед ё аз имкони пешфарз истифода баред: Барномаи «LibreOffice» илова карда шавад.</translation>
     </message>
   </context>
   <context>
@@ -4876,37 +5000,38 @@ Output:
       <location filename="../src/modules/packagechooserq/packagechooserq-qt6.qml" line="45"/>
       <source>LibreOffice is a powerful and free office suite, used by millions of people around the world. It includes several applications that make it the most versatile Free and Open Source office suite on the market.&lt;br/&gt;
                     Default option.</source>
-      <translation type="unfinished"/>
+      <translation>Барномаи «LibreOffice» - маҷмуи барномаҳои идоракунии пурқувват ва ройгон мебошад, ки аз ҷониби миллионҳо одамон дар саросари ҷаҳон истифода мешавад. Ин маҷмуъ дорои якчанд барнома мебошад, ки онро дар бозори ҷаҳонӣ ҳамчун маҷмуи барномаҳои идоракунии ҳаматарафа дар асоси манбаи кушод ва ройгон машҳур мекунад.&lt;br/&gt;
+                    Имкони пешфарз.</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq-qt6.qml" line="59"/>
       <source>LibreOffice</source>
-      <translation type="unfinished"/>
+      <translation>Барномаи «LibreOffice»</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq-qt6.qml" line="108"/>
       <source>If you don't want to install an office suite, just select No Office Suite. You can always add one (or more) later on your installed system as the need arrives.</source>
-      <translation type="unfinished"/>
+      <translation>Агар шумо нахоҳед, ки маҷмуи идоракуниро насб кунед, он гоҳ имконро «Бе маҷмуи идоракунӣ» интихоб намоед. Шумо ҳамеша метавонед ҳамин барномаро (ё ҳар гуна барномаҳои дигар) дар низоми насбшудаи худ аз рӯйи зарурат дертар илова намоед.</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq-qt6.qml" line="121"/>
       <source>No Office Suite</source>
-      <translation type="unfinished"/>
+      <translation>Ба ғайр аз «Office Suite»</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq-qt6.qml" line="172"/>
       <source>Create a minimal Desktop install, remove all extra applications and decide later on what you would like to add to your system. Examples of what won't be on such an install, there will be no Office Suite, no media players, no image viewer or print support.  It will be just a desktop, file browser, package manager, text editor and simple web-browser.</source>
-      <translation type="unfinished"/>
+      <translation>Низоми амалкунандаро бо мизи кории ҳадди ақал ҷод кунед, ҳамаи барномаҳои зиёдатиро аз низом тоза намоед ва дертар масъалаҳои насбкунии барномаҳои заруриро дар низоми худ ҳал намоед. Масалан, дар низоми амалкунанда бо мизи кории ҳадди ақал барномаҳо ба монанди маҷмуи идоракунӣ, плеерҳои расонавӣ, тамошобини тасвирӣ ё дастгирии чопӣ насб карда намешаванд. Дар ин ҳолат низом танҳо мизи корӣ, браузери файлӣ, мудири бастаҳо, муҳаррири матнӣ ва браузери стандартиро дар бар мегирад.</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq-qt6.qml" line="185"/>
       <source>Minimal Install</source>
-      <translation type="unfinished"/>
+      <translation>Насби ҳадди ақал</translation>
     </message>
     <message>
       <location filename="../src/modules/packagechooserq/packagechooserq-qt6.qml" line="233"/>
       <source>Please select an option for your install, or use the default: LibreOffice included.</source>
-      <translation type="unfinished"/>
+      <translation>Лутфан, барои насби низоми худ имконеро интихоб намоед ё аз имкони пешфарз истифода баред: Барномаи «LibreOffice» илова карда шавад.</translation>
     </message>
   </context>
   <context>
@@ -4938,7 +5063,31 @@ ls -l /home
  * AMD CPU systems
 
 The vertical scrollbar is adjustable, current width set to 10.</source>
-      <translation type="unfinished"/>
+      <translation>### %1
+Ин файли намунавии «QML» мебошад, ки дар «Markdown» бо муҳтавои «Flickable» имконоти зеринро нишон медиҳад.
+
+Файли «QML» дар шакли «RichText» метавонад аз барчаспҳои «HTML» истифода барад. Бо имконоти «Markdown» он аз наҳви оддии «Markdown» истифода мебарад. Муҳтавои «Flickable» барои экранҳои ламсӣ муфид аст.
+
+**Матни ғафс ҳамин хел навишта мешавад**
+
+*Матни дорои зерхат ҳамин хел навишта мешавад*
+
+_Матни хам ҳамин хел навишта мешавад_
+
+&gt; иқтибос бо нохунак
+
+~~Матни хатзадашуда ҳамин хел навишта мешавад~~
+
+Мисоли рамз:
+```
+ls -l /home
+```
+
+**Рӯйхатҳо:**
+ * Низомҳои «Intel CPU»
+ * Низомҳои «AMD CPU»
+
+ Навори ҳаракати амудӣ танзим карда мешавад. Андозаи бари ҷорӣ 10 мебошад.</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/release_notes.qml" line="80"/>
@@ -4961,7 +5110,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="63"/>
       <source>Your full name</source>
-      <translation type="unfinished"/>
+      <translation>Номи пурраи шумо</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="80"/>
@@ -4971,7 +5120,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="87"/>
       <source>Login name</source>
-      <translation type="unfinished"/>
+      <translation>Номи воридшавӣ</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="116"/>
@@ -4986,7 +5135,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="138"/>
       <source>root is not allowed as username.</source>
-      <translation type="unfinished"/>
+      <translation>Истифодаи номи «root» ҳамчун номи корбар иҷозат дода намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="147"/>
@@ -4996,7 +5145,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="153"/>
       <source>Computer name</source>
-      <translation type="unfinished"/>
+      <translation>Номи компютер</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="180"/>
@@ -5006,12 +5155,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="193"/>
       <source>Only letters, numbers, underscore and hyphen are allowed, minimal of two characters.</source>
-      <translation type="unfinished"/>
+      <translation>Шумо метавонед танҳо ҳарфҳо, рақамҳо, зерхат ва нимтиреро дар ҳудуди на кам аз ду аломат истифода баред.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="202"/>
       <source>localhost is not allowed as hostname.</source>
-      <translation type="unfinished"/>
+      <translation>Истифодаи номи «localhost» ҳамчун номи мизбон иҷозат дода намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="211"/>
@@ -5026,7 +5175,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="238"/>
       <source>Repeat password</source>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожаро такрор намоед</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="265"/>
@@ -5051,12 +5200,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="328"/>
       <source>Root password</source>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожаи «root»</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="346"/>
       <source>Repeat root password</source>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожаи «root»-ро такрор намоед</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq.qml" line="372"/>
@@ -5094,22 +5243,22 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="62"/>
       <source>Your full name</source>
-      <translation type="unfinished"/>
+      <translation>Номи пурраи шумо</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="79"/>
       <source>What name do you want to use to log in?</source>
-      <translation>Кадом номро барои ворид шудан ба низом истифода мебаред?</translation>
+      <translation>Шумо аз кадом номи корбар мехоҳед, ки барои ворид шудан ба низом истифода мебаред?</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="86"/>
       <source>Login name</source>
-      <translation type="unfinished"/>
+      <translation>Номи воридшавӣ</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="115"/>
       <source>If more than one person will use this computer, you can create multiple accounts after installation.</source>
-      <translation>Агар зиёда аз як корбар ин компютерро истифода барад, шумо метавонед баъд аз насбкунӣ якчанд ҳисобро эҷод намоед.</translation>
+      <translation>Агар зиёда аз як корбар ин компютерро истифода барад, шумо метавонед пас аз насб кардани низом якчанд ҳисоби алоҳидаро эҷод намоед.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="128"/>
@@ -5119,7 +5268,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="137"/>
       <source>root is not allowed as username.</source>
-      <translation type="unfinished"/>
+      <translation>Истифодаи номи «root» ҳамчун номи корбар иҷозат дода намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="146"/>
@@ -5129,7 +5278,7 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="152"/>
       <source>Computer name</source>
-      <translation type="unfinished"/>
+      <translation>Номи компютер</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="179"/>
@@ -5139,17 +5288,17 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="192"/>
       <source>Only letters, numbers, underscore and hyphen are allowed, minimal of two characters.</source>
-      <translation type="unfinished"/>
+      <translation>Шумо метавонед танҳо ҳарфҳо, рақамҳо, зерхат ва нимтиреро дар ҳудуди на кам аз ду аломат истифода баред.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="201"/>
       <source>localhost is not allowed as hostname.</source>
-      <translation type="unfinished"/>
+      <translation>Истифодаи номи «localhost» ҳамчун номи мизбон иҷозат дода намешавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="210"/>
       <source>Choose a password to keep your account safe.</source>
-      <translation>Барои эмин нигоҳ доштани ҳисоби худ ниҳонвожаеро интихоб намоед.</translation>
+      <translation>Барои ба таври бехатар нигоҳ доштани ҳисоби худ, ниҳонвожаи боэътимодеро интихоб намоед.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="220"/>
@@ -5159,17 +5308,17 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="237"/>
       <source>Repeat password</source>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожаро такрор намоед</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="264"/>
       <source>Enter the same password twice, so that it can be checked for typing errors. A good password will contain a mixture of letters, numbers and punctuation, should be at least eight characters long, and should be changed at regular intervals.</source>
-      <translation>Ниҳонвожаи ягонаро ду маротиба ворид намоед, то ки он барои хатоҳои имлоӣ тафтиш карда шавад. Ниҳонвожаи хуб бояд дар омезиш калимаҳо, рақамҳо ва аломатҳои китобатиро дар бар гирад, ақаллан аз ҳашт аломат иборат шавад ва мунтазам иваз карда шавад.</translation>
+      <translation>Ниҳонвожаи ягонаро ду маротиба ворид намоед, то ки он барои хатоҳои имлоӣ тафтиш карда шавад. Ниҳонвожаи хуб бояд дар омезиш калимаҳо, рақамҳо ва аломатҳои китобатиро дар бар гирад, ва бояд ақаллан аз ҳашт аломат иборат бошад ва мунтазам иваз карда шавад.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="296"/>
       <source>Reuse user password as root password</source>
-      <translation>Ниҳонвожаи корбар ҳам барои ниҳонвожаи root истифода карда шавад</translation>
+      <translation>Ниҳонвожаи корбар ҳам барои ниҳонвожаи «root» истифода карда шавад</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="304"/>
@@ -5179,17 +5328,17 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="317"/>
       <source>Choose a root password to keep your account safe.</source>
-      <translation>Барои эмин нигоҳ доштани ҳисоби худ ниҳонвожаи root-ро интихоб намоед.</translation>
+      <translation>Барои ба таври бехатар нигоҳ доштани ҳисоби худ, ниҳонвожаи боэътимодеро барои «root» интихоб намоед.</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="327"/>
       <source>Root password</source>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожаи «root»</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="345"/>
       <source>Repeat root password</source>
-      <translation type="unfinished"/>
+      <translation>Ниҳонвожаи «root»-ро такрор намоед</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="371"/>
@@ -5204,12 +5353,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="409"/>
       <source>Validate passwords quality</source>
-      <translation>Санҷиши сифати ниҳонвожаҳо</translation>
+      <translation>Санҷиши эътимоди сифати ниҳонвожаҳо</translation>
     </message>
     <message>
       <location filename="../src/modules/usersq/usersq-qt6.qml" line="419"/>
       <source>When this box is checked, password-strength checking is done and you will not be able to use a weak password.</source>
-      <translation>Агар шумо ин имконро интихоб кунед, қувваи ниҳонвожа тафтиш карда мешавад ва шумо ниҳонвожаи заифро истифода карда наметавонед.</translation>
+      <translation>Агар шумо ин имконро интихоб кунед, қувваи ниҳонвожа тафтиш карда мешавад ва шумо пас ниҳонвожаи заифро истифода карда наметавонед.</translation>
     </message>
   </context>
   <context>
@@ -5229,12 +5378,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="80"/>
       <source>Known Issues</source>
-      <translation type="unfinished"/>
+      <translation>Масъалаҳои маълум</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="91"/>
       <source>Release Notes</source>
-      <translation type="unfinished"/>
+      <translation>Қайдҳои нашр</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq.qml" line="103"/>
@@ -5248,8 +5397,8 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
       <location filename="../src/modules/welcomeq/welcomeq-qt6.qml" line="38"/>
       <source>&lt;h3&gt;Welcome to the %1 &lt;quote&gt;%2&lt;/quote&gt; installer&lt;/h3&gt;
             &lt;p&gt;This program will ask you some questions and set up %1 on your computer.&lt;/p&gt;</source>
-      <translation>&lt;h3&gt;Хуш омадед ба насбкунандаи &lt;quote&gt;%2&lt;/quote&gt; барои %1&lt;/h3&gt;
-            &lt;p&gt;Ин барнома аз Шумо якчанд савол мепурсад ва %1-ро дар компютери шумо танзим мекунад.&lt;/p&gt;</translation>
+      <translation>&lt;h3&gt;Хуш омадед ба насбкунандаи &lt;quote&gt;«%2»&lt;/quote&gt; барои «%1»&lt;/h3&gt;
+            &lt;p&gt;Ин барнома аз шумо якчанд савол мепурсад ва пас «%1»-ро дар компютери шумо танзим мекунад.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq-qt6.qml" line="69"/>
@@ -5259,12 +5408,12 @@ The vertical scrollbar is adjustable, current width set to 10.</source>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq-qt6.qml" line="80"/>
       <source>Known Issues</source>
-      <translation type="unfinished"/>
+      <translation>Масъалаҳои маълум</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq-qt6.qml" line="91"/>
       <source>Release Notes</source>
-      <translation type="unfinished"/>
+      <translation>Қайдҳои нашр</translation>
     </message>
     <message>
       <location filename="../src/modules/welcomeq/welcomeq-qt6.qml" line="103"/>

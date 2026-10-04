@@ -116,6 +116,18 @@ Config::languageIcon() const
     return m_languageIcon;
 }
 
+static bool
+languageAndTerritoryMatch( const QLocale& a, const QLocale& b )
+{
+    const bool languageMatch = a.language() == b.language();
+#if QT_VERSION < QT_VERSION_CHECK( 6, 6, 0 )
+    const bool placeMatch = a.country() == b.country();
+#else
+    const bool placeMatch = a.territory() == b.territory();
+#endif
+    return languageMatch && placeMatch;
+}
+
 void
 Config::initLanguages()
 {
@@ -131,9 +143,8 @@ Config::initLanguages()
         QLocale defaultLocale = defaultTranslation.locale();
 
         cDebug() << "Trying to match locale" << defaultLocale;
-        matchedLocaleIndex = m_languages->find(
-            [ & ]( const QLocale& x )
-            { return x.language() == defaultLocale.language() && x.country() == defaultLocale.country(); } );
+        matchedLocaleIndex = m_languages->find( [ &defaultLocale ]( const QLocale& x )
+                                                { return languageAndTerritoryMatch(  defaultLocale, x  ); } );
 
         if ( matchedLocaleIndex < 0 )
         {

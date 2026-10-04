@@ -49,4 +49,6 @@ calamares_add_test(
     GUI
     SOURCES Tests.cpp
     LIBRARIES ${packagechooser_TARGET}
+    DEFINITIONS
+        SOURCE_DIRECTORY="${CMAKE_SOURCE_DIR}/" # BUILD_AS_TEST points to current directory, not top
 )

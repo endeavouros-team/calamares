@@ -7,15 +7,16 @@
 # Choiril Abdul, 2018
 # Wantoyèk <wantoyek@gmail.com>, 2018
 # Drajat Hasan <drajathasan20@gmail.com>, 2021
+# Arif Budiman <arifpedia@gmail.com>, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 22:44+0200\n"
+"POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
-"Last-Translator: Drajat Hasan <drajathasan20@gmail.com>, 2021\n"
+"Last-Translator: Arif Budiman <arifpedia@gmail.com>, 2026\n"
 "Language-Team: Indonesian (https://app.transifex.com/calamares/teams/20061/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,93 +26,100 @@ msgstr ""
 
 #: src/modules/bootloader/main.py:46
 msgid "Install bootloader."
-msgstr ""
+msgstr "Instal bootloader."
 
 #: src/modules/bootloader/main.py:671
 msgid "Failed to install grub, no partitions defined in global storage"
 msgstr ""
+"Gagal menginstal grub, tidak ada partisi yang didefinisikan di penyimpanan "
+"global"
 
 #: src/modules/bootloader/main.py:931
 msgid "Bootloader installation error"
-msgstr ""
+msgstr "Kesalahan instalasi bootloader"
 
 #: src/modules/bootloader/main.py:932
 msgid ""
 "The bootloader could not be installed. The installation command "
 "<pre>{!s}</pre> returned error code {!s}."
 msgstr ""
+"Bootloader tidak dapat diinstal. Perintah instalasi <pre>{!s}</pre> "
+"mengembalikan kode kesalahan {!s}."
 
 #: src/modules/displaymanager/main.py:525
 msgid "Cannot write LXDM configuration file"
-msgstr "Gak bisa menulis file konfigurasi LXDM"
+msgstr "Tidak dapat menulis berkas konfigurasi LXDM"
 
 #: src/modules/displaymanager/main.py:526
 msgid "LXDM config file {!s} does not exist"
-msgstr "File {!s} config LXDM enggak ada"
+msgstr "Berkas konfigurasi LXDM {!s} tidak ada"
 
 #: src/modules/displaymanager/main.py:614
 msgid "Cannot write LightDM configuration file"
-msgstr "Gak bisa menulis file konfigurasi LightDM"
+msgstr "Tidak dapat menulis berkas konfigurasi LightDM"
 
 #: src/modules/displaymanager/main.py:615
 msgid "LightDM config file {!s} does not exist"
-msgstr "File {!s} config LightDM belum ada"
+msgstr "Berkas konfigurasi LightDM {!s} tidak ada"
 
 #: src/modules/displaymanager/main.py:700
 msgid "Cannot configure LightDM"
-msgstr "Gak bisa mengkonfigurasi LightDM"
+msgstr "Tidak dapat mengonfigurasi LightDM"
 
 #: src/modules/displaymanager/main.py:701
 msgid "No LightDM greeter installed."
-msgstr "Tiada LightDM greeter yang terinstal."
+msgstr "Tidak ada greeter LightDM yang terpasang."
 
 #: src/modules/displaymanager/main.py:732
 msgid "Cannot write SLIM configuration file"
-msgstr "Gak bisa menulis file konfigurasi SLIM"
+msgstr "Tidak dapat menulis berkas konfigurasi SLIM"
 
 #: src/modules/displaymanager/main.py:733
 msgid "SLIM config file {!s} does not exist"
-msgstr "File {!s} config SLIM belum ada"
+msgstr "Berkas konfigurasi SLIM {!s} tidak ada"
 
 #: src/modules/displaymanager/main.py:956
 msgid "No display managers selected for the displaymanager module."
-msgstr "Tiada display manager yang dipilih untuk modul displaymanager."
+msgstr "Tidak ada pengelola tampilan yang dipilih untuk modul displaymanager."
 
 #: src/modules/displaymanager/main.py:957
 msgid ""
 "The displaymanagers list is empty or undefined in both globalstorage and "
 "displaymanager.conf."
 msgstr ""
+"Daftar displaymanagers kosong atau tidak didefinisikan baik di globalstorage"
+" maupun displaymanager.conf."
 
 #: src/modules/displaymanager/main.py:1044
 msgid "Display manager configuration was incomplete"
-msgstr "Konfigurasi display manager belum rampung"
+msgstr "Konfigurasi pengelola tampilan tidak lengkap"
 
 #: src/modules/dracut/main.py:29
 msgid "Creating initramfs with dracut."
-msgstr ""
+msgstr "Membuat initramfs dengan dracut."
 
 #: src/modules/dracut/main.py:63
 msgid "Failed to run dracut"
-msgstr ""
+msgstr "Gagal menjalankan dracut"
 
 #: src/modules/dracut/main.py:64
 #, python-brace-format
 msgid "Dracut failed to run on the target with return code: {return_code}"
 msgstr ""
+"Dracut gagal dijalankan pada target dengan kode pengembalian: {return_code}"
 
 #: src/modules/dummypython/main.py:35
 msgid "Dummy python job."
-msgstr "Tugas dumi python."
+msgstr "Tugas python dummy."
 
 #: src/modules/dummypython/main.py:37 src/modules/dummypython/main.py:104
 #: src/modules/dummypython/main.py:105
 msgid "Dummy python step {}"
-msgstr "Langkah {} dumi python"
+msgstr "Langkah python dummy {}"
 
 #: src/modules/fstab/main.py:29
 msgid "Writing fstab."
-msgstr ""
+msgstr "Menulis fstab."
 
 #: src/modules/fstab/main.py:382 src/modules/fstab/main.py:388
 #: src/modules/fstab/main.py:416 src/modules/initcpiocfg/main.py:267
@@ -128,98 +136,103 @@ msgstr "Kesalahan Konfigurasi"
 #: src/modules/rawfs/main.py:166
 msgid "No partitions are defined for <pre>{!s}</pre> to use."
 msgstr ""
+"Tidak ada partisi yang didefinisikan untuk digunakan oleh <pre>{!s}</pre>."
 
 #: src/modules/fstab/main.py:389 src/modules/initramfscfg/main.py:90
 #: src/modules/localecfg/main.py:141 src/modules/networkcfg/main.py:107
 #: src/modules/openrcdmcryptcfg/main.py:77
 msgid "No root mount point is given for <pre>{!s}</pre> to use."
 msgstr ""
+"Tidak ada titik kait root yang diberikan untuk digunakan oleh "
+"<pre>{!s}</pre>."
 
 #: src/modules/fstab/main.py:417
 msgid "No <pre>{!s}</pre> configuration is given for <pre>{!s}</pre> to use."
 msgstr ""
+"Tidak ada konfigurasi <pre>{!s}</pre> yang diberikan untuk digunakan oleh "
+"<pre>{!s}</pre>."
 
 #: src/modules/grubcfg/main.py:30
 msgid "Configure GRUB."
-msgstr ""
+msgstr "Konfigurasi GRUB."
 
 #: src/modules/hwclock/main.py:26
 msgid "Setting hardware clock."
-msgstr ""
+msgstr "Menetapkan jam perangkat keras."
 
 #: src/modules/initcpiocfg/main.py:27
 msgid "Configuring mkinitcpio."
-msgstr ""
+msgstr "Mengonfigurasi mkinitcpio."
 
 #: src/modules/initcpiocfg/main.py:268
 msgid "No partitions are defined for <pre>initcpiocfg</pre>."
-msgstr ""
+msgstr "Tidak ada partisi yang didefinisikan untuk <pre>initcpiocfg</pre>."
 
 #: src/modules/initcpiocfg/main.py:272
 msgid "No root mount point for <pre>initcpiocfg</pre>."
-msgstr ""
+msgstr "Tidak ada titik kait root untuk <pre>initcpiocfg</pre>."
 
 #: src/modules/initramfscfg/main.py:32
 msgid "Configuring initramfs."
-msgstr ""
+msgstr "Mengonfigurasi initramfs."
 
 #: src/modules/localecfg/main.py:31
 msgid "Configuring locales."
-msgstr ""
+msgstr "Mengonfigurasi lokal."
 
 #: src/modules/mkinitfs/main.py:27
 msgid "Creating initramfs with mkinitfs."
-msgstr ""
+msgstr "Membuat initramfs dengan mkinitfs."
 
 #: src/modules/mkinitfs/main.py:49
 msgid "Failed to run mkinitfs on the target"
-msgstr ""
+msgstr "Gagal menjalankan mkinitfs pada target"
 
 #: src/modules/mkinitfs/main.py:50
 msgid "The exit code was {}"
-msgstr ""
+msgstr "Kode keluarnya adalah {}"
 
 #: src/modules/mount/main.py:43
 msgid "Mounting partitions."
-msgstr ""
+msgstr "Mengaitkan partisi."
 
 #: src/modules/mount/main.py:171 src/modules/mount/main.py:207
 msgid "Internal error mounting zfs datasets"
-msgstr ""
+msgstr "Kesalahan internal saat mengaitkan dataset zfs"
 
 #: src/modules/mount/main.py:183
 msgid "Failed to import zpool"
-msgstr ""
+msgstr "Gagal mengimpor zpool"
 
 #: src/modules/mount/main.py:199
 msgid "Failed to unlock zpool"
-msgstr ""
+msgstr "Gagal membuka kunci zpool"
 
 #: src/modules/mount/main.py:216 src/modules/mount/main.py:221
 msgid "Failed to set zfs mountpoint"
-msgstr ""
+msgstr "Gagal menetapkan titik kait zfs"
 
 #: src/modules/mount/main.py:386
 msgid "zfs mounting error"
-msgstr ""
+msgstr "Kesalahan pengaitan zfs"
 
 #: src/modules/networkcfg/main.py:30
 msgid "Saving network configuration."
-msgstr ""
+msgstr "Menyimpan konfigurasi jaringan."
 
 #: src/modules/openrcdmcryptcfg/main.py:26
 msgid "Configuring OpenRC dmcrypt service."
-msgstr ""
+msgstr "Mengonfigurasi layanan dmcrypt OpenRC."
 
 #: src/modules/packages/main.py:54 src/modules/packages/main.py:65
 #: src/modules/packages/main.py:75
 msgid "Install packages."
-msgstr "Instal paket-paket."
+msgstr "Menginstal paket."
 
 #: src/modules/packages/main.py:63
 #, python-format
 msgid "Processing packages (%(count)d / %(total)d)"
-msgstr "Paket pemrosesan (%(count)d/%(total)d)"
+msgstr "Memproses paket (%(count)d / %(total)d)"
 
 #: src/modules/packages/main.py:68
 #, python-format
@@ -233,166 +246,182 @@ msgid "Removing one package."
 msgid_plural "Removing %(num)d packages."
 msgstr[0] "mencopot %(num)d paket"
 
-#: src/modules/packages/main.py:769 src/modules/packages/main.py:781
-#: src/modules/packages/main.py:809
+#: src/modules/packages/main.py:775 src/modules/packages/main.py:787
+#: src/modules/packages/main.py:815
 msgid "Package Manager error"
-msgstr ""
+msgstr "Kesalahan Pengelola Paket"
 
-#: src/modules/packages/main.py:770
+#: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
 msgstr ""
+"Pengelola paket tidak dapat menyiapkan pembaruan. Perintah <pre>{!s}</pre> "
+"mengembalikan kode kesalahan {!s}."
 
-#: src/modules/packages/main.py:782
+#: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
 msgstr ""
+"Pengelola paket tidak dapat memperbarui sistem. Perintah <pre>{!s}</pre> "
+"mengembalikan kode kesalahan {!s}."
 
-#: src/modules/packages/main.py:810
+#: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
 msgstr ""
+"Pengelola paket tidak dapat melakukan perubahan pada sistem yang terinstal. "
+"Perintah <pre>{!s}</pre> mengembalikan kode kesalahan {!s}."
 
 #: src/modules/plymouthcfg/main.py:27
 msgid "Configure Plymouth theme"
-msgstr ""
+msgstr "Konfigurasi tema Plymouth"
 
 #: src/modules/rawfs/main.py:26
 msgid "Installing data."
-msgstr ""
+msgstr "Menginstal data."
 
 #: src/modules/services-openrc/main.py:29
 msgid "Configure OpenRC services"
-msgstr ""
+msgstr "Konfigurasi layanan OpenRC"
 
 #: src/modules/services-openrc/main.py:57
 msgid "Cannot add service {name!s} to run-level {level!s}."
-msgstr ""
+msgstr "Tidak dapat menambahkan layanan {name!s} ke run-level {level!s}."
 
 #: src/modules/services-openrc/main.py:59
 msgid "Cannot remove service {name!s} from run-level {level!s}."
-msgstr ""
+msgstr "Tidak dapat menghapus layanan {name!s} dari run-level {level!s}."
 
 #: src/modules/services-openrc/main.py:61
 msgid ""
 "Unknown service-action <code>{arg!s}</code> for service {name!s} in run-"
 "level {level!s}."
 msgstr ""
+"Aksi layanan tidak dikenal <code>{arg!s}</code> untuk layanan {name!s} di "
+"run-level {level!s}."
 
 #: src/modules/services-openrc/main.py:93
 msgid "Cannot modify service"
-msgstr ""
+msgstr "Tidak dapat memodifikasi layanan"
 
 #: src/modules/services-openrc/main.py:94
 msgid ""
 "<code>rc-update {arg!s}</code> call in chroot returned error code {num!s}."
 msgstr ""
+"Pemanggilan <code>rc-update {arg!s}</code> di chroot mengembalikan kode "
+"kesalahan {num!s}."
 
 #: src/modules/services-openrc/main.py:101
 msgid "Target runlevel does not exist"
-msgstr ""
+msgstr "Runlevel target tidak ada"
 
 #: src/modules/services-openrc/main.py:102
 msgid ""
 "The path for runlevel {level!s} is <code>{path!s}</code>, which does not "
 "exist."
 msgstr ""
+"Jalur untuk runlevel {level!s} adalah <code>{path!s}</code>, yang tidak ada."
 
 #: src/modules/services-openrc/main.py:110
 msgid "Target service does not exist"
-msgstr ""
+msgstr "Layanan target tidak ada"
 
 #: src/modules/services-openrc/main.py:111
 msgid ""
 "The path for service {name!s} is <code>{path!s}</code>, which does not "
 "exist."
 msgstr ""
+"Jalur untuk layanan {name!s} adalah <code>{path!s}</code>, yang tidak ada."
 
 #: src/modules/services-systemd/main.py:26
 msgid "Configure systemd units"
-msgstr ""
+msgstr "Konfigurasi unit systemd"
 
 #: src/modules/services-systemd/main.py:64
 msgid "Cannot modify unit"
-msgstr ""
+msgstr "Tidak dapat memodifikasi unit"
 
 #: src/modules/services-systemd/main.py:65
 msgid ""
 "<code>systemctl {_action!s}</code> call in chroot returned error code "
 "{_exit_code!s}."
 msgstr ""
+"Pemanggilan <code>systemctl {_action!s}</code> di chroot mengembalikan kode "
+"kesalahan {_exit_code!s}."
 
 #: src/modules/services-systemd/main.py:66
 msgid "Cannot {_action!s} systemd unit <code>{_name!s}</code>."
-msgstr ""
+msgstr "Tidak dapat {_action!s} unit systemd <code>{_name!s}</code>."
 
 #: src/modules/unpackfs/main.py:34
 msgid "Filling up filesystems."
-msgstr ""
+msgstr "Mengisi sistem berkas."
 
-#: src/modules/unpackfs/main.py:254
+#: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
-msgstr ""
+msgstr "rsync gagal dengan kode kesalahan {}."
 
-#: src/modules/unpackfs/main.py:299
+#: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
-msgstr ""
+msgstr "Mengekstrak image {}/{}, berkas {}/{}"
 
-#: src/modules/unpackfs/main.py:314
+#: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
-msgstr ""
+msgstr "Mulai mengekstrak {}"
 
-#: src/modules/unpackfs/main.py:323 src/modules/unpackfs/main.py:467
+#: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
-msgstr ""
+msgstr "Gagal mengekstrak image \"{}\""
 
-#: src/modules/unpackfs/main.py:430
+#: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
-msgstr ""
+msgstr "Tidak ada titik kait untuk partisi root"
 
-#: src/modules/unpackfs/main.py:431
+#: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
-msgstr ""
+msgstr "globalstorage tidak berisi kunci \"rootMountPoint\"."
 
-#: src/modules/unpackfs/main.py:434
+#: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
-msgstr ""
+msgstr "Titik kait yang buruk untuk partisi root"
 
-#: src/modules/unpackfs/main.py:435
+#: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
-msgstr ""
+msgstr "rootMountPoint adalah \"{}\", yang tidak ada."
 
-#: src/modules/unpackfs/main.py:439 src/modules/unpackfs/main.py:455
-#: src/modules/unpackfs/main.py:459 src/modules/unpackfs/main.py:465
-#: src/modules/unpackfs/main.py:480
+#: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
+#: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
+#: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
-msgstr ""
+msgstr "Konfigurasi unpackfs bermasalah"
 
-#: src/modules/unpackfs/main.py:440
+#: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
-msgstr ""
+msgstr "Tidak ada informasi konfigurasi."
 
-#: src/modules/unpackfs/main.py:456
+#: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
-msgstr ""
+msgstr "Sistem berkas untuk \"{}\" ({}) tidak didukung oleh kernel Anda saat ini"
 
-#: src/modules/unpackfs/main.py:460
+#: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
-msgstr ""
+msgstr "Sistem berkas sumber \"{}\" tidak ada"
 
-#: src/modules/unpackfs/main.py:466
+#: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
 msgstr ""
+"Gagal menemukan unsquashfs, pastikan Anda telah memasang paket squashfs-"
+"tools."
 
-#: src/modules/unpackfs/main.py:481
+#: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
-msgstr ""
+msgstr "Tujuan \"{}\" di sistem target bukan sebuah direktori"
 
 #: src/modules/zfshostid/main.py:27
 msgid "Copying zfs generated hostid."
-msgstr ""
+msgstr "Menyalin hostid yang dihasilkan zfs."

@@ -610,7 +610,7 @@ PartitionCoreModule::setPartitionFlags( Device* device, Partition* partition, Pa
 STATICTEST QStringList
 findEssentialLVs( const QList< PartitionCoreModule::DeviceInfo* >& infos )
 {
-    QStringList doNotClose;
+    QStringList essentialLV;
     cDebug() << "Checking LVM use on" << infos.count() << "devices";
     for ( const auto* info : infos )
     {
@@ -619,7 +619,7 @@ findEssentialLVs( const QList< PartitionCoreModule::DeviceInfo* >& infos )
             continue;
         }
 
-        for ( const auto& j : qAsConst( info->jobs() ) )
+        for ( const auto& j : std::as_const( info->jobs() ) )
         {
             FormatPartitionJob* format = dynamic_cast< FormatPartitionJob* >( j.data() );
             if ( format )
@@ -635,12 +635,12 @@ findEssentialLVs( const QList< PartitionCoreModule::DeviceInfo* >& infos )
                     cDebug() << Logger::SubEntry << partPath
                              << "is an essential LV filesystem=" << partition->fileSystem().type();
                     QString lvName = partPath.right( partPath.length() - devicePath.length() );
-                    doNotClose.append( info->device->name() + '-' + lvName );
+                    essentialLV.append( info->device->name() + '-' + lvName );
                 }
             }
         }
     }
-    return doNotClose;
+    return essentialLV;
 }
 
 Calamares::JobList
@@ -670,14 +670,14 @@ PartitionCoreModule::jobs( const Config* config ) const
 #ifdef DEBUG_PARTITION_SKIP
     cWarning() << "Partitioning actions are skipped.";
 #else
-    const QStringList doNotClose = findEssentialLVs( m_deviceInfos );
+    const QStringList essentialMounts = findEssentialLVs( m_deviceInfos ) + config->essentialMounts();
 
     for ( const auto* info : m_deviceInfos )
     {
         if ( info->isDirty() )
         {
             auto* job = new ClearMountsJob( info->device.data() );
-            job->setMapperExceptions( doNotClose );
+            job->setMapperExceptions( essentialMounts );
             lst << Calamares::job_ptr( job );
         }
     }
@@ -989,6 +989,13 @@ PartitionCoreModule::layoutApply( Device* dev,
     QList< Partition* > partList
         = m_partLayout.createPartitions( dev, firstSector, lastSector, luksFsType, luksPassphrase, parent, role );
 
+    // On GPT, KPM_PARTITION_FLAG( Boot ) is an alias for the ESP flag, so
+    // setting it would write the EFI System Partition type onto the root
+    // (or /boot) partition. systemd-gpt-auto-generator would then try to
+    // automount it as VFAT and stall the boot. The legacy "active" flag is
+    // only meaningful on MBR; on GPT, BIOS boot uses a BIOS Boot Partition.
+    const bool isGpt = dev->partitionTable() && dev->partitionTable()->type() == PartitionTable::gpt;
+
     // Partition::mountPoint() tells us where it is mounted **now**, while
     // PartitionInfo::mountPoint() says where it will be mounted in the target system.
     // .. the latter is more interesting.
@@ -1017,8 +1024,9 @@ PartitionCoreModule::layoutApply( Device* dev,
         applyDefaultLabel( part, is_boot, QStringLiteral( "boot" ) );
         if ( ( separate_boot_partition && is_boot( part ) ) || ( !separate_boot_partition && is_root( part ) ) )
         {
-            createPartition(
-                dev, part, part->activeFlags() | ( isEfi ? KPM_PARTITION_FLAG( None ) : KPM_PARTITION_FLAG( Boot ) ) );
+            const auto extraFlag
+                = ( isEfi || isGpt ) ? KPM_PARTITION_FLAG( None ) : KPM_PARTITION_FLAG( Boot );
+            createPartition( dev, part, part->activeFlags() | extraFlag );
         }
         else
         {

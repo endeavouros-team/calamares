@@ -21,6 +21,4 @@ drivers cannot simply be removed in the packages module, a free version
 will need to be installed.
 
 An example of where the licenseAgree globalstorage entry is used:
-https://github.com/KaOSx/calamares/blob/master/src/modules/nonfree_drivers/main.py
-
-![License Page](http://wstaw.org/m/2015/09/14/Screenshot_20150914_113333.png)
+https://codeberg.org/KaOS/calamares/raw/branch/master/src/modules/nonfree_drivers/main.py

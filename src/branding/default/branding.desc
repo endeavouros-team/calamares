@@ -129,10 +129,10 @@ strings:
     shortVersionedName:  FancyGL 2023.3
     bootloaderEntryName: FancyGL
     productUrl:          https://calamares.io/
-    supportUrl:          https://github.com/calamares/calamares/wiki
-    knownIssuesUrl:      https://github.com/calamares/calamares/issues
+    supportUrl:          https://codeberg.org/Calamares/calamares/wiki
+    knownIssuesUrl:      https://codeberg.org/Calamares/calamares/issues
     releaseNotesUrl:     https://calamares.io/news/
-    donateUrl:           https://kde.org/community/donations/index.php
+    donateUrl:           https://docs.codeberg.org/improving-codeberg/donate/
 
 # These images are loaded from the branding module directory.
 #

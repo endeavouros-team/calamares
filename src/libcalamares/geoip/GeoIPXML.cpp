@@ -9,6 +9,7 @@
 
 #include "GeoIPXML.h"
 
+#include "compat/Xml.h"
 #include "utils/Logger.h"
 
 #include <QtXml/QDomDocument>
@@ -28,11 +29,9 @@ getElementTexts( const QByteArray& data, const QString& tag )
 {
     QStringList elements;
 
-    QString domError;
-    int errorLine, errorColumn;
-
     QDomDocument doc;
-    if ( doc.setContent( data, false, &domError, &errorLine, &errorColumn ) )
+    const auto p = Calamares::setXmlContent( doc, data );
+    if ( p.errorMessage.isEmpty() )
     {
         const auto tzElements = doc.elementsByTagName( tag );
         cDebug() << "GeoIP found" << tzElements.length() << "elements";
@@ -48,7 +47,8 @@ getElementTexts( const QByteArray& data, const QString& tag )
     }
     else
     {
-        cWarning() << "GeoIP XML data error:" << domError << "(line" << errorLine << errorColumn << ')';
+        cWarning() << "GeoIP XML data error:" << p.errorMessage << "(line" << p.errorLine << ':' << p.errorColumn
+                   << ')';
     }
 
     if ( elements.count() < 1 )

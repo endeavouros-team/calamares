@@ -36,12 +36,13 @@ if(NOT TARGET calapmcore)
 
     if(KPMcore_FOUND)
         find_package(${qtname} REQUIRED DBus) # Needed for KPMCore
-        find_package(${kfname} REQUIRED I18n WidgetsAddons) # Needed for KPMCore
+        find_package(${kfname}I18n REQUIRED) # Needed for KPMCore
+        find_package(${kfname}WidgetsAddons REQUIRED) # Needed for KPMCore
 
         target_link_libraries(calapmcore INTERFACE kpmcore ${qtname}::DBus ${kfname}::I18n ${kfname}::WidgetsAddons)
         target_include_directories(calapmcore INTERFACE ${KPMCORE_INCLUDE_DIR})
-        # If there were KPMcore API variations, figure them out here
-        # target_compile_definitions(calapmcore INTERFACE WITH_KPMcore)
+        math(EXPR _kpm_version_number "(0x${KPMcore_VERSION_MAJOR} * 0x10000)+(0x${KPMcore_VERSION_MINOR} * 0x100)+(0x${KPMcore_VERSION_PATCH})" OUTPUT_FORMAT HEXADECIMAL)
+        target_compile_definitions(calapmcore INTERFACE WITH_KPMcore=${_kpm_version_number})
 
         # Flag that this library has KPMcore support. A variable
         # set here has the wrong scope. ENV{} would be visible

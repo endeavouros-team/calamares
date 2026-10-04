@@ -16,6 +16,7 @@
 
 #include "Branding.h"
 #include "Settings.h"
+#include "compat/CheckBox.h"
 #include "utils/Retranslator.h"
 
 #include <QFocusEvent>
@@ -42,8 +43,9 @@ FinishedPage::FinishedPage( Config* config, QWidget* parent )
              } );
     connect( config, &Config::restartNowWantedChanged, ui->restartCheckBox, &QCheckBox::setChecked );
     connect( ui->restartCheckBox,
-             &QCheckBox::stateChanged,
-             [ config ]( int state ) { config->setRestartNowWanted( state != 0 ); } );
+             Calamares::checkBoxStateChangedSignal,
+             [ config ]( Calamares::checkBoxStateType state )
+             { config->setRestartNowWanted( state != Calamares::checkBoxUncheckedValue ); } );
 
     CALAMARES_RETRANSLATE_SLOT( &FinishedPage::retranslate );
 }

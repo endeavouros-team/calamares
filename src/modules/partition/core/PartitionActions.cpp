@@ -15,6 +15,7 @@
 #include "core/PartUtils.h"
 #include "core/PartitionCoreModule.h"
 #include "core/PartitionInfo.h"
+#include "core/SizeUtils.h"
 
 #include "GlobalStorage.h"
 #include "JobQueue.h"
@@ -90,11 +91,19 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
 
     const bool isEfi = PartUtils::isEfiSystem();
 
+    bool createHybridBootloaderLayout = false;
+    if ( gs->contains( "createHybridBootloaderLayout" ) )
+    {
+        createHybridBootloaderLayout = gs->value( "createHybridBootloaderLayout" ).toBool();
+    }
+
     // Partition sizes are expressed in MiB, should be multiples of
-    // the logical sector size (usually 512B). EFI starts with 2MiB
-    // empty and a EFI boot partition, while BIOS starts at
-    // the 1MiB boundary (usually sector 2048).
-    // ARM empty sectors are 16 MiB in size.
+    // the logical sector size (usually 512B), but proper alignment requires
+    // them to also be multiples of 4KiB (a common physical sector size).
+    //
+    // EFI starts with 2MiB empty and an EFI boot partition, while BIOS starts at
+    // the 1MiB boundary (usually sector 2048). On an ARM system this is different
+    // again and the disk starts with 16MiB empty.
     const int empty_space_sizeB = PartUtils::isArmSystem() ? 16_MiB : ( isEfi ? 2_MiB : 1_MiB );
 
     // Since sectors count from 0, if the space is 2048 sectors in size,
@@ -105,10 +114,14 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     PartitionTable::TableType partType = PartitionTable::nameToTableType( o.defaultPartitionTableType );
     if ( partType == PartitionTable::unknownTableType )
     {
-        partType = isEfi ? PartitionTable::gpt : PartitionTable::msdos;
+        partType = ( isEfi || createHybridBootloaderLayout ) ? PartitionTable::gpt : PartitionTable::msdos;
     }
     // last usable sector possibly allowing for secondary GPT using 66 sectors (256 entries)
-    const qint64 lastUsableSector = dev->totalLogical() - ( partType == PartitionTable::gpt ? 67 : 1 );
+    // We must ensure here that size will remain multiple of 4K for proper alignment
+    const qint64 tableOverhead = partType == PartitionTable::gpt ? 67 : 1;
+    const qint64 lastUsableSector
+        = Calamares::Partition::alignEndSectorTo4K( dev->logicalSize(), dev->totalLogical() - tableOverhead );
+
 
     // Looking up the defaultFsType (which should name a filesystem type)
     // will log an error and set the type to Unknown if there's something wrong.
@@ -118,7 +131,7 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
 
     core->createPartitionTable( dev, partType );
 
-    if ( isEfi )
+    if ( createHybridBootloaderLayout || isEfi )
     {
         qint64 uefisys_part_sizeB = PartUtils::efiFilesystemRecommendedSize();
         qint64 efiSectorCount = Calamares::bytesToSectors( uefisys_part_sizeB, dev->logicalSize() );
@@ -144,6 +157,25 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
         }
         core->createPartition( dev, efiPartition, KPM_PARTITION_FLAG_ESP );
         firstFreeSector = lastSector + 1;
+
+        if ( createHybridBootloaderLayout )
+        {
+            qint64 bios_part_sizeB = 8_MiB;
+            qint64 biosSectorCount = Calamares::bytesToSectors( bios_part_sizeB, dev->logicalSize() );
+            Q_ASSERT( biosSectorCount > 0 );
+
+            qint64 lastSector = firstFreeSector + biosSectorCount - 1;
+            Partition* biosPartition = KPMHelpers::createNewPartition( dev->partitionTable(),
+                                                                       *dev,
+                                                                       PartitionRole( PartitionRole::Primary ),
+                                                                       FileSystem::Unformatted,
+                                                                       QString(),
+                                                                       firstFreeSector,
+                                                                       lastSector,
+                                                                       KPM_PARTITION_FLAG( None ) );
+            core->createPartition( dev, biosPartition, KPM_PARTITION_FLAG( BiosGrub ) );
+            firstFreeSector = lastSector + 1;
+        }
     }
 
     const bool mayCreateSwap
@@ -168,7 +200,9 @@ doAutopartition( PartitionCoreModule* core, Device* dev, Choices::AutoPartitionO
     qint64 lastSectorForRoot = lastUsableSector;
     if ( shouldCreateSwap )
     {
-        lastSectorForRoot -= suggestedSwapSizeB / sectorSize + 1;
+        // +1 to ensure we don't round down and get something smaller than requested
+        const auto sectorsForSwap = suggestedSwapSizeB / sectorSize + 1;
+        lastSectorForRoot = Calamares::Partition::alignEndSectorTo4K( sectorSize, lastSectorForRoot - sectorsForSwap );
     }
 
     core->layoutApply( dev, firstFreeSector, lastSectorForRoot, o.luksFsType, o.luksPassphrase );
@@ -249,6 +283,7 @@ doReplacePartition( PartitionCoreModule* core, Device* dev, Partition* partition
     // Save the first and last sector values as the partition will be deleted
     firstSector = partition->firstSector();
     lastSector = partition->lastSector();
+
     if ( !partition->roles().has( PartitionRole::Unallocated ) )
     {
         core->deletePartition( dev, partition );

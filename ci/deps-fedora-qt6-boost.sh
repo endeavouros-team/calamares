@@ -12,6 +12,7 @@ yum install -y qt6-qtbase-devel qt6-linguist qt6-qtbase-private-devel qt6-qtdecl
 yum install -y extra-cmake-modules kf6-kcoreaddons-devel kf6-kdbusaddons-devel kf6-kcrash-devel
 yum install -y kf6-kconfig-devel kf6-ki18n-devel kf6-kwidgetsaddons-devel kf6-kservice-devel
 yum install -y polkit-qt6-1-devel appstream-qt-devel
+yum install -y kpmcore-devel
 # Runtime dependencies for QML modules
 yum install -y kf6-kirigami2-devel || true
 yum install -y qt6-qt5compat-devel || true

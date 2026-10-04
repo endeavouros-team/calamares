@@ -17,9 +17,9 @@
     <p>Calamares is an installer program for Linux distributions.</p>
     <p xml:lang="nl">Calamares is een installatieprogramma voor Linux distributies.</p>
   </description>
-  <url type="homepage">https://calamares.io</url>
-  <url type="bugtracker">https://https://github.com/calamares/calamares/issues/</url>
-  <url type="help">https://github.com/calamares/calamares/wiki</url>
+  <url type="homepage">https://calamares.io/</url>
+  <url type="bugtracker">https://codeberg.org/Calamares/calamares/issues/</url>
+  <url type="help">https://calamares.io/docs/users-guide/</url>
   <screenshots>
     <screenshot type="default">
       <caption>Calamares Welcome</caption>

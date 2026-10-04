@@ -18,11 +18,13 @@
 #include "DebugWindow.h"
 #include "Settings.h"
 #include "ViewManager.h"
+
 #include "progresstree/ProgressTreeView.h"
 #include "utils/Gui.h"
 #include "utils/Logger.h"
 #include "utils/Qml.h"
 #include "utils/Retranslator.h"
+#include "viewpages/ViewStep.h"
 
 #include <QApplication>
 #include <QBoxLayout>
@@ -40,6 +42,8 @@
 #include <QQuickWidget>
 #endif
 #include <QTreeView>
+
+#include <algorithm>
 
 static QSize
 desktopSize( QWidget* w )
@@ -96,6 +100,24 @@ setButtonIcon( QPushButton* button, const QString& name )
     if ( button && !icon.isNull() )
     {
         button->setIcon( icon );
+    }
+}
+
+/** @brief Enable the "Next" button and possibly auto-proceed to next page */
+static inline void
+setNextButtonEnabled( QPushButton* button, Calamares::ViewStep* step, bool enabled )
+{
+    button->setEnabled( enabled );
+
+    if ( !enabled || !step )
+    {
+        return;
+    }
+
+    const auto descriptor = Calamares::Settings::instance()->moduleInstance( step->moduleInstanceKey() );
+    if ( descriptor.isValid() && descriptor.autoProceed() )
+    {
+        button->click();
     }
 }
 
@@ -221,7 +243,11 @@ getWidgetNavigation( Calamares::DebugWindowManager*,
         next->setObjectName( "view-button-next" );
         next->setEnabled( viewManager->nextEnabled() );
         QObject::connect( next, &QPushButton::clicked, viewManager, &Calamares::ViewManager::next );
-        QObject::connect( viewManager, &Calamares::ViewManager::nextEnabledChanged, next, &QPushButton::setEnabled );
+        QObject::connect( viewManager,
+                          &Calamares::ViewManager::nextEnabledChanged,
+                          next,
+                          [ = ]( Calamares::ViewStep* step, bool enabled )
+                          { setNextButtonEnabled( next, step, enabled ); } );
         QObject::connect( viewManager, &Calamares::ViewManager::nextLabelChanged, next, &QPushButton::setText );
         QObject::connect(
             viewManager, &Calamares::ViewManager::nextIconChanged, [ = ]( QString n ) { setButtonIcon( next, n ); } );
@@ -534,7 +560,13 @@ CalamaresWindow::ensureSize( QSize size )
 void
 CalamaresWindow::closeEvent( QCloseEvent* event )
 {
-    if ( ( !m_viewManager ) || m_viewManager->confirmCancelInstallation() )
+    if ( m_viewManager )
+    {
+        m_viewManager->quit();
+        // If it didn't actually exit, eat the event to ignore close
+        event->ignore();
+    }
+    else
     {
         event->accept();
 #if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
@@ -542,9 +574,5 @@ CalamaresWindow::closeEvent( QCloseEvent* event )
 #else
         QApplication::exit( EXIT_SUCCESS );
 #endif
-    }
-    else
-    {
-        event->ignore();
     }
 }

@@ -22,6 +22,7 @@
 #include "gui/PartitionBarsView.h"
 #include "gui/PartitionLabelsView.h"
 #include "gui/PartitionPage.h"
+#include "partition/FileSystem.h"
 
 #include "Branding.h"
 #include "GlobalStorage.h"
@@ -34,6 +35,7 @@
 #include "widgets/TranslationFix.h"
 #include "widgets/WaitingWidget.h"
 
+#include <kpmcore/core/device.h>
 #include <kpmcore/core/partition.h>
 
 #include <QFormLayout>
@@ -59,6 +61,18 @@ PartitionViewStep::PartitionViewStep( QObject* parent )
     m_core = new PartitionCoreModule( this );  // Unusable before init is complete!
     // We're not done loading, but we need the configuration map first.
 }
+
+PartitionViewStep::FSConflictEntry::FSConflictEntry() {}
+
+PartitionViewStep::FSConflictEntry::FSConflictEntry( const QString& conflictingPathArg,
+                                                     const QString& conflictingFilesystemArg,
+                                                     const QString& conflictedPathArg,
+                                                     QStringList allowableFilesystemsArg )
+    : conflictingPath( conflictingPathArg )
+    , conflictingFilesystem( conflictingFilesystemArg )
+    , conflictedPath( conflictedPathArg )
+    , allowableFilesystems( allowableFilesystemsArg )
+{}
 
 void
 PartitionViewStep::initPartitionCoreModule()
@@ -118,7 +132,7 @@ static QStringList
 jobDescriptions( const Calamares::JobList& jobs )
 {
     QStringList jobsLines;
-    for ( const Calamares::job_ptr& job : qAsConst( jobs ) )
+    for ( const Calamares::job_ptr& job : std::as_const( jobs ) )
     {
         const auto description = job->prettyDescription();
         if ( !description.isEmpty() )
@@ -362,7 +376,7 @@ PartitionViewStep::next()
         {
             if ( !m_manualPartitionPage )
             {
-                m_manualPartitionPage = new PartitionPage( m_core );
+                m_manualPartitionPage = new PartitionPage( m_core, *m_config );
                 m_widget->addWidget( m_manualPartitionPage );
             }
 
@@ -517,11 +531,51 @@ PartitionViewStep::onActivate()
     }
 }
 
+static QString
+listItem( QString s )
+{
+    return s.prepend( QStringLiteral( "<li>" ) ).append( QStringLiteral( "</li>" ) );
+}
+
 static bool
 shouldWarnForGPTOnBIOS( const PartitionCoreModule* core )
 {
-    // Let's disable this for now until we have time to remove it upstream
-    return false;
+    if ( PartUtils::isEfiSystem() )
+    {
+        return false;
+    }
+
+    const QString biosFlagName = PartitionTable::flagName( KPM_PARTITION_FLAG( BiosGrub ) );
+
+    auto [ r, device ] = core->bootLoaderModel()->findBootLoader( core->bootLoaderInstallPath() );
+    Q_UNUSED( r );
+    if ( device )
+    {
+        auto* table = device->partitionTable();
+        cDebug() << "Found device for bootloader" << device->deviceNode();
+        if ( table && table->type() == PartitionTable::TableType::gpt )
+        {
+            // So this is a BIOS system, and the bootloader will be installed on a GPT system
+            for ( const auto& partition : std::as_const( table->children() ) )
+            {
+                using Calamares::Units::operator""_MiB;
+                if ( ( partition->activeFlags() & KPM_PARTITION_FLAG( BiosGrub ) )
+                     && ( partition->fileSystem().type() == FileSystem::Unformatted )
+                     && ( partition->capacity() >= 8_MiB ) )
+                {
+                    cDebug() << Logger::SubEntry << "Partition" << partition->devicePath() << partition->partitionPath()
+                             << "is a suitable" << biosFlagName << "partition";
+                    return false;
+                }
+            }
+        }
+        cDebug() << Logger::SubEntry << "No suitable partition for" << biosFlagName << "found";
+    }
+    else
+    {
+        cDebug() << "Found no device for" << core->bootLoaderInstallPath();
+    }
+    return true;
 }
 
 static bool
@@ -544,6 +598,143 @@ shouldWarnForNotEncryptedBoot( const Config* config, const PartitionCoreModule* 
         }
     }
     return false;
+}
+
+static PartitionViewStep::FSConflictEntry
+calcFSConflictEntry( PartitionCoreModule* core, PartitionModel* partModel, QModelIndex partFsIdx, QModelIndex partMountPointIdx, QStringList mountPointList )
+{
+    PartitionViewStep::FSConflictEntry result;
+
+    QString partFs = partModel->data( partFsIdx ).toString().toLower();
+    QString partMountPoint = partModel->data( partMountPointIdx ).toString();
+    FileSystem::Type fsType;
+    PartUtils::canonicalFilesystemName( partFs, &fsType );
+    bool fsTypeIsAllowed = false;
+    if ( fsType == FileSystem::Type::Unknown )
+    {
+        fsTypeIsAllowed = true;
+    }
+    else
+    {
+        QList< FileSystem::Type > allowedFsTypes = core->dirFSRestrictLayout().allowedFSTypes( partMountPoint, mountPointList, true );
+        for ( const auto& allowedFsType : allowedFsTypes )
+        {
+            if ( fsType == allowedFsType )
+            {
+                fsTypeIsAllowed = true;
+                break;
+            }
+        }
+    }
+
+    if ( !fsTypeIsAllowed )
+    {
+        QString conflictedPath = core->dirFSRestrictLayout().diagnoseFSConflict( partMountPoint, fsType, mountPointList );
+        QList< FileSystem::Type > nonConflictingFilesystemTypes = core->dirFSRestrictLayout().allowedFSTypes( conflictedPath, mountPointList, true );
+        QStringList nonConflictingFilesystems;
+        for ( const auto& fsType : nonConflictingFilesystemTypes )
+        {
+            nonConflictingFilesystems.append( Calamares::Partition::prettyNameForFileSystemType( fsType ) );
+        }
+        result = PartitionViewStep::FSConflictEntry( partMountPoint, partFs, conflictedPath, nonConflictingFilesystems );
+    }
+
+    return result;
+}
+
+static QList< PartitionViewStep::FSConflictEntry >
+checkForFilesystemConflicts( PartitionCoreModule* core )
+{
+    QList< PartitionViewStep::FSConflictEntry > result;
+
+    DeviceModel* dm = core->deviceModel();
+    QStringList mountPointList;
+
+    // Walk the device and partition tree, extracting mountpoints from it
+    for ( int i = 0; i < dm->rowCount(); i++ )
+    {
+        Device* dev = dm->deviceForIndex( dm->index( i ) );
+        PartitionModel* pm = core->partitionModelForDevice( dev );
+
+        QModelIndex extPartMountPointIdx = QModelIndex();
+        bool extPartFound = false;
+        for ( int j = 0; j < pm->rowCount(); j++ )
+        {
+            QModelIndex partFsIdx = pm->index( j, PartitionModel::FileSystemColumn );
+            QModelIndex partMountPointIdx = pm->index( j, PartitionModel::MountPointColumn );
+
+            if ( pm->data( partFsIdx ).toString().toLower() == "extended" )
+            {
+                extPartFound = true;
+                extPartMountPointIdx = partMountPointIdx;
+                break;
+            }
+
+            QString mountPoint = pm->data( partMountPointIdx ).toString();
+            if ( !mountPoint.isEmpty() )
+            {
+                mountPointList.append( mountPoint );
+            }
+        }
+        if ( extPartFound )
+        {
+            for ( int j = 0; j < pm->rowCount( extPartMountPointIdx ); j++ )
+            {
+                QModelIndex partMountPointIdx = pm->index( j, PartitionModel::MountPointColumn, extPartMountPointIdx );
+                QString mountPoint = pm->data( partMountPointIdx ).toString();
+                if ( !mountPoint.isEmpty() )
+                {
+                    mountPointList.append( mountPoint );
+                }
+            }
+        }
+    }
+
+    // Walk the device and partition tree again, validating it this time
+    for ( int i = 0; i < dm->rowCount(); i++ )
+    {
+        Device* dev = dm->deviceForIndex( dm->index( i ) );
+        PartitionModel* pm = core->partitionModelForDevice( dev );
+
+        QModelIndex extPartFsIdx = QModelIndex();
+        QModelIndex extPartMountPointIdx = QModelIndex();
+        bool extPartFound = false;
+
+        for ( int j = 0; j < pm->rowCount(); j++ )
+        {
+            QModelIndex partFsIdx = pm->index( j, PartitionModel::FileSystemColumn );
+            QModelIndex partMountPointIdx = pm->index( j, PartitionModel::MountPointColumn );
+
+            if ( pm->data( partFsIdx ).toString().toLower() == "extended" )
+            {
+                extPartFound = true;
+                extPartFsIdx = partFsIdx;
+                extPartMountPointIdx = partMountPointIdx;
+                break;
+            }
+
+            PartitionViewStep::FSConflictEntry conflictEntry = calcFSConflictEntry( core, pm, partFsIdx, partMountPointIdx, mountPointList );
+            if ( !conflictEntry.conflictedPath.isEmpty() )
+            {
+                result.append( conflictEntry );
+            }
+        }
+        if ( extPartFound )
+        {
+            for ( int j = 0; j < pm->rowCount( extPartFsIdx ); j++ )
+            {
+                QModelIndex partFsIdx = pm->index( j, PartitionModel::FileSystemColumn, extPartFsIdx );
+                QModelIndex partMountPointIdx = pm->index( j, PartitionModel::MountPointColumn, extPartMountPointIdx );
+                PartitionViewStep::FSConflictEntry conflictEntry = calcFSConflictEntry( core, pm, partFsIdx, partMountPointIdx, mountPointList );
+                if ( !conflictEntry.conflictedPath.isEmpty() )
+                {
+                    result.append( conflictEntry );
+                }
+            }
+        }
+    }
+
+    return result;
 }
 
 void
@@ -597,6 +788,10 @@ PartitionViewStep::onLeave()
     }
 
     const auto* branding = Calamares::Branding::instance();
+
+    const QString startList = QStringLiteral( "<br/><br/><ul>" );
+    const QString endList = QStringLiteral( "</ul><br/><br/>" );
+
     if ( m_widget->currentWidget() == m_manualPartitionPage )
     {
         if ( PartUtils::isEfiSystem() )
@@ -650,12 +845,6 @@ PartitionViewStep::onLeave()
                                         "partition but your system may fail to start." );
             const QString possibleFail = tr( "You can continue with this EFI system "
                                              "partition configuration but your system may fail to start." );
-
-            const QString startList = QStringLiteral( "<br/><br/><ul>" );
-            const QString endList = QStringLiteral( "</ul><br/><br/>" );
-
-            auto listItem = []( QString s ) -> QString
-            { return s.prepend( QStringLiteral( "<li>" ) ).append( QStringLiteral( "</li>" ) ); };
 
             if ( !esp )
             {
@@ -743,6 +932,52 @@ PartitionViewStep::onLeave()
             Calamares::fixButtonLabels( &mb );
             mb.exec();
         }
+
+        QList< FSConflictEntry > conflictMap = checkForFilesystemConflicts( m_core );
+        if ( !conflictMap.isEmpty() )
+        {
+            QString message = tr( "Filesystem conflicts found" );
+            const QString descHeader = tr( "The chosen manual partitioning layout does not "
+                                           "comply with the filesystem restrictions set by the "
+                                           "distro. The following issues were found:");
+
+            QStringList issueList;
+            for ( const auto& entry : conflictMap )
+            {
+                QString buildString;
+                if ( entry.conflictedPath == "any" )
+                {
+                    buildString = tr( "The %1 directory uses filesystem %2, but this distro only allows the following filesystems: %3." )
+                                      .arg( entry.conflictingPath )
+                                      .arg( entry.conflictingFilesystem )
+                                      .arg( entry.allowableFilesystems.join( ", " ) );
+                    issueList.append( buildString );
+                }
+                else
+                {
+                    buildString = tr( "The %1 directory uses filesystem %2, but the %3 directory must use one of the following filesystems: %4." )
+                                      .arg( entry.conflictingPath )
+                                      .arg( entry.conflictingFilesystem )
+                                      .arg( entry.conflictedPath )
+                                      .arg( entry.allowableFilesystems.join( ", " ) );
+                    issueList.append( buildString );
+                }
+            }
+
+            const QString descFooter = tr( "You can continue without setting up filesystems "
+                                           "properly, but your system may fail to start." );
+
+            QString description = descHeader + startList;
+            for ( const auto& item : issueList )
+            {
+                description += listItem( item );
+            }
+            description += endList + descFooter;
+
+            QMessageBox mb( QMessageBox::Warning, message, description, QMessageBox::Ok, m_manualPartitionPage );
+            Calamares::fixButtonLabels( &mb );
+            mb.exec();
+        }
     }
 }
 
@@ -776,6 +1011,8 @@ PartitionViewStep::setConfigurationMap( const QVariantMap& configurationMap )
                       "will use gpt for efi or msdos for bios";
     }
     gs->insert( "defaultPartitionTableType", partitionTableName );
+    gs->insert( "createHybridBootloaderLayout",
+                Calamares::getBool( configurationMap, "createHybridBootloaderLayout", false ) );
 
     // Now that we have the config, we load the PartitionCoreModule in the background
     // because it could take a while. Then when it's done, we can set up the widgets
@@ -799,6 +1036,7 @@ PartitionViewStep::setConfigurationMap( const QVariantMap& configurationMap )
     m_future->setFuture( future );
 
     m_core->partitionLayout().init( m_config->defaultFsType(), configurationMap.value( "partitionLayout" ).toList() );
+    m_core->dirFSRestrictLayout().init( configurationMap.value( "directoryFilesystemRestrictions" ).toList() );
 }
 
 Calamares::JobList

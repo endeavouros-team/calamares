@@ -72,10 +72,10 @@
 Follow the instructions printed by the release script.
 
 * Push the tags.
-* Create a new release on GitHub.
+* Create a new release on Codeberg.
 * Upload tarball and signature.
 * Publish release article on `calamares.io`.
-* Close associated milestone on GitHub if it's entirely done.
+* Close associated milestone if it's entirely done.
 * Update topic on `#calamares:kde.org` Matrix channel.
 
 ## (4) Post-Release
@@ -125,7 +125,7 @@ ssb  rsa3072/0xCFDDC96F12B1915C
     but be careful.
   - Export the public key material with `gpg --export --armor <keyid>`,
     possibly also setting an output file.
-  - Upload that public key to the relevant GitHub profile.
+  - Upload that public key to the relevant Codeberg profile.
   - Upload that public key to the Calamares site.
 
 ## Placeholder Release Notes

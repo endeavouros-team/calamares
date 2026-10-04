@@ -16,9 +16,14 @@
 # "nightly-debian.yml") and yq is installed, then the CMAKE_ARGS
 # are extracted from that workflow file.
 #
+# If CMAKE_ARGS is not set, and the argument to the script is "-",
+# then assume a build should be done under $SRCDIR/build,
+# with default arguments.
+#
 # Summary, pick one:
 # - set environment variables, run "build.sh"
 # - set no variables, run "build.sh <workflow-name>"
+# - set no variables, run "build.sh -"
 
 if test -z "$SRCDIR" ; then
 	_d=$(dirname "$0" )
@@ -27,6 +32,10 @@ if test -z "$SRCDIR" ; then
 fi
 if test -z "$BUILDDIR" ; then
 	test -d "/build" && BUILDDIR=/build
+fi
+if test -z "$CMAKE_ARGS" -a "x-" = "x$1" ; then
+	BUILDDIR="$SRCDIR/build"
+        CMAKE_ARGS="-DBOGUS=unused"
 fi
 if test -z "$CMAKE_ARGS" -a -n "$1" ; then
 	_d="$SRCDIR/.github/workflows/$1"

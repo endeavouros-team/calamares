@@ -18,8 +18,10 @@
 #include "core/KPMHelpers.h"
 #include "core/PartUtils.h"
 #include "core/PartitionInfo.h"
+#include "core/PartitionCoreModule.h"
 #include "gui/PartitionDialogHelpers.h"
 #include "gui/PartitionSizeController.h"
+#include "gui/EncryptWidget.h"
 
 #include "GlobalStorage.h"
 #include "JobQueue.h"
@@ -45,18 +47,23 @@
 using Calamares::Partition::untranslatedFS;
 using Calamares::Partition::userVisibleFS;
 
-static QSet< FileSystem::Type > s_unmountableFS( { FileSystem::Unformatted,
-                                                   FileSystem::LinuxSwap,
-                                                   FileSystem::Extended,
-                                                   FileSystem::Unknown,
-                                                   FileSystem::Lvm2_PV } );
+static bool
+manualPartitionNeedsLuks4KAlignment()
+{
+    Calamares::GlobalStorage* gs = Calamares::JobQueue::instance()->globalStorage();
+    const QString luksFsType = gs->value( QStringLiteral( "luksFileSystemType" ) ).toString();
+    return Config::luksGenerationNames().find( luksFsType, Config::LuksGeneration::Luks1 )
+        == Config::LuksGeneration::Luks2;
+}
 
-CreatePartitionDialog::CreatePartitionDialog( Device* device,
+CreatePartitionDialog::CreatePartitionDialog( PartitionCoreModule* core,
+                                              Device* device,
                                               PartitionNode* parentPartition,
                                               const QStringList& usedMountPoints,
                                               QWidget* parentWidget )
     : QDialog( parentWidget )
     , m_ui( new Ui_CreatePartitionDialog )
+    , m_core( core )
     , m_partitionSizeController( new PartitionSizeController( this ) )
     , m_device( device )
     , m_parent( parentPartition )
@@ -81,8 +88,7 @@ CreatePartitionDialog::CreatePartitionDialog( Device* device,
         m_ui->lvNameLineEdit->setValidator( validator );
     }
 
-    if ( device->partitionTable()->type() == PartitionTable::msdos
-         || device->partitionTable()->type() == PartitionTable::msdos_sectorbased )
+    if ( KPMHelpers::isMSDOSPartition( device->partitionTable()->type() ) )
     {
         initMbrPartitionTypeUi();
     }
@@ -128,17 +134,28 @@ CreatePartitionDialog::CreatePartitionDialog( Device* device,
              this,
              &CreatePartitionDialog::checkMountPointSelection );
 
+    connect( m_ui->fsComboBox,
+             &QComboBox::currentTextChanged,
+             this,
+             &CreatePartitionDialog::checkMountPointSelection );
+
+    connect( m_ui->encryptWidget,
+             &EncryptWidget::stateChanged,
+             this,
+             [ this ]( EncryptWidget::Encryption ) { updateLuksAlignment(); } );
+
     // Select a default
     m_ui->fsComboBox->setCurrentIndex( defaultFsIndex );
     updateMountPointUi();
     checkMountPointSelection();
 }
 
-CreatePartitionDialog::CreatePartitionDialog( Device* device,
+CreatePartitionDialog::CreatePartitionDialog( PartitionCoreModule* core,
+                                              Device* device,
                                               const FreeSpace& freeSpacePartition,
                                               const QStringList& usedMountPoints,
                                               QWidget* parentWidget )
-    : CreatePartitionDialog( device, freeSpacePartition.p->parent(), usedMountPoints, parentWidget )
+    : CreatePartitionDialog( core, device, freeSpacePartition.p->parent(), usedMountPoints, parentWidget )
 {
     standardMountPoints( *( m_ui->mountPointComboBox ), QString() );
     setFlagList( *( m_ui->m_listFlags ),
@@ -147,11 +164,12 @@ CreatePartitionDialog::CreatePartitionDialog( Device* device,
     initPartResizerWidget( freeSpacePartition.p );
 }
 
-CreatePartitionDialog::CreatePartitionDialog( Device* device,
+CreatePartitionDialog::CreatePartitionDialog( PartitionCoreModule* core,
+                                              Device* device,
                                               const FreshPartition& existingNewPartition,
                                               const QStringList& usedMountPoints,
                                               QWidget* parentWidget )
-    : CreatePartitionDialog( device, existingNewPartition.p->parent(), usedMountPoints, parentWidget )
+    : CreatePartitionDialog( core, device, existingNewPartition.p->parent(), usedMountPoints, parentWidget )
 {
     standardMountPoints( *( m_ui->mountPointComboBox ), PartitionInfo::mountPoint( existingNewPartition.p ) );
     setFlagList( *( m_ui->m_listFlags ),
@@ -246,8 +264,14 @@ CreatePartitionDialog::getNewlyCreatedPartition()
     Partition* partition = nullptr;
     QString luksFsType = gs->value( "luksFileSystemType" ).toString();
     QString luksPassphrase = m_ui->encryptWidget->passphrase();
-    if ( m_ui->encryptWidget->state() == EncryptWidget::Encryption::Confirmed && !luksPassphrase.isEmpty()
-         && fsType != FileSystem::Zfs )
+    const bool encryptPartition = m_ui->encryptWidget->state() == EncryptWidget::Encryption::Confirmed
+        && !luksPassphrase.isEmpty() && fsType != FileSystem::Zfs;
+    if ( encryptPartition )
+    {
+        Calamares::Partition::alignSectorRangeTo4K( m_device->logicalSize(), first, last );
+    }
+
+    if ( encryptPartition )
     {
         partition = KPMHelpers::createNewEncryptedPartition(
             m_parent,
@@ -332,13 +356,24 @@ CreatePartitionDialog::updateMountPointUi()
     {
         m_ui->mountPointComboBox->setCurrentText( QString() );
     }
+    updateLuksAlignment();
+}
+
+void
+CreatePartitionDialog::updateLuksAlignment()
+{
+    const bool align = manualPartitionNeedsLuks4KAlignment() && m_ui->encryptWidget->isVisible()
+        && m_ui->encryptWidget->isEncryptionCheckboxChecked();
+    m_partitionSizeController->setAlignForLuks( align );
 }
 
 void
 CreatePartitionDialog::checkMountPointSelection()
 {
-    validateMountPoint( selectedMountPoint( m_ui->mountPointComboBox ),
+    validateMountPoint( m_core,
+                        selectedMountPoint( m_ui->mountPointComboBox ),
                         m_usedMountPoints,
+                        m_ui->fsComboBox->currentText(),
                         m_ui->mountPointExplanation,
                         m_ui->buttonBox->button( QDialogButtonBox::Ok ) );
 }
@@ -352,4 +387,5 @@ CreatePartitionDialog::initPartResizerWidget( Partition* partition )
     m_partitionSizeController->init( m_device, partition, color );
     m_partitionSizeController->setPartResizerWidget( m_ui->partResizerWidget );
     m_partitionSizeController->setSpinBox( m_ui->sizeSpinBox );
+    updateLuksAlignment();
 }

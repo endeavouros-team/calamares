@@ -90,6 +90,7 @@ class PLUGINDLLEXPORT Config : public Calamares::ModuleSystem::Config
 
     Q_PROPERTY( QString userShell READ userShell WRITE setUserShell NOTIFY userShellChanged )
 
+    Q_PROPERTY( QString nopasswdGroup READ nopasswdGroup CONSTANT )
     Q_PROPERTY( QString autoLoginGroup READ autoLoginGroup WRITE setAutoLoginGroup NOTIFY autoLoginGroupChanged )
     Q_PROPERTY( QString sudoersGroup READ sudoersGroup WRITE setSudoersGroup NOTIFY sudoersGroupChanged )
 
@@ -185,6 +186,9 @@ public:
     /// The group of which auto-login users must be a member
     QString autoLoginGroup() const { return m_autoLoginGroup; }
 
+    /// The group of which no-password users must be a member (applies only if the user somehow configures no password)
+    QString nopasswdGroup() const { return m_nopasswdGroup; }
+
     enum class SudoStyle
     {
         UserOnly,
@@ -216,6 +220,8 @@ public:
     /// Write /etc/hosts ?
     bool writeEtcHosts() const { return m_writeEtcHosts; }
 
+    /// Should the user be able to changed the value of autologin?
+    bool displayAutoLogin() const { return m_displayAutoLogin; }
     /// Should the user be automatically logged-in?
     bool doAutoLogin() const { return m_doAutoLogin; }
     /// Should the root password be written (if false, no password is set and the root account is disabled for login)
@@ -331,6 +337,7 @@ private:
 
     QList< GroupDescription > m_defaultGroups;
     QString m_userShell;
+    QString m_nopasswdGroup;
     QString m_autoLoginGroup;
     QString m_sudoersGroup;
     SudoStyle m_sudoStyle = SudoStyle::UserOnly;
@@ -343,6 +350,7 @@ private:
     QString m_rootPassword;
     QString m_rootPasswordSecondary;
 
+    bool m_displayAutoLogin = false;
     bool m_doAutoLogin = false;
 
     bool m_writeRootPassword = true;

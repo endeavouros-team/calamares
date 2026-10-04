@@ -378,7 +378,7 @@ PackageModel::appendModelData( const QVariantList& groupList )
                     removeList.insert( 0, i );
                 }
             }
-            for ( const int& item : qAsConst( removeList ) )
+            for ( const int& item : std::as_const( removeList ) )
             {
                 m_rootItem->removeChild( item );
             }

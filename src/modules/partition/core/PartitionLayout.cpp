@@ -221,7 +221,7 @@ PartitionLayout::createPartitions( Device* dev,
 
     // Let's check if we have enough space for each partitions, using the size
     // propery or the min-size property if unit is in percentage.
-    for ( const auto& entry : qAsConst( m_partLayout ) )
+    for ( const auto& entry : std::as_const( m_partLayout ) )
     {
         if ( !entry.partSize.isValid() )
         {
@@ -250,7 +250,7 @@ PartitionLayout::createPartitions( Device* dev,
     if ( availableSectors < 0 )
     {
         availableSectors = totalSectors;
-        for ( const auto& entry : qAsConst( m_partLayout ) )
+        for ( const auto& entry : std::as_const( m_partLayout ) )
         {
             qint64 sectors = partSectorsMap.value( &entry );
             if ( entry.partMinSize.isValid() )
@@ -263,7 +263,7 @@ PartitionLayout::createPartitions( Device* dev,
     }
 
     // Assign sectors for percentage-defined partitions.
-    for ( const auto& entry : qAsConst( m_partLayout ) )
+    for ( const auto& entry : std::as_const( m_partLayout ) )
     {
         if ( entry.partSize.unit() == Calamares::Partition::SizeUnit::Percent )
         {
@@ -286,7 +286,7 @@ PartitionLayout::createPartitions( Device* dev,
     // Create the partitions.
     currentSector = firstSector;
     availableSectors = totalSectors;
-    for ( const auto& entry : qAsConst( m_partLayout ) )
+    for ( const auto& entry : std::as_const( m_partLayout ) )
     {
         // Adjust partition size based on available space.
         qint64 sectors = partSectorsMap.value( &entry );

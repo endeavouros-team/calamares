@@ -6,17 +6,18 @@
 # Translators:
 # Aleksey Kabanov <ak099@mail.ru>, 2018
 # ZIzA, 2020
-# Темак, 2023
+# 11fae04751cc88bf0b4daf15dbd7e33d_68cdff3, 2023
 # Victor, 2024
+# Хаос/Chaos <inbox-dpbofnq@mail.ru>, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 22:44+0200\n"
+"POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
-"Last-Translator: Victor, 2024\n"
+"Last-Translator: Хаос/Chaos <inbox-dpbofnq@mail.ru>, 2025\n"
 "Language-Team: Russian (https://app.transifex.com/calamares/teams/20061/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +31,7 @@ msgstr "Установить загрузчик."
 
 #: src/modules/bootloader/main.py:671
 msgid "Failed to install grub, no partitions defined in global storage"
-msgstr "Не удалось установить grub, разделы не определены в общем хранилище"
+msgstr "Не удалось установить grub, разделы не определены в Накопителях"
 
 #: src/modules/bootloader/main.py:931
 msgid "Bootloader installation error"
@@ -85,8 +86,8 @@ msgid ""
 "The displaymanagers list is empty or undefined in both globalstorage and "
 "displaymanager.conf."
 msgstr ""
-"Список дисплейных менеджеров пуст или не определен в globalstorage и в "
-"displaymanager.conf."
+"Список дисплейных менеджеров пуст или не определен в "
+"globalStorage(Хранилище) и в displaymanager.conf."
 
 #: src/modules/displaymanager/main.py:1044
 msgid "Display manager configuration was incomplete"
@@ -109,12 +110,12 @@ msgstr ""
 
 #: src/modules/dummypython/main.py:35
 msgid "Dummy python job."
-msgstr "Фиктивная работа python."
+msgstr "Фиктивное задание Python."
 
 #: src/modules/dummypython/main.py:37 src/modules/dummypython/main.py:104
 #: src/modules/dummypython/main.py:105
 msgid "Dummy python step {}"
-msgstr "Фиктивный шаг python {}"
+msgstr "Фиктивный шаг Python {}"
 
 #: src/modules/fstab/main.py:29
 msgid "Writing fstab."
@@ -128,7 +129,7 @@ msgstr "Запись fstab."
 #: src/modules/openrcdmcryptcfg/main.py:72
 #: src/modules/openrcdmcryptcfg/main.py:76 src/modules/rawfs/main.py:165
 msgid "Configuration Error"
-msgstr "Ошибка конфигурации"
+msgstr "Ошибка Настройки"
 
 #: src/modules/fstab/main.py:383 src/modules/initramfscfg/main.py:86
 #: src/modules/mount/main.py:345 src/modules/openrcdmcryptcfg/main.py:73
@@ -141,7 +142,7 @@ msgstr "Не определены разделы для использовани
 #: src/modules/openrcdmcryptcfg/main.py:77
 msgid "No root mount point is given for <pre>{!s}</pre> to use."
 msgstr ""
-"Не указана корневая точка монтирования для использования <pre>{!s}</pre>."
+"Не указана точка подсоединения корня для использования <pre>{!s}</pre>."
 
 #: src/modules/fstab/main.py:417
 msgid "No <pre>{!s}</pre> configuration is given for <pre>{!s}</pre> to use."
@@ -166,7 +167,7 @@ msgstr "Не определены разделы для <pre>initcpiocfg</pre>."
 
 #: src/modules/initcpiocfg/main.py:272
 msgid "No root mount point for <pre>initcpiocfg</pre>."
-msgstr "Нет корневой точки монтирования для <pre>initcpiocfg</pre>."
+msgstr "Нет указана корневая точка для <pre>initcpiocfg</pre>."
 
 #: src/modules/initramfscfg/main.py:32
 msgid "Configuring initramfs."
@@ -174,7 +175,7 @@ msgstr "Настройка initramfs."
 
 #: src/modules/localecfg/main.py:31
 msgid "Configuring locales."
-msgstr "Настройка языка."
+msgstr "Применяются региональные настройки."
 
 #: src/modules/mkinitfs/main.py:27
 msgid "Creating initramfs with mkinitfs."
@@ -190,11 +191,11 @@ msgstr "Код выхода {}"
 
 #: src/modules/mount/main.py:43
 msgid "Mounting partitions."
-msgstr "Монтирование разделов."
+msgstr "Подсоединение разделов."
 
 #: src/modules/mount/main.py:171 src/modules/mount/main.py:207
 msgid "Internal error mounting zfs datasets"
-msgstr "Внутренняя ошибка при монтировании наборов данных zfs"
+msgstr "Внутренняя ошибка при подсоединении zfs datasets"
 
 #: src/modules/mount/main.py:183
 msgid "Failed to import zpool"
@@ -206,11 +207,11 @@ msgstr "Не удалось разблокировать zpool"
 
 #: src/modules/mount/main.py:216 src/modules/mount/main.py:221
 msgid "Failed to set zfs mountpoint"
-msgstr "Не удалось задать точку монтирования zfs"
+msgstr "Не удалось задать точку подсоединения zfs"
 
 #: src/modules/mount/main.py:386
 msgid "zfs mounting error"
-msgstr "Ошибка монтирования zfs"
+msgstr "Ошибка подсоединения zfs"
 
 #: src/modules/networkcfg/main.py:30
 msgid "Saving network configuration."
@@ -248,33 +249,33 @@ msgstr[1] "Удаление %(num)d пакетов."
 msgstr[2] "Удаление %(num)d пакетов."
 msgstr[3] "Удаление %(num)d пакетов."
 
-#: src/modules/packages/main.py:769 src/modules/packages/main.py:781
-#: src/modules/packages/main.py:809
+#: src/modules/packages/main.py:775 src/modules/packages/main.py:787
+#: src/modules/packages/main.py:815
 msgid "Package Manager error"
-msgstr "Ошибка менеджера пакетов"
+msgstr "Ошибка Менеджера Пакетов"
 
-#: src/modules/packages/main.py:770
+#: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
 msgstr ""
-"Менеджер пакетов не смог подготовить обновления. Команда <pre>{!s}</pre> "
+"Менеджер Пакетов не смог подготовить обновления. Команда <pre>{!s}</pre> "
 "вернула код ошибки {!s}."
 
-#: src/modules/packages/main.py:782
+#: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
 msgstr ""
-"Менеджер пакетов не смог обновить систему. Команда <pre>{!s}</pre> вернула "
+"Менеджер Пакетов не смог обновить систему. Команда <pre>{!s}</pre> вернула "
 "код ошибки {!s}."
 
-#: src/modules/packages/main.py:810
+#: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
 msgstr ""
-"Менеджер пакетов не смог внести изменения в установленную систему. Команда "
+"Менеджер Пакетов не смог внести изменения в установленную систему. Команда "
 "<pre>{!s}</pre> вернула код ошибки {!s}."
 
 #: src/modules/plymouthcfg/main.py:27
@@ -344,7 +345,7 @@ msgstr "Настройка юнитов systemd"
 
 #: src/modules/services-systemd/main.py:64
 msgid "Cannot modify unit"
-msgstr "Не удается изменить юнит"
+msgstr "Не удается изменить юнит systemd"
 
 #: src/modules/services-systemd/main.py:65
 msgid ""
@@ -362,57 +363,57 @@ msgstr "Не удается {_action!s} юнит systemd <code>{name!s}</code>."
 msgid "Filling up filesystems."
 msgstr "Наполнение файловой системы."
 
-#: src/modules/unpackfs/main.py:254
+#: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
 msgstr "Ошибка выполнения rsync с кодом {}."
 
-#: src/modules/unpackfs/main.py:299
+#: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
 msgstr "Извлечение образа {}/{}, файл {}/{}"
 
-#: src/modules/unpackfs/main.py:314
+#: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
 msgstr "Начало извлечения {}"
 
-#: src/modules/unpackfs/main.py:323 src/modules/unpackfs/main.py:467
+#: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
 msgstr "Не удалось распаковать образ \"{}\""
 
-#: src/modules/unpackfs/main.py:430
+#: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
-msgstr "Нет точки монтирования для раздела root"
+msgstr "Нет точки подсоединения для корневого раздела"
 
-#: src/modules/unpackfs/main.py:431
+#: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
-msgstr "globalstorage не содержит ключа \"rootMountPoint\"."
+msgstr "globalStorage не содержит ключа \"rootMountPoint\"."
 
-#: src/modules/unpackfs/main.py:434
+#: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
-msgstr "Неверная точка монтирования для корневого раздела "
+msgstr "Ошибочная точка подсоединения для корневого раздела "
 
-#: src/modules/unpackfs/main.py:435
+#: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
-msgstr "rootMountPoint — это \"{}\", которого не существует."
+msgstr "rootMountPoint - \"{}\" (пустой список), то есть пуст."
 
-#: src/modules/unpackfs/main.py:439 src/modules/unpackfs/main.py:455
-#: src/modules/unpackfs/main.py:459 src/modules/unpackfs/main.py:465
-#: src/modules/unpackfs/main.py:480
+#: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
+#: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
+#: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
 msgstr "Неверная конфигурация unpackfs"
 
-#: src/modules/unpackfs/main.py:440
+#: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
 msgstr "Нет информации о конфигурации."
 
-#: src/modules/unpackfs/main.py:456
+#: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
 msgstr "Файловая система для \"{}\" ({}) не поддерживается вашим текущим ядром"
 
-#: src/modules/unpackfs/main.py:460
+#: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
 msgstr "Исходная файловая система \"{}\" не существует"
 
-#: src/modules/unpackfs/main.py:466
+#: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
@@ -420,10 +421,10 @@ msgstr ""
 "Не удалось найти unsquashfs, убедитесь, что у вас установлен пакет squashfs-"
 "tools."
 
-#: src/modules/unpackfs/main.py:481
+#: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
 msgstr "Назначение \"{}\" в целевой системе не является каталогом"
 
 #: src/modules/zfshostid/main.py:27
 msgid "Copying zfs generated hostid."
-msgstr "Копирование сгенерированного zfs id хоста."
+msgstr "Копирование сгенерированного zfs hostid."

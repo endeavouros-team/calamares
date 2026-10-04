@@ -31,6 +31,8 @@
 #include <QSortFilterProxyModel>
 #include <QVariant>
 
+#include <cmath>
+
 namespace Calamares
 {
 namespace Locale
@@ -57,6 +59,8 @@ public:
                   const QString& country,
                   double latitude,
                   double longitude );
+    ///@brief Zones that don't belong with a country (e.g. Etc/*), so no location
+    TimeZoneData( const QString& region, const QString& zone, double offset );
     TimeZoneData( const TimeZoneData& ) = delete;
     TimeZoneData( TimeZoneData&& ) = delete;
 
@@ -72,9 +76,18 @@ public:
     double latitude() const { return m_latitude; }
     double longitude() const { return m_longitude; }
 
+    bool isGeographic() const { return !std::isnan( m_latitude ); }
+
 private:
     QString m_region;
     QString m_country;
+    // For zones with country and geographical data, these values
+    // are actual latitude and longitude from zone.tab, e.g.  +4230+00131
+    // for Andorra (the encoding of degrees and minutes is weird).
+    //
+    // For zones without a country or geographical boundary, like
+    // Etc/GMT+1, latitude is NaN and longitude is the offset in hours
+    // (e.g. +1 for GMT+1) such that the correct zone-stripe can be found.
     double m_latitude;
     double m_longitude;
 };

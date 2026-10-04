@@ -39,6 +39,8 @@ private Q_SLOTS:
     void testUnitNormalisation();
 
     void testFilesystemGS();
+
+    void testAlignment();
 };
 
 PartitionServiceTests::PartitionServiceTests() {}
@@ -110,8 +112,7 @@ PartitionServiceTests::testUnitComparison()
 }
 
 /* Operator to make the table in testUnitNormalisation_data easier to write */
-constexpr qint64
-operator""_qi( unsigned long long m )
+constexpr qint64 operator""_qi( unsigned long long m )
 {
     return qint64( m );
 }
@@ -219,6 +220,53 @@ PartitionServiceTests::testFilesystemGS()
     QVERIFY( !isFilesystemUsedGS( &gs, "ext4" ) );
 }
 
+
+void
+PartitionServiceTests::testAlignment()
+{
+    using namespace Calamares::Partition;
+constexpr auto LOGICAL_SIZE = 512;
+
+    // 0 is 4K aligned; all other blocks need to jump to next multiple of 4K.
+    // Start sectors move **forward** (i.e. to larger sector-numbers) on-disk,
+    // possibly making the partition slightly smaller.
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 0 ), 0 );
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 1 ), 8 );
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 2 ), 8 );
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 3 ), 8 );
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 4 ), 8 );
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 5 ), 8 );
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 6 ), 8 );
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 7 ), 8 );
+    QCOMPARE( alignStartSectorTo4K( LOGICAL_SIZE, 8 ), 8 );
+
+    // End sectors are the last-block-of-the-partition, so it's OK to end on 7 (mod 8)
+    // because then we are snug up against the start of the next partition. End sectors
+    // move **back** (i.e. to smaller sector-numbers) on-disk, possible making the
+    // partition slightly smaller.
+    //
+    // Ending on 0..6 just isn't possible: when we round down to the nearest 7 (mod 8)
+    // we wrap around. Since these sectors would be in the GPT table anyway, assume
+    // that it never happens.
+    QCOMPARE( alignEndSectorTo4K( LOGICAL_SIZE, 0 ), quint64(-1) );
+    QCOMPARE( alignEndSectorTo4K( LOGICAL_SIZE, 6 ), quint64(-1) );
+    QCOMPARE( alignEndSectorTo4K( LOGICAL_SIZE, 7 ), 7 );
+    QCOMPARE( alignEndSectorTo4K( LOGICAL_SIZE, 8 ), 7 ); // First value to round down sensibly
+
+    qint64 first = 2048;
+    qint64 last = 41943039;  // typical misaligned GPT last sector
+    alignSectorRangeTo4K( LOGICAL_SIZE, first, last );
+    QCOMPARE( first, 2048 );
+    QCOMPARE( last % 8, 7 );
+    QCOMPARE( ( last - first + 1 ) % 8, 0 );
+
+    first = 50;
+    last = 100;
+    alignSectorRangeTo4K( LOGICAL_SIZE, first, last );
+    QVERIFY( first <= last );
+    QCOMPARE( first % 8, 0 );
+    QCOMPARE( last % 8, 7 );
+}
 
 QTEST_GUILESS_MAIN( PartitionServiceTests )
 

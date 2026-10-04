@@ -690,9 +690,9 @@ L'instal·lador es tancarà i tots els canvis es perdran.</translation>
     </message>
     <message>
       <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="138"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1039"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1098"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1151"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1100"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1153"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>Ara:</translation>
@@ -710,138 +710,138 @@ L'instal·lador es tancarà i tots els canvis es perdran.</translation>
       <translation>Reutilitza %1 com a partició de l'usuari per a %2.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1040"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1041"/>
       <source>&lt;strong&gt;Select a partition to shrink, then drag the bottom bar to resize&lt;/strong&gt;</source>
       <translation>&lt;strong&gt;Seleccioneu una partició per encongir i arrossegueu-la per redimensinar-la&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1064"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1065"/>
       <source>%1 will be shrunk to %2MiB and a new %3MiB partition will be created for %4.</source>
       <comment>@info, %1 is partition name, %4 is product name</comment>
       <translation>%1 s'encongirà a %2 MiB i es crearà una partició nova de %3 MB per a %4.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1142"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1144"/>
       <source>&lt;strong&gt;Select a partition to install on&lt;/strong&gt;</source>
       <comment>@label</comment>
       <translation>&lt;strong&gt;Seleccioneu una partició per fer-hi la instal·lació.&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1202"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1204"/>
       <source>An EFI system partition cannot be found anywhere on this system. Please go back and use manual partitioning to set up %1.</source>
       <comment>@info, %1 is product name</comment>
       <translation>No s'ha pogut trobar enlloc una partició EFI en aquest sistema. Si us plau, torneu enrere i use les particions manuals per configurar %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1211"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1213"/>
       <source>The EFI system partition at %1 will be used for starting %2.</source>
       <comment>@info, %1 is partition path, %2 is product name</comment>
       <translation> La partició EFI de sistema a %1 s'usarà per iniciar %2.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1220"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1222"/>
       <source>EFI system partition:</source>
       <comment>@label</comment>
       <translation>Partició EFI de sistema:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1710"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1712"/>
       <source>This storage device does not seem to have an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Aquest dispositiu d'emmagatzematge no sembla que tingui un sistema operatiu. Què voleu fer?&lt;br/&gt;Podreu revisar i confirmar la tria abans que es faci cap canvi al dispositiu.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1715"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1742"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1762"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1784"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1717"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1744"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1764"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1786"/>
       <source>&lt;strong&gt;Erase disk&lt;/strong&gt;&lt;br/&gt;This will &lt;font color="red"&gt;delete&lt;/font&gt; all data currently present on the selected storage device.</source>
       <translation>&lt;strong&gt;Esborra el disc&lt;/strong&gt;&lt;br/&gt;Això &lt;font color="red"&gt;suprimirà&lt;/font&gt; totes les dades del dispositiu seleccionat.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1719"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1738"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1758"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1780"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1721"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1740"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1760"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1782"/>
       <source>&lt;strong&gt;Install alongside&lt;/strong&gt;&lt;br/&gt;The installer will shrink a partition to make room for %1.</source>
       <translation>&lt;strong&gt;Instal·la'l al costat&lt;/strong&gt;&lt;br/&gt;L'instal·lador reduirà una partició per fer espai per a %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1723"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1746"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1766"/>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1788"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1725"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1748"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1768"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1790"/>
       <source>&lt;strong&gt;Replace a partition&lt;/strong&gt;&lt;br/&gt;Replaces a partition with %1.</source>
       <translation>&lt;strong&gt;Reemplaça una partició&lt;/strong&gt;&lt;br/&gt;Reemplaça una partició per %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1732"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1734"/>
       <source>This storage device has %1 on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Aquest dispositiu d'emmagatzematge té %1. Què voleu fer?&lt;br/&gt;Podreu revisar i confirmar la tria abans que es faci cap canvi al dispositiu. </translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1753"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1755"/>
       <source>This storage device already has an operating system on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Aquest dispositiu d'emmagatzematge ja té un sistema operatiu. Què voleu fer?&lt;br/&gt;Podreu revisar i confirmar la tria abans que es faci cap canvi al dispositiu. </translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1775"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1777"/>
       <source>This storage device has multiple operating systems on it. What would you like to do?&lt;br/&gt;You will be able to review and confirm your choices before any change is made to the storage device.</source>
       <translation>Aquest dispositiu d'emmagatzematge ja múltiples sistemes operatius. Què voleu fer?&lt;br/&gt;Podreu revisar i confirmar la tria abans que es faci cap canvi al dispositiu. </translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1421"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1423"/>
       <source>This storage device already has an operating system on it, but the partition table &lt;strong&gt;%1&lt;/strong&gt; is different from the needed &lt;strong&gt;%2&lt;/strong&gt;.&lt;br/&gt;</source>
       <translation>Aquest dispositiu d'emmagatzematge ja té un sistema operatiu, però la taula de particions &lt;strong&gt;%1&lt;/strong&gt; és diferent de la necessària: &lt;strong&gt;%2&lt;/strong&gt;.&lt;br/&gt; </translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1445"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1447"/>
       <source>This storage device has one of its partitions &lt;strong&gt;mounted&lt;/strong&gt;.</source>
       <comment>@info</comment>
       <translation>Aquest dispositiu d'emmagatzematge té una de les particions &lt;strong&gt;muntada&lt;/strong&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1450"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1452"/>
       <source>This storage device is a part of an &lt;strong&gt;inactive RAID&lt;/strong&gt; device.</source>
       <comment>@info</comment>
       <translation>Aquest sistema d'emmagatzematge forma part d'un dispositiu de &lt;strong&gt;RAID inactiu&lt;/strong&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1568"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1570"/>
       <source>No swap</source>
       <comment>@label</comment>
       <translation>Sense intercanvi</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1577"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1579"/>
       <source>Reuse swap</source>
       <comment>@label</comment>
       <translation>Reutilitza l'intercanvi</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1580"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1582"/>
       <source>Swap (no Hibernate)</source>
       <comment>@label</comment>
       <translation>Intercanvi (sense hibernació)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1583"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1585"/>
       <source>Swap (with Hibernate)</source>
       <comment>@label</comment>
       <translation>Intercanvi (amb hibernació)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1586"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1588"/>
       <source>Swap to file</source>
       <comment>@label</comment>
       <translation>Intercanvi en fitxer</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1599"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1601"/>
       <source>&lt;strong&gt;Manual partitioning&lt;/strong&gt;&lt;br/&gt;You can create or resize partitions yourself.</source>
       <translation>&lt;strong&gt;Particions manuals&lt;/strong&gt;&lt;br/&gt;Podeu crear o canviar la mida de les particions vosaltres mateixos.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1627"/>
+      <location filename="../src/modules/partition/gui/ChoicePage.cpp" line="1629"/>
       <source>Bootloader location:</source>
       <comment>@label</comment>
       <translation>Ubicació del carregador d'arrencada:</translation>
@@ -971,31 +971,31 @@ L'instal·lador es tancarà i tots els canvis es perdran.</translation>
       <translation>La instal·lació de %1 ha acabat.</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="506"/>
-      <source>Keyboard model has been set to %1&lt;br/&gt;.</source>
+      <location filename="../src/modules/keyboard/Config.cpp" line="583"/>
+      <source>Keyboard model has been set to %1.</source>
       <comment>@label, %1 is keyboard model, as in Apple Magic Keyboard</comment>
-      <translation>El model del teclat s'ha establert a %1 &lt;br/&gt;.</translation>
+      <translation>El model del teclat s'ha establert a %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/keyboard/Config.cpp" line="513"/>
+      <location filename="../src/modules/keyboard/Config.cpp" line="591"/>
       <source>Keyboard layout has been set to %1/%2.</source>
       <comment>@label, %1 is layout, %2 is layout variant</comment>
       <translation>La disposició del teclat s'ha establert a %1 / %2.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="379"/>
-      <source>Set timezone to %1/%2</source>
+      <location filename="../src/modules/locale/Config.cpp" line="381"/>
+      <source>Set timezone to %1.</source>
       <comment>@action</comment>
-      <translation>Estableix la zona horària a %1/%2</translation>
+      <translation>Estableix la zona horària a %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="416"/>
+      <location filename="../src/modules/locale/Config.cpp" line="418"/>
       <source>The system language will be set to %1.</source>
       <comment>@info</comment>
       <translation>La llengua del sistema s'establirà a %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/locale/Config.cpp" line="423"/>
+      <location filename="../src/modules/locale/Config.cpp" line="425"/>
       <source>The numbers and dates locale will be set to %1.</source>
       <comment>@info</comment>
       <translation>Els números i les dates de la configuració local s'establiran a %1.</translation>
@@ -1072,52 +1072,52 @@ L'instal·lador es tancarà i tots els canvis es perdran.</translation>
       <translation>Això és un resum del que passarà quan s'iniciï el procés d'instal·lació.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="236"/>
+      <location filename="../src/modules/users/Config.cpp" line="237"/>
       <source>Your username is too long.</source>
       <translation>El nom d'usuari és massa llarg.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="242"/>
+      <location filename="../src/modules/users/Config.cpp" line="243"/>
       <source>Your username must start with a lowercase letter or underscore.</source>
       <translation>El nom d'usuari ha de començar amb una lletra en minúscula o una ratlla baixa.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="246"/>
+      <location filename="../src/modules/users/Config.cpp" line="247"/>
       <source>Only lowercase letters, numbers, underscore and hyphen are allowed.</source>
       <translation>Només es permeten lletres en minúscula, números, ratlles baixes i guions.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="252"/>
+      <location filename="../src/modules/users/Config.cpp" line="253"/>
       <source>'%1' is not allowed as username.</source>
       <translation>No es permet %1 com a nom d'usuari.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="301"/>
+      <location filename="../src/modules/users/Config.cpp" line="302"/>
       <source>Your hostname is too short.</source>
       <translation>El nom d'amfitrió és massa curt.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="305"/>
+      <location filename="../src/modules/users/Config.cpp" line="306"/>
       <source>Your hostname is too long.</source>
       <translation>El nom d'amfitrió és massa llarg.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="311"/>
+      <location filename="../src/modules/users/Config.cpp" line="312"/>
       <source>'%1' is not allowed as hostname.</source>
       <translation>No es permet %1 com a nom d'amfitrió.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="316"/>
+      <location filename="../src/modules/users/Config.cpp" line="317"/>
       <source>Only letters, numbers, underscore and hyphen are allowed.</source>
       <translation>Només es permeten lletres, números, ratlles baixes i guions.</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="597"/>
+      <location filename="../src/modules/users/Config.cpp" line="598"/>
       <source>Your passwords do not match!</source>
       <translation>Les contrasenyes no coincideixen!</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/Config.cpp" line="611"/>
+      <location filename="../src/modules/users/Config.cpp" line="612"/>
       <source>OK!</source>
       <translation>D'acord!</translation>
     </message>
@@ -1170,7 +1170,7 @@ L'instal·lador es tancarà i tots els canvis es perdran.</translation>
   <context>
     <name>ContextualProcessJob</name>
     <message>
-      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="115"/>
+      <location filename="../src/modules/contextualprocess/ContextualProcessJob.cpp" line="88"/>
       <source>Performing contextual processes' job…</source>
       <comment>@status</comment>
       <translation>Es fa la tasca de processos contextuals...</translation>
@@ -1390,25 +1390,25 @@ L'instal·lador es tancarà i tots els canvis es perdran.</translation>
     </message>
     <message>
       <location filename="../src/modules/users/CreateUserJob.cpp" line="45"/>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="137"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="143"/>
       <source>Creating user %1…</source>
       <comment>@status</comment>
       <translation>Es crea l'usuari %1....</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="120"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="126"/>
       <source>Preserving home directory…</source>
       <comment>@status</comment>
       <translation>Es preserva el directori personal...</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="145"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="152"/>
       <source>Configuring user %1</source>
       <comment>@status</comment>
       <translation>Es configura l'usuari %1</translation>
     </message>
     <message>
-      <location filename="../src/modules/users/CreateUserJob.cpp" line="153"/>
+      <location filename="../src/modules/users/CreateUserJob.cpp" line="160"/>
       <source>Setting file permissions…</source>
       <comment>@status</comment>
       <translation>S'estableixen els permisos del fitxer...</translation>
@@ -1684,6 +1684,35 @@ L'instal·lador es tancarà i tots els canvis es perdran.</translation>
       <location filename="../src/libcalamaresui/widgets/ErrorDialog.ui" line="56"/>
       <source>Would you like to paste the install log to the web?</source>
       <translation>Voleu enganxar el registre d'instal·lació a la xarxa?</translation>
+    </message>
+  </context>
+  <context>
+    <name>FSArchiverRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="47"/>
+      <source>Missing tools</source>
+      <translation>Eines que manquen</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="48"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>L'eina &lt;i&gt;%1&lt;/i&gt; no està instal·lada al sistema.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="55"/>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="69"/>
+      <source>Invalid fsarchiver configuration</source>
+      <translation>Configuració de fsarchiver no vàlida</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="56"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>L'arxiu d'origen &lt;i&gt;%1&lt;/i&gt; no existeix.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/FSArchiverRunner.cpp" line="70"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>No s'ha trobat cap destinació per a &lt;i&gt;%1&lt;/i&gt;.</translation>
     </message>
   </context>
   <context>
@@ -2287,7 +2316,7 @@ L'instal·lador es tancarà i tots els canvis es perdran.</translation>
   <context>
     <name>LocaleTests</name>
     <message>
-      <location filename="../src/libcalamares/locale/Tests.cpp" line="266"/>
+      <location filename="../src/libcalamares/locale/Tests.cpp" line="272"/>
       <source>Quit</source>
       <translation>Surt</translation>
     </message>
@@ -3256,174 +3285,179 @@ per desplaçar-s'hi i useu els botons +/- per fer ampliar-lo o reduir-lo, o bé 
       <translation>Particions</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="143"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="144"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system</source>
       <comment>@label</comment>
       <translation>Instal·la %1 &lt;strong&gt;al costat&lt;/strong&gt; d'un altre sistema operatiu.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="147"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="148"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk and install %1</source>
       <comment>@label</comment>
       <translation>&lt;strong&gt;Esborra&lt;/strong&gt; el disc i instal·la-hi %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="151"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="152"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition with %1</source>
       <comment>@label</comment>
       <translation>&lt;strong&gt;Reemplaça&lt;/strong&gt; una partició amb %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="156"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="157"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning</source>
       <comment>@label</comment>
       <translation>Particions &lt;strong&gt;manuals&lt;/strong&gt;</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="178"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="179"/>
       <source>Install %1 &lt;strong&gt;alongside&lt;/strong&gt; another operating system on disk &lt;strong&gt;%2&lt;/strong&gt; (%3)</source>
       <comment>@info</comment>
       <translation>Instal·la %1 &lt;strong&gt;al costat&lt;/strong&gt; d'un altre sistema operatiu al disc &lt;strong&gt;%2&lt;/strong&gt; (%3).</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="187"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="188"/>
       <source>&lt;strong&gt;Erase&lt;/strong&gt; disk &lt;strong&gt;%2&lt;/strong&gt; (%3) and install %1</source>
       <comment>@info</comment>
       <translation>&lt;strong&gt;Esborra&lt;/strong&gt; el disc &lt;strong&gt;%2&lt;/strong&gt; (%3) i instal·la-hi %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="194"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="195"/>
       <source>&lt;strong&gt;Replace&lt;/strong&gt; a partition on disk &lt;strong&gt;%2&lt;/strong&gt; (%3) with %1</source>
       <comment>@info</comment>
       <translation>&lt;strong&gt;Reemplaça&lt;/strong&gt; una partició del disc &lt;strong&gt;%2&lt;/strong&gt; (%3) amb %1.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="203"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="204"/>
       <source>&lt;strong&gt;Manual&lt;/strong&gt; partitioning on disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation>Particions &lt;strong&gt;manuals&lt;/strong&gt; del disc &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="213"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="214"/>
       <source>Disk &lt;strong&gt;%1&lt;/strong&gt; (%2)</source>
       <comment>@info</comment>
       <translation>Disc &lt;strong&gt;%1&lt;/strong&gt; (%2)</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="263"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="239"/>
+      <source>Create a swap file.</source>
+      <translation>Crea un fitxer d'intercanvi.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="268"/>
       <source>Unsafe partition actions are enabled.</source>
       <translation>Les accions de partició no segures estan habilitades.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="266"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="271"/>
       <source>Partitioning is configured to &lt;b&gt;always&lt;/b&gt; fail.</source>
       <translation>Les particions estan configurades per fallar &lt;b&gt;sempre&lt;/b&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="269"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="274"/>
       <source>No partitions will be changed.</source>
       <translation>No es canviarà cap partició.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="309"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="314"/>
       <source>Current:</source>
       <comment>@label</comment>
       <translation>Ara:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="327"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="332"/>
       <source>After:</source>
       <comment>@label</comment>
       <translation>Després:</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="550"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="555"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;To configure an EFI system partition, go back and select or create a suitable filesystem.</source>
       <translation>Cal una partició de sistema EFI per iniciar %1. &lt;br/&gt;&lt;br/&gt;Per configurar-ne una, torneu enrere i seleccioneu o creeu un sistema de fitxers adequat.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="556"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="561"/>
       <source>An EFI system partition is necessary to start %1.&lt;br/&gt;&lt;br/&gt;The EFI system partition does not meet recommendations. It is recommended to go back and select or create a suitable filesystem.</source>
       <translation>Cal una partició de sistema EFI per iniciar %1. &lt;br/&gt;&lt;br/&gt; La partició de sistema EFI no compleix les recomanacions. Es recomana tornar enrere i seleccionar o crear un sistema de fitxers adequat.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="564"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="569"/>
       <source>The filesystem must be mounted on &lt;strong&gt;%1&lt;/strong&gt;.</source>
       <translation>El sistema de fitxers ha d'estar muntat a &lt;strong&gt;%1&lt;/strong&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="565"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="570"/>
       <source>The filesystem must have type FAT32.</source>
       <translation>El sistema de fitxers ha de ser del tipus FAT32.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="566"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="571"/>
       <source>The filesystem must have flag &lt;strong&gt;%1&lt;/strong&gt; set.</source>
       <translation>El sistema de fitxers ha de tenir la bandera &lt;strong&gt;%1&lt;/strong&gt; establerta.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="574"/>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="576"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="579"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="581"/>
       <source>The filesystem must be at least %1 MiB in size.</source>
       <translation>El sistema de fitxers ha de tenir un mínim de %1 MiB.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="578"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="583"/>
       <source>The minimum recommended size for the filesystem is %1 MiB.</source>
       <translation>La mida mínima recomanada per al sistema de fitxers és %1 MiB.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="580"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="585"/>
       <source>You can continue without setting up an EFI system partition but your system may fail to start.</source>
       <translation>Podeu continuar sense configurar una partició del sistema EFI, però és possible que el sistema no s'iniciï.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="582"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="587"/>
       <source>You can continue with this EFI system partition configuration but your system may fail to start.</source>
       <translation>Podeu continuar aquesta configuració de la partició de sistema EFI, però és possible que el sistema no s'iniciï.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="594"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="599"/>
       <source>No EFI system partition configured</source>
       <translation>No hi ha cap partició EFI de sistema configurada</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="602"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="607"/>
       <source>EFI system partition configured incorrectly</source>
       <translation>Partició de sistema EFI configurada incorrectament</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="622"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="627"/>
       <source>EFI system partition recommendation</source>
       <translation>Recomanació de partició de sistema EFI</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="641"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="646"/>
       <source>Option to use GPT on BIOS</source>
       <translation>Opció per usar GPT amb BIOS</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="642"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="647"/>
       <source>A GPT partition table is the best option for all systems. This installer supports such a setup for BIOS systems too.&lt;br/&gt;&lt;br/&gt;To configure a GPT partition table on BIOS, (if not done so already) go back and set the partition table to GPT, next create a 8 MB unformatted partition with the &lt;strong&gt;%2&lt;/strong&gt; flag enabled.&lt;br/&gt;&lt;br/&gt;An unformatted 8 MB partition is necessary to start %1 on a BIOS system with GPT.</source>
       <translation>La millor opció per a tots els sistemes és una taula de particions GPT. Aquest instal·lador també admet aquesta configuració per a sistemes BIOS.&lt;br/&gt;&lt;br/&gt;Per configurar una taula de particions GPT en un sistema BIOS, (si no s'ha fet ja) torneu enrere i establiu la taula de particions a GPT, després creeu una partició sense formatar de 8 MB amb la bandera &lt;strong&gt;%2&lt;/strong&gt; habilitada.&lt;br/&gt;&lt;br/&gt;Cal una partició sense format de 8 MB per iniciar %1 en un sistema BIOS amb GPT.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="664"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="669"/>
       <source>Boot partition not encrypted</source>
       <translation>Partició d'arrencada sense encriptar</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="665"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="670"/>
       <source>A separate boot partition was set up together with an encrypted root partition, but the boot partition is not encrypted.&lt;br/&gt;&lt;br/&gt;There are security concerns with this kind of setup, because important system files are kept on an unencrypted partition.&lt;br/&gt;You may continue if you wish, but filesystem unlocking will happen later during system startup.&lt;br/&gt;To encrypt the boot partition, go back and recreate it, selecting &lt;strong&gt;Encrypt&lt;/strong&gt; in the partition creation window.</source>
       <translation>S'ha establert una partició d'arrencada separada conjuntament amb una partició d'arrel encriptada, però la partició d'arrencada no està encriptada.&lt;br/&gt;&lt;br/&gt;Hi ha assumptes de seguretat amb aquest tipus de configuració, perquè hi ha fitxers del sistema importants en una partició no encriptada.&lt;br/&gt;Podeu continuar, si així ho desitgeu, però el desbloqueig del sistema de fitxers succeirà després, durant l'inici del sistema.&lt;br/&gt;Per encriptar la partició d'arrencada, torneu enrere i torneu-la a crear seleccionant &lt;strong&gt;Encripta&lt;/strong&gt; a la finestra de creació de la partició.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="757"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="762"/>
       <source>has at least one disk device available.</source>
       <translation>tingui com a mínim un dispositiu de disc disponible.</translation>
     </message>
     <message>
-      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="758"/>
+      <location filename="../src/modules/partition/PartitionViewStep.cpp" line="763"/>
       <source>There are no partitions to install on.</source>
       <translation>No hi ha particions per fer-hi una instal·lació.</translation>
     </message>
@@ -3575,25 +3609,25 @@ Sortida:
       <translation>%1 (%2)</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="31"/>
       <source>unknown</source>
       <comment>@partition info</comment>
       <translation>desconeguda</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="33"/>
       <source>extended</source>
       <comment>@partition info</comment>
       <translation>ampliada</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="35"/>
       <source>unformatted</source>
       <comment>@partition info</comment>
       <translation>sense format</translation>
     </message>
     <message>
-      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="39"/>
+      <location filename="../src/libcalamares/partition/FileSystem.cpp" line="37"/>
       <source>swap</source>
       <comment>@partition info</comment>
       <translation>Intercanvi</translation>
@@ -4204,6 +4238,40 @@ La configuració pot continuar, però algunes característiques podrien estar in
     </message>
   </context>
   <context>
+    <name>TarballRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="45"/>
+      <source>Invalid tarball configuration</source>
+      <translation>Configuració de tarball no vàlida</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>L'arxiu d'origen &lt;i&gt;%1&lt;/i&gt; no existeix.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation>Eines que manquen</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>L'eina &lt;i&gt;%1&lt;/i&gt; no està instal·lada al sistema.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>No s'ha trobat cap destinació per a &lt;i&gt;%1&lt;/i&gt;.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/TarballRunner.cpp" line="84"/>
+      <source>Tarball extract file %1</source>
+      <translation>Fitxer d'extracció de tarball %1</translation>
+    </message>
+  </context>
+  <context>
     <name>TrackingInstallJob</name>
     <message>
       <location filename="../src/modules/tracking/TrackingJobs.cpp" line="100"/>
@@ -4343,14 +4411,56 @@ La configuració pot continuar, però algunes característiques podrien estar in
       <translation>Es desmunten els sistemes de fitxers...</translation>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="123"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="135"/>
       <source>No target system available.</source>
       <translation>No hi ha cap sistema de destinació disponible.</translation>
     </message>
     <message>
-      <location filename="../src/modules/umount/UmountJob.cpp" line="131"/>
+      <location filename="../src/modules/umount/UmountJob.cpp" line="143"/>
       <source>No rootMountPoint is set.</source>
       <translation>No s'ha establert cap punt de muntatge d'arrel.</translation>
+    </message>
+  </context>
+  <context>
+    <name>UnpackFSCJob</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnpackFSCJob.cpp" line="61"/>
+      <source>Unpack filesystems</source>
+      <translation>Desempaqueta els sistemes de fitxers</translation>
+    </message>
+  </context>
+  <context>
+    <name>UnsquashRunner</name>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="26"/>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="45"/>
+      <source>Invalid unsquash configuration</source>
+      <translation>Configuració de descompressió no vàlida</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="27"/>
+      <source>The source archive &lt;i&gt;%1&lt;/i&gt; does not exist.</source>
+      <translation>L'arxiu d'origen &lt;i&gt;%1&lt;/i&gt; no existeix.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="36"/>
+      <source>Missing tools</source>
+      <translation>Eines que manquen</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="37"/>
+      <source>The &lt;i&gt;%1&lt;/i&gt; tool is not installed on the system.</source>
+      <translation>L'eina &lt;i&gt;%1&lt;/i&gt; no està instal·lada al sistema.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="46"/>
+      <source>No destination could be found for &lt;i&gt;%1&lt;/i&gt;.</source>
+      <translation>No s'ha trobat cap destinació per a &lt;i&gt;%1&lt;/i&gt;.</translation>
+    </message>
+    <message>
+      <location filename="../src/modules/unpackfsc/UnsquashRunner.cpp" line="98"/>
+      <source>Unsquash file %1</source>
+      <translation>Descomprimeix el fitxer %1</translation>
     </message>
   </context>
   <context>

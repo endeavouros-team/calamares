@@ -16,6 +16,7 @@
 #include "core/KPMHelpers.h"
 #include "core/PartitionLayout.h"
 #include "core/PartitionModel.h"
+#include "core/DirFSRestrictLayout.h"
 #include "jobs/PartitionJob.h"
 
 #include "Job.h"
@@ -169,6 +170,9 @@ public:
      */
     PartitionLayout& partitionLayout() { return m_partLayout; }
 
+    /// @brief Get the directory filesystem restriction layout.
+    DirFSRestrictLayout& dirFSRestrictLayout() { return m_dirFSRestrictLayout; }
+
     void layoutApply( Device* dev,
                       qint64 firstSector,
                       qint64 lastSector,
@@ -272,6 +276,7 @@ private:
     bool m_isDirty = false;
     QString m_bootLoaderInstallPath;
     PartitionLayout m_partLayout;
+    DirFSRestrictLayout m_dirFSRestrictLayout;
 
     OsproberEntryList m_osproberLines;
 

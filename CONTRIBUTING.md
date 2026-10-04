@@ -19,14 +19,14 @@ statements and abuse are not tolerated. In general, we apply the
 [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct) (the
 rules of decent behavior in both communities are pretty much the same).
 
-> See the [CoC section on the wiki](https://github.com/calamares/calamares/wiki#code-of-conduct)
+> See the [CoC section on the wiki](https://codeberg.org/Calamares/calamares/wiki#code-of-conduct)
 > for a longer text. To report a problem, please contact the maintainer,
 > Adriaan de Groot, or the KDE Community Working Group.
 
 
 ## Join the Conversation
 
-GitHub Issues are **one** place for discussing Calamares if there are concrete
+Issues are **one** place for discussing Calamares if there are concrete
 problems or a new feature to discuss.
 Issues are not a help channel.
 Visit Matrix for help with configuration or compilation.
@@ -64,7 +64,7 @@ yourself, **do** upstream things as much as you can. When you make cool
 new things, it's best for the whole Calamares-using-community
 to build new things that are configurable and applicable to other
 distributions than your own. So keep other folk in mind. There is
-also the [extensions](https://github.com/calamares/calamares-extensions)
+also the [extensions](https://codeberg.org/Calamares/calamares-extensions)
 repository for somewhat-more-specialized modules and examples.
 
 ### Commit Messages
@@ -114,7 +114,7 @@ probably be added later in a `Changes: credits` commit.
 ## Building Calamares
 
 Up to date
-[building-Calamares](https://github.com/calamares/calamares/wiki/Develop-Guide)
+[building-Calamares](https://codeberg.org/Calamares/calamares/wiki/Develop-Guide)
 instructions are on the wiki.
 
 ### Simple Build in Docker
@@ -145,11 +145,11 @@ docker run -ti \
 ```
 
 This starts a container with the chosen image with a temporary build
-directory in `/build` and the Calamaressources mounted as `/src`.
+directory in `/build` and the Calamares source code mounted as `/src`.
 
-Run the script to install dependencies: you could use `deploycala.py`
-or one of the shell scripts in `ci/` to install the right
-dependencies for the image (in this example, for openSUSE and Qt6).
+Run the script to install dependencies: pick the appropriate shell
+script in `ci/` to install the right dependencies in the image
+(in this example, for openSUSE and Qt6).
 - `cd /src`
 - `./ci/deps-opensuse-qt6.sh`
 
@@ -208,14 +208,14 @@ Particular requirements (not complete):
 
 ## Configuring and Deploying Calamares
 
-[Deployment](https://github.com/calamares/calamares/wiki/Deploy-Guide)
+[Deployment](https://codeberg.org/Calamares/calamares/wiki/Deploy-Guide)
 instructions are on the wiki.
 
 
 ## Translating Calamares
 
 Calamares translations are done on Transifex.
-The [translator's guide](https://github.com/calamares/calamares/wiki/Translate-Guide)
+The [translator's guide](https://codeberg.org/Calamares/calamares/wiki/Translate-Guide)
 on the wiki explains how to get involved there.
 
 ### Using Transifex
@@ -256,7 +256,7 @@ that the same string can show up in two different Calamares string collections.
 
 ## Testing Calamares
 
-There is a [testing guide](https://github.com/calamares/calamares/wiki/Test-Guide)
+There is a [testing guide](https://codeberg.org/Calamares/calamares/wiki/Test-Guide)
 on the wiki. It is possible to test most parts of Calamares in isolation,
 but the real proof of the pudding comes with an actual installation
 of *some* distro using Calamares.

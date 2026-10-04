@@ -58,6 +58,7 @@ createUser( const QString& loginName, const QString& fullName, const QString& sh
     {
         useraddCommand << "-s" << shell;
     }
+    Q_UNUSED( umask )
 #else
     useraddCommand << "useradd"
                    << "-m"
@@ -69,7 +70,8 @@ createUser( const QString& loginName, const QString& fullName, const QString& sh
     useraddCommand << "-c" << fullName;
     if ( umask >= 0 )
     {
-        useraddCommand << "-K" << ( QStringLiteral( "UMASK=" ) + QString::number( umask, 8 ) );
+        // The QChar() is needed to disambiguate from the overload that takes a double
+        useraddCommand << "-K" << ( QStringLiteral( "UMASK=%1" ).arg( umask, 3, 8, QChar( '0' ) ) );
     }
     useraddCommand << loginName;
 #endif

@@ -4,7 +4,6 @@
 #
 zypper --non-interactive up
 zypper --non-interactive in git-core jq curl ninja
-# From deploycala.py
 zypper --non-interactive in \
 	"bison" \
 	"flex" \

@@ -56,7 +56,7 @@ ClearTempMountsJob::exec()
     std::sort( targetMounts.begin(), targetMounts.end(), MtabInfo::mountPointOrder );
 
     QStringList goodNews;
-    for ( const auto& m : qAsConst( targetMounts ) )
+    for ( const auto& m : std::as_const( targetMounts ) )
     {
         cDebug() << o << "Will try to umount path" << m.mountPoint;
         if ( Calamares::Partition::unmount( m.mountPoint, { "-lv" } ) == 0 )

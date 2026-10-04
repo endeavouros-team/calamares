@@ -31,7 +31,7 @@ fi
 # And a bunch of other potential known versions of clang-format, newest first
 CF_VERSIONS="$CF_VERSIONS clang-format-17"
 CF_VERSIONS="$CF_VERSIONS clang-format-16 clang-format-16.0.6 "
-CF_VERSIONS="$CF_VERSIONS clang-format15 clang-format-15 "
+CF_VERSIONS="$CF_VERSIONS clang-format15 clang-format-15 clang-format-15.0.7"
 # Generic name of clang-format
 CF_VERSIONS="$CF_VERSIONS clang-format"
 for _cf in $CF_VERSIONS

@@ -105,18 +105,39 @@ getSwapsForDevice( const QString& deviceName )
 }
 
 static inline bool
-isControl( const QString& baseName )
-{
-    return baseName == "control";
-}
-
-static inline bool
-isFedoraSpecial( const QString& baseName )
+isSpecial( const QString& baseName )
 {
     // Fedora live images use /dev/mapper/live-* internally. We must not
     // unmount those devices, because they are used by the live image and
     // because we need /dev/mapper/live-base in the unpackfs module.
-    return baseName.startsWith( "live-" );
+    const bool specialForFedora = baseName.startsWith( "live-" );
+
+    // Exclude /dev/mapper/control
+    const bool specialMapperControl = baseName == "control";
+
+    // When ventoy is used, ventoy uses the /dev/mapper/ventoy device. We
+    // must not unmount this device, because it is used by the live image
+    // and because we need /dev/mapper/ventoy in the unpackfs module.
+    const bool specialVentoy = baseName == "ventoy";
+
+    return specialForFedora || specialMapperControl || specialVentoy;
+}
+
+static inline bool
+matchesExceptions( const QStringList& mapperExceptions, const QString& basename )
+{
+    for ( const auto& e : mapperExceptions )
+    {
+        if ( basename == e )
+        {
+            return true;
+        }
+        if ( e.endsWith( '*' ) && basename.startsWith( e.left( e.length() - 1 ) ) )
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 /** @brief Returns a list of unneeded crypto devices
@@ -135,7 +156,7 @@ getCryptoDevices( const QStringList& mapperExceptions )
     for ( const QFileInfo& fi : fiList )
     {
         QString baseName = fi.baseName();
-        if ( isControl( baseName ) || isFedoraSpecial( baseName ) || mapperExceptions.contains( baseName ) )
+        if ( isSpecial( baseName ) || matchesExceptions( mapperExceptions, baseName ) )
         {
             continue;
         }
@@ -333,7 +354,7 @@ template < typename F >
 void
 apply( const QStringList& paths, F f, QList< MessageAndPath >& news )
 {
-    for ( const QString& p : qAsConst( paths ) )
+    for ( const QString& p : std::as_const( paths ) )
     {
         auto n = f( p );
         if ( !n.isEmpty() )
@@ -347,7 +368,7 @@ STATICTEST QStringList
 stringify( const QList< MessageAndPath >& news )
 {
     QStringList l;
-    for ( const auto& m : qAsConst( news ) )
+    for ( const auto& m : std::as_const( news ) )
     {
         l << QString( m );
     }

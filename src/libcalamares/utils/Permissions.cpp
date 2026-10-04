@@ -1,6 +1,7 @@
 /* === This file is part of Calamares - <https://calamares.io> ===
  *
  *  SPDX-FileCopyrightText: 2018 Scott Harvey <scott@spharvey.me>
+ *  SPDX-FileCopyrightText: 2024 Adriaan de Groot <groot@kde.org>
  *  SPDX-License-Identifier: GPL-3.0-or-later
  *
  */
@@ -14,6 +15,44 @@
 #include <QStringList>
 
 #include <sys/stat.h>
+
+// Massaged and re-named from https://euroquis.nl/blabla/2024/04/30/chmod.html for C++17
+namespace
+{
+
+template < int position, char accept >
+int
+expectCharacterAtPosition( const QString& s )
+{
+    const QChar unicode = s.at( position );
+    if ( unicode.row() != 0 )
+    {
+        return -1;
+    }
+
+    const char c = char( unicode.cell() );  // cell() returns uchar
+    if ( c == accept )
+    {
+        return 1 << ( 8 - position );
+    }
+    if ( c == '-' )
+    {
+        return 0;
+    }
+    return -1;
+}
+
+int
+modeFromVerboseString( const QString& s )
+{
+    return expectCharacterAtPosition< 0, 'r' >( s ) | expectCharacterAtPosition< 1, 'w' >( s )
+        | expectCharacterAtPosition< 3, 'r' >( s ) | expectCharacterAtPosition< 2, 'x' >( s )
+        | expectCharacterAtPosition< 4, 'w' >( s ) | expectCharacterAtPosition< 5, 'x' >( s )
+        | expectCharacterAtPosition< 6, 'r' >( s ) | expectCharacterAtPosition< 7, 'w' >( s )
+        | expectCharacterAtPosition< 8, 'x' >( s );
+}
+
+}  // namespace
 
 namespace Calamares
 {
@@ -119,8 +158,9 @@ Permissions::apply( const QString& path, const Calamares::Permissions& p )
     return r;
 }
 
-int
-parseFileMode( const QString& mode )
+///@brief Assumes an octal 3-digit (at most) value
+static int
+parseOctalFileMode( const QString& mode )
 {
     bool ok;
     int octal = mode.toInt( &ok, 8 );
@@ -137,6 +177,36 @@ parseFileMode( const QString& mode )
         return -1;
     }
     return octal;
+}
+
+///@brief Checks for "rwx"-style modes, which must be 9 characters and start with a - or an r
+static bool
+isRWXMode( const QString& mode )
+{
+    if ( mode.length() != 9 )
+    {
+        return false;
+    }
+    if ( mode.startsWith( '-' ) || mode.startsWith( 'r' ) )
+    {
+        return true;
+    }
+    return false;
+}
+
+int
+parseFileMode( const QString& mode )
+{
+    if ( mode.startsWith( 'o' ) )
+    {
+        return parseOctalFileMode( mode.mid( 1 ) );
+    }
+    if ( isRWXMode( mode ) )
+    {
+        return modeFromVerboseString( mode );
+    }
+
+    return parseOctalFileMode( mode );
 }
 
 }  // namespace Calamares

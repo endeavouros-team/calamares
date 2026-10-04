@@ -178,6 +178,7 @@ private:
     QString m_osproberOneEntryName;
 
     bool m_enableEncryptionWidget = false;
+    bool m_preCheckActivated = false;
 
     QMutex m_coreMutex;
 

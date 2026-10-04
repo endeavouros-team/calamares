@@ -18,6 +18,8 @@
 #include <QRegularExpression>
 #include <QString>
 
+#include <limits>
+
 static const char TZ_DATA_FILE[] = "/usr/share/zoneinfo/zone.tab";
 
 namespace Calamares
@@ -74,6 +76,17 @@ TimeZoneData::TimeZoneData( const QString& region,
 {
     setObjectName( region + '/' + zone );
 }
+
+TimeZoneData::TimeZoneData( const QString& region, const QString& zone, double offset )
+    : TranslatableString( zone )
+    , m_region( region )
+    , m_country( QString() )
+    , m_latitude( std::numeric_limits< double >::quiet_NaN() )
+    , m_longitude( offset )
+{
+    setObjectName( region + '/' + zone );
+}
+
 
 QString
 TimeZoneData::translated() const
@@ -180,7 +193,7 @@ loadTZData( RegionVector& regions, ZoneVector& zones, QTextStream& in )
  *
  * The algorithm picks the wrong place. This is for instance annoying
  * when clicking on Cape Town, you get Maseru, and to get Johannesburg
- * you need to click somewhere very carefully north of Maserru.
+ * you need to click somewhere very carefully north of Maseru.
  *
  * These alternate zones are used to introduce "extra locations"
  * into the timezone database, in order to influence the closest-location
@@ -205,7 +218,7 @@ public:
 
     Private()
     {
-        m_regions.reserve( 12 );  // reasonable guess
+        m_regions.reserve( 14 );  // reasonable guess
         m_zones.reserve( 452 );  // wc -l /usr/share/zoneinfo/zone.tab
 
         // Load the official timezones
@@ -236,6 +249,19 @@ public:
                        }
                        return lhs->region() < rhs->region();
                    } );
+
+        auto* etcRegion = new RegionData( "Etc" );
+        m_regions.append( etcRegion );
+        m_zones.append( new TimeZoneData( "Etc", "GMT", 0. ) );
+        for ( double d = -11; d < 0; d += 1.0 )
+        {
+            m_zones.append( new TimeZoneData( "Etc", QStringLiteral( "GMT%1" ).arg( d ), d ) );
+        }
+        m_zones.append( new TimeZoneData( "Etc", "GMT+0", 0. ) );  // A duplicate, in some sense
+        for ( double d = 1; d <= 13; d += 1.0 )
+        {
+            m_zones.append( new TimeZoneData( "Etc", QStringLiteral( "GMT+%1" ).arg( d ), d ) );
+        }
 
         for ( auto* z : m_zones )
         {
@@ -369,6 +395,10 @@ find( double startingDistance,
 
     for ( const auto* zone : zones )
     {
+        if ( !zone->isGeographic() )
+        {
+            continue;
+        }
         double thisDistance = distanceFunc( zone );
         if ( thisDistance < smallestDistance )
         {

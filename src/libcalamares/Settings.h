@@ -63,11 +63,14 @@ public:
     bool isCustom() const { return m_instanceKey.isCustom(); }
     int weight() const { return m_weight < 0 ? 1 : m_weight; }
     bool explicitWeight() const { return m_weight > 0; }
+    bool autoProceed() const { return m_autoProceed; }
 
 private:
     InstanceKey m_instanceKey;
     QString m_configFileName;
     int m_weight = 0;
+    /// @brief Whether to automatically proceed to the next ViewStep page
+    bool m_autoProceed = false;
 };
 
 class DLLEXPORT Settings : public QObject
@@ -103,6 +106,14 @@ public:
      * *sequence*.
      */
     InstanceDescriptionList moduleInstances() const;
+
+    /** @brief Returns the (a) instance configuration for the given @p key
+     *
+     * If no instance exists for the @p key , a default-constructed
+     * InstanceDescription is returned. Such a default-constructed
+     * instance is invalid (and also does not match the given @p key).
+     */
+    InstanceDescription moduleInstance( const Calamares::ModuleSystem::InstanceKey& key ) const;
 
     using ModuleSequence = QList< QPair< ModuleSystem::Action, Calamares::ModuleSystem::InstanceKeyList > >;
     /** @brief Representation of *sequence* of execution

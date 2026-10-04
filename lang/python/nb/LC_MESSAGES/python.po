@@ -5,15 +5,16 @@
 # 
 # Translators:
 # 865ac004d9acf2568b2e4b389e0007c7_fba755c <3516cc82d94f87187da1e036e5f09e42_616112>, 2017
+# Martin, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 22:44+0200\n"
+"POT-Creation-Date: 2024-11-29 13:55+0100\n"
 "PO-Revision-Date: 2017-08-09 10:34+0000\n"
-"Last-Translator: 865ac004d9acf2568b2e4b389e0007c7_fba755c <3516cc82d94f87187da1e036e5f09e42_616112>, 2017\n"
+"Last-Translator: Martin, 2025\n"
 "Language-Team: Norwegian Bokmål (https://app.transifex.com/calamares/teams/20061/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,93 +24,97 @@ msgstr ""
 
 #: src/modules/bootloader/main.py:46
 msgid "Install bootloader."
-msgstr ""
+msgstr "Installer oppstartslaster."
 
 #: src/modules/bootloader/main.py:671
 msgid "Failed to install grub, no partitions defined in global storage"
-msgstr ""
+msgstr "Klarte ikke installere GRUB, ingen partisjoner valgt i global lagring"
 
 #: src/modules/bootloader/main.py:931
 msgid "Bootloader installation error"
-msgstr ""
+msgstr "Feil ved installering av oppstartslaster"
 
 #: src/modules/bootloader/main.py:932
 msgid ""
 "The bootloader could not be installed. The installation command "
 "<pre>{!s}</pre> returned error code {!s}."
 msgstr ""
+"Klarte ikke installere oppstartslaster. Installasjonskommandoen "
+"<pre>{!s}</pre>returnerte feilkoden {!s}."
 
 #: src/modules/displaymanager/main.py:525
 msgid "Cannot write LXDM configuration file"
-msgstr ""
+msgstr "Klarte ikke skrive LXDM-oppsettsfil"
 
 #: src/modules/displaymanager/main.py:526
 msgid "LXDM config file {!s} does not exist"
-msgstr ""
+msgstr "LXDM-oppsettsfila {!s} finnes ikke"
 
 #: src/modules/displaymanager/main.py:614
 msgid "Cannot write LightDM configuration file"
-msgstr ""
+msgstr "Klarte ikke skrive LightDM-oppsettsfil"
 
 #: src/modules/displaymanager/main.py:615
 msgid "LightDM config file {!s} does not exist"
-msgstr ""
+msgstr "LightDM-oppsettsfila {!s} finnes ikke"
 
 #: src/modules/displaymanager/main.py:700
 msgid "Cannot configure LightDM"
-msgstr ""
+msgstr "Klarte ikke sette opp LightDM"
 
 #: src/modules/displaymanager/main.py:701
 msgid "No LightDM greeter installed."
-msgstr ""
+msgstr "Klarte ikke installere LightDM-velkomstbildet."
 
 #: src/modules/displaymanager/main.py:732
 msgid "Cannot write SLIM configuration file"
-msgstr ""
+msgstr "Klarte ikke skrive SLIM-oppsettsfil"
 
 #: src/modules/displaymanager/main.py:733
 msgid "SLIM config file {!s} does not exist"
-msgstr ""
+msgstr "SLIM-oppsettsfila {!s} finnes ikke"
 
 #: src/modules/displaymanager/main.py:956
 msgid "No display managers selected for the displaymanager module."
-msgstr ""
+msgstr "Ingen innlogginsbehandler valgt for «displaymanager»-modulen."
 
 #: src/modules/displaymanager/main.py:957
 msgid ""
 "The displaymanagers list is empty or undefined in both globalstorage and "
 "displaymanager.conf."
 msgstr ""
+"Innlogginsbehandlerlista er tom eller ikke valgt i både «globalstorage» og "
+"«displaymanager.conf»."
 
 #: src/modules/displaymanager/main.py:1044
 msgid "Display manager configuration was incomplete"
-msgstr ""
+msgstr "Innlogginsbehandler-oppsettet er ikke satt opp"
 
 #: src/modules/dracut/main.py:29
 msgid "Creating initramfs with dracut."
-msgstr ""
+msgstr "Oppretter initramfs med dracut."
 
 #: src/modules/dracut/main.py:63
 msgid "Failed to run dracut"
-msgstr ""
+msgstr "Feil ved kjøring av dracut"
 
 #: src/modules/dracut/main.py:64
 #, python-brace-format
 msgid "Dracut failed to run on the target with return code: {return_code}"
-msgstr ""
+msgstr "Feil ved kjøring av dracut ved målet med koden: {return_code}"
 
 #: src/modules/dummypython/main.py:35
 msgid "Dummy python job."
-msgstr ""
+msgstr "Dum Python-oppgave."
 
 #: src/modules/dummypython/main.py:37 src/modules/dummypython/main.py:104
 #: src/modules/dummypython/main.py:105
 msgid "Dummy python step {}"
-msgstr ""
+msgstr "Dum Python-steg {}"
 
 #: src/modules/fstab/main.py:29
 msgid "Writing fstab."
-msgstr ""
+msgstr "Skriver fstab."
 
 #: src/modules/fstab/main.py:382 src/modules/fstab/main.py:388
 #: src/modules/fstab/main.py:416 src/modules/initcpiocfg/main.py:267
@@ -119,95 +124,95 @@ msgstr ""
 #: src/modules/openrcdmcryptcfg/main.py:72
 #: src/modules/openrcdmcryptcfg/main.py:76 src/modules/rawfs/main.py:165
 msgid "Configuration Error"
-msgstr ""
+msgstr "Feil ved oppsett"
 
 #: src/modules/fstab/main.py:383 src/modules/initramfscfg/main.py:86
 #: src/modules/mount/main.py:345 src/modules/openrcdmcryptcfg/main.py:73
 #: src/modules/rawfs/main.py:166
 msgid "No partitions are defined for <pre>{!s}</pre> to use."
-msgstr ""
+msgstr "Ingen partisjoner valgt for <pre>{!s}</pre> å bruke."
 
 #: src/modules/fstab/main.py:389 src/modules/initramfscfg/main.py:90
 #: src/modules/localecfg/main.py:141 src/modules/networkcfg/main.py:107
 #: src/modules/openrcdmcryptcfg/main.py:77
 msgid "No root mount point is given for <pre>{!s}</pre> to use."
-msgstr ""
+msgstr "Ingen rotmonteringspunkt er valgt for <pre>{!s}</pre> å bruke."
 
 #: src/modules/fstab/main.py:417
 msgid "No <pre>{!s}</pre> configuration is given for <pre>{!s}</pre> to use."
-msgstr ""
+msgstr "Ingen <pre>{!s}</pre> oppsett er valgt for <pre>{!s}</pre> å bruke."
 
 #: src/modules/grubcfg/main.py:30
 msgid "Configure GRUB."
-msgstr ""
+msgstr "Sett opp GRUB."
 
 #: src/modules/hwclock/main.py:26
 msgid "Setting hardware clock."
-msgstr ""
+msgstr "Stiller maskinvare klokka."
 
 #: src/modules/initcpiocfg/main.py:27
 msgid "Configuring mkinitcpio."
-msgstr ""
+msgstr "Setter opp mkinitcpio"
 
 #: src/modules/initcpiocfg/main.py:268
 msgid "No partitions are defined for <pre>initcpiocfg</pre>."
-msgstr ""
+msgstr "Ingen partisjoner er valgt for <pre>initcpiocfg</pre>."
 
 #: src/modules/initcpiocfg/main.py:272
 msgid "No root mount point for <pre>initcpiocfg</pre>."
-msgstr ""
+msgstr "Ingen rotmonteringspunkt for <pre>initcpiocfg</pre>."
 
 #: src/modules/initramfscfg/main.py:32
 msgid "Configuring initramfs."
-msgstr ""
+msgstr "Setter opp initramfs."
 
 #: src/modules/localecfg/main.py:31
 msgid "Configuring locales."
-msgstr ""
+msgstr "Setter opp lokale."
 
 #: src/modules/mkinitfs/main.py:27
 msgid "Creating initramfs with mkinitfs."
-msgstr ""
+msgstr "Oppretter initramfs med mkinitfs."
 
 #: src/modules/mkinitfs/main.py:49
 msgid "Failed to run mkinitfs on the target"
-msgstr ""
+msgstr "Klarte ikke kjøre mkinitfs ved målet"
 
 #: src/modules/mkinitfs/main.py:50
 msgid "The exit code was {}"
-msgstr ""
+msgstr "Avsluttningskoden var {}"
 
 #: src/modules/mount/main.py:43
 msgid "Mounting partitions."
-msgstr ""
+msgstr "Monterer partisjoner."
 
 #: src/modules/mount/main.py:171 src/modules/mount/main.py:207
 msgid "Internal error mounting zfs datasets"
-msgstr ""
+msgstr "Intern feil ved montering av ZFS-datasett"
 
 #: src/modules/mount/main.py:183
 msgid "Failed to import zpool"
-msgstr ""
+msgstr "Klarte ikke importere zpool"
 
 #: src/modules/mount/main.py:199
 msgid "Failed to unlock zpool"
-msgstr ""
+msgstr "Klarte ikke låse opp zpool"
 
 #: src/modules/mount/main.py:216 src/modules/mount/main.py:221
 msgid "Failed to set zfs mountpoint"
-msgstr ""
+msgstr "Feil ved angivelse av ZFS-monteringspunkt"
 
 #: src/modules/mount/main.py:386
 msgid "zfs mounting error"
-msgstr ""
+msgstr "Feil ved ZFS-montering"
 
 #: src/modules/networkcfg/main.py:30
 msgid "Saving network configuration."
-msgstr ""
+msgstr "Lagrer nettverksoppsett."
 
 #: src/modules/openrcdmcryptcfg/main.py:26
 msgid "Configuring OpenRC dmcrypt service."
-msgstr ""
+msgstr "Setter opp OpenRC dm-crypt-tjeneste."
 
 #: src/modules/packages/main.py:54 src/modules/packages/main.py:65
 #: src/modules/packages/main.py:75
@@ -217,182 +222,197 @@ msgstr "Installer pakker."
 #: src/modules/packages/main.py:63
 #, python-format
 msgid "Processing packages (%(count)d / %(total)d)"
-msgstr ""
+msgstr "Behandler pakker (%(count)d / %(total)d)"
 
 #: src/modules/packages/main.py:68
 #, python-format
 msgid "Installing one package."
 msgid_plural "Installing %(num)d packages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Installerer én pakke."
+msgstr[1] "Installerer %(num)d pakker."
 
 #: src/modules/packages/main.py:71
 #, python-format
 msgid "Removing one package."
 msgid_plural "Removing %(num)d packages."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Fjerner én pakke."
+msgstr[1] "Fjerner %(num)d pakker."
 
-#: src/modules/packages/main.py:769 src/modules/packages/main.py:781
-#: src/modules/packages/main.py:809
+#: src/modules/packages/main.py:775 src/modules/packages/main.py:787
+#: src/modules/packages/main.py:815
 msgid "Package Manager error"
-msgstr ""
+msgstr "Feil ved pakkebehandler"
 
-#: src/modules/packages/main.py:770
+#: src/modules/packages/main.py:776
 msgid ""
 "The package manager could not prepare updates. The command <pre>{!s}</pre> "
 "returned error code {!s}."
 msgstr ""
+"Pakkebehandleren klarte ikke forberede oppdateringer. Kommandoen "
+"<pre>{!s}</pre> returnerte feilkoden {!s}."
 
-#: src/modules/packages/main.py:782
+#: src/modules/packages/main.py:788
 msgid ""
 "The package manager could not update the system. The command <pre>{!s}</pre>"
 " returned error code {!s}."
 msgstr ""
+"Pakkebehandleren klarte ikke oppdatere systemet. Kommandoen <pre>{!s}</pre> "
+"returnerte feilkoden {!s}."
 
-#: src/modules/packages/main.py:810
+#: src/modules/packages/main.py:816
 msgid ""
 "The package manager could not make changes to the installed system. The "
 "command <pre>{!s}</pre> returned error code {!s}."
 msgstr ""
+"Pakkebehandleren klarte ikke gjøre endringer til systemet. Kommandoen "
+"<pre>{!s}</pre> returnerte feilkoden {!s}."
 
 #: src/modules/plymouthcfg/main.py:27
 msgid "Configure Plymouth theme"
-msgstr ""
+msgstr "Sett opp Plymouth-tema"
 
 #: src/modules/rawfs/main.py:26
 msgid "Installing data."
-msgstr ""
+msgstr "Installer data."
 
 #: src/modules/services-openrc/main.py:29
 msgid "Configure OpenRC services"
-msgstr ""
+msgstr "Sett opp OpenRC-tjenester"
 
 #: src/modules/services-openrc/main.py:57
 msgid "Cannot add service {name!s} to run-level {level!s}."
-msgstr ""
+msgstr "Klarte ikke legge til tjeneste {name!s} på kjørenivå {level!s}."
 
 #: src/modules/services-openrc/main.py:59
 msgid "Cannot remove service {name!s} from run-level {level!s}."
-msgstr ""
+msgstr "Klarte ikke fjerne tjeneste {name!s} fra kjørenivå {level!s}."
 
 #: src/modules/services-openrc/main.py:61
 msgid ""
 "Unknown service-action <code>{arg!s}</code> for service {name!s} in run-"
 "level {level!s}."
 msgstr ""
+"Ukjent tjenestehandling <code>{arg!s}</code> for tjeneste {name!s} fra "
+"kjørenivå {level!s}."
 
 #: src/modules/services-openrc/main.py:93
 msgid "Cannot modify service"
-msgstr ""
+msgstr "Klarte ikke endre tjenester"
 
 #: src/modules/services-openrc/main.py:94
 msgid ""
 "<code>rc-update {arg!s}</code> call in chroot returned error code {num!s}."
 msgstr ""
+"<code>rc-update {arg!s}</code> kall i chroot retunerte feilkode {num!s}."
 
 #: src/modules/services-openrc/main.py:101
 msgid "Target runlevel does not exist"
-msgstr ""
+msgstr "Mål kjørenivå finnes ikke"
 
 #: src/modules/services-openrc/main.py:102
 msgid ""
 "The path for runlevel {level!s} is <code>{path!s}</code>, which does not "
 "exist."
 msgstr ""
+"Stien for kjørenivået {level!s} er <code>{path!s}</code>, som ikke finnes."
 
 #: src/modules/services-openrc/main.py:110
 msgid "Target service does not exist"
-msgstr ""
+msgstr "Mål tjenesten finnes ikke"
 
 #: src/modules/services-openrc/main.py:111
 msgid ""
 "The path for service {name!s} is <code>{path!s}</code>, which does not "
 "exist."
 msgstr ""
+"Stien for tjenesten {name!s} er <code>{path!s}</code>, som ikke finnes."
 
 #: src/modules/services-systemd/main.py:26
 msgid "Configure systemd units"
-msgstr ""
+msgstr "Sett opp systemd-enheter"
 
 #: src/modules/services-systemd/main.py:64
 msgid "Cannot modify unit"
-msgstr ""
+msgstr "Klarte ikke endre enhet"
 
 #: src/modules/services-systemd/main.py:65
 msgid ""
 "<code>systemctl {_action!s}</code> call in chroot returned error code "
 "{_exit_code!s}."
 msgstr ""
+"<code>systemctl {_action!s}</code> kall i chroot returnerte feilkode "
+"{_exit_code!s}."
 
 #: src/modules/services-systemd/main.py:66
 msgid "Cannot {_action!s} systemd unit <code>{_name!s}</code>."
-msgstr ""
+msgstr "klarte ikke {_action!s} systemd-enhet <code>{_name!s}</code>."
 
 #: src/modules/unpackfs/main.py:34
 msgid "Filling up filesystems."
-msgstr ""
+msgstr "Fyller opp filsystemer."
 
-#: src/modules/unpackfs/main.py:254
+#: src/modules/unpackfs/main.py:255
 msgid "rsync failed with error code {}."
-msgstr ""
+msgstr "Feil ved rsync med feilkode {}."
 
-#: src/modules/unpackfs/main.py:299
+#: src/modules/unpackfs/main.py:300
 msgid "Unpacking image {}/{}, file {}/{}"
-msgstr ""
+msgstr "Pakker ut bilde {}/{}, fil {}/{}"
 
-#: src/modules/unpackfs/main.py:314
+#: src/modules/unpackfs/main.py:315
 msgid "Starting to unpack {}"
-msgstr ""
+msgstr "Begynner å pakke ut {}"
 
-#: src/modules/unpackfs/main.py:323 src/modules/unpackfs/main.py:467
+#: src/modules/unpackfs/main.py:324 src/modules/unpackfs/main.py:480
 msgid "Failed to unpack image \"{}\""
-msgstr ""
+msgstr "Feil ved utpakking av bildet «{}»"
 
-#: src/modules/unpackfs/main.py:430
+#: src/modules/unpackfs/main.py:443
 msgid "No mount point for root partition"
-msgstr ""
+msgstr "Ingen monteringspunkt for rotpartisjonen"
 
-#: src/modules/unpackfs/main.py:431
+#: src/modules/unpackfs/main.py:444
 msgid "globalstorage does not contain a \"rootMountPoint\" key."
-msgstr ""
+msgstr "«globalstorage» inneholder ikke en «rootMountPoint»-nøkkel."
 
-#: src/modules/unpackfs/main.py:434
+#: src/modules/unpackfs/main.py:447
 msgid "Bad mount point for root partition"
-msgstr ""
+msgstr "Feil ved rotmonteringspunktet"
 
-#: src/modules/unpackfs/main.py:435
+#: src/modules/unpackfs/main.py:448
 msgid "rootMountPoint is \"{}\", which does not exist."
-msgstr ""
+msgstr "«rootMountPoint» er «{}», som ikke finnes."
 
-#: src/modules/unpackfs/main.py:439 src/modules/unpackfs/main.py:455
-#: src/modules/unpackfs/main.py:459 src/modules/unpackfs/main.py:465
-#: src/modules/unpackfs/main.py:480
+#: src/modules/unpackfs/main.py:452 src/modules/unpackfs/main.py:468
+#: src/modules/unpackfs/main.py:472 src/modules/unpackfs/main.py:478
+#: src/modules/unpackfs/main.py:515
 msgid "Bad unpackfs configuration"
-msgstr ""
+msgstr "Feil ved unpackfs-oppsett"
 
-#: src/modules/unpackfs/main.py:440
+#: src/modules/unpackfs/main.py:453
 msgid "There is no configuration information."
-msgstr ""
+msgstr "Det er ingen oppsett-informasjon."
 
-#: src/modules/unpackfs/main.py:456
+#: src/modules/unpackfs/main.py:469
 msgid "The filesystem for \"{}\" ({}) is not supported by your current kernel"
-msgstr ""
+msgstr "Filsystemet for «{}» ({}) støttes ikke av din nåværende kjerne"
 
-#: src/modules/unpackfs/main.py:460
+#: src/modules/unpackfs/main.py:473
 msgid "The source filesystem \"{}\" does not exist"
-msgstr ""
+msgstr "Rotfilsytemet «{}» finnes ikke"
 
-#: src/modules/unpackfs/main.py:466
+#: src/modules/unpackfs/main.py:479
 msgid ""
 "Failed to find unsquashfs, make sure you have the squashfs-tools package "
 "installed."
 msgstr ""
+"Klarte ikke finne unsquashfs, vær sikker på at du har «squashfs-"
+"tools»-pakken installert."
 
-#: src/modules/unpackfs/main.py:481
+#: src/modules/unpackfs/main.py:516
 msgid "The destination \"{}\" in the target system is not a directory"
-msgstr ""
+msgstr "Målet «{}» i målsystemet er ikke en mappe."
 
 #: src/modules/zfshostid/main.py:27
 msgid "Copying zfs generated hostid."
-msgstr ""
+msgstr "Kopierer ZFS generert vert-ID/«hostid»."

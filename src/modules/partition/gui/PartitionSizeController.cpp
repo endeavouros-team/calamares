@@ -13,6 +13,7 @@
 #include "core/ColorUtils.h"
 #include "core/KPMHelpers.h"
 
+#include "partition/PartitionSize.h"
 #include "utils/Units.h"
 
 // Qt
@@ -150,6 +151,25 @@ PartitionSizeController::updatePartResizerWidget()
 }
 
 void
+PartitionSizeController::setAlignForLuks( bool align )
+{
+    if ( m_alignForLuks == align )
+    {
+        return;
+    }
+
+    m_alignForLuks = align;
+    if ( !m_partResizerWidget || !m_partition )
+    {
+        return;
+    }
+
+    m_updating = true;
+    doAlignAndUpdatePartResizerWidget( m_partition->firstSector(), m_partition->lastSector() );
+    m_updating = false;
+}
+
+void
 PartitionSizeController::doAlignAndUpdatePartResizerWidget( qint64 firstSector, qint64 lastSector )
 {
     if ( lastSector > m_partResizerWidget->maximumLastSector() )
@@ -157,6 +177,10 @@ PartitionSizeController::doAlignAndUpdatePartResizerWidget( qint64 firstSector, 
         qint64 delta = lastSector - m_partResizerWidget->maximumLastSector();
         firstSector -= delta;
         lastSector -= delta;
+    }
+    if ( m_alignForLuks && m_device )
+    {
+        Calamares::Partition::alignSectorRangeTo4K( m_device->logicalSize(), firstSector, lastSector );
     }
     if ( lastSector != m_partition->lastSector() )
     {
@@ -181,7 +205,14 @@ PartitionSizeController::updateSpinBox()
         return;
     }
     m_updating = true;
-    doUpdateSpinBox();
+    if ( m_alignForLuks )
+    {
+        doAlignAndUpdatePartResizerWidget( m_partition->firstSector(), m_partition->lastSector() );
+    }
+    else
+    {
+        doUpdateSpinBox();
+    }
     m_updating = false;
 }
 

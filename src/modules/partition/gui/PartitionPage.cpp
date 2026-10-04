@@ -15,6 +15,7 @@
 #include "PartitionPage.h"
 
 // Local
+#include "Config.h"
 #include "core/BootLoaderModel.h"
 #include "core/DeviceModel.h"
 #include "core/KPMHelpers.h"
@@ -39,14 +40,12 @@
 #include "utils/Retranslator.h"
 #include "widgets/TranslationFix.h"
 
-// KPMcore
 #include <kpmcore/core/device.h>
 #include <kpmcore/core/partition.h>
 #include <kpmcore/core/softwareraid.h>
 #include <kpmcore/ops/deactivatevolumegroupoperation.h>
 #include <kpmcore/ops/removevolumegroupoperation.h>
 
-// Qt
 #include <QDir>
 #include <QFutureWatcher>
 #include <QHeaderView>
@@ -55,14 +54,17 @@
 #include <QPointer>
 #include <QtConcurrent/QtConcurrent>
 
-PartitionPage::PartitionPage( PartitionCoreModule* core, QWidget* parent )
+PartitionPage::PartitionPage( PartitionCoreModule* core, const Config & config, QWidget* parent )
     : QWidget( parent )
     , m_ui( new Ui_PartitionPage )
     , m_core( core )
     , m_lastSelectedBootLoaderIndex( -1 )
-    , m_isEfi( false )
+    , m_isEfi( PartUtils::isEfiSystem() )
 {
-    m_isEfi = PartUtils::isEfiSystem();
+    if ( config.installChoice() != Config::InstallChoice::Manual )
+    {
+        cWarning() << "Manual partitioning page created without user choosing manual-partitioning.";
+    }
 
     m_ui->setupUi( this );
     m_ui->partitionLabelsView->setVisible(
@@ -76,6 +78,8 @@ PartitionPage::PartitionPage( PartitionCoreModule* core, QWidget* parent )
         ? PartitionBarsView::DrawNestedPartitions
         : PartitionBarsView::NoNestedPartitions;
     m_ui->partitionBarsView->setNestedPartitionsMode( mode );
+    m_ui->lvmButtonPanel->setVisible( config.isLVMEnabled() );
+
     updateButtons();
     updateBootLoaderInstallPath();
 
@@ -251,7 +255,7 @@ PartitionPage::checkCanCreate( Device* device )
 {
     auto table = device->partitionTable();
 
-    if ( table->type() == PartitionTable::msdos || table->type() == PartitionTable::msdos_sectorbased )
+    if ( KPMHelpers::isMSDOSPartition( table->type() ) )
     {
         cDebug() << "Checking MSDOS partition" << table->numPrimaries() << "primaries, max" << table->maxPrimaries();
 
@@ -407,7 +411,7 @@ PartitionPage::onCreateClicked()
     }
 
     QPointer< CreatePartitionDialog > dlg = new CreatePartitionDialog(
-        model->device(), CreatePartitionDialog::FreeSpace { partition }, getCurrentUsedMountpoints(), this );
+        m_core, model->device(), CreatePartitionDialog::FreeSpace { partition }, getCurrentUsedMountpoints(), this );
     if ( dlg->exec() == QDialog::Accepted )
     {
         Partition* newPart = dlg->getNewlyCreatedPartition();
@@ -511,7 +515,7 @@ PartitionPage::updatePartitionToCreate( Device* device, Partition* partition )
     mountPoints.removeOne( PartitionInfo::mountPoint( partition ) );
 
     QPointer< CreatePartitionDialog > dlg
-        = new CreatePartitionDialog( device, CreatePartitionDialog::FreshPartition { partition }, mountPoints, this );
+        = new CreatePartitionDialog( m_core, device, CreatePartitionDialog::FreshPartition { partition }, mountPoints, this );
     if ( dlg->exec() == QDialog::Accepted )
     {
         Partition* newPartition = dlg->getNewlyCreatedPartition();
@@ -528,7 +532,7 @@ PartitionPage::editExistingPartition( Device* device, Partition* partition )
     mountPoints.removeOne( PartitionInfo::mountPoint( partition ) );
 
     QPointer< EditExistingPartitionDialog > dlg
-        = new EditExistingPartitionDialog( device, partition, mountPoints, this );
+        = new EditExistingPartitionDialog( m_core, device, partition, mountPoints, this );
     if ( dlg->exec() == QDialog::Accepted )
     {
         dlg->applyChanges( m_core );
@@ -541,7 +545,7 @@ PartitionPage::editExistingPartition( Device* device, Partition* partition )
 void
 PartitionPage::updateBootLoaderInstallPath()
 {
-    if ( m_isEfi || !m_ui->bootLoaderComboBox->isVisible() )
+    if ( m_isEfi )
     {
         return;
     }

@@ -22,11 +22,18 @@
  * automoc does all the work for us.
  */
 #ifdef __clang__
-#pragma clang diagnostic ignored "-Wextra-semi-stmt"
-#pragma clang diagnostic ignored "-Wredundant-parens"
-#pragma clang diagnostic ignored "-Wreserved-identifier"
+#include <qglobal.h>
+QT_WARNING_PUSH
+QT_WARNING_DISABLE_CLANG( "-Wextra-semi-stmt" )
+QT_WARNING_DISABLE_CLANG( "-Wredundant-parens" )
+QT_WARNING_DISABLE_CLANG( "-Wreserved-identifier" )
 
 #if __clang_major__ >= 17
-#pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+QT_WARNING_DISABLE_CLANG( "-Wunsafe-buffer-usage" )
 #endif
+
+#if __clang_major__ >= 19
+QT_WARNING_DISABLE_CLANG( "-Wctad-maybe-unsupported" )
+#endif
+
 #endif
