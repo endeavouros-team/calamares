@@ -172,4 +172,23 @@ def run():
                 edl.write("{!s}={!s}\n".format(k, v))
         libcalamares.utils.debug('{!s} done'.format(target_etc_default_path))
 
+    # === SYSTEMD-LOCALED xkeyboard-config COMPATIBILITY HOTFIX ===
+    try:
+        sh_script = (
+            'X11_CONF="/etc/X11/xorg.conf.d/00-keyboard.conf"\n'
+            'VCON_CONF="/etc/vconsole.conf"\n'
+            'if [ -f "$X11_CONF" ] && [ -f "$VCON_CONF" ]; then\n'
+            '    sed -i "/^XKBLAYOUT=/d; /^XKBMODEL=/d; /^XKBVARIANT=/d; /^XKBOPTIONS=/d" "$VCON_CONF"\n'
+            '    sed -n \'s/.*Option *"XkbLayout" *"\\([^"]*\\)".*/XKBLAYOUT=\\1/p\' "$X11_CONF" >> "$VCON_CONF"\n'
+            '    sed -n \'s/.*Option *"XkbModel" *"\\([^"]*\\)".*/XKBMODEL=\\1/p\' "$X11_CONF" >> "$VCON_CONF"\n'
+            '    sed -n \'s/.*Option *"XkbVariant" *"\\([^"]*\\)".*/XKBVARIANT=\\1/p\' "$X11_CONF" >> "$VCON_CONF"\n'
+            '    sed -n \'s/.*Option *"XkbOptions" *"\\([^"]*\\)".*/XKBOPTIONS=\\1/p\' "$X11_CONF" >> "$VCON_CONF"\n'
+            'fi\n'
+        )
+        libcalamares.utils.target_env_call(["sh", "-c", sh_script])
+        libcalamares.utils.debug("[HOTFIX] Successfully synchronized XKB variables inside chroot.")
+    except Exception as e:
+        libcalamares.utils.warning(f"[HOTFIX] Chroot synchronization failed: {str(e)}")
+    # ============================================
+
     return None

@@ -199,6 +199,7 @@ desktop_environments = [
     DesktopEnvironment('/usr/bin/cutefish-session', 'cutefish-xsession'),
     DesktopEnvironment('/usr/bin/river', 'river'),
     DesktopEnvironment('/usr/bin/Hyprland', 'hyprland'),
+    DesktopEnvironment('/usr/bin/start-cosmic', 'cosmic'),  # COSMIC
 ]
 
 
@@ -867,7 +868,12 @@ class DMgreetd(DisplayManager):
             with open(self.config_path(), "r") as f:
                 self.config_data = toml.load(f)
 
-        self.config_data['terminal'] = dict(vt = "next")
+        if os.path.exists(self.os_path("usr/bin/cosmic-greeter-start")) or os.path.exists(self.os_path("usr/bin/cosmic-greeter")):
+            self.config_data['terminal'] = dict(vt = "1")
+            self.greeter_user = "cosmic-greeter"
+            self.greeter_group = "cosmic-greeter"
+        else:
+            self.config_data['terminal'] = dict(vt = "next")
 
         default_session_group = self.config_data.get('default_session', None)
         if not default_session_group:
@@ -913,20 +919,25 @@ class DMgreetd(DisplayManager):
     def set_autologin(self, username, do_autologin, default_desktop_environment):
         self.config_load()
 
-        de_command = default_desktop_environment.executable
-        if os.path.exists(self.os_path("usr/bin/gtkgreet")) and os.path.exists(self.os_path("usr/bin/cage")):
+        de_command = default_desktop_environment.executable if default_desktop_environment else None
+        if os.path.exists(self.os_path("usr/bin/cosmic-greeter-start")):
+            self.config_data['default_session']['command'] = "cosmic-greeter-start"
+        elif os.path.exists(self.os_path("usr/bin/gtkgreet")) and os.path.exists(self.os_path("usr/bin/cage")):
             self.config_data['default_session']['command'] = "cage -d -s -- gtkgreet"
             if self.greeter_css_location:
                 self.config_data['default_session']['command'] += f" -s {self.greeter_css_location}"
         elif os.path.exists(self.os_path("usr/bin/tuigreet")):
-            tuigreet_base_cmd = "tuigreet --remember --time --issue --asterisks --cmd "
-            self.config_data['default_session']['command'] = tuigreet_base_cmd + de_command
+            tuigreet_base_cmd = "tuigreet --remember --time --issue --asterisks"
+            self.config_data['default_session']['command'] = (
+                tuigreet_base_cmd + (" --cmd " + de_command if de_command else ""))
         elif os.path.exists(self.os_path("usr/bin/ddlm")):
-            self.config_data['default_session']['command'] = "ddlm --target " + de_command
+            self.config_data['default_session']['command'] = (
+                "ddlm --target " + de_command if de_command else "ddlm")
         else:
-            self.config_data['default_session']['command'] = "agreety --cmd " + de_command
+            self.config_data['default_session']['command'] = (
+                "agreety --cmd " + de_command if de_command else "agreety")
 
-        if do_autologin:
+        if do_autologin and de_command:
             # Log in as user, with given DE
             self.config_data['initial_session'] = dict(command = de_command, user = username)
         elif 'initial_session' in self.config_data:
