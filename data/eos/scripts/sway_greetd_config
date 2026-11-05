@@ -6,12 +6,13 @@ set -euo pipefail
 
 # Define source and destination paths
 SOURCE_FILE="/usr/share/eos-settings-sway/config.toml"
-DEST_PATH="/etc/greetd/config.toml"
+DEST_DIR="/etc/greetd"
+DEST_PATH="${DEST_DIR}/config.toml"
 
 # Check if the sway package is installed in the target system
 if pacman -Q eos-settings-sway &>/dev/null; then
     # Ensure the destination directory exists
-    mkdir -p "${DEST_PATH}"
+    mkdir -p "${DEST_DIR}"
 
     # Copy the file to the destination path
     cp -f "${SOURCE_FILE}" "${DEST_PATH}"
