@@ -18,9 +18,16 @@ package built for that live session, including `eos_zfs`, `blockdevices`,
    it in the live keyring. Run `sudo bash data/eos/load-live-zfs.sh` with the
    module package and the userspace package paths, in that order. The helper
    verifies the files and refuses a package for a different kernel. It never
-   upgrades the live kernel. If no signed module matches, use a stock ISO
-   with a matching package pair; a newer module will not load into the
-   already running kernel. The live workflow requires `python-yaml`, `lvm2`,
+   upgrades the live kernel. If no signed prebuilt module matches, the same
+   helper accepts `--dkms` followed by signed `zfs-dkms`, `zfs-utils`, and
+   the exact `linux-headers` package for the live kernel. Install matching
+   DKMS build tools first; where necessary use an Arch Linux Archive snapshot
+   rather than partially upgrading the live session. DKMS is a live-only
+   fallback: the installed system still requires a matched `zfs-linux` set.
+   For example, Titan Nova's package manifest lists `linux 7.1.8.arch1-3`,
+   while the checked ArchZFS release advertises a prebuilt module for
+   `7.2.15-arch1-1`; that prebuilt module is not usable on Titan Nova.
+   The live workflow requires `python-yaml`, `lvm2`,
    `mdadm`, and `cryptsetup`, in addition to the patched Calamares package.
 2. Configure a **signed** repository with snapshots providing a mutually
    compatible `linux`, `zfs-linux`, and `zfs-utils`. Add it to the live
@@ -102,9 +109,13 @@ swap in a ZFS file or zvol.
 - **Single swap device:** use `--hibernate` and create one dedicated, newly
   formatted LUKS swap partition larger than RAM after LUKS overhead.
   The boot process prompts for its passphrase before attempting resume;
-  OpenZFS import is ordered after that attempt. A plain partition on one
-  RAID disk is allowed, but losing that disk also loses resume; use the
-  separate swap mirror to keep resume storage available after a member loss.
+  OpenZFS import is ordered after that attempt. If redundant boot is also
+  enabled, a single swap partition may be on an independent third device,
+  but not on just one of the two root RAID disks: losing that disk would
+  leave a pending image unverifiable. The swap mirror uses both root disks
+  and is the recommended two-disk layout. The boot guard refuses to import
+  pools if resume was bypassed; do not manually boot with `noresume` to
+  skip a locked or unavailable hibernation image.
 - **Swap mirror:** with `--raid-boot … --raid-swap …`, manually create an
   **unencrypted Linux swap partition with no mount point on every root RAID
   disk**, all large enough for hibernation when selected. Do not enable

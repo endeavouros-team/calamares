@@ -42,7 +42,8 @@ class EosZfsTest(unittest.TestCase):
     def test_live_checks_zfs_linux_before_partition_data_exists(self, run):
         api.globalstorage["packagechooser_packagechooserq"] = "grub"
         del api.globalstorage["partitions"]
-        with patch.object(module.Path, "is_file", return_value=True):
+        run.return_value.stdout = "zfs-utils 2.4.4-1\n"
+        with patch.object(module.Path, "is_file", return_value=True), patch.object(module, "probe", return_value="2.4.4-1"):
             self.assertIsNone(module.run())
         self.assertEqual([item.args[0][0] for item in run.call_args_list], ["modprobe", "zpool", "pacman"])
         self.assertIn("zfs-linux", run.call_args_list[-1].args[0])
@@ -104,15 +105,17 @@ class EosZfsTest(unittest.TestCase):
     def test_resume_requires_swap_before_either_zfs_import_service(self):
         with tempfile.TemporaryDirectory() as target:
             root = Path(target)
-            config = module.configure_resume(root)
-            self.assertIn('force_add_dracutmodules+=" systemd crypt resume "', config)
-            self.assertIn("/etc/crypttab", config)
-            for service in ("zfs-import-scan", "zfs-import-cache"):
-                path = f"etc/systemd/system/{service}.service.d/calamares-resume.conf"
-                self.assertIn("/" + path, config)
-                text = (root / path).read_text()
-                for directive in ("Requires", "After"):
-                    self.assertIn(f"{directive}=systemd-hibernate-resume.service", text)
+            config = module.configure_resume(root, {"device": "/dev/mapper/luks-test", "uuid": "test"})
+            self.assertIn('force_add_dracutmodules+=" calamares-zfs-resume "', config)
+            self.assertIn('/dev/disk/by-uuid/test', config)
+            path = root / "usr/lib/dracut/modules.d/91calamares-zfs-resume"
+            setup = (path / "module-setup.sh").read_text()
+            for value in ("/etc/crypttab", "zfs-import-cache zfs-import-scan", "systemd crypt resume zfs"):
+                self.assertIn(value, setup)
+            self.assertFalse((root / "etc/systemd/system").exists())
+            for directive in ("Requires", "After"):
+                self.assertIn(f"{directive}=systemd-hibernate-resume.service", (path / "guard.service").read_text())
+            self.assertIn("noresume", (path / "guard.service").read_text())
 
     def test_refresh_installs_to_each_esp_before_touching_fallback(self):
         with tempfile.TemporaryDirectory() as target:

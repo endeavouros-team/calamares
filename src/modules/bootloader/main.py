@@ -762,12 +762,12 @@ def install_grub_mirror(mirror, firmware):
 
     target, binary, fallback = get_grub_efi_parameters()
     root = libcalamares.globalstorage.value("rootMountPoint")
-    for esp in mirror["esps"]:
+    for index, esp in enumerate(mirror["esps"]):
         path = os.path.join(root, esp.lstrip("/"))
         if not os.path.ismount(path):
             raise ValueError(f"EFI System Partition is not mounted at {esp}")
         args = install + ["--target=" + target, "--efi-directory=" + esp]
-        label = efi_label(esp)
+        label = efi_label(esp) + (f"-raid{index + 1}" if index else "")
         check_target_env_call(args + ["--bootloader-id=" + label])
         directory = vfat_correct_case(path, "EFI")
         source = vfat_correct_case(vfat_correct_case(directory, label), binary)

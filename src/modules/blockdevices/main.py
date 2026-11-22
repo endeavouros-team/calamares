@@ -101,6 +101,8 @@ def partition_location(device):
     disk, kind = probe_partition_location(device)
     if not disk:
         raise StorageError(_("{} must be a partition on a physical disk.").format(device))
+    if command(["lsblk", "-ndo", "TYPE", disk]) != "disk":
+        raise StorageError(_("{} is not a physical disk.").format(disk))
     return disk, kind
 
 
@@ -226,6 +228,8 @@ def create(config):
     if len({check_unused(member) for member in members}) != len(members):
         raise StorageError(_("RAID1 members must be on different disks."))
     if config.get("bootRedundancy"):
+        if any(command(["lsblk", "-ndo", "PTTYPE", partition_location(member)[0]]) != "gpt" for member in members):
+            raise StorageError(_("Redundant GRUB requires a GPT partition table on every RAID disk."))
         partitions = prepare_boot(storage, partitions, members)
 
     array_name = checked_name(raid.get("name")) if raid else None
@@ -250,7 +254,8 @@ def create(config):
 
     swap_members = [p for p in partitions if p.get("fs") == "linuxswap" and p.get("claimed")] if swap_raid else []
     if swap_raid:
-        if any(p.get("luksMapperName") or p.get("mountPoint") for p in swap_members):
+        if any(p.get("luksMapperName") or p.get("fsName") in ("luks", "luks2") or p.get("mountPoint")
+               for p in swap_members):
             raise StorageError(_("Choose unencrypted Linux swap members; the installer encrypts their RAID array."))
         swap_paths = [device_for(p) for p in swap_members]
         if sorted(partition_location(p)[0] for p in swap_paths) != sorted(partition_location(p)[0] for p in members):

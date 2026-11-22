@@ -29,8 +29,13 @@ def check_live(storage):
     subprocess.run(["modprobe", "zfs"], check=True, capture_output=True, text=True, timeout=30)
     subprocess.run(["zpool", "list", "-H"], check=True, capture_output=True, text=True, timeout=30)
     with tempfile.TemporaryDirectory(prefix="calamares-pacman-") as directory:
-        subprocess.run(["pacman", "--dbpath", directory, "-Syp", "--noconfirm", "linux", "zfs-linux", "zfs-utils"],
-                       check=True, capture_output=True, text=True, timeout=120)
+        plan = subprocess.run(["pacman", "--dbpath", directory, "-Syp", "--noconfirm", "--print-format", "%n %v",
+                               "linux", "zfs-linux", "zfs-utils"], check=True, capture_output=True, text=True, timeout=120)
+    live_version = probe("modinfo", "-F", "version", "zfs")
+    target = re.search(r"^zfs-utils (?:\d+:)?(\d+\.\d+)", plan.stdout, re.MULTILINE)
+    live = re.match(r"(\d+\.\d+)", live_version)
+    if not live or not target or tuple(map(int, live[1].split("."))) > tuple(map(int, target[1].split("."))):
+        return _("The target ZFS version must not be older than the live kernel module's major/minor version.")
 
 
 def write_pool_cache(root, pools):
@@ -68,6 +73,10 @@ def prepare_resume(storage):
         raise ValueError(_("Hibernation needs a persistent LUKS swap partition, not a file or zvol."))
     name = "luks-" + uuid
     array = storage.value("blockDevicesSwapArray") or {}
+    if storage.value("blockDevicesBoot") and array.get("device") != swap["device"]:
+        parent = probe("lsblk", "-pndo", "PKNAME", swap["device"])
+        if parent in storage.value("blockDevicesBoot")["disks"]:
+            raise ValueError(_("A single swap partition on a root RAID disk would prevent degraded boot. Use --raid-swap."))
     if swap.get("luksMapperName") != name or (
             probe("lsblk", "-ndo", "TYPE", swap["device"]) != "part" and array.get("device") != swap["device"]):
         raise ValueError(_("Hibernation swap must be a dedicated partition or installer-created RAID1 array."))
@@ -81,18 +90,37 @@ def prepare_resume(storage):
     storage.insert("zfsResume", {"uuid": uuid, "device": device})
 
 
-def configure_resume(root):
-    files = []
-    resume = "systemd-hibernate-resume.service"
-    for service in ("zfs-import-scan", "zfs-import-cache"):
-        relative = Path("etc/systemd/system") / (service + ".service.d") / "calamares-resume.conf"
-        dropin = root / relative
-        dropin.parent.mkdir(parents=True, exist_ok=True)
-        dropin.write_text(f"[Unit]\nRequires={resume}\nAfter={resume}\n", encoding="utf-8")
-        files.append("/" + str(relative))
-    # Include the dependency even in the non-hostonly fallback image.
-    return ('force_add_dracutmodules+=" systemd crypt resume "\n'
-            + 'install_items+=" /etc/crypttab {} "\n'.format(" ".join(files)))
+def configure_resume(root, resume):
+    module = root / "usr/lib/dracut/modules.d/91calamares-zfs-resume"
+    module.mkdir(parents=True, exist_ok=True)
+    guard = "calamares-zfs-resume-guard.service"
+    service = "systemd-hibernate-resume.service"
+    (module / "guard.service").write_text(f"""[Unit]
+Description=Check the ZFS hibernation boot parameters
+DefaultDependencies=no
+Requires={service}
+After={service}
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/test -b {resume['device']}
+ExecStart=/usr/bin/grep -Eq '(^| )resume={resume['device']}( |$)' /proc/cmdline
+ExecStart=/usr/bin/grep -Eqv '(^| )noresume( |$)' /proc/cmdline
+""", encoding="utf-8")
+    (module / "ordering.conf").write_text(f"[Unit]\nRequires={guard}\nAfter={guard}\n", encoding="utf-8")
+    (module / "module-setup.sh").write_text(f"""#!/bin/bash
+check() {{ return 255; }}
+depends() {{ echo 'systemd crypt resume zfs'; }}
+install() {{
+    inst_multiple /usr/bin/grep /usr/bin/test /etc/crypttab
+    inst_simple "$moddir/guard.service" "$systemdsystemunitdir/{guard}"
+    for service in zfs-import-cache zfs-import-scan; do
+        inst_simple "$moddir/ordering.conf" "$systemdsystemconfdir/$service.service.d/calamares-resume.conf"
+    done
+}}
+""", encoding="utf-8")
+    return ('force_add_dracutmodules+=" calamares-zfs-resume "\n'
+            + 'add_device+=" /dev/disk/by-uuid/{} "\n'.format(resume['uuid']))
 
 
 def configure_grub_refresh(root, mirror):
@@ -113,10 +141,14 @@ if [[ $(uname -m) != x86_64 || $(cat /sys/firmware/efi/fw_platform_size) != 64 ]
     exit 1
 fi
 updated=0
+index=0
 for esp in {mounts}; do
+    index=$((index + 1))
+    label=endeavouros
+    if (( index > 1 )); then label="endeavouros-raid$index"; fi
     if mountpoint -q "$esp"; then
-        grub-install --target=x86_64-efi --efi-directory="$esp" --bootloader-id=endeavouros --no-nvram
-        install -D "$esp/EFI/endeavouros/grubx64.efi" "$esp/EFI/BOOT/BOOTX64.EFI"
+        grub-install --target=x86_64-efi --efi-directory="$esp" --bootloader-id="$label" --no-nvram
+        install -D "$esp/EFI/$label/grubx64.efi" "$esp/EFI/BOOT/BOOTX64.EFI"
         updated=$((updated + 1))
     else
         printf 'GRUB not refreshed on missing ESP %s\\n' "$esp" >&2
@@ -160,8 +192,13 @@ def configure_target(storage):
     directory = root / "etc/dracut.conf.d"
     directory.mkdir(parents=True, exist_ok=True)
     config = 'add_dracutmodules+=" zfs "\n'
-    if storage.value("zfsResume"):
-        config += configure_resume(root)
+    resume = storage.value("zfsResume")
+    if resume:
+        config += configure_resume(root, resume)
+    else:
+        sleep_conf = root / "etc/systemd/sleep.conf.d"
+        sleep_conf.mkdir(parents=True, exist_ok=True)
+        (sleep_conf / "calamares-zfs.conf").write_text("[Sleep]\nAllowHibernation=no\n", encoding="utf-8")
     (directory / "calamares-zfs.conf").write_text(config, encoding="utf-8")
     mirror = storage.value("blockDevicesBoot")
     if mirror:

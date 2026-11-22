@@ -243,7 +243,11 @@ def modify_grub_default(partitions, root_mount_point, distributor):
         kernel_params.append(f"resume=/dev/mapper/{swap_outer_mappername}")
 
     zfs_resume = libcalamares.globalstorage.value("zfsResume") if has_zfs_root else None
+    ignored_params = {"quiet", "resume", "splash"}
     if zfs_resume:
+        ignored_params.update(("noresume", "resume_offset", "resumeflags"))
+        kernel_params = [p for p in kernel_params if not p.startswith(("resume=", "resume_offset=", "resumeflags="))
+                         and p != "noresume"]
         kernel_params.extend([f"rd.luks.uuid={zfs_resume['uuid']}", f"resume={zfs_resume['device']}"])
 
     overwrite = libcalamares.job.configuration.get("overwrite", False)
@@ -267,7 +271,7 @@ def modify_grub_default(partitions, root_mount_point, distributor):
                         if param.split("=")[0].strip() == existing_param_name:
                             param_exists = True
                             break
-                    if not param_exists and existing_param_name not in ["quiet", "resume", "splash"]:
+                    if not param_exists and existing_param_name not in ignored_params:
                         kernel_params.append(existing_param)
 
             elif line.startswith("GRUB_DISTRIBUTOR") and libcalamares.job.configuration.get("keep_distributor", False):

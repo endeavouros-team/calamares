@@ -118,7 +118,7 @@ class BlockDevicesTest(unittest.TestCase):
             return device[:-1], module.ESP_TYPE if device.endswith("1") else ""
 
         with patch.object(module, "probe_partition_location", side_effect=location), \
-                patch.object(module, "check_unused"):
+                patch.object(module, "check_unused"), patch.object(module, "command", return_value="disk"):
             with self.assertRaisesRegex(module.StorageError, "every root RAID disk"):
                 module.prepare_boot(api.globalstorage, partitions[:-1], ["/dev/vda3", "/dev/vdb3"])
             result = module.prepare_boot(api.globalstorage, partitions, ["/dev/vda3", "/dev/vdb3"])
