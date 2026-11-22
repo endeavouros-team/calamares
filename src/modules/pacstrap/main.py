@@ -89,8 +89,9 @@ def run():
         return "No configuration found", "Aborting due to missing configuration"
 
     # run the pacstrap
-    if any(p.get("mountPoint") == "/" and p.get("fs") == "zfs"
-           for p in libcalamares.globalstorage.value("partitions") or []):
+    zfs_root = any(p.get("mountPoint") == "/" and p.get("fs") == "zfs"
+                   for p in libcalamares.globalstorage.value("partitions") or [])
+    if zfs_root:
         base_packages = list(dict.fromkeys([*base_packages, "linux", "zfs-linux", "zfs-utils"]))
     pacstrap_command = ["/etc/calamares/scripts/pacstrap_calamares", "-c", root_mount_point] + base_packages
 
@@ -107,6 +108,8 @@ def run():
         libcalamares.utils.target_env_process_output(["pacman-key", "--populate", "archlinux", "endeavouros"], None)
         libcalamares.utils.target_env_process_output(["gpgconf", "--homedir", "/etc/pacman.d/gnupg", "--kill", "all"])
     except subprocess.CalledProcessError:
+        if zfs_root:
+            return "Failed to initialize the ZFS package keyring", "Target trust could not be set up."
         libcalamares.utils.warning(f"Failed to update keyring on target")
 
     # copy files post install

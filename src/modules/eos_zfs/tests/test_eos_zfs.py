@@ -87,6 +87,43 @@ class EosZfsTest(unittest.TestCase):
             self.assertEqual(cache.splitlines(), ["eosroot", "eosboot"])
             self.assertEqual([c.args[0][2] for c in run.call_args_list[-2:]], ["cachefile=none", "cachefile=none"])
 
+    def test_resume_rejects_zvol_and_accepts_installer_swap_raid(self):
+        uuid = "12345678-1234-1234-1234-123456789abc"
+        api.globalstorage["partitions"].append(dict(fs="linuxswap", claimed=True, luksUuid=uuid,
+                                                   luksMapperName="luks-" + uuid, device="/dev/vda2"))
+        with patch.object(module, "probe", return_value="disk"):
+            with self.assertRaisesRegex(ValueError, "dedicated partition"):
+                module.prepare_resume(api.globalstorage)
+        swap = api.globalstorage["partitions"][-1]
+        swap["device"] = "/dev/md/swap"
+        api.globalstorage["blockDevicesSwapArray"] = {"device": swap["device"]}
+        with patch.object(module, "probe", side_effect=["raid1", uuid, "swap", str(1 << 40)]):
+            module.prepare_resume(api.globalstorage)
+        self.assertEqual(api.globalstorage["zfsResume"]["uuid"], uuid)
+
+    def test_resume_requires_swap_before_either_zfs_import_service(self):
+        with tempfile.TemporaryDirectory() as target:
+            root = Path(target)
+            config = module.configure_resume(root)
+            self.assertIn('force_add_dracutmodules+=" systemd crypt resume "', config)
+            self.assertIn("/etc/crypttab", config)
+            for service in ("zfs-import-scan", "zfs-import-cache"):
+                path = f"etc/systemd/system/{service}.service.d/calamares-resume.conf"
+                self.assertIn("/" + path, config)
+                text = (root / path).read_text()
+                for directive in ("Requires", "After"):
+                    self.assertIn(f"{directive}=systemd-hibernate-resume.service", text)
+
+    def test_refresh_installs_to_each_esp_before_touching_fallback(self):
+        with tempfile.TemporaryDirectory() as target:
+            root = Path(target)
+            module.configure_grub_refresh(root, {"esps": ["/efi", "/efi-raid2"]})
+            script = root / "usr/local/sbin/eos-refresh-grub-mirror"
+            self.assertTrue(script.stat().st_mode & 0o111)
+            subprocess.run(["bash", "-n", str(script)], check=True)
+            self.assertIn('for esp in /efi /efi-raid2', script.read_text())
+            self.assertIn('--no-nvram', script.read_text())
+
 
 if __name__ == "__main__":
     unittest.main()
