@@ -102,6 +102,15 @@ class EosZfsTest(unittest.TestCase):
             module.prepare_resume(api.globalstorage)
         self.assertEqual(api.globalstorage["zfsResume"]["uuid"], uuid)
 
+    def test_single_swap_partition_on_one_boot_mirror_disk_is_not_redundant(self):
+        uuid = "12345678-1234-1234-1234-123456789abc"
+        api.globalstorage["partitions"].append(dict(fs="linuxswap", claimed=True, luksUuid=uuid,
+                                                   luksMapperName="luks-" + uuid, device="/dev/vda3"))
+        api.globalstorage["blockDevicesBoot"] = {"disks": ["/dev/vda", "/dev/vdb"]}
+        with patch.object(module, "probe", return_value="/dev/vda"):
+            with self.assertRaisesRegex(ValueError, "Use --raid-swap"):
+                module.prepare_resume(api.globalstorage)
+
     def test_resume_requires_swap_before_either_zfs_import_service(self):
         with tempfile.TemporaryDirectory() as target:
             root = Path(target)

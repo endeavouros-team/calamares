@@ -73,9 +73,10 @@ def prepare_resume(storage):
         raise ValueError(_("Hibernation needs a persistent LUKS swap partition, not a file or zvol."))
     name = "luks-" + uuid
     array = storage.value("blockDevicesSwapArray") or {}
-    if storage.value("blockDevicesBoot") and array.get("device") != swap["device"]:
+    mirror = storage.value("blockDevicesBoot")
+    if mirror and array.get("device") != swap["device"]:
         parent = probe("lsblk", "-pndo", "PKNAME", swap["device"])
-        if parent in storage.value("blockDevicesBoot")["disks"]:
+        if parent in mirror["disks"]:
             raise ValueError(_("A single swap partition on a root RAID disk would prevent degraded boot. Use --raid-swap."))
     if swap.get("luksMapperName") != name or (
             probe("lsblk", "-ndo", "TYPE", swap["device"]) != "part" and array.get("device") != swap["device"]):
