@@ -1352,7 +1352,7 @@ ChoicePage::setupEfiSystemPartitionSelector()
     // Only the already existing ones:
     QList< Partition* > efiSystemPartitions = m_core->efiSystemPartitions();
 
-     m_efiLabel->setText( tr( "EFI system partition:", "@label" ) );
+    m_efiLabel->setText( tr( "EFI system partition:", "@label" ) );
     for ( int i = 0; i < efiSystemPartitions.count(); ++i )
     {
         Partition* efiPartition = efiSystemPartitions.at( i );

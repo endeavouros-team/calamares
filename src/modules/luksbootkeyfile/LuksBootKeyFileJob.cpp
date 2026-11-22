@@ -346,7 +346,7 @@ void
 LuksBootKeyFileJob::setConfigurationMap( const QVariantMap& configurationMap )
 {
     m_bootloaderVar = Calamares::getString( configurationMap, "efiBootLoaderVar", "" );
-    
+
     // Map the value from the config file to accepted values;
     // this is an immediately-invoked lambda which is passed the
     // return value of getString().
