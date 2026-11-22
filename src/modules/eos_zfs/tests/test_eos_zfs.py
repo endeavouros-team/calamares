@@ -1,0 +1,75 @@
+# SPDX-FileCopyrightText: no
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+import importlib.util
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import Mock, patch
+
+
+class Storage(dict):
+    value = dict.get
+    insert = dict.__setitem__
+
+
+api = SimpleNamespace(globalstorage=Storage(), job=SimpleNamespace(configuration={}),
+                      utils=SimpleNamespace(gettext_path=lambda: None, gettext_languages=lambda: [],
+                                            target_env_process_output=Mock()))
+spec = importlib.util.spec_from_file_location("eos_zfs", Path(__file__).resolve().parents[1] / "main.py")
+module = importlib.util.module_from_spec(spec)
+with patch.dict(sys.modules, libcalamares=api):
+    spec.loader.exec_module(module)
+
+
+class EosZfsTest(unittest.TestCase):
+    def setUp(self):
+        api.globalstorage.clear()
+        api.globalstorage.update(partitions=[dict(fs="zfs", mountPoint="/")])
+        api.job.configuration = {}
+        api.utils.target_env_process_output.reset_mock()
+
+    @patch.object(module.subprocess, "run")
+    def test_live_requires_grub_before_touching_live_kernel(self, run):
+        api.globalstorage["packagechooser_packagechooserq"] = "systemd-boot"
+        self.assertIn("requires GRUB", module.run()[1])
+        run.assert_not_called()
+
+    @patch.object(module.subprocess, "run")
+    def test_live_checks_and_requests_zfs_linux(self, run):
+        api.globalstorage["packagechooser_packagechooserq"] = "grub"
+        self.assertIsNone(module.run())
+        self.assertTrue(api.globalstorage["eosZfsRoot"])
+        self.assertEqual([item.args[0][0] for item in run.call_args_list], ["modprobe", "zpool"])
+
+    def configure(self, version):
+        with tempfile.TemporaryDirectory() as target:
+            root = Path(target)
+            kernels = root / "usr/lib/modules/test-kernel"
+            kernels.mkdir(parents=True)
+            (kernels / "vmlinuz").touch()
+            api.globalstorage["rootMountPoint"] = target
+            api.job.configuration = {"operation": "configureTarget"}
+            with patch.object(module.subprocess, "run", return_value=subprocess.CompletedProcess([], 0, stdout=version)):
+                result = module.run()
+            config = root / "etc/dracut.conf.d/calamares-zfs.conf"
+            return result, config.read_text() if config.exists() else None
+
+    def test_target_uses_exact_kernel_release(self):
+        result, config = self.configure("test-kernel SMP preempt")
+        self.assertIsNone(result)
+        self.assertIn('add_dracutmodules+=" zfs "', config)
+        api.utils.target_env_process_output.assert_called_once()
+
+    def test_target_rejects_mismatched_kernel(self):
+        result, config = self.configure("unmatched-kernel SMP preempt")
+        self.assertIn("does not match installed kernel", result[1])
+        self.assertIsNone(config)
+        api.utils.target_env_process_output.assert_not_called()
+
+
+if __name__ == "__main__":
+    unittest.main()
