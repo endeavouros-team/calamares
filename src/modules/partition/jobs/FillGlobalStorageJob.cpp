@@ -108,6 +108,10 @@ mapForPartition( Partition* partition, const QString& uuid )
 
     map[ "uuid" ] = uuid;
     map[ "claimed" ] = PartitionInfo::format( partition );  // If we formatted it, it's ours
+    if ( PartitionInfo::flags( partition ).testFlag( KPM_PARTITION_FLAG( Raid ) ) )
+    {
+        map[ "raidMember" ] = true;
+    }
 
     // Debugging for inside the loop in createPartitionList(),
     // so indent a bit
@@ -345,6 +349,24 @@ FillGlobalStorageJob::exec()
     cDebug() << "Saving partition information map to GlobalStorage[\"partitions\"]";
     storage->insert( "partitions", partitions );
     storeFSUse( storage, partitions );
+
+    QVariantList zfsInfo;
+    for ( auto* device : std::as_const( m_devices ) )
+    {
+        for ( auto it = PartitionIterator::begin( device ); it != PartitionIterator::end( device ); ++it )
+        {
+            auto* partition = *it;
+            const auto mount = PartitionInfo::mountPoint( partition );
+            const auto passphrase = PartitionInfo::zfsPassphrase( partition );
+            if ( partition->fileSystem().type() == FileSystem::Zfs && !mount.isEmpty() && !passphrase.isEmpty() )
+            {
+                zfsInfo.append(
+                    QVariantMap { { "mountpoint", mount }, { "encrypted", true }, { "passphrase", passphrase } } );
+                PartitionInfo::setZfsPassphrase( partition, { } );
+            }
+        }
+    }
+    storage->insert( "zfsInfo", zfsInfo );
 
     if ( !m_bootLoaderPath.isEmpty() )
     {

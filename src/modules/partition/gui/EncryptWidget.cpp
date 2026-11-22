@@ -84,6 +84,15 @@ EncryptWidget::setEncryptionCheckbox( bool preCheckEncrypt )
 }
 
 void
+EncryptWidget::setPassphrase( const QString& passphrase )
+{
+    setEncryptionCheckbox( !passphrase.isEmpty() );
+    m_ui->m_passphraseLineEdit->setText( passphrase );
+    m_ui->m_confirmLineEdit->setText( passphrase );
+    updateState();
+}
+
+void
 EncryptWidget::reset( bool checkVisible )
 {
     m_ui->m_passphraseLineEdit->clear();
@@ -104,7 +113,9 @@ EncryptWidget::state() const
     if ( m_ui->m_encryptCheckBox->isChecked() || !m_ui->m_encryptCheckBox->isVisible() )
     {
         if ( !m_ui->m_passphraseLineEdit->text().isEmpty()
-             && m_ui->m_passphraseLineEdit->text() == m_ui->m_confirmLineEdit->text() )
+             && m_ui->m_passphraseLineEdit->text() == m_ui->m_confirmLineEdit->text()
+             && ( m_filesystem != FileSystem::Zfs
+                  || m_ui->m_passphraseLineEdit->text().toUtf8().size() >= ZFS_MIN_LENGTH ) )
         {
             newState = Encryption::Confirmed;
         }
@@ -165,11 +176,11 @@ EncryptWidget::updateState( const bool notify )
             applyPixmap( m_ui->m_iconLabel, Calamares::StatusWarning );
             m_ui->m_iconLabel->setToolTip( tr( "Please enter the same passphrase in both boxes.", "@tooltip" ) );
         }
-        else if ( m_filesystem == FileSystem::Zfs && p1.length() < ZFS_MIN_LENGTH )
+        else if ( m_filesystem == FileSystem::Zfs && p1.toUtf8().size() < ZFS_MIN_LENGTH )
         {
             applyPixmap( m_ui->m_iconLabel, Calamares::StatusError );
             m_ui->m_iconLabel->setToolTip(
-                tr( "Password must be a minimum of %1 characters.", "@tooltip" ).arg( ZFS_MIN_LENGTH ) );
+                tr( "Password must be at least %1 bytes long.", "@tooltip" ).arg( ZFS_MIN_LENGTH ) );
         }
         else if ( p1 == p2 )
         {
