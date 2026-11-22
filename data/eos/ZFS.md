@@ -64,6 +64,13 @@ sudo calamares --config /run/calamares-zfs
 The output directory must not exist. Add `--hibernate` for resume support,
 `--raid-boot eos-root` for a redundant GRUB install, and `--raid-swap eos-swap`
 for a dedicated encrypted swap mirror. These are opt-in and may be combined.
+For example:
+
+```sh
+sudo python3 data/eos/zfs-profile.py /etc/calamares /run/calamares-zfs \
+    --hibernate --raid-boot eos-root --raid-swap eos-swap
+```
+
 The output contains the configuration used by
 the profile; it does not overwrite `/etc/calamares`. Keep the standard
 EndeavourOS helper scripts at their usual `/etc/calamares/scripts` paths.
