@@ -172,8 +172,8 @@ def mount_zfs(root_mount_point, partition):
     # import the zpool
     try:
         command = ["zpool", "import", "-N", "-R", root_mount_point]
-        if pool.get("device"):
-            command.extend(["-d", pool["device"]])
+        for device in pool.get("devices") or ([pool["device"]] if pool.get("device") else []):
+            command.extend(["-d", device])
         libcalamares.utils.host_env_process_output(command + [pool_name])
     except subprocess.CalledProcessError:
         raise MountError(_("Failed to import ZFS pool {}.").format(pool_name))

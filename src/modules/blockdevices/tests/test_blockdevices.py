@@ -107,6 +107,26 @@ class BlockDevicesTest(unittest.TestCase):
             dropin = etc / "systemd/system/zfs-import-scan.service.d/calamares-vdev.conf"
             self.assertIn("Requires=dev-mapper-luks-test.device", dropin.read_text())
 
+    def test_efi_layout_covers_every_raid_disk_and_mounts_second_esp(self):
+        partitions = [dict(device="/dev/vda1", fs="fat32", claimed=True, mountPoint="/efi"),
+                      dict(device="/dev/vdb1", fs="fat32", claimed=True, mountPoint=""),
+                      dict(device="/dev/vda2", fs="zfs", claimed=True, mountPoint="/boot"),
+                      dict(device="/dev/vdb2", fs="zfs", claimed=True, mountPoint="", raidMember=True)]
+        api.globalstorage.update(firmwareType="efi", efiSystemPartition="/efi")
+
+        def location(device):
+            return device[:-1], module.ESP_TYPE if device.endswith("1") else ""
+
+        with patch.object(module, "probe_partition_location", side_effect=location), \
+                patch.object(module, "check_unused"):
+            with self.assertRaisesRegex(module.StorageError, "every root RAID disk"):
+                module.prepare_boot(api.globalstorage, partitions[:-1], ["/dev/vda3", "/dev/vdb3"])
+            result = module.prepare_boot(api.globalstorage, partitions, ["/dev/vda3", "/dev/vdb3"])
+        self.assertEqual(result[1]["mountPoint"], "/efi-raid2")
+        self.assertTrue(result[1]["raidBootEsp"])
+        self.assertEqual(api.globalstorage[module.BOOT]["vdevs"], ["/dev/vda2", "/dev/vdb2"])
+        self.assertEqual(api.globalstorage[module.BOOT]["esps"], ["/efi", "/efi-raid2"])
+
 
 if __name__ == "__main__":
     unittest.main()

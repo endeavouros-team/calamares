@@ -27,6 +27,8 @@ This release contains contributions from (alphabetically by given name):
   and configurable dataset properties.
 - *mount*, *fstab* and *dracutlukscfg* handle LUKS swap with an independently
   encrypted or unencrypted root.
+- The layered storage profile can mirror `/boot` and install GRUB on every
+  root RAID disk, or create a separate encrypted RAID1 swap device.
 - *locale* now has timezone support for Etc/GMT zones (-11 to +13), which
   can be selected from the drop-down boxes and which don't correspond to
   any country of geographic location. (issue #2489)

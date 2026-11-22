@@ -179,6 +179,10 @@ class FstabGenerator(object):
             password = "none"
         if not keyfile_allowed or partition.get("fs") == "linuxswap":
             crypttab_options = self.crypttab_options
+        resume = libcalamares.globalstorage.value("zfsResume") or {}
+        if resume.get("uuid") == luks_uuid:
+            password = "none"
+            crypttab_options = "luks,x-initrd.attach"
 
         return dict(
             name=mapper_name,
@@ -278,6 +282,8 @@ class FstabGenerator(object):
             return None
 
         options = self.get_mount_options(mount_point)
+        if partition.get("raidBootEsp"):
+            options += ",nofail,x-systemd.device-timeout=5s"
 
         if mount_point == "/" and filesystem != "btrfs":
             check = 1

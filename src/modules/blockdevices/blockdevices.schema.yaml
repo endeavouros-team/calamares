@@ -26,3 +26,10 @@ properties:
             sizeMiB: { type: integer, minimum: 64 }
     encryption: { enum: [native, luks, both] }
     initramfs: { enum: [none, dracut] }
+    bootRedundancy: { type: boolean }
+    swapRaid1:
+        type: object
+        additionalProperties: false
+        required: [name]
+        properties:
+            name: { type: string, pattern: '^[a-zA-Z0-9][a-zA-Z0-9_-]{0,31}$' }

@@ -43,6 +43,15 @@ class ZfsFstabTest(unittest.TestCase):
         generator = module.FstabGenerator([self.root, self.swap], "/unused", [], "luks", {})
         self.assertIsNone(generator.generate_crypttab_line_info(self.swap))
 
+    def test_resume_swap_always_uses_passphrase_in_initramfs(self):
+        api.globalstorage["zfsResume"] = {"uuid": "outer"}
+        with tempfile.TemporaryDirectory() as target:
+            (Path(target) / "crypto_keyfile.bin").touch()
+            generator = module.FstabGenerator([self.root, self.swap], target, [], "luks,swap", {})
+            line = generator.generate_crypttab_line_info(self.swap)
+        self.assertEqual(line["password"], "none")
+        self.assertEqual(line["options"], "luks,x-initrd.attach")
+
     def test_swapfile_rejected_before_any_files_are_written(self):
         api.globalstorage.update(partitions=[self.root], rootMountPoint="/unused", partitionChoices={"swap": "file"})
         self.assertIn("ZFS does not support swap files", module.run()[1])

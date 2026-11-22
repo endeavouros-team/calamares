@@ -122,7 +122,11 @@ ZfsJob::isMountpointOverlapping( const QString& targetMountpoint ) const
 }
 
 ZfsResult
-ZfsJob::createZpool( QString deviceName, QString poolName, QString poolOptions, bool encrypt, QString passphrase ) const
+ZfsJob::createZpool( const QStringList& devices,
+                     QString poolName,
+                     QString poolOptions,
+                     bool encrypt,
+                     QString passphrase ) const
 {
     QStringList command { "zpool", "create" };
     command += QProcess::splitCommand( poolOptions );
@@ -147,7 +151,12 @@ ZfsJob::createZpool( QString deviceName, QString poolName, QString poolOptions, 
     {
         command << "-O" << "encryption=aes-256-gcm" << "-O" << "keyformat=passphrase";
     }
-    command << poolName << deviceName;
+    command << poolName;
+    if ( devices.size() > 1 )
+    {
+        command << "mirror";
+    }
+    command += devices;
 
     auto r = Calamares::System::instance()->runCommand( Calamares::System::RunLocation::RunInHost,
                                                         command,
@@ -161,7 +170,7 @@ ZfsJob::createZpool( QString deviceName, QString poolName, QString poolOptions, 
         {
             cWarning() << "Failed to run zpool create. The output was:" << r.getOutput();
         }
-        return { false, tr( "Failed to create zpool on " ) + deviceName };
+        return { false, tr( "Failed to create ZFS pool %1." ).arg( poolName ) };
     }
 
     return { true, QString() };
@@ -302,15 +311,30 @@ ZfsJob::exec()
             poolOptions += " -o compatibility=" + m_grubCompatibility;
         }
 
+        QStringList devices { deviceName };
+        if ( mountpoint == "/boot" )
+        {
+            const auto bootMirror = gs->value( "blockDevicesBoot" ).toMap().value( "vdevs" ).toStringList();
+            if ( !bootMirror.isEmpty() )
+            {
+                if ( m_grubCompatibility.isEmpty() || bootMirror.size() < 2 )
+                {
+                    return Calamares::JobResult::error(
+                        tr( "A mirrored boot pool requires GRUB compatibility and at least two devices." ) );
+                }
+                devices = bootMirror;
+            }
+        }
+
         // Create the zpool
         ZfsResult zfsResult;
         if ( encrypt )
         {
-            zfsResult = createZpool( deviceName, poolName, poolOptions, true, passphrase );
+            zfsResult = createZpool( devices, poolName, poolOptions, true, passphrase );
         }
         else
         {
-            zfsResult = createZpool( deviceName, poolName, poolOptions, false );
+            zfsResult = createZpool( devices, poolName, poolOptions, false );
         }
 
         if ( !zfsResult.success )
@@ -327,6 +351,7 @@ ZfsJob::exec()
         poolNameEntry[ "mountpoint" ] = mountpoint;
         poolNameEntry[ "dsName" ] = "none";
         poolNameEntry[ "device" ] = deviceName;
+        poolNameEntry[ "devices" ] = devices;
 
         // If the mountpoint is /, create datasets per the config file. If not, create a single dataset mounted at the partitions mountpoint
         if ( mountpoint == '/' )

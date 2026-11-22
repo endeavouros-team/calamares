@@ -26,7 +26,14 @@ existing, unclaimed RAID partitions. The smallest member limits capacity.
 Choose `bitmap: false` to disable the internal write-intent bitmap and
 `writeMostly: true` to prefer reads from the primary. The latter marks the
 other members write-mostly; they may still serve reads if necessary. This
-  does not install the bootloader on extra disks or mirror the ESP or `/boot`.
+does not mirror boot data by default. With `bootRedundancy: true`, provide
+one ZFS `/boot` member on every root RAID disk: assign the primary to
+`/boot` and give the remaining new ZFS partitions the `raid` flag and no
+mount point. This creates an unencrypted ZFS boot-pool mirror. On UEFI/GPT
+provide one new FAT32 EFI System Partition per drive, with only the first
+assigned to the standard ESP mount; these ESPs stay outside mdadm. On
+BIOS/GPT provide a `bios_grub` partition on each disk. The GRUB job installs
+to every selected disk or ESP, never unrelated disks.
   When reinstalling, first cleanly export old pools and deactivate the old
 mappings and arrays for the disks selected for the install.
 The installer preserves any mdadm monitoring destination already configured
@@ -69,8 +76,14 @@ the target supports UTF-8-only filenames.
   workflow, newly created swap is LUKS when an encryption passphrase is set.
   The installed system addresses swap via the mapper name in `fstab` and the
   outer LUKS UUID in `crypttab`. Hibernation requires initramfs resume support
-  and sufficient swap. The ZFS install path does not configure hibernation:
-  swap is unlocked and used after the root has been mounted.
+  and sufficient swap. Swap must be outside ZFS, never a file or zvol.
+  To mirror it, set `swapRaid1: {name: swap}` and provide one new Linux
+  swap partition on each root RAID disk. The job uses the confirmed root
+  passphrase to create one LUKS2 mapping over that separate mdadm RAID1.
+  A distribution opting into ZFS hibernation must prepare `zfsResume`
+  (outer UUID and mapper path), include cryptsetup and resume in the
+  initramfs, and order pool import after the resume attempt. Otherwise
+  encrypted swap is activated after root mount and no resume is configured.
 
 ## Distribution integration
 

@@ -696,6 +696,14 @@ def install_grub(efi_directory, fw_type, install_hybrid_grub):
     if fw_type != "bios" and fw_type != "efi":
         raise ValueError("fw_type must be 'bios' or 'efi'")
 
+    mirror = libcalamares.globalstorage.value("blockDevicesBoot")
+    if mirror:
+        if install_hybrid_grub:
+            raise ValueError("Redundant GRUB is configured for the selected firmware, not hybrid installation")
+        install_grub_mirror(mirror, fw_type)
+        run_grub_mkconfig(partitions, libcalamares.job.configuration["grubCfg"])
+        return
+
     if fw_type == "efi" or install_hybrid_grub:
         libcalamares.utils.debug("Bootloader: grub (efi)")
         libcalamares.utils.debug(f"install_hybrid_grub: {install_hybrid_grub}")
@@ -743,6 +751,29 @@ def install_grub(efi_directory, fw_type, install_hybrid_grub):
         run_grub_install("bios", partitions, efi_directory, install_hybrid_grub)
 
     run_grub_mkconfig(partitions, libcalamares.job.configuration["grubCfg"])
+
+
+def install_grub_mirror(mirror, firmware):
+    install = ["env", "ZPOOL_VDEV_NAME_PATH=1", libcalamares.job.configuration["grubInstall"]]
+    if firmware == "bios":
+        for disk in mirror["disks"]:
+            check_target_env_call(install + ["--target=i386-pc", "--recheck", disk])
+        return
+
+    target, binary, fallback = get_grub_efi_parameters()
+    root = libcalamares.globalstorage.value("rootMountPoint")
+    for esp in mirror["esps"]:
+        path = os.path.join(root, esp.lstrip("/"))
+        if not os.path.ismount(path):
+            raise ValueError(f"EFI System Partition is not mounted at {esp}")
+        args = install + ["--target=" + target, "--efi-directory=" + esp]
+        label = efi_label(esp)
+        check_target_env_call(args + ["--bootloader-id=" + label])
+        directory = vfat_correct_case(path, "EFI")
+        source = vfat_correct_case(vfat_correct_case(directory, label), binary)
+        boot = vfat_correct_case(directory, "BOOT")
+        os.makedirs(boot, exist_ok=True)
+        shutil.copy2(source, vfat_correct_case(boot, fallback))
 
 
 def install_secureboot(efi_directory):

@@ -63,7 +63,7 @@ private:
      * @p passphrase is a string continaing the passphrase
      *
      */
-    ZfsResult createZpool( QString deviceName,
+    ZfsResult createZpool( const QStringList& devices,
                            QString poolName,
                            QString poolOptions,
                            bool encrypt,

@@ -220,6 +220,9 @@ def modify_grub_default(partitions, root_mount_point, distributor):
         volume = libcalamares.globalstorage.value("blockDevicesVolume")
         if array:
             kernel_params.append("rd.md.uuid=" + array["uuid"])
+        swap_array = libcalamares.globalstorage.value("blockDevicesSwapArray")
+        if swap_array:
+            kernel_params.append("rd.md.uuid=" + swap_array["uuid"])
         if volume:
             kernel_params.append("rd.lvm.lv=" + volume)
     elif zfs_root_path:
@@ -238,6 +241,10 @@ def modify_grub_default(partitions, root_mount_point, distributor):
         kernel_params.append(f"rd.luks.uuid={swap_outer_uuid}")
     if swap_outer_mappername and not has_zfs_root:
         kernel_params.append(f"resume=/dev/mapper/{swap_outer_mappername}")
+
+    zfs_resume = libcalamares.globalstorage.value("zfsResume") if has_zfs_root else None
+    if zfs_resume:
+        kernel_params.extend([f"rd.luks.uuid={zfs_resume['uuid']}", f"resume={zfs_resume['device']}"])
 
     overwrite = libcalamares.job.configuration.get("overwrite", False)
 
@@ -290,6 +297,8 @@ def modify_grub_default(partitions, root_mount_point, distributor):
 
     if has_zfs_root and no_save_default:
         grub_config_items["GRUB_SAVEDEFAULT"] = "false"
+    if zfs_resume:
+        grub_config_items["GRUB_DISABLE_RECOVERY"] = "true"
 
     grub_config_items['GRUB_CMDLINE_LINUX_DEFAULT'] = f"'{' '.join(kernel_params)}'"
     grub_config_items["GRUB_DISTRIBUTOR"] = f"'{distributor}'"
