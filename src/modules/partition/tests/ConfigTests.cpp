@@ -70,7 +70,7 @@ void
 ConfigTests::testEmptyConfig()
 {
     Config c( nullptr );
-    c.setConfigurationMap( {} );
+    c.setConfigurationMap( { } );
 
     const auto* gs = Calamares::JobQueue::instanceGlobalStorage();
     QVERIFY( gs );
@@ -165,6 +165,9 @@ ConfigTests::testAll()
 
         QCOMPARE( PartUtils::efiFilesystemRecommendedSize(), 80_MiB );  // From config
         QCOMPARE( PartUtils::efiFilesystemMinimumSize(), 65_MiB );  // Taken from config
+        gs->insert( "curBootloader", "GRUB" );
+        QCOMPARE( PartUtils::efiFilesystemMinimumSize(), 32_MiB );
+        gs->remove( "curBootloader" );
 
         QCOMPARE( gs->value( "efiSystemPartition" ).toString(), QStringLiteral( "/boot/thisismodern" ) );
         QCOMPARE( gs->value( "efiSystemPartitionName" ).toString(), QStringLiteral( "UEFI" ) );
