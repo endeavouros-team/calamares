@@ -12,6 +12,8 @@ import yaml
 
 
 def write_yaml(path, value):
+    if path.is_symlink():
+        path.unlink()
     path.write_text(yaml.safe_dump(value, sort_keys=False), encoding="utf-8")
 
 
@@ -25,6 +27,9 @@ def generate(source, output, online_settings, hibernate=False, raid_boot=None, r
     settings = read_yaml(online_settings)
     shutil.copytree(source, output, symlinks=True)
     modules = output / "modules"
+    if modules.is_symlink():
+        modules.unlink()
+        shutil.copytree(source / "modules", modules, symlinks=True)
     execute = next(item["exec"] for item in settings["sequence"] if "exec" in item)
     instances = settings.setdefault("instances", [])
 
