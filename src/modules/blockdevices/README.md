@@ -26,7 +26,11 @@ existing, unclaimed RAID partitions. The smallest member limits capacity.
 Choose `bitmap: false` to disable the internal write-intent bitmap and
 `writeMostly: true` to prefer reads from the primary. The latter marks the
 other members write-mostly; they may still serve reads if necessary. This
-does not install the bootloader on extra disks or mirror the ESP or `/boot`.
+  does not install the bootloader on extra disks or mirror the ESP or `/boot`.
+  When reinstalling, first cleanly export old pools and deactivate the old
+mappings and arrays for the disks selected for the install.
+The installer preserves any mdadm monitoring destination already configured
+by the target and otherwise uses `mailAddress` (default: `root`).
 
 For `lvm`, set `volumeGroup` and `logicalVolume` to unused names. Set `sizeMiB`
 to cap the root LV before ZFS is created; without it the LV uses all free
@@ -58,12 +62,15 @@ the target supports UTF-8-only filenames.
   make every storage topology readable by GRUB. A separate ZFS `/boot` uses
   a legacy mount declared in `fstab`, ordered after pool import and before
   any child mounts such as `/boot/efi`.
+  The GRUB profile does not configure automatic unlock for other pools; keep
+  those pools unencrypted or use datasets in the encrypted root pool.
 - Use a swap partition, not a swap file on ZFS. In manual partitioning, pick
   Linux swap and enable encryption on that partition. In the guided erase
   workflow, newly created swap is LUKS when an encryption passphrase is set.
   The installed system addresses swap via the mapper name in `fstab` and the
   outer LUKS UUID in `crypttab`. Hibernation requires initramfs resume support
-  and sufficient swap; the small-swap option does not guarantee either.
+  and sufficient swap. The ZFS install path does not configure hibernation:
+  swap is unlocked and used after the root has been mounted.
 
 ## Distribution integration
 
@@ -81,7 +88,8 @@ instances:
 2. Install the target, write `fstab`/`crypttab`, copy the host ID using
    `zfshostid`, and run `blockdevices@configure` before building the initramfs.
    Use `operation: configure` and `initramfs: dracut` for its configuration to
-   persist the md/LVM/crypt modules, UUIDs and target config files. Otherwise
+   persist the md/LVM/crypt modules, UUIDs, target config files and ZFS import
+   dependencies on the final vdev. Otherwise
    it writes the array UUID to `mdadm.conf`, and the distribution must arrange
    for storage assembly and ZFS import before root mount.
 3. Build the initramfs with OpenZFS's boot integration, then install the

@@ -149,10 +149,6 @@ UmountJob::exec()
 
     // For ZFS systems, export the pools
     auto result = exportZFSPools();
-    if ( !result )
-    {
-        return result;
-    }
     auto swaps = gs->value( "installationSwapDevices" ).toList();
     while ( !swaps.isEmpty() )
     {
@@ -160,12 +156,12 @@ UmountJob::exec()
         const auto stopped = Calamares::System::runCommand( command, std::chrono::seconds( 30 ) );
         if ( stopped.getExitCode() )
         {
-            return stopped.explainProcess( command, std::chrono::seconds( 30 ) );
+            return result ? stopped.explainProcess( command, std::chrono::seconds( 30 ) ) : result;
         }
         swaps.removeLast();
         gs->insert( "installationSwapDevices", swaps );
     }
-    return Calamares::JobResult::ok();
+    return result;
 }
 
 void

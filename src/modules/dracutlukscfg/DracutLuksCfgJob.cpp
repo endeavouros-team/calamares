@@ -9,6 +9,8 @@
 
 #include "DracutLuksCfgJob.h"
 
+#include <algorithm>
+
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -101,6 +103,17 @@ static QString
 swapOuterUuid()
 {
     const QVariantList partitions = ::partitions();
+    const auto zfsRoot = std::any_of( partitions.cbegin(),
+                                      partitions.cend(),
+                                      []( const QVariant& partition )
+                                      {
+                                          const auto p = partition.toMap();
+                                          return p.value( "fs" ) == "zfs" && p.value( "mountPoint" ) == "/";
+                                      } );
+    if ( zfsRoot )
+    {
+        return { };
+    }
     for ( const QVariant& partition : partitions )
     {
         QVariantMap partitionMap = partition.toMap();

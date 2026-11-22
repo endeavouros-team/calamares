@@ -174,6 +174,7 @@ PartitionLayout::setDefaultFsType( FileSystem::Type defaultFsType )
     case FileSystem::Btrfs:
     case FileSystem::Exfat:
     case FileSystem::F2fs:
+    case FileSystem::Zfs:
         // ok
         break;
     case FileSystem::Fat16:
@@ -181,7 +182,6 @@ PartitionLayout::setDefaultFsType( FileSystem::Type defaultFsType )
     case FileSystem::HfsPlus:
     case FileSystem::Ufs:
     case FileSystem::Hpfs:
-    case FileSystem::Zfs:
     case FileSystem::Nilfs2:
     case FileSystem::Fat12:
     case FileSystem::Apfs:

@@ -15,6 +15,7 @@ properties:
             name: { type: string, pattern: '^[a-zA-Z0-9][a-zA-Z0-9_-]{0,31}$' }
             bitmap: { type: boolean }
             writeMostly: { type: boolean }
+            mailAddress: { type: string, pattern: '^[a-zA-Z0-9.!_+@-]+$' }
     lvm:
         type: object
         additionalProperties: false

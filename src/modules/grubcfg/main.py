@@ -216,6 +216,12 @@ def modify_grub_default(partitions, root_mount_point, distributor):
     # Currently, grub doesn't detect this properly so it must be set manually
     if zfs_root_path and dracut_bin == 0:
         kernel_params.append("root=ZFS=" + zfs_root_path)
+        array = libcalamares.globalstorage.value("blockDevicesArray")
+        volume = libcalamares.globalstorage.value("blockDevicesVolume")
+        if array:
+            kernel_params.append("rd.md.uuid=" + array["uuid"])
+        if volume:
+            kernel_params.append("rd.lvm.lv=" + volume)
     elif zfs_root_path:
         kernel_params.insert(0, "zfs=" + zfs_root_path)
 
@@ -225,12 +231,12 @@ def modify_grub_default(partitions, root_mount_point, distributor):
     if use_splash:
         kernel_params.append(use_splash)
 
-    if swap_uuid:
+    if swap_uuid and not has_zfs_root:
         kernel_params.append(f"resume=UUID={swap_uuid}")
 
-    if use_systemd_naming and swap_outer_uuid:
+    if use_systemd_naming and swap_outer_uuid and not has_zfs_root:
         kernel_params.append(f"rd.luks.uuid={swap_outer_uuid}")
-    if swap_outer_mappername:
+    if swap_outer_mappername and not has_zfs_root:
         kernel_params.append(f"resume=/dev/mapper/{swap_outer_mappername}")
 
     overwrite = libcalamares.job.configuration.get("overwrite", False)
@@ -281,6 +287,9 @@ def modify_grub_default(partitions, root_mount_point, distributor):
                     escaped_value = str(value).replace("'", "'\\''")
 
                 grub_config_items[key] = f"'{escaped_value}'"
+
+    if has_zfs_root and no_save_default:
+        grub_config_items["GRUB_SAVEDEFAULT"] = "false"
 
     grub_config_items['GRUB_CMDLINE_LINUX_DEFAULT'] = f"'{' '.join(kernel_params)}'"
     grub_config_items["GRUB_DISTRIBUTOR"] = f"'{distributor}'"

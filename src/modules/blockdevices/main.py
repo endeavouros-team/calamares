@@ -120,15 +120,16 @@ def create(config):
         raise StorageError(_("RAID1 members must be on different disks."))
 
     array_name = checked_name(raid.get("name")) if raid else None
+    mail = raid.get("mailAddress", "root") if raid else None
+    if raid and (not isinstance(mail, str) or not re.fullmatch(r"[A-Za-z0-9.!_+@-]+", mail)):
+        raise StorageError(_("Invalid RAID monitoring mail address."))
     vg = checked_name(lvm.get("volumeGroup")) if lvm else None
     lv = checked_name(lvm.get("logicalVolume")) if lvm else None
     size = lvm.get("sizeMiB") if lvm else None
     if size is not None and (type(size) is not int or size < 64):
         raise StorageError(_("The root logical volume size must be at least 64 MiB."))
-    mapper = "calamares-zfs-root"
-    mapper_path = "/dev/mapper/" + mapper
     array = "/dev/md/" + array_name if array_name else None
-    if (array and os.path.lexists(array)) or (secret is not None and os.path.lexists(mapper_path)):
+    if array and os.path.lexists(array):
         raise StorageError(_("A requested block device name is already in use."))
     tools = (["mdadm"] if array else []) + (["vgcreate", "lvcreate", "vgchange"] if vg else [])
     tools += ["cryptsetup"] if encrypt else []
@@ -147,7 +148,7 @@ def create(config):
         match = re.search(r"^MD_UUID=([0-9a-f:]+)$", detail, re.MULTILINE)
         if not match:
             raise StorageError(_("Could not determine the RAID array UUID."))
-        storage.insert(ARRAY, {"device": array, "uuid": match.group(1)})
+        storage.insert(ARRAY, {"device": array, "uuid": match.group(1), "mailAddress": mail})
         device = array
 
     if vg:
@@ -162,11 +163,15 @@ def create(config):
     updated = dict(root, device=device, partuuid="")
     if secret is not None:
         command(["cryptsetup", "luksFormat", "--type", "luks2", "--batch-mode", "--key-file", "-", device], secret)
+        uuid = command(["cryptsetup", "luksUUID", device])
+        if not re.fullmatch(r"[a-fA-F0-9]{8}(?:-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}", uuid):
+            raise StorageError(_("Could not determine the root LUKS UUID."))
+        mapper = "luks-" + uuid
+        mapper_path = "/dev/mapper/" + mapper
+        if os.path.lexists(mapper_path):
+            raise StorageError(_("A requested block device name is already in use."))
         activate(["cryptsetup", "open", "--type", "luks", "--key-file", "-", device, mapper],
                  mapper_path, ["cryptsetup", "close", mapper], secret)
-        uuid = command(["cryptsetup", "luksUUID", device])
-        if not re.fullmatch(r"[a-fA-F0-9-]{36}", uuid):
-            raise StorageError(_("Could not determine the root LUKS UUID."))
         updated.update(luksMapperName=mapper, luksUuid=uuid, luksKeyFileAllowed=False)
         storage.insert(LUKS, uuid)
         if mode == "luks":
@@ -186,9 +191,13 @@ def configure(initramfs):
     if array:
         config = etc / "mdadm.conf"
         entry = "ARRAY {device} UUID={uuid}".format(**array)
-        if not config.exists() or entry not in config.read_text(encoding="utf-8").splitlines():
+        lines = config.read_text(encoding="utf-8").splitlines() if config.exists() else []
+        additions = [] if entry in lines else [entry]
+        if not any(re.match(r"^\s*(MAILADDR|PROGRAM)\s+", line) for line in lines):
+            additions.append("MAILADDR " + array["mailAddress"])
+        if additions:
             with config.open("a", encoding="utf-8") as file:
-                file.write("\n" + entry + "\n")
+                file.write("\n" + "\n".join(additions) + "\n")
 
     if initramfs == "dracut":
         directory = etc / "dracut.conf.d"
@@ -207,6 +216,15 @@ def configure(initramfs):
             modules.append("crypt")
             devices.append("rd.luks.uuid=" + uuid)
             files.append("/etc/crypttab")
+        vdev = ("/dev/mapper/luks-" + uuid if uuid else "/dev/" + volume if volume else
+                "/dev/disk/by-id/md-uuid-" + array["uuid"])
+        unit = command(["systemd-escape", "--path", "--suffix=device", vdev])
+        for service in ("zfs-import-scan", "zfs-import-cache"):
+            relative = "etc/systemd/system/{}.service.d/calamares-vdev.conf".format(service)
+            dropin = Path(mountpoint) / relative
+            dropin.parent.mkdir(parents=True, exist_ok=True)
+            dropin.write_text("[Unit]\nRequires={0}\nAfter={0}\n".format(unit), encoding="utf-8")
+            files.append("/" + relative)
         with (directory / "calamares-blockdevices.conf").open("w", encoding="utf-8") as file:
             file.write('add_dracutmodules+=" {} "\n'.format(" ".join(modules)))
             file.write('kernel_cmdline+=" {} "\n'.format(" ".join(devices)))

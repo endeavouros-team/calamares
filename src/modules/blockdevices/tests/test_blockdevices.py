@@ -47,6 +47,8 @@ class BlockDevicesTest(unittest.TestCase):
             return "MD_UUID=01234567:89abcdef:01234567:89abcdef"
         if args[:2] == ["cryptsetup", "luksUUID"]:
             return "12345678-1234-1234-1234-123456789abc"
+        if args[0] == "systemd-escape":
+            return "dev-mapper-luks-test.device"
         return ""
 
     def create(self, devices=None):
@@ -65,11 +67,11 @@ class BlockDevicesTest(unittest.TestCase):
         self.assertEqual(commands[0][-3:], ["/dev/vda2", "--write-mostly", "/dev/vdb1"])
         self.assertIn("--bitmap=internal", commands[0])
         self.assertIn("4096M", commands[3])
-        self.assertEqual([args for args, secret in self.requests if secret], commands[4:6])
+        self.assertEqual([args for args, secret in self.requests if secret], [commands[4], commands[6]])
         self.assertNotIn("test passphrase", repr(commands))
         root = api.globalstorage["partitions"][0]
         self.assertEqual(root["device"], "/dev/system/root")
-        self.assertEqual(root["luksMapperName"], "calamares-zfs-root")
+        self.assertEqual(root["luksMapperName"], "luks-12345678-1234-1234-1234-123456789abc")
         self.assertEqual(api.globalstorage["zfsInfo"], [])
         self.requests.clear()
         with patch.object(module, "command", self.command):
@@ -95,11 +97,15 @@ class BlockDevicesTest(unittest.TestCase):
             etc = Path(target) / "etc"
             etc.mkdir()
             api.globalstorage["rootMountPoint"] = target
-            module.configure("dracut")
+            with patch.object(module, "command", self.command):
+                module.configure("dracut")
             self.assertIn("ARRAY /dev/md/root-mirror UUID=", (etc / "mdadm.conf").read_text())
+            self.assertIn("MAILADDR root", (etc / "mdadm.conf").read_text())
             text = (etc / "dracut.conf.d/calamares-blockdevices.conf").read_text()
             for parameter in ("mdraid lvm crypt", "rd.lvm.lv=system/root", "rd.md.uuid=", "rd.luks.uuid="):
                 self.assertIn(parameter, text)
+            dropin = etc / "systemd/system/zfs-import-scan.service.d/calamares-vdev.conf"
+            self.assertIn("Requires=dev-mapper-luks-test.device", dropin.read_text())
 
 
 if __name__ == "__main__":

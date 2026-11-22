@@ -195,13 +195,14 @@ def get_kernel_params(uuid):
     if not any(arg.startswith("root=") for arg in kernel_params):
         kernel_params.append("root=UUID={!s}".format(uuid))
 
-    if swap_uuid:
+    zfs_root = any(is_zfs_root(p) for p in partitions)
+    if swap_uuid and not zfs_root:
         kernel_params.append("resume=UUID={!s}".format(swap_uuid))
 
-    if use_systemd_naming and swap_outer_uuid:
+    if use_systemd_naming and swap_outer_uuid and not zfs_root:
         kernel_params.append(f"rd.luks.uuid={swap_outer_uuid}")
 
-    if swap_outer_mappername:
+    if swap_outer_mappername and not zfs_root:
         kernel_params.append(f"resume=/dev/mapper/{swap_outer_mappername}")
 
     return kernel_params

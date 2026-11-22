@@ -139,7 +139,11 @@ CreatePartitionDialog::CreatePartitionDialog( PartitionCoreModule* core,
     connect( m_ui->encryptWidget,
              &EncryptWidget::stateChanged,
              this,
-             [ this ]( EncryptWidget::Encryption ) { updateLuksAlignment(); } );
+             [ this ]( EncryptWidget::Encryption )
+             {
+                 updateLuksAlignment();
+                 checkMountPointSelection();
+             } );
 
     // Select a default
     m_ui->fsComboBox->setCurrentIndex( defaultFsIndex );
@@ -183,7 +187,7 @@ CreatePartitionDialog::CreatePartitionDialog( PartitionCoreModule* core,
     initPartResizerWidget( existingNewPartition.p );
 
     FileSystem::Type fsType = existingNewPartition.p->fileSystem().type();
-    m_ui->fsComboBox->setCurrentText( FileSystem::nameForType( fsType ) );
+    m_ui->fsComboBox->setCurrentText( userVisibleFS( existingNewPartition.p->fileSystem() ) );
 
     setSelectedMountPoint( m_ui->mountPointComboBox, PartitionInfo::mountPoint( existingNewPartition.p ) );
     updateMountPointUi();
@@ -352,12 +356,17 @@ CreatePartitionDialog::updateLuksAlignment()
 void
 CreatePartitionDialog::checkMountPointSelection()
 {
+    auto* okButton = m_ui->buttonBox->button( QDialogButtonBox::Ok );
     validateMountPoint( m_core,
                         selectedMountPoint( m_ui->mountPointComboBox ),
                         m_usedMountPoints,
                         m_ui->fsComboBox->currentText(),
                         m_ui->mountPointExplanation,
-                        m_ui->buttonBox->button( QDialogButtonBox::Ok ) );
+                        okButton );
+    if ( m_ui->encryptWidget->isVisible() && m_ui->encryptWidget->state() == EncryptWidget::Encryption::Unconfirmed )
+    {
+        okButton->setEnabled( false );
+    }
 }
 
 void

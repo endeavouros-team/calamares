@@ -157,7 +157,10 @@ ZfsJob::createZpool( QString deviceName, QString poolName, QString poolOptions, 
 
     if ( r.getExitCode() != 0 )
     {
-        cWarning() << "Failed to run zpool create.  The output was: " + r.getOutput();
+        if ( !encrypt )
+        {
+            cWarning() << "Failed to run zpool create. The output was:" << r.getOutput();
+        }
         return { false, tr( "Failed to create zpool on " ) + deviceName };
     }
 
@@ -265,6 +268,11 @@ ZfsJob::exec()
         const auto encryption = encryptionByMount.value( mountpoint );
         const bool encrypt = encryption.value( "encrypted" ).toBool();
         const auto passphrase = encryption.value( "passphrase" ).toString();
+        if ( !m_grubCompatibility.isEmpty() && mountpoint != "/" && encrypt )
+        {
+            return Calamares::JobResult::error(
+                tr( "Automatic unlock of a separate ZFS pool is not supported: %1." ).arg( mountpoint ) );
+        }
         if ( encrypt && ( passphrase.isEmpty() || passphrase.contains( '\n' ) ) )
         {
             return Calamares::JobResult::error(
@@ -358,7 +366,7 @@ ZfsJob::exec()
                                                              << "canmount=" + canMount << "-o"
                                                              << "mountpoint=" + datasetMap[ "mountpoint" ].toString()
                                                              << datasetName },
-                                             std::chrono::seconds( 10 ) );
+                                             std::chrono::seconds( 60 ) );
                 if ( r.getExitCode() != 0 )
                 {
                     return Calamares::JobResult::error( tr( "Failed to create ZFS dataset %1." ).arg( datasetName ),
@@ -406,7 +414,7 @@ ZfsJob::exec()
                                 << "-o"
                                 << ( legacy ? QStringLiteral( "mountpoint=legacy" ) : "mountpoint=" + mountpoint )
                                 << poolName + "/" + dsName },
-                std::chrono::seconds( 10 ) );
+                std::chrono::seconds( 60 ) );
             if ( r.getExitCode() != 0 )
             {
                 return Calamares::JobResult::error( tr( "Failed to create dataset" ),
@@ -419,7 +427,7 @@ ZfsJob::exec()
         poolNames.append( poolNameEntry );
 
         // Export the zpool so it can be reimported at the correct location later
-        auto r = system->runCommand( { "zpool", "export", poolName }, std::chrono::seconds( 10 ) );
+        auto r = system->runCommand( { "zpool", "export", poolName }, std::chrono::seconds( 60 ) );
         if ( r.getExitCode() != 0 )
         {
             return Calamares::JobResult::error( tr( "Failed to export ZFS pool %1." ).arg( poolName ), r.getOutput() );
