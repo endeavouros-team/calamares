@@ -752,7 +752,7 @@ ChoicePage::onLeave()
         if ( !isNewEfiSelected() )
         {
             Partition* part = nullptr;
-            for ( auto const partition : qAsConst( efiSystemPartitions ) )
+            for ( auto const partition : std::as_const( efiSystemPartitions ) )
             {
                 if ( partition->partitionPath() == m_efiComboBox->currentText() )
                 {
