@@ -156,7 +156,11 @@ UmountJob::exec()
         const auto stopped = Calamares::System::runCommand( command, std::chrono::seconds( 30 ) );
         if ( stopped.getExitCode() )
         {
-            return result ? stopped.explainProcess( command, std::chrono::seconds( 30 ) ) : result;
+            if ( result )
+            {
+                return stopped.explainProcess( command, std::chrono::seconds( 30 ) );
+            }
+            return result;
         }
         swaps.removeLast();
         gs->insert( "installationSwapDevices", swaps );
