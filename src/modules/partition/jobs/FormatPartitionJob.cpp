@@ -69,6 +69,11 @@ Calamares::JobResult
 FormatPartitionJob::exec()
 {
     const auto fsType = m_partition->fileSystem().type();
+    if ( fsType == FileSystem::Zfs )
+    {
+        // The ZFS job owns pool creation; do not destroy an existing pool here.
+        return Calamares::JobResult::ok();
+    }
     auto r = KPMHelpers::execute( CreateFileSystemOperation( *m_device, *m_partition, fsType ),
                                   tr( "The installer failed to format partition %1 on disk '%2'." )
                                       .arg( m_partition->partitionPath(), m_device->name() ) );

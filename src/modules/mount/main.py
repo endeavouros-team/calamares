@@ -17,6 +17,7 @@ import tempfile
 import subprocess
 import os
 import re
+import shutil
 
 import libcalamares
 
@@ -28,15 +29,8 @@ _ = gettext.translation("calamares-python",
                         fallback=True).gettext
 
 
-class ZfsException(Exception):
-    """Exception raised when there is a problem with zfs
-
-    Attributes:
-        message -- explanation of the error
-    """
-
-    def __init__(self, message):
-        self.message = message
+class MountError(Exception):
+    """An installation filesystem could not be mounted."""
 
 
 def pretty_name():
@@ -168,35 +162,33 @@ def mount_zfs(root_mount_point, partition):
     zfs_pool_list = libcalamares.globalstorage.value("zfsPoolInfo")
     if not zfs_pool_list:
         libcalamares.utils.warning("Failed to locate zfsPoolInfo data in global storage")
-        raise ZfsException(_("Internal error mounting zfs datasets"))
+        raise MountError(_("Internal error mounting ZFS datasets."))
 
-    # Find the zpool matching this partition
-    for zfs_pool in zfs_pool_list:
-        if zfs_pool["mountpoint"] == partition["mountPoint"]:
-            pool_name = zfs_pool["poolName"]
-            ds_name = zfs_pool["dsName"]
+    pool = next((p for p in zfs_pool_list if p["mountpoint"] == partition["mountPoint"]), None)
+    if not pool:
+        raise MountError(_("No ZFS pool was created for this mount point."))
+    pool_name = pool["poolName"]
 
     # import the zpool
     try:
-        libcalamares.utils.host_env_process_output(["zpool", "import", "-N", "-R", root_mount_point, pool_name], None)
+        command = ["zpool", "import", "-N", "-R", root_mount_point]
+        if pool.get("device"):
+            command.extend(["-d", pool["device"]])
+        libcalamares.utils.host_env_process_output(command + [pool_name])
     except subprocess.CalledProcessError:
-        raise ZfsException(_("Failed to import zpool"))
+        raise MountError(_("Failed to import ZFS pool {}.").format(pool_name))
+    storage = libcalamares.globalstorage
+    storage.insert("zfsImportedPools", (storage.value("zfsImportedPools") or []) + [pool_name])
 
-    # Get the encrpytion information from global storage
-    zfs_info_list = libcalamares.globalstorage.value("zfsInfo")
-    encrypt = False
-    if zfs_info_list:
-        for zfs_info in zfs_info_list:
-            if zfs_info["mountpoint"] == partition["mountPoint"] and zfs_info["encrypted"] is True:
-                encrypt = True
-                passphrase = zfs_info["passphrase"]
-
-    if encrypt is True:
+    encryption = next((p for p in reversed(storage.value("zfsInfo") or [])
+                       if p["mountpoint"] == partition["mountPoint"]), {})
+    if encryption.get("encrypted"):
         # The zpool is encrypted, we need to unlock it
         try:
-            libcalamares.utils.host_env_process_output(["zfs", "load-key", pool_name], None, passphrase)
+            libcalamares.utils.host_env_process_output(["zfs", "load-key", pool_name], None,
+                                                      encryption["passphrase"] + "\n")
         except subprocess.CalledProcessError:
-            raise ZfsException(_("Failed to unlock zpool"))
+            raise MountError(_("Failed to unlock ZFS pool {}.").format(pool_name))
 
     if partition["mountPoint"] == '/':
         # Get the zfs dataset list from global storage
@@ -204,21 +196,26 @@ def mount_zfs(root_mount_point, partition):
 
         if not zfs:
             libcalamares.utils.warning("Failed to locate zfs dataset list")
-            raise ZfsException(_("Internal error mounting zfs datasets"))
+            raise MountError(_("Internal error mounting ZFS datasets."))
 
         zfs.sort(key=lambda x: x["mountpoint"])
         for dataset in zfs:
             try:
-                if dataset["canMount"] == "noauto" or dataset["canMount"] is True:
+                if dataset["canMount"] in ("noauto", "on", True):
                     libcalamares.utils.host_env_process_output(["zfs", "mount",
                                                                 dataset["zpool"] + '/' + dataset["dsName"]])
             except subprocess.CalledProcessError:
-                raise ZfsException(_("Failed to set zfs mountpoint"))
+                raise MountError(_("Failed to mount a dataset for ZFS pool {}.").format(pool_name))
     else:
+        dataset = pool_name + '/' + pool["dsName"]
         try:
-            libcalamares.utils.host_env_process_output(["zfs", "mount", pool_name + '/' + ds_name])
+            if pool.get("legacy"):
+                libcalamares.utils.host_env_process_output(["mount", "-t", "zfs", dataset,
+                                                          root_mount_point + partition["mountPoint"]])
+            else:
+                libcalamares.utils.host_env_process_output(["zfs", "mount", dataset])
         except subprocess.CalledProcessError:
-            raise ZfsException(_("Failed to set zfs mountpoint"))
+            raise MountError(_("Failed to mount a dataset for ZFS pool {}.").format(pool_name))
 
 
 def mount_partition(root_mount_point, partition, partitions, mount_options, mount_options_list, efi_location):
@@ -247,14 +244,12 @@ def mount_partition(root_mount_point, partition, partitions, mount_options, moun
 
     os.makedirs(mount_point, exist_ok=True)
 
-    if set_selinux_context:
+    if (set_selinux_context and os.path.exists(raw_mount_point) and shutil.which("selinuxenabled")
+            and subprocess.call(["selinuxenabled"]) == 0):
         try:
-            subprocess.call(['chcon', '--reference=' + raw_mount_point, mount_point])
-        except FileNotFoundError as e:
-            libcalamares.utils.warning(str(e))
-        except OSError:
-            libcalamares.utils.error("Cannot run 'chcon' normally.")
-            raise
+            subprocess.check_call(["chcon", "--reference=" + raw_mount_point, mount_point])
+        except (OSError, subprocess.CalledProcessError) as error:
+            raise MountError(_("Could not set the security context for {}.").format(mount_point)) from error
 
     fstype = partition.get("fs", "").lower()
     if fstype == "unformatted":
@@ -270,13 +265,14 @@ def mount_partition(root_mount_point, partition, partitions, mount_options, moun
 
     if fstype == "zfs":
         mount_zfs(root_mount_point, partition)
+        mount_options_list.append({"mountpoint": raw_mount_point, "option_string": "defaults"})
     else:  # fstype == "zfs"
         mount_options_string = get_mount_options(fstype, mount_options, partition, efi_location)
         if libcalamares.utils.mount(device,
                                     mount_point,
                                     fstype,
                                     mount_options_string) != 0:
-            libcalamares.utils.warning("Cannot mount {}".format(device))
+            raise MountError(_("Could not mount {} at {}.").format(device, raw_mount_point))
         mount_options_list.append({"mountpoint": raw_mount_point, "option_string": mount_options_string})
 
     # Special handling for btrfs subvolumes. Create the subvolumes listed in mount.conf
@@ -326,11 +322,18 @@ def mount_partition(root_mount_point, partition, partitions, mount_options, moun
 
 
 def enable_swap_partition(devices):
-    try:
-        for d in devices:
-            libcalamares.utils.host_env_process_output(["swapon", d])
-    except subprocess.CalledProcessError:
-        libcalamares.utils.warning(f"Failed to enable swap for devices: {devices}")
+    storage = libcalamares.globalstorage
+    with open("/proc/swaps", encoding="utf-8") as swaps:
+        next(swaps, None)
+        active = {os.path.realpath(line.split()[0]) for line in swaps if line.strip()}
+    enabled = []
+    for device in devices:
+        path = os.path.realpath(device)
+        if path not in active:
+            libcalamares.utils.host_env_process_output(["swapon", device])
+            enabled.append(device)
+            active.add(path)
+            storage.insert("installationSwapDevices", enabled)
 
 
 def run():
@@ -348,13 +351,23 @@ def run():
 
     # Find existing swap partitions that are part of the installation and enable them now
     claimed_swap_partitions = [p for p in partitions if p["fs"] == "linuxswap" and p.get("claimed", False)]
-    plain_swap = [p for p in claimed_swap_partitions if p["fsName"] == "linuxswap"]
-    luks_swap = [p for p in claimed_swap_partitions if p["fsName"] == "luks" or p["fsName"] == "luks2"]
-    swap_devices = [p["device"] for p in plain_swap] + ["/dev/mapper/" + p["luksMapperName"] for p in luks_swap]
+    swap_devices = []
+    for p in claimed_swap_partitions:
+        if p.get("luksMapperName"):
+            swap_devices.append("/dev/mapper/" + p["luksMapperName"])
+        elif p.get("fsName") in ("luks", "luks2"):
+            return _("Swap configuration error"), _("The encrypted swap device is not unlocked.")
+        else:
+            swap_devices.append(p["device"])
 
-    enable_swap_partition(swap_devices)
+    try:
+        if swap_devices:
+            enable_swap_partition(swap_devices)
+    except subprocess.CalledProcessError as error:
+        return _("Swap configuration error"), _("Could not enable {}.").format(error.cmd[-1])
 
     root_mount_point = tempfile.mkdtemp(prefix="calamares-root-")
+    libcalamares.globalstorage.insert("rootMountPoint", root_mount_point)
 
     # Get the mountOptions, if this is None, that is OK and will be handled later
     mount_options = libcalamares.job.configuration.get("mountOptions")
@@ -384,13 +397,14 @@ def run():
     try:
         for partition in mountable_partitions:
             mount_partition(root_mount_point, partition, partitions, mount_options, mount_options_list, efi_location)
-    except ZfsException as ze:
-        return _("zfs mounting error"), ze.message
+    except MountError as error:
+        return _("Mounting filesystems failed."), str(error)
+    finally:
+        libcalamares.globalstorage.remove("zfsInfo")
 
     if not mount_options_list:
         libcalamares.utils.warning("No mount options defined, {!s} partitions, {!s} mountable".format(len(partitions), len(mountable_partitions)))
 
-    libcalamares.globalstorage.insert("rootMountPoint", root_mount_point)
     libcalamares.globalstorage.insert("mountOptionsList", mount_options_list)
 
     # Remember the extra mounts for the unpackfs module

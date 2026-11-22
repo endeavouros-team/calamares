@@ -29,16 +29,18 @@ def pretty_name():
 
 def run():
 
-    zfs = libcalamares.globalstorage.value("zfsDatasets")
+    zfs = libcalamares.globalstorage.value("zfsPoolInfo")
     root_mount_point = libcalamares.globalstorage.value("rootMountPoint")
 
+    if zfs and not root_mount_point:
+        return _("Could not copy the ZFS host ID."), _("The target system is not mounted.")
     if zfs:
         hostid_source = '/etc/hostid'
         hostid_destination = '{!s}/etc/hostid'.format(root_mount_point)
 
         try:
             shutil.copy2(hostid_source, hostid_destination)
-        except Exception as e:
-            libcalamares.utils.warning("Could not copy hostid")
+        except OSError as error:
+            return _("Could not copy the ZFS host ID."), str(error)
 
     return None

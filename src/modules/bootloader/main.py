@@ -133,7 +133,7 @@ def have_program_in_target(program : str):
 def get_kernel_params(uuid):
     # Configured kernel parameters (default "quiet"), if plymouth installed, add splash
     # screen parameter and then "rw".
-    kernel_params = libcalamares.job.configuration.get("kernelParams", ["quiet"])
+    kernel_params = list(libcalamares.job.configuration.get("kernelParams", ["quiet"]))
     if have_program_in_target("plymouth"):
         kernel_params.append("splash")
     kernel_params.append("rw")
@@ -169,7 +169,8 @@ def get_kernel_params(uuid):
                 cryptdevice_params = [f"rd.luks.uuid={partition['luksUuid']}"]
             else:
                 cryptdevice_params = [f"cryptdevice=UUID={partition['luksUuid']}:{partition['luksMapperName']}"]
-            cryptdevice_params.append(f"root=/dev/mapper/{partition['luksMapperName']}")
+            if not is_zfs_root(partition):
+                cryptdevice_params.append(f"root=/dev/mapper/{partition['luksMapperName']}")
 
     # btrfs and zfs handling
     for partition in partitions:
@@ -190,9 +191,8 @@ def get_kernel_params(uuid):
                 libcalamares.utils.warning("Internal error handling zfs dataset")
                 raise Exception("Internal zfs data missing, please contact your distribution")
 
-    if cryptdevice_params:
-        kernel_params.extend(cryptdevice_params)
-    else:
+    kernel_params.extend(cryptdevice_params)
+    if not any(arg.startswith("root=") for arg in kernel_params):
         kernel_params.append("root=UUID={!s}".format(uuid))
 
     if swap_uuid:

@@ -25,7 +25,7 @@ LuksBootKeyFileJob::LuksBootKeyFileJob( QObject* parent )
 {
 }
 
-LuksBootKeyFileJob::~LuksBootKeyFileJob() {}
+LuksBootKeyFileJob::~LuksBootKeyFileJob() { }
 
 QString
 LuksBootKeyFileJob::prettyName() const
@@ -296,6 +296,15 @@ LuksBootKeyFileJob::exec()
     {
         // /boot partition is not encrypted, keyfile must not be used.
         cDebug() << Logger::SubEntry << "/boot partition is not encrypted, skipping keyfile creation.";
+        return Calamares::JobResult::ok();
+    }
+
+    if ( anyPartition(
+             []( const QVariantMap& p )
+             {
+                 return hasMountPoint( p, QStringLiteral( "/" ) ) && !p.value( "luksKeyFileAllowed", true ).toBool();
+             } ) )
+    {
         return Calamares::JobResult::ok();
     }
 
