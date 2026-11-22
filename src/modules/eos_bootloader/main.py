@@ -32,6 +32,8 @@ def pretty_status_message():
 
 def is_resume_needed():
     partitions = libcalamares.globalstorage.value("partitions")
+    if any(p["fs"] == "zfs" and p["mountPoint"] == "/" for p in partitions):
+        return False
     for partition in partitions:
         if partition["fs"] == "linuxswap" and partition.get("claimed", False):
             return True

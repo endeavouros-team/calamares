@@ -39,11 +39,13 @@ class EosZfsTest(unittest.TestCase):
         run.assert_not_called()
 
     @patch.object(module.subprocess, "run")
-    def test_live_checks_and_requests_zfs_linux(self, run):
+    def test_live_checks_zfs_linux_before_partition_data_exists(self, run):
         api.globalstorage["packagechooser_packagechooserq"] = "grub"
-        self.assertIsNone(module.run())
-        self.assertTrue(api.globalstorage["eosZfsRoot"])
-        self.assertEqual([item.args[0][0] for item in run.call_args_list], ["modprobe", "zpool"])
+        del api.globalstorage["partitions"]
+        with patch.object(module.Path, "is_file", return_value=True):
+            self.assertIsNone(module.run())
+        self.assertEqual([item.args[0][0] for item in run.call_args_list], ["modprobe", "zpool", "pacman"])
+        self.assertIn("zfs-linux", run.call_args_list[-1].args[0])
 
     def configure(self, version):
         with tempfile.TemporaryDirectory() as target:
@@ -53,7 +55,8 @@ class EosZfsTest(unittest.TestCase):
             (kernels / "vmlinuz").touch()
             api.globalstorage["rootMountPoint"] = target
             api.job.configuration = {"operation": "configureTarget"}
-            with patch.object(module.subprocess, "run", return_value=subprocess.CompletedProcess([], 0, stdout=version)):
+            with patch.object(module.subprocess, "run", return_value=subprocess.CompletedProcess([], 0, stdout=version)), \
+                    patch.object(module, "write_pool_cache"):
                 result = module.run()
             config = root / "etc/dracut.conf.d/calamares-zfs.conf"
             return result, config.read_text() if config.exists() else None
@@ -69,6 +72,20 @@ class EosZfsTest(unittest.TestCase):
         self.assertIn("does not match installed kernel", result[1])
         self.assertIsNone(config)
         api.utils.target_env_process_output.assert_not_called()
+
+    def test_cache_contains_only_imports_owned_by_install(self):
+        def zpool_set(args, **_kwargs):
+            property_name, path = args[2].split("=", 1)
+            self.assertEqual(property_name, "cachefile")
+            if path != "none":
+                with Path(path).open("a", encoding="utf-8") as cache:
+                    cache.write(args[3] + "\n")
+
+        with tempfile.TemporaryDirectory() as target, patch.object(module.subprocess, "run", side_effect=zpool_set) as run:
+            module.write_pool_cache(Path(target), ["eosroot", "eosboot"])
+            cache = (Path(target) / "etc/zfs/zpool.cache").read_text()
+            self.assertEqual(cache.splitlines(), ["eosroot", "eosboot"])
+            self.assertEqual([c.args[0][2] for c in run.call_args_list[-2:]], ["cachefile=none", "cachefile=none"])
 
 
 if __name__ == "__main__":

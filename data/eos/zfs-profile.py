@@ -39,8 +39,9 @@ def generate(source, output, online_settings):
     configure = instance("blockdevices", "configure", {"operation": "configure", "initramfs": "dracut"})
     deactivate = instance("blockdevices", "deactivate", {"operation": "deactivate", "emergency": True})
     target = instance("eos_zfs", "target", {"operation": "configureTarget"})
+    execute.insert(execute.index("partition"), preflight)
     index = execute.index("partition") + 1
-    execute[index:index] = [preflight, create, "zfs"]
+    execute[index:index] = [create, "zfs"]
     index = execute.index("eos_bootloader")
     execute[index:index] = ["zfshostid", configure, target]
     execute.insert(execute.index("umount") + 1, deactivate)
@@ -48,7 +49,9 @@ def generate(source, output, online_settings):
     write_yaml(modules / "umount.conf", {"emergency": True})
 
     partition = read_yaml(modules / "partition.conf")
-    partition["availableFileSystemTypes"] = ["ext4", "btrfs", "zfs"]
+    partition["defaultFileSystemType"] = "zfs"
+    partition["availableFileSystemTypes"] = ["zfs"]
+    partition["userSwapChoices"] = ["none", "small"]
     partition["luksGeneration"] = "luks2"
     write_yaml(modules / "partition.conf", partition)
 
@@ -57,7 +60,7 @@ def generate(source, output, online_settings):
     write_yaml(modules / "packagechooserq.conf", chooser)
 
     zfs = read_yaml(modules / "zfs.conf")
-    zfs.update(poolNames={"/": "rpool", "/boot": "bpool"}, grubCompatibility="grub2", utf8Only=False)
+    zfs.update(poolNames={"/": "eosroot", "/boot": "eosboot"}, grubCompatibility="grub2", utf8Only=False)
     zfs["poolOptions"] = "-o ashift=12 -O acltype=posixacl -O relatime=on"
     write_yaml(modules / "zfs.conf", zfs)
 

@@ -89,7 +89,8 @@ def run():
         return "No configuration found", "Aborting due to missing configuration"
 
     # run the pacstrap
-    if libcalamares.globalstorage.value("eosZfsRoot"):
+    if any(p.get("mountPoint") == "/" and p.get("fs") == "zfs"
+           for p in libcalamares.globalstorage.value("partitions") or []):
         base_packages = list(dict.fromkeys([*base_packages, "linux", "zfs-linux", "zfs-utils"]))
     pacstrap_command = ["/etc/calamares/scripts/pacstrap_calamares", "-c", root_mount_point] + base_packages
 
@@ -104,6 +105,7 @@ def run():
     try:
         libcalamares.utils.target_env_process_output(["pacman-key", "--init"], None)
         libcalamares.utils.target_env_process_output(["pacman-key", "--populate", "archlinux", "endeavouros"], None)
+        libcalamares.utils.target_env_process_output(["gpgconf", "--homedir", "/etc/pacman.d/gnupg", "--kill", "all"])
     except subprocess.CalledProcessError:
         libcalamares.utils.warning(f"Failed to update keyring on target")
 

@@ -26,6 +26,12 @@ Calamares storage patches and include `eos_zfs`, `blockdevices`, `zfs` and
    repositories do not offer a compatible set, that install fails rather
    than switching to DKMS or shipping a kernel that cannot import root.
 
+The installed ZFS cache contains only the pools imported by this installer.
+The target and initramfs use it instead of importing every attached pool by
+name. This also avoids choosing an unrelated pool when another ZFS disk is
+connected. Pool names still need to be unique on the live system. Separately
+encrypted non-root pools are not automatically unlocked by this profile.
+
 ## Run Calamares
 
 Generate a separate configuration from the image's packaged configuration
@@ -39,8 +45,9 @@ sudo calamares --config /run/calamares-zfs
 The output directory must not exist. It contains the configuration used by
 the profile; it does not overwrite `/etc/calamares`. Keep the standard
 EndeavourOS helper scripts at their usual `/etc/calamares/scripts` paths.
-The profile selects GRUB by default and refuses a ZFS installation with a
-different bootloader. Non-ZFS installations do not request ZFS packages.
+The profile selects GRUB by default and checks the live ZFS tools and package
+transaction before changing partitions. It is intended only for GRUB-based
+ZFS installs; use the regular profile for other filesystems or bootloaders.
 
 For a layered install, edit the generated
 `modules/blockdevices_create.conf` before opening Calamares, for example:
@@ -62,8 +69,8 @@ Configure only the layers you need. With RAID1, use manual partitioning to
 assign `/` to the primary ZFS partition and mark newly created unformatted
 partitions on the other disks with the RAID flag. Their size, or the LV size
 when LVM is enabled, determines root pool capacity. Assign a separate ZFS
-partition of your chosen size to `/boot` for `bpool`, or use ext4 for `/boot`.
-An unencrypted single-pool install can leave `/boot` inside `rpool`. Keep
+partition of your chosen size to `/boot` for `eosboot`, or use ext4 for `/boot`.
+An unencrypted single-pool install can leave `/boot` inside `eosroot`. Keep
 `/boot` unencrypted for the encryption example above; use a separate EFI
 System Partition mounted at `/efi` on UEFI.
 
@@ -72,7 +79,8 @@ and assign each partition a distinct mount point. To separate a mount
 without a separate pool, use `datasets` and optional `properties` in the
 generated `modules/zfs.conf`. Its UTF-8-only policy is off by default.
 For encrypted swap, create a Linux swap partition and select encryption for
-that partition. Do not select a swap file on ZFS.
+that partition. Do not select a swap file on ZFS. ZFS hibernation is not
+configured by this profile.
 
 The root RAID mirror is not bootloader redundancy. Verify package upgrades,
 initramfs regeneration and reboot on a disposable VM before publishing an
