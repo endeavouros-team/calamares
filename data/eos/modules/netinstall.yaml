@@ -4,18 +4,6 @@
   selected: true
   critical: true
   subgroups:
-    - name: X11
-      description: "Default X11 system"
-      selected: true
-      packages:
-        - mesa-utils
-        - xf86-input-libinput
-        - xorg-xdpyinfo
-        - xorg-server
-        - xorg-xinit
-        - xorg-xinput
-        - xorg-xkill
-        - xorg-xrandr
     - name: Network
       description: "Network apps drivers and tools"
       selected: true
