@@ -137,6 +137,7 @@
     - hwinfo
     - inxi
     - meld
+    - mesa-utils
     - nano-syntax-highlighting
     - python-defusedxml
     - python-jinja
