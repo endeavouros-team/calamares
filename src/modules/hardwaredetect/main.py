@@ -94,18 +94,16 @@ def run():
     hw_tool = '/usr/bin/eos-hwtool'
     with open('/proc/cmdline', encoding='utf-8', errors='replace') as cmdline:
         nvidia_enabled = 'nvidia=1' in cmdline.read().split()
+    driver_options = [] if nvidia_enabled else ['--free']
 
     if libcalamares.globalstorage.contains("hasInternet"):
         install_ucode(vendor)
-        command = [hw_tool, '--iso', '--no32', '--install-recommended']
-        if not nvidia_enabled:
-            command.append('--free')
-        run_command(command)
+        run_command([hw_tool, '--iso', '--no32', '--install-recommended'] + driver_options)
     else:
         remove_ucode(vendor)
         if nvidia_enabled:
             run_command([hw_tool, '--iso', '--install-recommended', '--packagedir=/usr/share/packages', '--nvidia-only'])
-        run_command([hw_tool, '--iso', '--purge'])
+        run_command([hw_tool, '--iso', '--purge'] + driver_options)
         run_command([hw_tool, '--enable-services'])
 
     return None
