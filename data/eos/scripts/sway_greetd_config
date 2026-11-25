@@ -8,10 +8,20 @@ DEST_PATH="${DEST_DIR}/config.toml"
 if pacman -Q eos-settings-sway &>/dev/null; then
     mkdir -p "${DEST_DIR}"
 
-    # respect displaymanager written Autologin-Block
+    # Extract existing [initial_session] block written by the installer/displaymanager
     initial=""
     if [ -f "${DEST_PATH}" ]; then
-        initial=$(awk '/^\[initial_session\]/{f=1; print; next} /^\[/{f=0} f' "${DEST_PATH}")
+        initial=$(awk '
+            /^\[initial_session\]/ { in_block=1; print; next }
+            /^\[/ { in_block=0 }
+            in_block {
+                if ($0 ~ /^[[:space:]]*command[[:space:]]*=/) {
+                    print "command = \"eos-sway-wrapper\""
+                } else {
+                    print
+                }
+            }
+        ' "${DEST_PATH}")
     fi
 
     cp -f "${SOURCE_FILE}" "${DEST_PATH}"
