@@ -1,0 +1,4 @@
+if(Python_Interpreter_FOUND)
+    add_test(NAME zfs-fstab-unit
+        COMMAND ${Python_EXECUTABLE} ${_testdir}/test_zfs_fstab.py)
+endif()

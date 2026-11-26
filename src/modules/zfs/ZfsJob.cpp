@@ -9,6 +9,7 @@
 
 #include "ZfsJob.h"
 
+#include "compat/Variant.h"
 #include "utils/Logger.h"
 #include "utils/System.h"
 #include "utils/Variant.h"
@@ -17,10 +18,10 @@
 #include "JobQueue.h"
 #include "Settings.h"
 
+#include <QFileInfo>
 #include <QProcess>
 #include <QRegularExpression>
-
-#include <unistd.h>
+#include <QSet>
 
 /** @brief Returns the alphanumeric portion of a string
  *
@@ -47,22 +48,16 @@ alphaNumeric( QString input )
  *
  */
 static QString
-findBestZfsDevice( QVariantMap pMap )
+findBestZfsDevice( const QVariantMap& pMap )
 {
-    // Find the best device identifier, if one isn't available, skip this partition
-    QString deviceName;
-    if ( pMap[ "partuuid" ].toString() != "" )
+    const auto mapper = pMap.value( "luksMapperName" ).toString();
+    if ( !mapper.isEmpty() )
     {
-        return "/dev/disk/by-partuuid/" + pMap[ "partuuid" ].toString().toLower();
+        return "/dev/mapper/" + mapper;
     }
-    else if ( pMap[ "device" ].toString() != "" )
-    {
-        return pMap[ "device" ].toString().toLower();
-    }
-    else
-    {
-        return QString();
-    }
+    const auto partUuid = pMap.value( "partuuid" ).toString();
+    const auto path = "/dev/disk/by-partuuid/" + partUuid.toLower();
+    return !partUuid.isEmpty() && QFileInfo::exists( path ) ? path : pMap.value( "device" ).toString();
 }
 
 /** @brief Converts the value in a QVariant to a string which is a valid option for canmount
@@ -75,18 +70,11 @@ findBestZfsDevice( QVariantMap pMap )
 static QString
 convertCanMount( QVariant canMount )
 {
-    if ( canMount == true )
+    if ( Calamares::typeOf( canMount ) == Calamares::BoolVariantType )
     {
-        return "on";
+        return canMount.toBool() ? "on" : "off";
     }
-    else if ( canMount == false )
-    {
-        return "off";
-    }
-    else
-    {
-        return canMount.toString();
-    }
+    return canMount.toString();
 }
 
 ZfsJob::ZfsJob( QObject* parent )
@@ -94,7 +82,7 @@ ZfsJob::ZfsJob( QObject* parent )
 {
 }
 
-ZfsJob::~ZfsJob() {}
+ZfsJob::~ZfsJob() { }
 
 QString
 ZfsJob::prettyName() const
@@ -105,7 +93,7 @@ ZfsJob::prettyName() const
 void
 ZfsJob::collectMountpoints( const QVariantList& partitions )
 {
-    m_mountpoints.empty();
+    m_mountpoints.clear();
     for ( const QVariant& partition : partitions )
     {
         if ( partition.canConvert< QVariantMap >() )
@@ -124,7 +112,8 @@ ZfsJob::isMountpointOverlapping( const QString& targetMountpoint ) const
 {
     for ( const QString& mountpoint : m_mountpoints )
     {
-        if ( mountpoint != '/' && targetMountpoint.startsWith( mountpoint ) )
+        if ( mountpoint != '/'
+             && ( targetMountpoint == mountpoint || targetMountpoint.startsWith( mountpoint + '/' ) ) )
         {
             return true;
         }
@@ -133,33 +122,55 @@ ZfsJob::isMountpointOverlapping( const QString& targetMountpoint ) const
 }
 
 ZfsResult
-ZfsJob::createZpool( QString deviceName, QString poolName, QString poolOptions, bool encrypt, QString passphrase ) const
+ZfsJob::createZpool( const QStringList& devices,
+                     QString poolName,
+                     QString poolOptions,
+                     bool encrypt,
+                     QString passphrase ) const
 {
-    // zfs doesn't wait for the devices so pause for 2 seconds to ensure we give time for the device files to be created
-    sleep( 2 );
-
-    QStringList command;
+    QStringList command { "zpool", "create" };
+    command += QProcess::splitCommand( poolOptions );
+    for ( const auto& option : std::as_const( command ) )
+    {
+        if ( option == "-m" || option.startsWith( "cachefile=" )
+             || ( option.startsWith( "mountpoint=" ) && option != "mountpoint=none" ) )
+        {
+            return { false, tr( "Pool creation must not set a cache file or mount a dataset on the live system." ) };
+        }
+    }
+    if ( !command.contains( "mountpoint=none" ) )
+    {
+        command << "-O" << "mountpoint=none";
+    }
+    command << "-o" << "cachefile=none";
+    if ( m_utf8Only )
+    {
+        command << "-O" << "utf8only=on";
+    }
     if ( encrypt )
     {
-        command = QStringList() << "zpool"
-                                << "create" << poolOptions.split( ' ' ) << "-O"
-                                << "encryption=aes-256-gcm"
-                                << "-O"
-                                << "keyformat=passphrase" << poolName << deviceName;
+        command << "-O" << "encryption=aes-256-gcm" << "-O" << "keyformat=passphrase";
     }
-    else
+    command << poolName;
+    if ( devices.size() > 1 )
     {
-        command = QStringList() << "zpool"
-                                << "create" << poolOptions.split( ' ' ) << poolName << deviceName;
+        command << "mirror";
     }
+    command += devices;
 
-    auto r = Calamares::System::instance()->runCommand(
-        Calamares::System::RunLocation::RunInHost, command, QString(), passphrase, std::chrono::seconds( 10 ) );
+    auto r = Calamares::System::instance()->runCommand( Calamares::System::RunLocation::RunInHost,
+                                                        command,
+                                                        QString(),
+                                                        encrypt ? passphrase + '\n' : QString(),
+                                                        std::chrono::seconds( 60 ) );
 
     if ( r.getExitCode() != 0 )
     {
-        cWarning() << "Failed to run zpool create.  The output was: " + r.getOutput();
-        return { false, tr( "Failed to create zpool on " ) + deviceName };
+        if ( !encrypt )
+        {
+            cWarning() << "Failed to run zpool create. The output was:" << r.getOutput();
+        }
+        return { false, tr( "Failed to create ZFS pool %1." ).arg( poolName ) };
     }
 
     return { true, QString() };
@@ -186,12 +197,25 @@ ZfsJob::exec()
 
     QVariantList poolNames;
 
-    // Check to ensure the list of zfs info from the partition module is available and convert it to a list
-    if ( !gs->contains( "zfsInfo" ) && gs->value( "zfsInfo" ).canConvert< QVariantList >() )
+    collectMountpoints( partitions );
+    bool devicesReady = false;
+    const auto hasEncryptedBoot
+        = std::any_of( partitions.cbegin(),
+                       partitions.cend(),
+                       []( const QVariant& partition )
+                       {
+                           const auto p = partition.toMap();
+                           return p.value( "mountPoint" ) == "/boot" && p.contains( "luksMapperName" );
+                       } );
+    QSet< QString > usedPools, usedDevices, usedMounts;
+    QVariantList importedPools;
+    QMap< QString, QVariantMap > encryptionByMount;
+    const auto zfsInfoList = gs->value( "zfsInfo" ).toList();
+    for ( const auto& entry : zfsInfoList )
     {
-        return Calamares::JobResult::error( tr( "Internal data missing" ), tr( "Failed to create zpool" ) );
+        const auto info = entry.toMap();
+        encryptionByMount.insert( info.value( "mountpoint" ).toString(), info );
     }
-    QVariantList zfsInfoList = gs->value( "zfsInfo" ).toList();
 
     for ( auto& partition : std::as_const( partitions ) )
     {
@@ -202,67 +226,123 @@ ZfsJob::exec()
         }
 
         // If it isn't a zfs partition, ignore it
-        if ( pMap[ "fsName" ] != "zfs" )
+        if ( pMap.value( "fs" ) != "zfs" || pMap.value( "mountPoint" ).toString().isEmpty() )
         {
             continue;
         }
-
-        // Find the best device identifier, if one isn't available, skip this partition
-        QString deviceName = findBestZfsDevice( pMap );
-        if ( deviceName.isEmpty() )
+        if ( !m_grubCompatibility.isEmpty() && hasEncryptedBoot )
         {
-            continue;
+            return Calamares::JobResult::error( tr( "GRUB needs an unencrypted /boot for this ZFS layout." ) );
         }
 
-        // If the partition doesn't have a mountpoint, skip it
-        QString mountpoint = pMap[ "mountPoint" ].toString();
-        if ( mountpoint.isEmpty() )
+        if ( !devicesReady )
         {
-            continue;
-        }
-
-        // Build a poolname off config pool name and the mountpoint, this is not ideal but should work until there is UI built for zfs
-        QString poolName = m_poolName;
-        if ( mountpoint != '/' )
-        {
-            poolName += alphaNumeric( mountpoint );
-        }
-
-        // Look in the zfs info list to see if this partition should be encrypted
-        bool encrypt = false;
-        QString passphrase;
-        for ( const QVariant& zfsInfo : std::as_const( zfsInfoList ) )
-        {
-            if ( zfsInfo.canConvert< QVariantMap >() && zfsInfo.toMap().value( "encrypted" ).toBool()
-                 && mountpoint == zfsInfo.toMap().value( "mountpoint" ) )
+            const auto settled = system->runCommand( { "udevadm", "settle" }, std::chrono::seconds( 30 ) );
+            if ( settled.getExitCode() )
             {
-                encrypt = true;
-                passphrase = zfsInfo.toMap().value( "passphrase" ).toString();
+                return settled.explainProcess( QStringLiteral( "udevadm settle" ), std::chrono::seconds( 30 ) );
             }
+            if ( !QFileInfo::exists( "/etc/hostid" ) )
+            {
+                const auto hostId = system->runCommand( { "zgenhostid" }, std::chrono::seconds( 10 ) );
+                if ( hostId.getExitCode() )
+                {
+                    return hostId.explainProcess( QStringLiteral( "zgenhostid" ), std::chrono::seconds( 10 ) );
+                }
+            }
+            devicesReady = true;
         }
 
-        // Generate the zfs hostid file
-        auto i = system->runCommand( { "zgenhostid" }, std::chrono::seconds( 3 ) );
-        if ( i.getExitCode() != 0 )
+        const auto mountpoint = pMap.value( "mountPoint" ).toString();
+        const auto deviceName = findBestZfsDevice( pMap );
+        const auto device = QFileInfo( deviceName ).canonicalFilePath();
+        if ( !pMap.value( "claimed" ).toBool() || !deviceName.startsWith( "/dev/" ) || device.isEmpty() )
         {
-            cWarning() << "Failed to create /etc/hostid";
+            return Calamares::JobResult::error(
+                tr( "No device selected for ZFS formatting at %1." ).arg( mountpoint ) );
+        }
+
+        const auto poolName = m_poolNames.value( mountpoint, m_poolName + alphaNumeric( mountpoint ) ).toString();
+        static const QRegularExpression poolNamePattern( "^[A-Za-z][A-Za-z0-9_.:-]*$" );
+        if ( !poolNamePattern.match( poolName ).hasMatch() || usedPools.contains( poolName )
+             || usedDevices.contains( device ) || usedMounts.contains( mountpoint ) )
+        {
+            return Calamares::JobResult::error(
+                tr( "Invalid or duplicate ZFS pool, device, or mount point: %1." ).arg( mountpoint ) );
+        }
+        usedPools.insert( poolName );
+        usedDevices.insert( device );
+        usedMounts.insert( mountpoint );
+
+        const auto encryption = encryptionByMount.value( mountpoint );
+        const bool encrypt = encryption.value( "encrypted" ).toBool();
+        const auto passphrase = encryption.value( "passphrase" ).toString();
+        if ( !m_grubCompatibility.isEmpty() && mountpoint != "/" && encrypt )
+        {
+            return Calamares::JobResult::error(
+                tr( "Automatic unlock of a separate ZFS pool is not supported: %1." ).arg( mountpoint ) );
+        }
+        if ( encrypt && ( passphrase.isEmpty() || passphrase.contains( '\n' ) ) )
+        {
+            return Calamares::JobResult::error(
+                tr( "A ZFS encryption passphrase is missing or invalid for %1." ).arg( mountpoint ) );
+        }
+
+        auto poolOptions = m_poolOptions;
+        const bool grubReadsPool = mountpoint == "/boot" || ( mountpoint == "/" && !m_mountpoints.contains( "/boot" ) );
+        if ( !m_grubCompatibility.isEmpty() && grubReadsPool )
+        {
+            static const QSet< QString > profiles { "grub2", "grub2-2.06", "grub2-2.12" };
+            if ( !profiles.contains( m_grubCompatibility ) )
+            {
+                return Calamares::JobResult::error( tr( "Unknown GRUB compatibility profile." ) );
+            }
+            if ( encrypt || pMap.contains( "luksMapperName" ) )
+            {
+                return Calamares::JobResult::error(
+                    tr( "GRUB needs an unencrypted /boot to start from encrypted ZFS." ) );
+            }
+            if ( poolOptions.contains( "compatibility=" ) || poolOptions.contains( "encryption=" )
+                 || poolOptions.contains( "feature@" ) || poolOptions.contains( "version=" ) )
+            {
+                return Calamares::JobResult::error(
+                    tr( "Do not override compatibility, features, version or encryption for a GRUB-visible pool." ) );
+            }
+            poolOptions += " -o compatibility=" + m_grubCompatibility;
+        }
+
+        QStringList devices { deviceName };
+        if ( mountpoint == "/boot" )
+        {
+            const auto bootMirror = gs->value( "blockDevicesBoot" ).toMap().value( "vdevs" ).toStringList();
+            if ( !bootMirror.isEmpty() )
+            {
+                if ( m_grubCompatibility.isEmpty() || bootMirror.size() < 2 )
+                {
+                    return Calamares::JobResult::error(
+                        tr( "A mirrored boot pool requires GRUB compatibility and at least two devices." ) );
+                }
+                devices = bootMirror;
+            }
         }
 
         // Create the zpool
         ZfsResult zfsResult;
         if ( encrypt )
         {
-            zfsResult = createZpool( deviceName, poolName, m_poolOptions, true, passphrase );
+            zfsResult = createZpool( devices, poolName, poolOptions, true, passphrase );
         }
         else
         {
-            zfsResult = createZpool( deviceName, poolName, m_poolOptions, false );
+            zfsResult = createZpool( devices, poolName, poolOptions, false );
         }
 
         if ( !zfsResult.success )
         {
             return Calamares::JobResult::error( tr( "Failed to create zpool" ), zfsResult.failureMessage );
         }
+        importedPools.append( poolName );
+        gs->insert( "zfsImportedPools", importedPools );
 
         // Save the poolname, dataset name and mountpoint.  It will later be added to a list and placed in global storage.
         // This will be used by later modules including mount and umount
@@ -270,22 +350,25 @@ ZfsJob::exec()
         poolNameEntry[ "poolName" ] = poolName;
         poolNameEntry[ "mountpoint" ] = mountpoint;
         poolNameEntry[ "dsName" ] = "none";
+        poolNameEntry[ "device" ] = deviceName;
+        poolNameEntry[ "devices" ] = devices;
 
         // If the mountpoint is /, create datasets per the config file. If not, create a single dataset mounted at the partitions mountpoint
         if ( mountpoint == '/' )
         {
-            collectMountpoints( partitions );
             QVariantList datasetList;
             for ( const auto& dataset : std::as_const( m_datasets ) )
             {
                 QVariantMap datasetMap = dataset.toMap();
 
                 // Make sure all values are valid
+                const auto canMount = convertCanMount( datasetMap[ "canMount" ] );
+                const auto properties = datasetMap.value( "properties" ).toMap();
                 if ( datasetMap[ "dsName" ].toString().isEmpty() || datasetMap[ "mountpoint" ].toString().isEmpty()
-                     || datasetMap[ "canMount" ].toString().isEmpty() )
+                     || ( canMount != "on" && canMount != "off" && canMount != "noauto" )
+                     || properties.contains( "mountpoint" ) || properties.contains( "canmount" ) )
                 {
-                    cWarning() << "Bad dataset entry";
-                    continue;
+                    return Calamares::JobResult::error( tr( "Invalid ZFS dataset configuration." ) );
                 }
 
                 // We should skip this dataset if it conflicts with a permanent mountpoint
@@ -294,59 +377,88 @@ ZfsJob::exec()
                     continue;
                 }
 
-                QString canMount = convertCanMount( datasetMap[ "canMount" ].toString() );
+                datasetMap[ "canMount" ] = canMount;
+                QStringList options = QProcess::splitCommand( m_datasetOptions );
+                for ( auto it = properties.cbegin(); it != properties.cend(); ++it )
+                {
+                    options << "-o" << it.key() + '=' + it.value().toString();
+                }
+                const auto datasetName = poolName + '/' + datasetMap[ "dsName" ].toString();
 
                 // Create the dataset
                 auto r = system->runCommand( { QStringList() << "zfs"
-                                                             << "create" << m_datasetOptions.split( ' ' ) << "-o"
+                                                             << "create" << "-u" << options << "-o"
                                                              << "canmount=" + canMount << "-o"
                                                              << "mountpoint=" + datasetMap[ "mountpoint" ].toString()
-                                                             << poolName + "/" + datasetMap[ "dsName" ].toString() },
-                                             std::chrono::seconds( 10 ) );
+                                                             << datasetName },
+                                             std::chrono::seconds( 60 ) );
                 if ( r.getExitCode() != 0 )
                 {
-                    cWarning() << "Failed to create dataset" << datasetMap[ "dsName" ].toString();
-                    continue;
+                    return Calamares::JobResult::error( tr( "Failed to create ZFS dataset %1." ).arg( datasetName ),
+                                                        r.getOutput() );
+                }
+                if ( datasetMap.value( "mountpoint" ) == "/" && canMount != "off" )
+                {
+                    const QStringList args { "zpool", "set", "bootfs=" + datasetName, poolName };
+                    r = system->runCommand( args, std::chrono::seconds( 10 ) );
+                    if ( r.getExitCode() )
+                    {
+                        return r.explainProcess( args, std::chrono::seconds( 10 ) );
+                    }
                 }
 
                 // Add the dataset to the list for global storage this information is used later to properly set
                 // the mount options on each dataset
-                datasetMap[ "zpool" ] = m_poolName;
+                datasetMap[ "zpool" ] = poolName;
                 datasetList.append( datasetMap );
             }
 
-            // If the list isn't empty, add it to global storage
-            if ( !datasetList.isEmpty() )
+            const auto numRoots
+                = std::count_if( datasetList.cbegin(),
+                                 datasetList.cend(),
+                                 []( const QVariant& item )
+                                 {
+                                     const auto ds = item.toMap();
+                                     return ds.value( "mountpoint" ) == "/" && ds.value( "canMount" ) != "off";
+                                 } );
+            if ( numRoots != 1 )
             {
-                gs->insert( "zfsDatasets", datasetList );
+                return Calamares::JobResult::error(
+                    tr( "Exactly one mountable ZFS dataset must provide the root filesystem." ) );
             }
+            gs->insert( "zfsDatasets", datasetList );
         }
         else
         {
-            QString dsName = mountpoint;
-            dsName = alphaNumeric( mountpoint );
-            auto r = system->runCommand( { QStringList() << "zfs"
-                                                         << "create" << m_datasetOptions.split( ' ' ) << "-o"
-                                                         << "canmount=on"
-                                                         << "-o"
-                                                         << "mountpoint=" + mountpoint << poolName + "/" + dsName },
-                                         std::chrono::seconds( 10 ) );
+            const auto dsName = alphaNumeric( mountpoint );
+            const bool legacy = mountpoint == "/boot";
+            auto r = system->runCommand(
+                { QStringList() << "zfs"
+                                << "create" << "-u" << QProcess::splitCommand( m_datasetOptions ) << "-o"
+                                << "canmount=on"
+                                << "-o"
+                                << ( legacy ? QStringLiteral( "mountpoint=legacy" ) : "mountpoint=" + mountpoint )
+                                << poolName + "/" + dsName },
+                std::chrono::seconds( 60 ) );
             if ( r.getExitCode() != 0 )
             {
                 return Calamares::JobResult::error( tr( "Failed to create dataset" ),
                                                     tr( "The output was: " ) + r.getOutput() );
             }
             poolNameEntry[ "dsName" ] = dsName;
+            poolNameEntry[ "legacy" ] = legacy;
         }
 
         poolNames.append( poolNameEntry );
 
         // Export the zpool so it can be reimported at the correct location later
-        auto r = system->runCommand( { "zpool", "export", poolName }, std::chrono::seconds( 10 ) );
+        auto r = system->runCommand( { "zpool", "export", poolName }, std::chrono::seconds( 60 ) );
         if ( r.getExitCode() != 0 )
         {
-            cWarning() << "Failed to export pool" << m_poolName;
+            return Calamares::JobResult::error( tr( "Failed to export ZFS pool %1." ).arg( poolName ), r.getOutput() );
         }
+        importedPools.removeLast();
+        gs->insert( "zfsImportedPools", importedPools );
     }
 
     // Put the list of zpools into global storage
@@ -364,6 +476,9 @@ ZfsJob::setConfigurationMap( const QVariantMap& map )
     m_poolName = Calamares::getString( map, "poolName" );
     m_poolOptions = Calamares::getString( map, "poolOptions" );
     m_datasetOptions = Calamares::getString( map, "datasetOptions" );
+    m_grubCompatibility = Calamares::getString( map, "grubCompatibility" );
+    m_poolNames = map.value( "poolNames" ).toMap();
+    m_utf8Only = Calamares::getBool( map, "utf8Only", false );
 
     m_datasets = Calamares::getList( map, "datasets" );
 }

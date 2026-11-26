@@ -45,9 +45,8 @@ CRYPTTAB_HEADER = """# /etc/crypttab: mappings for encrypted partitions.
 # See crypttab(5) for the supported syntax.
 #
 # NOTE: You need not list your root (/) partition here, but it must be set up
-#       beforehand by the initramfs (/etc/mkinitcpio.conf). The same applies
-#       to encrypted swap, which should be set up with mkinitcpio-openswap
-#       for resume support.
+#       beforehand by the initramfs. Encrypted swap can be unlocked here;
+#       resume also requires support in the initramfs.
 #
 # <name>               <device>                         <password> <options>"""
 
@@ -150,6 +149,8 @@ class FstabGenerator(object):
         luks_uuid = partition["luksUuid"]
         if not mapper_name or not luks_uuid:
             return None
+        if partition.get("fs") == "linuxswap" and not partition.get("claimed"):
+            return None
 
         crypttab_options = self.crypttab_options
         # Make sure to not use missing keyfile
@@ -172,6 +173,16 @@ class FstabGenerator(object):
                    for p in self.partitions]):
                 password = "none"
                 crypttab_options = ""
+
+        keyfile_allowed = partition.get("luksKeyFileAllowed", True)
+        if not keyfile_allowed:
+            password = "none"
+        if not keyfile_allowed or partition.get("fs") == "linuxswap":
+            crypttab_options = self.crypttab_options
+        resume = libcalamares.globalstorage.value("zfsResume") or {}
+        if resume.get("uuid") == luks_uuid:
+            password = "none"
+            crypttab_options = "luks,x-initrd.attach"
 
         return dict(
             name=mapper_name,
@@ -197,6 +208,8 @@ class FstabGenerator(object):
 
         with open(fstab_path, "w") as fstab_file:
             print(FSTAB_HEADER, file=fstab_file)
+            legacy_pools = {p["mountpoint"]: p for p in libcalamares.globalstorage.value("zfsPoolInfo") or []
+                            if p.get("legacy")}
 
             for partition in self.partitions:
                 # Special treatment for a btrfs subvolumes
@@ -212,10 +225,15 @@ class FstabGenerator(object):
                         dct = self.generate_fstab_line_info(mount_entry)
                         if dct:
                             self.print_fstab_line(dct, file=fstab_file)
-                elif partition["fs"] != "zfs":  # zfs partitions don't need an entry in fstab
+                elif partition["fs"] != "zfs":
                     dct = self.generate_fstab_line_info(partition)
                     if dct:
                         self.print_fstab_line(dct, file=fstab_file)
+                elif partition["mountPoint"] in legacy_pools:
+                    pool = legacy_pools[partition["mountPoint"]]
+                    self.print_fstab_line(dict(device=pool["poolName"] + "/" + pool["dsName"],
+                                               mount_point=partition["mountPoint"], fs="zfs", check=0,
+                                               options="defaults,x-systemd.requires=zfs-import.target"), file=fstab_file)
 
             if self.root_is_ssd:
                 # Old behavior was to mount /tmp as tmpfs
@@ -264,6 +282,8 @@ class FstabGenerator(object):
             return None
 
         options = self.get_mount_options(mount_point)
+        if partition.get("raidBootEsp"):
+            options += ",nofail,x-systemd.device-timeout=5s"
 
         if mount_point == "/" and filesystem != "btrfs":
             check = 1
@@ -396,6 +416,8 @@ def run():
         if swap_choice and swap_choice == "file":
             # There's no formatted partition for it, so we'll sneak in an entry
             root_partitions = [ p["fs"].lower() for p in partitions if p["mountPoint"] == "/" ]
+            if "zfs" in root_partitions:
+                return (_("Swap configuration error"), _("ZFS does not support swap files. Choose a swap partition."))
             root_btrfs = (root_partitions[0] == "btrfs") if root_partitions else False
             if root_btrfs:
                 partitions.append( dict(fs="swap", mountPoint=None, claimed=True, device="/swap/swapfile", uuid=None) )

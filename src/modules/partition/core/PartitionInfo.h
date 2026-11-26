@@ -48,6 +48,9 @@ void setFlags( Partition* partition, PartitionTable::Flags f );
 QString label( const Partition* partition );
 void setLabel( Partition* partition, const QString& value );
 
+QString zfsPassphrase( const Partition* partition );
+void setZfsPassphrase( Partition* partition, const QString& value );
+
 void reset( Partition* partition );
 
 /**

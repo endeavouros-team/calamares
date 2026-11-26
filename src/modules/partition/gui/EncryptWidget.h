@@ -39,6 +39,7 @@ public:
     explicit EncryptWidget( QWidget* parent = nullptr );
 
     void setEncryptionCheckbox( bool preCheckEncrypt = false );
+    void setPassphrase( const QString& passphrase );
     void reset( bool checkVisible = true );
 
     bool isEncryptionCheckboxChecked();
@@ -66,7 +67,7 @@ private:
     Ui::EncryptWidget* m_ui;
     Encryption m_state;
 
-    FileSystem::Type m_filesystem;
+    FileSystem::Type m_filesystem = FileSystem::Unknown;
 };
 
 #endif  // ENCRYPTWIDGET_H

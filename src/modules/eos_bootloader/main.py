@@ -32,8 +32,10 @@ def pretty_status_message():
 
 def is_resume_needed():
     partitions = libcalamares.globalstorage.value("partitions")
+    if any(p["fs"] == "zfs" and p["mountPoint"] == "/" for p in partitions):
+        return False
     for partition in partitions:
-        if partition["fs"] == "linuxswap":
+        if partition["fs"] == "linuxswap" and partition.get("claimed", False):
             return True
 
     return False
@@ -76,16 +78,13 @@ def run_dracut(installation_root_path):
                 pkgbase_location = os.path.join(root, file)
                 with open(pkgbase_location, 'r') as pkgbase_file:
                     kernel_suffix = pkgbase_file.read().rstrip()
-                try:
-                    libcalamares.utils.target_env_process_output(["dracut", "--force", "--hostonly",
-                                                                  "--no-hostonly-cmdline",
-                                                                  f"/boot/initramfs-{kernel_suffix}.img",
-                                                                  kernel_version])
-                    libcalamares.utils.target_env_process_output(["dracut", "--force", "--no-hostonly",
-                                                                  f"/boot/initramfs-{kernel_suffix}-fallback.img",
-                                                                  kernel_version])
-                except subprocess.CalledProcessError as cpe:
-                    libcalamares.utils.warning(f"dracut failed with error: {cpe.stderr}")
+                libcalamares.utils.target_env_process_output(["dracut", "--force", "--hostonly",
+                                                              "--no-hostonly-cmdline",
+                                                              f"/boot/initramfs-{kernel_suffix}.img",
+                                                              kernel_version])
+                libcalamares.utils.target_env_process_output(["dracut", "--force", "--no-hostonly",
+                                                              f"/boot/initramfs-{kernel_suffix}-fallback.img",
+                                                              kernel_version])
 
                 kernel_name = f"vmlinuz-{kernel_suffix}"
                 # copy kernel to boot
@@ -152,6 +151,9 @@ def run():
 
     # Run dracut unless we are using systemd-boot since kernel-install handles that
     if bootloader_name.casefold().strip() != "systemd-boot":
-        run_dracut(installation_root_path)
+        try:
+            run_dracut(installation_root_path)
+        except subprocess.CalledProcessError as error:
+            return _("Failed to build the initramfs."), error.stderr or str(error)
 
     return None

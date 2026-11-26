@@ -1,6 +1,6 @@
 ---
 $schema: https://json-schema.org/schema#
-$id: https://calamares.io/schemas/eos_script
+$id: https://calamares.io/schemas/eos_bootloader
 additionalProperties: false
 type: object
 properties:
@@ -15,4 +15,5 @@ properties:
                 name: { type: string }
                 packages: { type: array }
             required: [ name, packages ]
-    required: [ gsName, packageLocation, bootloader ]
+    offline: { type: boolean }
+required: [ gsName, packageLocation, bootloader ]

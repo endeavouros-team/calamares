@@ -47,6 +47,9 @@ private:
     QString m_poolName;
     QString m_poolOptions;
     QString m_datasetOptions;
+    QString m_grubCompatibility;
+    QVariantMap m_poolNames;
+    bool m_utf8Only = false;
     QStringList m_mountpoints;
 
     QList< QVariant > m_datasets;
@@ -60,7 +63,7 @@ private:
      * @p passphrase is a string continaing the passphrase
      *
      */
-    ZfsResult createZpool( QString deviceName,
+    ZfsResult createZpool( const QStringList& devices,
                            QString poolName,
                            QString poolOptions,
                            bool encrypt,

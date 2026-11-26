@@ -9,6 +9,8 @@
 
 #include "DracutLuksCfgJob.h"
 
+#include <algorithm>
+
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -23,9 +25,7 @@
 static const QLatin1String CONFIG_FILE( "/etc/dracut.conf.d/calamares-luks.conf" );
 
 static const char CONFIG_FILE_HEADER[]
-    = "# Configuration file automatically written by the Calamares system installer\n"
-      "# (This file is written once at install time and should be safe to edit.)\n"
-      "# Enables support for LUKS full disk encryption with single sign on from GRUB.\n"
+    = "# LUKS configuration automatically written by the Calamares system installer\n"
       "\n";
 
 static const char CONFIG_FILE_CRYPTTAB_KEYFILE_LINE[]
@@ -69,7 +69,7 @@ isRootEncrypted()
 }
 
 static bool
-hasUnencryptedSeparateBoot()
+includeKeyfile()
 {
     const QVariantList partitions = ::partitions();
     for ( const QVariant& partition : partitions )
@@ -78,17 +78,22 @@ hasUnencryptedSeparateBoot()
         QString mountPoint = partitionMap.value( QStringLiteral( "mountPoint" ) ).toString();
         if ( mountPoint == QStringLiteral( "/boot" ) )
         {
-            return !partitionMap.contains( QStringLiteral( "luksMapperName" ) );
+            if ( !partitionMap.contains( QStringLiteral( "luksMapperName" ) ) )
+            {
+                return false;
+            }
         }
     }
-    return false;
+    return QFileInfo::exists( rootMountPoint() + QStringLiteral( "/crypto_keyfile.bin" ) );
 }
 
 static bool
 usesGrub()
 {
-    if( Calamares::JobQueue::instance()->globalStorage()->contains("packagechooser_packagechooserq") ) {
-        const QString bootloader = Calamares::JobQueue::instance()->globalStorage()->value("packagechooser_packagechooserq").toString();
+    if ( Calamares::JobQueue::instance()->globalStorage()->contains( "packagechooser_packagechooserq" ) )
+    {
+        const QString bootloader
+            = Calamares::JobQueue::instance()->globalStorage()->value( "packagechooser_packagechooserq" ).toString();
         return bootloader.toLower().trimmed() == "grub";
     }
     return false;
@@ -98,11 +103,23 @@ static QString
 swapOuterUuid()
 {
     const QVariantList partitions = ::partitions();
+    const auto zfsRoot = std::any_of( partitions.cbegin(),
+                                      partitions.cend(),
+                                      []( const QVariant& partition )
+                                      {
+                                          const auto p = partition.toMap();
+                                          return p.value( "fs" ) == "zfs" && p.value( "mountPoint" ) == "/";
+                                      } );
+    if ( zfsRoot )
+    {
+        return { };
+    }
     for ( const QVariant& partition : partitions )
     {
         QVariantMap partitionMap = partition.toMap();
         QString fsType = partitionMap.value( QStringLiteral( "fs" ) ).toString();
-        if ( fsType == QStringLiteral( "linuxswap" ) && partitionMap.contains( QStringLiteral( "luksMapperName" ) ) )
+        if ( fsType == QStringLiteral( "linuxswap" ) && partitionMap.value( "claimed" ).toBool()
+             && partitionMap.contains( QStringLiteral( "luksMapperName" ) ) )
         {
             return partitionMap.value( QStringLiteral( "luksUuid" ) ).toString();
         }
@@ -116,19 +133,19 @@ DracutLuksCfgJob::DracutLuksCfgJob( QObject* parent )
 }
 
 
-DracutLuksCfgJob::~DracutLuksCfgJob() {}
+DracutLuksCfgJob::~DracutLuksCfgJob() { }
 
 
 QString
 DracutLuksCfgJob::prettyName() const
 {
-    if ( isRootEncrypted() )
+    if ( isRootEncrypted() || !swapOuterUuid().isEmpty() )
     {
         return tr( "Writing LUKS configuration for Dracut to %1…", "@status" ).arg( CONFIG_FILE );
     }
     else
     {
-        return tr( "Skipping writing LUKS configuration for Dracut: \"/\" partition is not encrypted", "@info" );
+        return tr( "No encrypted root or swap device to configure for Dracut.", "@info" );
     }
 }
 
@@ -136,7 +153,8 @@ DracutLuksCfgJob::prettyName() const
 Calamares::JobResult
 DracutLuksCfgJob::exec()
 {
-    if ( isRootEncrypted() )
+    const QString swapUuid = swapOuterUuid();
+    if ( isRootEncrypted() || !swapUuid.isEmpty() )
     {
         const QString realConfigFilePath = rootMountPoint() + CONFIG_FILE;
         cDebug() << "[DRACUTLUKSCFG]: Writing" << realConfigFilePath;
@@ -149,18 +167,16 @@ DracutLuksCfgJob::exec()
         }
         QTextStream outStream( &configFile );
         outStream << CONFIG_FILE_HEADER
-                  << ( hasUnencryptedSeparateBoot() || !usesGrub() ? CONFIG_FILE_CRYPTTAB_LINE : CONFIG_FILE_CRYPTTAB_KEYFILE_LINE );
-        const QString swapOuterUuid = ::swapOuterUuid();
-        if ( !swapOuterUuid.isEmpty() )
+                  << ( usesGrub() && includeKeyfile() ? CONFIG_FILE_CRYPTTAB_KEYFILE_LINE : CONFIG_FILE_CRYPTTAB_LINE );
+        if ( !swapUuid.isEmpty() )
         {
-            cDebug() << "[DRACUTLUKSCFG]: Swap outer UUID" << swapOuterUuid;
-            outStream << QString( CONFIG_FILE_SWAPLINE ).arg( swapOuterUuid ).toLatin1();
+            outStream << QString( CONFIG_FILE_SWAPLINE ).arg( swapUuid ).toLatin1();
         }
         cDebug() << "[DRACUTLUKSCFG]: Wrote config to" << realConfigFilePath;
     }
     else
     {
-        cDebug() << "[DRACUTLUKSCFG]: / not encrypted, skipping";
+        cDebug() << "[DRACUTLUKSCFG]: no encrypted root or swap, skipping";
     }
 
     return Calamares::JobResult::ok();

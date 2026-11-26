@@ -1,0 +1,4 @@
+if(Python_Interpreter_FOUND)
+    add_test(NAME blockdevices-unit
+        COMMAND ${Python_EXECUTABLE} ${_testdir}/test_blockdevices.py)
+endif()

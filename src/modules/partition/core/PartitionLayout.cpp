@@ -9,8 +9,6 @@
  *
  */
 
-#include "GlobalStorage.h"
-#include "JobQueue.h"
 
 #include "utils/Logger.h"
 
@@ -27,14 +25,14 @@
 #include <kpmcore/core/partition.h>
 #include <kpmcore/fs/filesystem.h>
 
-PartitionLayout::PartitionLayout() {}
+PartitionLayout::PartitionLayout() { }
 
 PartitionLayout::PartitionLayout( const PartitionLayout& layout )
     : m_partLayout( layout.m_partLayout )
 {
 }
 
-PartitionLayout::~PartitionLayout() {}
+PartitionLayout::~PartitionLayout() { }
 
 PartitionLayout::PartitionEntry::PartitionEntry()
     : partAttributes( 0 )
@@ -176,6 +174,7 @@ PartitionLayout::setDefaultFsType( FileSystem::Type defaultFsType )
     case FileSystem::Btrfs:
     case FileSystem::Exfat:
     case FileSystem::F2fs:
+    case FileSystem::Zfs:
         // ok
         break;
     case FileSystem::Fat16:
@@ -183,7 +182,6 @@ PartitionLayout::setDefaultFsType( FileSystem::Type defaultFsType )
     case FileSystem::HfsPlus:
     case FileSystem::Ufs:
     case FileSystem::Hpfs:
-    case FileSystem::Zfs:
     case FileSystem::Nilfs2:
     case FileSystem::Fat12:
     case FileSystem::Apfs:
@@ -324,21 +322,9 @@ PartitionLayout::createPartitions( Device* dev,
                                                             KPM_PARTITION_FLAG( None ) );
         }
 
-        // For zfs, we need to make the passphrase available to later modules
-        if ( correctFS( entry.partFileSystem ) == FileSystem::Zfs )
+        if ( correctFS( entry.partFileSystem ) == FileSystem::Zfs && !entry.partNoEncrypt )
         {
-            Calamares::GlobalStorage* storage = Calamares::JobQueue::instance()->globalStorage();
-            QList< QVariant > zfsInfoList;
-            QVariantMap zfsInfo;
-
-            // Save the information subsequent modules will need
-            zfsInfo[ "encrypted" ] = !luksPassphrase.isEmpty() && !entry.partNoEncrypt;
-            zfsInfo[ "passphrase" ] = luksPassphrase;
-            zfsInfo[ "mountpoint" ] = entry.partMountPoint;
-
-            // Add it to the list and insert it into global storage
-            zfsInfoList.append( zfsInfo );
-            storage->insert( "zfsInfo", zfsInfoList );
+            PartitionInfo::setZfsPassphrase( part, luksPassphrase );
         }
 
         PartitionInfo::setFormat( part, true );

@@ -1,0 +1,4 @@
+if(Python_Interpreter_FOUND)
+    add_test(NAME eos-zfs-unit
+        COMMAND ${Python_EXECUTABLE} ${_testdir}/test_eos_zfs.py)
+endif()

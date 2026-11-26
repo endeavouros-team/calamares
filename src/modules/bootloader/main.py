@@ -133,7 +133,7 @@ def have_program_in_target(program : str):
 def get_kernel_params(uuid):
     # Configured kernel parameters (default "quiet"), if plymouth installed, add splash
     # screen parameter and then "rw".
-    kernel_params = libcalamares.job.configuration.get("kernelParams", ["quiet"])
+    kernel_params = list(libcalamares.job.configuration.get("kernelParams", ["quiet"]))
     if have_program_in_target("plymouth"):
         kernel_params.append("splash")
     kernel_params.append("rw")
@@ -169,7 +169,8 @@ def get_kernel_params(uuid):
                 cryptdevice_params = [f"rd.luks.uuid={partition['luksUuid']}"]
             else:
                 cryptdevice_params = [f"cryptdevice=UUID={partition['luksUuid']}:{partition['luksMapperName']}"]
-            cryptdevice_params.append(f"root=/dev/mapper/{partition['luksMapperName']}")
+            if not is_zfs_root(partition):
+                cryptdevice_params.append(f"root=/dev/mapper/{partition['luksMapperName']}")
 
     # btrfs and zfs handling
     for partition in partitions:
@@ -190,18 +191,18 @@ def get_kernel_params(uuid):
                 libcalamares.utils.warning("Internal error handling zfs dataset")
                 raise Exception("Internal zfs data missing, please contact your distribution")
 
-    if cryptdevice_params:
-        kernel_params.extend(cryptdevice_params)
-    else:
+    kernel_params.extend(cryptdevice_params)
+    if not any(arg.startswith("root=") for arg in kernel_params):
         kernel_params.append("root=UUID={!s}".format(uuid))
 
-    if swap_uuid:
+    zfs_root = any(is_zfs_root(p) for p in partitions)
+    if swap_uuid and not zfs_root:
         kernel_params.append("resume=UUID={!s}".format(swap_uuid))
 
-    if use_systemd_naming and swap_outer_uuid:
+    if use_systemd_naming and swap_outer_uuid and not zfs_root:
         kernel_params.append(f"rd.luks.uuid={swap_outer_uuid}")
 
-    if swap_outer_mappername:
+    if swap_outer_mappername and not zfs_root:
         kernel_params.append(f"resume=/dev/mapper/{swap_outer_mappername}")
 
     return kernel_params
@@ -695,6 +696,14 @@ def install_grub(efi_directory, fw_type, install_hybrid_grub):
     if fw_type != "bios" and fw_type != "efi":
         raise ValueError("fw_type must be 'bios' or 'efi'")
 
+    mirror = libcalamares.globalstorage.value("blockDevicesBoot")
+    if mirror:
+        if install_hybrid_grub:
+            raise ValueError("Redundant GRUB is configured for the selected firmware, not hybrid installation")
+        install_grub_mirror(mirror, fw_type)
+        run_grub_mkconfig(partitions, libcalamares.job.configuration["grubCfg"])
+        return
+
     if fw_type == "efi" or install_hybrid_grub:
         libcalamares.utils.debug("Bootloader: grub (efi)")
         libcalamares.utils.debug(f"install_hybrid_grub: {install_hybrid_grub}")
@@ -742,6 +751,29 @@ def install_grub(efi_directory, fw_type, install_hybrid_grub):
         run_grub_install("bios", partitions, efi_directory, install_hybrid_grub)
 
     run_grub_mkconfig(partitions, libcalamares.job.configuration["grubCfg"])
+
+
+def install_grub_mirror(mirror, firmware):
+    install = ["env", "ZPOOL_VDEV_NAME_PATH=1", libcalamares.job.configuration["grubInstall"]]
+    if firmware == "bios":
+        for disk in mirror["disks"]:
+            check_target_env_call(install + ["--target=i386-pc", "--recheck", disk])
+        return
+
+    target, binary, fallback = get_grub_efi_parameters()
+    root = libcalamares.globalstorage.value("rootMountPoint")
+    for index, esp in enumerate(mirror["esps"]):
+        path = os.path.join(root, esp.lstrip("/"))
+        if not os.path.ismount(path):
+            raise ValueError(f"EFI System Partition is not mounted at {esp}")
+        args = install + ["--target=" + target, "--efi-directory=" + esp]
+        label = efi_label(esp) + (f"-raid{index + 1}" if index else "")
+        check_target_env_call(args + ["--bootloader-id=" + label])
+        directory = vfat_correct_case(path, "EFI")
+        source = vfat_correct_case(vfat_correct_case(directory, label), binary)
+        boot = vfat_correct_case(directory, "BOOT")
+        os.makedirs(boot, exist_ok=True)
+        shutil.copy2(source, vfat_correct_case(boot, fallback))
 
 
 def install_secureboot(efi_directory):

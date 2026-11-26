@@ -29,75 +29,61 @@
 #include <kpmcore/util/report.h>
 
 #include <qcoreapplication.h>
-#include <qregularexpression.h>
+#include <qjsonarray.h>
+#include <qjsondocument.h>
+#include <qjsonobject.h>
 
 using Calamares::Partition::untranslatedFS;
 using Calamares::Partition::userVisibleFS;
 
-/** @brief Create
- *
- * Uses sfdisk to remove @p partition.  This should only be used in cases
- * where using kpmcore to remove the partition would not be appropriate
- *
- */
+/** Creates a partition without having KPMcore create a ZFS filesystem. */
 static Calamares::JobResult
 createZfs( Partition* partition, Device* device )
 {
-    auto r = Calamares::System::instance()->runCommand(
-        { "sh",
-          "-c",
-          "echo start=" + QString::number( partition->firstSector() ) + " size="
-              + QString::number( partition->length() ) + " | sfdisk --append --force " + partition->devicePath() },
-        std::chrono::seconds( 5 ) );
+    const auto disk = partition->devicePath();
+    const QStringList append { "sfdisk", "--append", "--wipe-partitions", "always", disk };
+    auto r = Calamares::System::runCommand(
+        Calamares::System::RunLocation::RunInHost,
+        append,
+        { },
+        QStringLiteral( "start=%1, size=%2\n" ).arg( partition->firstSector() ).arg( partition->length() ),
+        std::chrono::seconds( 30 ) );
     if ( r.getExitCode() != 0 )
     {
-        return Calamares::JobResult::error(
-            QCoreApplication::translate( CreatePartitionJob::staticMetaObject.className(),
-                                         "Failed to create partition" ),
-            QCoreApplication::translate( CreatePartitionJob::staticMetaObject.className(),
-                                         "Failed to create zfs partition with output: "
-                                             + r.getOutput().toLocal8Bit() ) );
+        return r.explainProcess( append, std::chrono::seconds( 30 ) );
     }
 
-    // Now we need to do some things that would normally be done by kpmcore
-
-    // First we get the device node from the output and set it as the partition path
-    QString deviceNode;
+    const QStringList probe { "sfdisk", "--json", disk };
+    r = Calamares::System::runCommand( probe, std::chrono::seconds( 10 ) );
+    if ( r.getExitCode() )
     {
-        QRegularExpression re( QStringLiteral( "Created a new partition (\\d+)" ) );
-        QRegularExpressionMatch rem = re.match( r.getOutput() );
-
-        if ( rem.hasMatch() )
-        {
-            if ( partition->devicePath().back().isDigit() )
-            {
-                deviceNode = partition->devicePath() + QLatin1Char( 'p' ) + rem.captured( 1 );
-            }
-            else
-            {
-                deviceNode = partition->devicePath() + rem.captured( 1 );
-            }
-        }
-        partition->setPartitionPath( deviceNode );
+        return r.explainProcess( probe, std::chrono::seconds( 10 ) );
     }
-    // If it is a gpt device, set the partition UUID
-    if ( device->partitionTable()->type() == PartitionTable::gpt && partition->uuid().isEmpty() )
+    const auto entries = QJsonDocument::fromJson( r.getOutput().toUtf8() )
+                             .object()
+                             .value( "partitiontable" )
+                             .toObject()
+                             .value( "partitions" )
+                             .toArray();
+    for ( const auto& item : entries )
     {
-        r = Calamares::System::instance()->runCommand(
-            { "sfdisk", "--list", "--output", "Device,UUID", partition->devicePath() }, std::chrono::seconds( 5 ) );
-        if ( r.getExitCode() == 0 )
+        const auto entry = item.toObject();
+        const auto node = entry.value( "node" ).toString();
+        if ( !node.isEmpty() && entry.value( "start" ).toInteger( -1 ) == partition->firstSector()
+             && entry.value( "size" ).toInteger( -1 ) == partition->length() )
         {
-            QRegularExpression re( deviceNode + QStringLiteral( " +(.+)" ) );
-            QRegularExpressionMatch rem = re.match( r.getOutput() );
-
-            if ( rem.hasMatch() )
+            partition->setPartitionPath( node );
+            if ( device->partitionTable()->type() == PartitionTable::gpt )
             {
-                partition->setUUID( rem.captured( 1 ) );
+                partition->setUUID( entry.value( "uuid" ).toString() );
             }
+            return Calamares::JobResult::ok();
         }
     }
-
-    return Calamares::JobResult::ok();
+    return Calamares::JobResult::error(
+        QCoreApplication::translate( CreatePartitionJob::staticMetaObject.className(),
+                                     "Could not identify the newly created ZFS partition on %1." )
+            .arg( disk ) );
 }
 
 CreatePartitionJob::CreatePartitionJob( Device* device, Partition* partition )

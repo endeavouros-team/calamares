@@ -7,6 +7,7 @@ $id: https://calamares.io/schemas/partition
 additionalProperties: false
 type: object
 properties:
+    efiBootLoaderVar: { type: string }
     efiSystemPartition: { type: string }  # Deprecated alias of efi.mountPoint
     efiSystemPartitionSize: { type: string } # Deprecated alias of efi.recommendedSize
     efiSystemPartitionName: { type: string } # Deprecated alias of efi.label

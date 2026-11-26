@@ -9,6 +9,12 @@ properties:
     poolName: { type: string }
     poolOptions: { type: string }
     datasetOptions: { type: string }
+    grubCompatibility: { type: string, enum: [grub2, grub2-2.06, grub2-2.12] }
+    utf8Only: { type: boolean, default: false }
+    poolNames:
+        type: object
+        propertyNames: { pattern: '^/' }
+        additionalProperties: { type: string, pattern: '^[a-zA-Z][a-zA-Z0-9_.:-]*$' }
     datasets:
         type: array
         items:
@@ -20,5 +26,8 @@ properties:
                 # Nominally a string, but "on" and "off" are valid and get
                 # turned into a boolean in the YAML parser.
                 canMount:  { anyOf: [ { type: string }, { type: boolean } ] }
+                properties:
+                    type: object
+                    additionalProperties: { type: string }
             required: [ dsName, mountpoint, canMount ]
 required: [ poolName, datasets ]

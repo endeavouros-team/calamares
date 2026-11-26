@@ -54,6 +54,7 @@
 #include <QFutureWatcher>
 #include <QLabel>
 #include <QListView>
+#include <QStandardItemModel>
 #include <QtConcurrent/QtConcurrent>
 
 using Calamares::Partition::findPartitionByPath;
@@ -130,7 +131,7 @@ ChoicePage::ChoicePage( Config* config, QWidget* parent )
     updateNextEnabled();
 }
 
-ChoicePage::~ChoicePage() {}
+ChoicePage::~ChoicePage() { }
 
 void
 ChoicePage::retranslate()
@@ -465,6 +466,26 @@ ChoicePage::continueApplyDeviceChoice()
 void
 ChoicePage::onActionChanged()
 {
+    if ( m_eraseSwapChoiceComboBox && m_config->installChoice() == InstallChoice::Erase )
+    {
+        const bool allowSwapFile = m_config->eraseFsType() != "zfs";
+        const int swapFile = m_eraseSwapChoiceComboBox->findData( SwapChoice::SwapFile );
+        if ( swapFile >= 0 )
+        {
+            auto* swapModel = qobject_cast< QStandardItemModel* >( m_eraseSwapChoiceComboBox->model() );
+            if ( swapModel )
+            {
+                swapModel->item( swapFile )->setEnabled( allowSwapFile );
+            }
+            if ( !allowSwapFile && m_config->swapChoice() == SwapChoice::SwapFile )
+            {
+                const QSignalBlocker blocker( m_eraseSwapChoiceComboBox );
+                m_eraseSwapChoiceComboBox->setCurrentIndex( m_eraseSwapChoiceComboBox->findData( SwapChoice::NoSwap ) );
+                m_config->setSwapChoice( static_cast< int >( SwapChoice::NoSwap ) );
+            }
+        }
+    }
+
     if ( m_enableEncryptionWidget )
     {
         if ( m_config->installChoice() == InstallChoice::Erase && m_eraseFsTypesChoiceComboBox )
@@ -552,7 +573,7 @@ ChoicePage::applyActionChoice( InstallChoice choice )
                         QMutexLocker locker( &m_coreMutex );
                         m_core->revertDevice( selectedDevice() );
                     } ),
-                [] {},
+                [] { },
                 this );
         }
         connect( m_beforePartitionBarsView->selectionModel(),
@@ -604,7 +625,7 @@ ChoicePage::applyActionChoice( InstallChoice choice )
                         QMutexLocker locker( &m_coreMutex );
                         m_core->revertDevice( selectedDevice() );
                     } ),
-                [] {},
+                [] { },
                 this );
         }
         break;
@@ -731,7 +752,7 @@ ChoicePage::onLeave()
         if ( !isNewEfiSelected() )
         {
             Partition* part = nullptr;
-            for ( auto const partition : qAsConst( efiSystemPartitions ) )
+            for ( auto const partition : std::as_const( efiSystemPartitions ) )
             {
                 if ( partition->partitionPath() == m_efiComboBox->currentText() )
                 {
@@ -1331,7 +1352,7 @@ ChoicePage::setupEfiSystemPartitionSelector()
     // Only the already existing ones:
     QList< Partition* > efiSystemPartitions = m_core->efiSystemPartitions();
 
-     m_efiLabel->setText( tr( "EFI system partition:", "@label" ) );
+    m_efiLabel->setText( tr( "EFI system partition:", "@label" ) );
     for ( int i = 0; i < efiSystemPartitions.count(); ++i )
     {
         Partition* efiPartition = efiSystemPartitions.at( i );

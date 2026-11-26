@@ -15,3 +15,7 @@ add_test(
 set_tests_properties(load-grubcfg-2 PROPERTIES DEPENDS make-grubcfg-dirs)
 set_tests_properties(load-grubcfg-3 PROPERTIES DEPENDS make-grubcfg-dirs)
 set_tests_properties(load-grubcfg-4 PROPERTIES DEPENDS make-grubcfg-dirs)
+if(Python_Interpreter_FOUND)
+    add_test(NAME zfs-grubcfg-unit
+        COMMAND ${Python_EXECUTABLE} ${_testdir}/test_zfs_grubcfg.py)
+endif()

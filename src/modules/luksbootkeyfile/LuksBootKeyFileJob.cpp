@@ -25,7 +25,7 @@ LuksBootKeyFileJob::LuksBootKeyFileJob( QObject* parent )
 {
 }
 
-LuksBootKeyFileJob::~LuksBootKeyFileJob() {}
+LuksBootKeyFileJob::~LuksBootKeyFileJob() { }
 
 QString
 LuksBootKeyFileJob::prettyName() const
@@ -299,6 +299,15 @@ LuksBootKeyFileJob::exec()
         return Calamares::JobResult::ok();
     }
 
+    if ( anyPartition(
+             []( const QVariantMap& p )
+             {
+                 return hasMountPoint( p, QStringLiteral( "/" ) ) && !p.value( "luksKeyFileAllowed", true ).toBool();
+             } ) )
+    {
+        return Calamares::JobResult::ok();
+    }
+
     if ( s.devices.first().passphrase.isEmpty() )
     {
         cDebug() << Logger::SubEntry << "No root passphrase.";
@@ -337,7 +346,7 @@ void
 LuksBootKeyFileJob::setConfigurationMap( const QVariantMap& configurationMap )
 {
     m_bootloaderVar = Calamares::getString( configurationMap, "efiBootLoaderVar", "" );
-    
+
     // Map the value from the config file to accepted values;
     // this is an immediately-invoked lambda which is passed the
     // return value of getString().

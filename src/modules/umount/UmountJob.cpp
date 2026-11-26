@@ -31,7 +31,7 @@ UmountJob::UmountJob( QObject* parent )
 {
 }
 
-UmountJob::~UmountJob() {}
+UmountJob::~UmountJob() { }
 
 QString
 UmountJob::prettyName() const
@@ -67,7 +67,7 @@ unmountTargetMounts( const QString& rootMountPoint )
     {
         // Returns the program's exit code, so 0 is success and non-0
         // (truthy) is a failure.
-        if ( Calamares::Partition::unmount( m.mountPoint, { "-lv" } ) )
+        if ( Calamares::Partition::unmount( m.mountPoint, { "-v" } ) )
         {
             return Calamares::JobResult::error(
                 QCoreApplication::translate( UmountJob::staticMetaObject.className(),
@@ -80,7 +80,12 @@ unmountTargetMounts( const QString& rootMountPoint )
     }
 
     // Last we unmount the root
-    if ( Calamares::Partition::unmount( rootMountPoint, { "-lv" } ) )
+    const auto roots = MtabInfo::fromMtabFilteredByPrefix( rootMountPoint );
+    const auto mounted
+        = std::any_of( roots.cbegin(),
+                       roots.cend(),
+                       [ &rootMountPoint ]( const auto& mount ) { return mount.mountPoint == rootMountPoint; } );
+    if ( mounted && Calamares::Partition::unmount( rootMountPoint, { "-v" } ) )
     {
         return Calamares::JobResult::error(
             QCoreApplication::translate( UmountJob::staticMetaObject.className(),
@@ -97,31 +102,18 @@ static Calamares::JobResult
 exportZFSPools()
 {
     auto* gs = Calamares::JobQueue::instance()->globalStorage();
-    QStringList poolNames;
+    auto pools = gs->value( "zfsImportedPools" ).toList();
+    while ( !pools.isEmpty() )
     {
-        // The pools are dictionaries / VariantMaps
-        auto zfs_pool_list = gs->value( "zfsPoolInfo" ).toList();
-        for ( const auto& v : zfs_pool_list )
-        {
-            auto m = v.toMap();
-            QString poolName = m.value( "poolName" ).toString();
-            if ( !poolName.isEmpty() )
-            {
-                poolNames.append( poolName );
-            }
-        }
-        poolNames.sort();
-    }
-
-    for ( const auto& poolName : poolNames )
-    {
-        auto result = Calamares::System::runCommand( { "zpool", "export", poolName }, std::chrono::seconds( 30 ) );
+        const QStringList command { "zpool", "export", pools.last().toString() };
+        auto result = Calamares::System::runCommand( command, std::chrono::seconds( 30 ) );
         if ( result.getExitCode() )
         {
-            cWarning() << "Failed to export pool" << result.getOutput();
+            return result.explainProcess( command, std::chrono::seconds( 30 ) );
         }
+        pools.removeLast();
+        gs->insert( "zfsImportedPools", pools );
     }
-    // Exporting ZFS pools does not cause the install to fail
     return Calamares::JobResult::ok();
 }
 
@@ -137,15 +129,18 @@ UmountJob::exec()
 
     Calamares::GlobalStorage* gs
         = Calamares::JobQueue::instance() ? Calamares::JobQueue::instance()->globalStorage() : nullptr;
-    if ( !gs || gs->value( "rootMountPoint" ).toString().isEmpty() )
+    if ( !gs )
     {
         return Calamares::JobResult::internalError(
-            "UMount", tr( "No rootMountPoint is set." ), Calamares::JobResult::InvalidConfiguration );
+            "UMount", tr( "No global storage is available." ), Calamares::JobResult::InvalidConfiguration );
     }
+    gs->remove( "zfsInfo" );
 
     // Do the unmounting of target-system filesystems
+    const auto rootMountPoint = gs->value( "rootMountPoint" ).toString();
+    if ( !rootMountPoint.isEmpty() )
     {
-        auto r = unmountTargetMounts( gs->value( "rootMountPoint" ).toString() );
+        auto r = unmountTargetMounts( rootMountPoint );
         if ( !r )
         {
             return r;
@@ -153,15 +148,24 @@ UmountJob::exec()
     }
 
     // For ZFS systems, export the pools
+    auto result = exportZFSPools();
+    auto swaps = gs->value( "installationSwapDevices" ).toList();
+    while ( !swaps.isEmpty() )
     {
-        auto r = exportZFSPools();
-        if ( !r )
+        const QStringList command { "swapoff", swaps.last().toString() };
+        const auto stopped = Calamares::System::runCommand( command, std::chrono::seconds( 30 ) );
+        if ( stopped.getExitCode() )
         {
-            return r;
+            if ( result )
+            {
+                return stopped.explainProcess( command, std::chrono::seconds( 30 ) );
+            }
+            return result;
         }
+        swaps.removeLast();
+        gs->insert( "installationSwapDevices", swaps );
     }
-
-    return Calamares::JobResult::ok();
+    return result;
 }
 
 void

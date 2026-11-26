@@ -26,6 +26,7 @@ static const char MOUNT_POINT_PROPERTY[] = "_calamares_mountPoint";
 static const char FORMAT_PROPERTY[] = "_calamares_format";
 static const char FLAGS_PROPERTY[] = "_calamares_flags";
 static const char LABEL_PROPERTY[] = "_calamares_label";
+static const char ZFS_PASSPHRASE_PROPERTY[] = "_calamares_zfsPassphrase";
 
 QString
 mountPoint( const Partition* partition )
@@ -95,6 +96,18 @@ setLabel( Partition* partition, const QString& value )
 
 
 void
+setZfsPassphrase( Partition* partition, const QString& value )
+{
+    partition->setProperty( ZFS_PASSPHRASE_PROPERTY, value );
+}
+
+QString
+zfsPassphrase( const Partition* partition )
+{
+    return partition->property( ZFS_PASSPHRASE_PROPERTY ).toString();
+}
+
+void
 reset( Partition* partition )
 {
     // Setting a property to an invalid QVariant is equal to removing it
@@ -102,6 +115,7 @@ reset( Partition* partition )
     partition->setProperty( FORMAT_PROPERTY, QVariant() );
     partition->setProperty( FLAGS_PROPERTY, QVariant() );
     partition->setProperty( LABEL_PROPERTY, QVariant() );
+    partition->setProperty( ZFS_PASSPHRASE_PROPERTY, QVariant() );
 }
 
 bool

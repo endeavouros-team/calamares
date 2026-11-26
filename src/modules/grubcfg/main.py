@@ -163,8 +163,8 @@ def modify_grub_default(partitions, root_mount_point, distributor):
     swap_outer_mappername = None
     no_save_default = False
     unencrypted_separate_boot = any(p["mountPoint"] == "/boot" and "luksMapperName" not in p for p in partitions)
-    # If there is no dracut, and the root partition is ZFS, this gets set below
-    zfs_root_path = None
+    has_zfs_root = any(p["mountPoint"] == "/" and p["fs"] == "zfs" for p in partitions)
+    zfs_root_path = get_zfs_root() if has_zfs_root else None
 
     for partition in partitions:
         if partition["mountPoint"] in ("/", "/boot") and partition["fs"] in ("btrfs", "f2fs", "zfs"):
@@ -191,7 +191,8 @@ def modify_grub_default(partitions, root_mount_point, distributor):
 
             if partition["mountPoint"] == "/" and has_luks:
                 cryptdevice_params = [f"rd.luks.uuid={partition['luksUuid']}"]
-                if not unencrypted_separate_boot and uses_systemd_hook:
+                if (not unencrypted_separate_boot and uses_systemd_hook
+                        and partition.get("luksKeyFileAllowed", True)):
                     cryptdevice_params.append("rd.luks.key=/crypto_keyfile.bin")
     else:
         for partition in partitions:
@@ -206,18 +207,25 @@ def modify_grub_default(partitions, root_mount_point, distributor):
                 swap_outer_mappername = partition["luksMapperName"]
 
             if partition["mountPoint"] == "/" and has_luks:
-                cryptdevice_params = [
-                    f"cryptdevice=UUID={partition['luksUuid']}:{partition['luksMapperName']}",
-                    f"root=/dev/mapper/{partition['luksMapperName']}"
-                ]
+                cryptdevice_params = [f"cryptdevice=UUID={partition['luksUuid']}:{partition['luksMapperName']}"]
+                if not has_zfs_root:
+                    cryptdevice_params.append(f"root=/dev/mapper/{partition['luksMapperName']}")
 
-            if partition["fs"] == "zfs" and partition["mountPoint"] == "/":
-                zfs_root_path = get_zfs_root()
-
-    kernel_params = libcalamares.job.configuration.get("kernel_params", ["quiet"])
+    kernel_params = list(libcalamares.job.configuration.get("kernel_params", ["quiet"]))
 
     # Currently, grub doesn't detect this properly so it must be set manually
-    if zfs_root_path:
+    if zfs_root_path and dracut_bin == 0:
+        kernel_params.append("root=ZFS=" + zfs_root_path)
+        array = libcalamares.globalstorage.value("blockDevicesArray")
+        volume = libcalamares.globalstorage.value("blockDevicesVolume")
+        if array:
+            kernel_params.append("rd.md.uuid=" + array["uuid"])
+        swap_array = libcalamares.globalstorage.value("blockDevicesSwapArray")
+        if swap_array:
+            kernel_params.append("rd.md.uuid=" + swap_array["uuid"])
+        if volume:
+            kernel_params.append("rd.lvm.lv=" + volume)
+    elif zfs_root_path:
         kernel_params.insert(0, "zfs=" + zfs_root_path)
 
     if cryptdevice_params:
@@ -226,13 +234,21 @@ def modify_grub_default(partitions, root_mount_point, distributor):
     if use_splash:
         kernel_params.append(use_splash)
 
-    if swap_uuid:
+    if swap_uuid and not has_zfs_root:
         kernel_params.append(f"resume=UUID={swap_uuid}")
 
-    if use_systemd_naming and swap_outer_uuid:
+    if use_systemd_naming and swap_outer_uuid and not has_zfs_root:
         kernel_params.append(f"rd.luks.uuid={swap_outer_uuid}")
-    if swap_outer_mappername:
+    if swap_outer_mappername and not has_zfs_root:
         kernel_params.append(f"resume=/dev/mapper/{swap_outer_mappername}")
+
+    zfs_resume = libcalamares.globalstorage.value("zfsResume") if has_zfs_root else None
+    ignored_params = {"quiet", "resume", "splash"}
+    if zfs_resume:
+        ignored_params.update(("noresume", "resume_offset", "resumeflags"))
+        kernel_params = [p for p in kernel_params if not p.startswith(("resume=", "resume_offset=", "resumeflags="))
+                         and p != "noresume"]
+        kernel_params.extend([f"rd.luks.uuid={zfs_resume['uuid']}", f"resume={zfs_resume['device']}"])
 
     overwrite = libcalamares.job.configuration.get("overwrite", False)
 
@@ -255,7 +271,7 @@ def modify_grub_default(partitions, root_mount_point, distributor):
                         if param.split("=")[0].strip() == existing_param_name:
                             param_exists = True
                             break
-                    if not param_exists and existing_param_name not in ["quiet", "resume", "splash"]:
+                    if not param_exists and existing_param_name not in ignored_params:
                         kernel_params.append(existing_param)
 
             elif line.startswith("GRUB_DISTRIBUTOR") and libcalamares.job.configuration.get("keep_distributor", False):
@@ -283,10 +299,15 @@ def modify_grub_default(partitions, root_mount_point, distributor):
 
                 grub_config_items[key] = f"'{escaped_value}'"
 
+    if has_zfs_root and no_save_default:
+        grub_config_items["GRUB_SAVEDEFAULT"] = "false"
+    if zfs_resume:
+        grub_config_items["GRUB_DISABLE_RECOVERY"] = "true"
+
     grub_config_items['GRUB_CMDLINE_LINUX_DEFAULT'] = f"'{' '.join(kernel_params)}'"
     grub_config_items["GRUB_DISTRIBUTOR"] = f"'{distributor}'"
 
-    if cryptdevice_params and not unencrypted_separate_boot:
+    if cryptdevice_params and not unencrypted_separate_boot and not has_zfs_root:
         grub_config_items["GRUB_ENABLE_CRYPTODISK"] = "y"
 
     if overwrite or not os.path.exists(default_grub) or libcalamares.job.configuration.get("prefer_grub_d", False):

@@ -17,11 +17,11 @@
 #include "core/ColorUtils.h"
 #include "core/KPMHelpers.h"
 #include "core/PartUtils.h"
-#include "core/PartitionInfo.h"
 #include "core/PartitionCoreModule.h"
+#include "core/PartitionInfo.h"
+#include "gui/EncryptWidget.h"
 #include "gui/PartitionDialogHelpers.h"
 #include "gui/PartitionSizeController.h"
-#include "gui/EncryptWidget.h"
 
 #include "GlobalStorage.h"
 #include "JobQueue.h"
@@ -134,15 +134,16 @@ CreatePartitionDialog::CreatePartitionDialog( PartitionCoreModule* core,
              this,
              &CreatePartitionDialog::checkMountPointSelection );
 
-    connect( m_ui->fsComboBox,
-             &QComboBox::currentTextChanged,
-             this,
-             &CreatePartitionDialog::checkMountPointSelection );
+    connect( m_ui->fsComboBox, &QComboBox::currentTextChanged, this, &CreatePartitionDialog::checkMountPointSelection );
 
     connect( m_ui->encryptWidget,
              &EncryptWidget::stateChanged,
              this,
-             [ this ]( EncryptWidget::Encryption ) { updateLuksAlignment(); } );
+             [ this ]( EncryptWidget::Encryption )
+             {
+                 updateLuksAlignment();
+                 checkMountPointSelection();
+             } );
 
     // Select a default
     m_ui->fsComboBox->setCurrentIndex( defaultFsIndex );
@@ -186,13 +187,17 @@ CreatePartitionDialog::CreatePartitionDialog( PartitionCoreModule* core,
     initPartResizerWidget( existingNewPartition.p );
 
     FileSystem::Type fsType = existingNewPartition.p->fileSystem().type();
-    m_ui->fsComboBox->setCurrentText( FileSystem::nameForType( fsType ) );
+    m_ui->fsComboBox->setCurrentText( userVisibleFS( existingNewPartition.p->fileSystem() ) );
 
     setSelectedMountPoint( m_ui->mountPointComboBox, PartitionInfo::mountPoint( existingNewPartition.p ) );
     updateMountPointUi();
+    if ( fsType == FileSystem::Zfs )
+    {
+        m_ui->encryptWidget->setPassphrase( PartitionInfo::zfsPassphrase( existingNewPartition.p ) );
+    }
 }
 
-CreatePartitionDialog::~CreatePartitionDialog() {}
+CreatePartitionDialog::~CreatePartitionDialog() { }
 
 
 PartitionTable::Flags
@@ -291,29 +296,9 @@ CreatePartitionDialog::getNewlyCreatedPartition()
             m_parent, *m_device, m_role, fsType, fsLabel, first, last, PartitionTable::Flags() );
     }
 
-    // For zfs, we let the zfs module handle the encryption but we need to make the passphrase available to later modules
-    if ( fsType == FileSystem::Zfs )
+    if ( fsType == FileSystem::Zfs && m_ui->encryptWidget->state() == EncryptWidget::Encryption::Confirmed )
     {
-        Calamares::GlobalStorage* storage = Calamares::JobQueue::instance()->globalStorage();
-        QList< QVariant > zfsInfoList;
-        QVariantMap zfsInfo;
-
-        // If this is not the first encrypted zfs partition, get the old list first
-        if ( storage->contains( "zfsInfo" ) )
-        {
-            zfsInfoList = storage->value( "zfsInfo" ).toList();
-            storage->remove( "zfsInfo" );
-        }
-
-        // Save the information subsequent modules will need
-        zfsInfo[ "encrypted" ]
-            = m_ui->encryptWidget->state() == EncryptWidget::Encryption::Confirmed && !luksPassphrase.isEmpty();
-        zfsInfo[ "passphrase" ] = luksPassphrase;
-        zfsInfo[ "mountpoint" ] = selectedMountPoint( m_ui->mountPointComboBox );
-
-        // Add it to the list and insert it into global storage
-        zfsInfoList.append( zfsInfo );
-        storage->insert( "zfsInfo", zfsInfoList );
+        PartitionInfo::setZfsPassphrase( partition, luksPassphrase );
     }
 
     if ( m_device->type() == Device::Type::LVM_Device )
@@ -336,6 +321,7 @@ CreatePartitionDialog::updateMountPointUi()
     {
         // This maps translated (user-visible) FS names to a type
         FileSystem::Type type = FileSystem::typeForName( m_ui->fsComboBox->currentText() );
+        m_ui->encryptWidget->setFilesystem( type );
         enabled = !s_unmountableFS.contains( type );
 
         if ( FileSystemFactory::map()[ FileSystem::Type::Luks ]->supportCreate() && FS::luks::canEncryptType( type )
@@ -370,12 +356,17 @@ CreatePartitionDialog::updateLuksAlignment()
 void
 CreatePartitionDialog::checkMountPointSelection()
 {
+    auto* okButton = m_ui->buttonBox->button( QDialogButtonBox::Ok );
     validateMountPoint( m_core,
                         selectedMountPoint( m_ui->mountPointComboBox ),
                         m_usedMountPoints,
                         m_ui->fsComboBox->currentText(),
                         m_ui->mountPointExplanation,
-                        m_ui->buttonBox->button( QDialogButtonBox::Ok ) );
+                        okButton );
+    if ( m_ui->encryptWidget->isVisible() && m_ui->encryptWidget->state() == EncryptWidget::Encryption::Unconfirmed )
+    {
+        okButton->setEnabled( false );
+    }
 }
 
 void

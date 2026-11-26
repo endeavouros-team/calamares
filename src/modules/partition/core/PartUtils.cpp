@@ -263,13 +263,13 @@ lookForFstabEntries( const QString& partitionPath )
         else
         {
             cWarning() << "Could not read fstab from mounted fs";
-            return {};
+            return { };
         }
     }
     else
     {
         cWarning() << "Could not mount existing fs";
-        return {};
+        return { };
     }
 }
 
@@ -561,24 +561,15 @@ qint64
 efiFilesystemMinimumSize()
 {
     const QString key = efiFilesystemMinimumSizeGSKey();
-
-    qint64 uefisys_part_sizeB = 0;
-
-    // The default can be overridden; the key used here comes
-    // from the partition module Config.cpp
     auto* gs = Calamares::JobQueue::instance()->globalStorage();
-    if ( gs->contains( key ) )
+    // GRUB keeps its kernels outside the ESP. Other bootloaders may need
+    // enough room for them even when no separate minimum was configured.
+    if ( gs->value( "curBootloader" ).toString().compare( "grub", Qt::CaseInsensitive ) == 0 )
     {
-        // Ignore the minimum size when grub is the bootloader
-        if ( !gs->contains( "curBootloader" ) || gs->value( "curBootloader" ).toString().toLower() != "grub" )
-        {
-            qint64 v = gs->value( key ).toLongLong();
-            uefisys_part_sizeB = v > 0 ? v : 0;
-        }
+        return efiSpecificationHardMinimumSize;
     }
-
-    // There is a lower limit of what can be configured
-    return std::max( uefisys_part_sizeB, efiSpecificationHardMinimumSize );
+    const auto minimum = gs->contains( key ) ? gs->value( key ).toLongLong() : efiFilesystemRecommendedSize();
+    return std::max( minimum, efiSpecificationHardMinimumSize );
 }
 QString
 canonicalFilesystemName( const QString& fsName, FileSystem::Type* fsType )
